@@ -3,3 +3,12 @@ body {
     margin: 2em;
 }
 
+a {
+    color: #668;
+}
+a:hover {
+    color: #335;
+}
+a.featured {
+    font-weight: bold;
+}
