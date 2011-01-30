@@ -19,6 +19,7 @@ a.featured {
 a.title {
 	font-size: 1.2em;
 	text-decoration: none;
+	margin: 0 0 0 -2px;
 	padding: 2px;
 }
 
