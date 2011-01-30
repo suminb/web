@@ -1,6 +1,10 @@
+/*****************************************************************************
+ * Global
+ *****************************************************************************/
 body {
     font-family: Georgia, serif;
     margin: 2em;
+    line-height: 135%;
 }
 
 a {
@@ -12,19 +16,61 @@ a:hover {
 a.featured {
     font-weight: bold;
 }
+a.title {
+	font-size: 1.2em;
+	text-decoration: none;
+	padding: 2px;
+}
 
-/* Projects section */
-ul.projects span.tag {
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 0 1em;
+}
+ul li {
+	margin: 0;
+	padding: 0;
+}
+
+span.tag {
 	padding: 0 2px 0 2px;
 	background-color: #EFEFEF;
 	color: #707070;
-	font-size: 0.8em;
+	font-family: Helvetica, sans-serif;
+	font-size: 9pt;
 }
+
+
+/*****************************************************************************
+ * Links section
+ *****************************************************************************/
+
+ul.links a.title {
+	color: #4040B0;
+}
+ul.links a.title:hover {
+	background-color: #4040B0;
+	color: #FFF;
+}
+
+/*****************************************************************************
+ * Known affiliates section
+ *****************************************************************************/
+
+ul.affiliates a.title {
+	color: #309030;
+}
+ul.affiliates a.title:hover {
+	background-color: #309030;
+	color: #FFF;
+}
+
+/*****************************************************************************
+ * Projects section
+ *****************************************************************************/
+
 ul.projects a.title {
-	padding: 2px;
 	color: #D06020;
-	font-size: 1.2em;
-	text-decoration: none;
 }
 ul.projects a.title:hover {
 	background-color: #D06020;
