@@ -77,3 +77,7 @@ ul.projects a.title:hover {
         background-color: #D06020;
         color: #FFF;
 }
+
+#expandable {
+    display: none;
+}
