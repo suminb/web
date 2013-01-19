@@ -50,9 +50,8 @@ span.tag {
 }
 
 #content {
-    width: 1000px;
+    width: 960px;
     margin: auto;
-    padding: 2em;
     background-color: #FAFAFA;
 }
 
