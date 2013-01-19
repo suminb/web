@@ -2,9 +2,17 @@
  * Global
  *****************************************************************************/
 body {
-    font-family: Georgia, serif;
-    margin: 2em;
+    font-family: "Lucida Grande", "Lucida Sans", sans-serif;
+    color: #505050;
+    margin: 0;
     line-height: 135%;
+    /*background-color: #C0C0C0;*/
+    background-image: url('/images/low_contrast_linen.png');
+}
+
+h1, h2, h3 {
+    font-family: "Times New Roman";
+    font-weight: normal;
 }
 
 a {
@@ -17,41 +25,55 @@ a.featured {
     font-weight: bold;
 }
 a.title {
-        font-size: 1.2em;
-        text-decoration: none;
-        margin: 0 0 0 -2px;
-        padding: 2px;
+    font-size: 1.2em;
+    text-decoration: none;
+    margin: 0 0 0 -2px;
+    padding: 2px;
 }
 
 ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0 0 0 1em;
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 0 1em;
 }
 ul li {
-        margin: 0;
-        padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 span.tag {
-        padding: 0 2px 0 2px;
-        background-color: #EFEFEF;
-        color: #707070;
-        font-family: Helvetica, sans-serif;
-        font-size: 9pt;
+    padding: 0 2px 0 2px;
+    background-color: #EFEFEF;
+    color: #707070;
+    font-family: Helvetica, sans-serif;
+    font-size: 9pt;
 }
 
+#content {
+    width: 1000px;
+    margin: auto;
+    padding: 2em;
+    background-color: #FAFAFA;
+}
+
+#profile-pic {
+    float: left;
+}
+#title {
+    float: left;
+    padding-left: 8px;
+}
 
 /*****************************************************************************
  * Links section
  *****************************************************************************/
 
 ul.links a.title {
-        color: #4040B0;
+    color: #4040B0;
 }
 ul.links a.title:hover {
-        background-color: #4040B0;
-        color: #FFF;
+    background-color: #4040B0;
+    color: #FFF;
 }
 
 /*****************************************************************************
@@ -59,11 +81,11 @@ ul.links a.title:hover {
  *****************************************************************************/
 
 ul.affiliates a.title {
-        color: #309030;
+    color: #309030;
 }
 ul.affiliates a.title:hover {
-        background-color: #309030;
-        color: #FFF;
+    background-color: #309030;
+    color: #FFF;
 }
 
 /*****************************************************************************
@@ -71,11 +93,11 @@ ul.affiliates a.title:hover {
  *****************************************************************************/
 
 ul.projects a.title {
-        color: #D06020;
+    color: #D06020;
 }
 ul.projects a.title:hover {
-        background-color: #D06020;
-        color: #FFF;
+    background-color: #D06020;
+    color: #FFF;
 }
 
 #expandable {
