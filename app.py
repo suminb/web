@@ -3,7 +3,7 @@ import os
 from flask import Flask
 from flask import render_template
 
-app = Flask(__name__)
+app = Flask(__name__, )
 
 @app.route("/")
 def index():
@@ -15,3 +15,10 @@ if __name__ == "__main__":
     debug = bool(os.environ.get("DEBUG", 1))
 
     app.run(host=host, port=port, debug=debug)
+
+if app.config['DEBUG']:
+    from werkzeug import SharedDataMiddleware
+    import os
+    app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
+      '/': os.path.join(os.path.dirname(__file__), 'static')
+    })
