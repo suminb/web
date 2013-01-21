@@ -9,6 +9,10 @@ app = Flask(__name__, )
 def index():
     return render_template("index.html")
 
+@app.route("/tag/<tag>")
+def category(tag):
+    return render_template("tag.html")
+
 if __name__ == "__main__":
     host = os.environ.get("HOST", "127.0.0.1")
     port = int(os.environ.get("PORT", 80))
