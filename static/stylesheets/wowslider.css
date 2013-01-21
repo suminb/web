@@ -81,7 +81,7 @@
 #wowslider-container1 .ws_bullets a { 
 	width:15px;
 	height:15px;
-	background: url(/images/wowslider/bullet.png) left top;
+	background: url(/static/images/wowslider/bullet.png) left top;
 	float: left; 
 	text-indent: -4000px; 
 	position:relative;
@@ -102,7 +102,7 @@
 	z-index:60;
 	height: 100px;
 	width: 60px;
-	background-image: url(/images/wowslider/arrows.png);
+	background-image: url(/static/images/wowslider/arrows.png);
 }
 #wowslider-container1 a.ws_next{
 	background-position: 100% 0;
@@ -217,7 +217,7 @@
 	top:-11px;
 	margin-left:-5px;
 	left:64px;
-	background:url(/images/wowslider/triangle.png);
+	background:url(/static/images/wowslider/triangle.png);
 	width:15px;
 	height:6px;
 }

@@ -7,7 +7,7 @@ body {
     margin: 0;
     line-height: 135%;
     /*background-color: #C0C0C0;*/
-    background-image: url('/images/low_contrast_linen.png');
+    background-image: url('/static/images/low_contrast_linen.png');
 }
 
 h1, h2, h3 {
