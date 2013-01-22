@@ -1,31 +1,46 @@
 [
     {
-        "_id": "cc6165fee79bd55b3f533841fe06857907eb581d",
         "name": "Smartrek",
         "year": [2012, 2013],
         "type": "proprietary",
         "languages": ["Java"],
-        "keywords": ["application", "interdisciplinary", "big-data"],
+        "keywords": ["application", "interdisciplinary", "big data"],
         "description": "s an ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to build an Android app for user guidance and data collection."
     },
     {
-        "_id": "50988e313d05d7ef145a707c27603d8193440871",
         "name": "Purpose-built Appliance",
         "url": "https://github.com/suminb/scalable-appliance",
         "year": 2012,
         "type": "academic",
         "languages": ["Python", "JavaScript"],
-        "keywords": ["application", "big-data"],
+        "keywords": ["application", "big data"],
         "description": "s an ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to build an Android app for user guidance and data collection."
     },
     {
-        "_id": "5ead8f59d5184b6b3c7f064a1aa103593f54c382",
         "name": "ChemBook",
         "year": 2012,
         "type": "proprietary",
         "languages": ["Objective C", "Python"],
         "keywords": ["application", "chemistry"],
         "description": "is an one-stop-shop for writing chemistry lab reports."
+    },
+    {
+        "name": "Radioactivity",
+        "url": "https://bitbucket.org/suminb/radioactivity",
+        "year": 2012,
+        "type": "open source",
+        "languages": ["Python", "JavaScript"],
+        "keywords": ["application", "web", "data visualization"],
+        "description": "The project radioactivity had started in March of 2011 in an attempt to help the general public to be alerted regarding the spread of radiation and other radioactive materials originated from the catastrophic incident in the Fukushima nuclear power plant in Japan, by providing visual information of city-wise radition levels."
+    },
+    {
+        "name": "한자-한글 변환기",
+        "url": "http://hanja.suminb.com",
+        "year": 2011,
+        "type": "proprietary",
+        "languages": ["Python", "JavaScript"],
+        "keywords": ["application"],
+        "description": ""
     },
     {
         "_id": "c28be2b13e7c089d2c15e7e6524e70f4d39689c2",
@@ -63,7 +78,7 @@
         "year": 2010,
         "type": "academic",
         "languages": ["Java", "C++"],
-        "keywords": ["machine-learning", "interdisciplinary"],
+        "keywords": ["machine learning", "interdisciplinary"],
         "description": "is a DARPA sponsored project to develop an <em>electronic student</em> that can learn from natural human instruction close to the way humans do."
     },
     {
@@ -73,7 +88,7 @@
         "year": 2011,
         "type": "open-source",
         "languages": ["Python"],
-        "keywords": ["library", "database", "open-source"],
+        "keywords": ["library", "database", "open source"],
         "description": "is a Python library to use Google Spreadsheet as a database."
     },
     {
@@ -82,7 +97,7 @@
         "year": 2010,
         "type": "classified",
         "languages": ["Python"],
-        "keywords": ["big-data", "data-mining"],
+        "keywords": ["big data", "data mining"],
         "description": "is a project to reconstruct a map in global scale by collecting map tiles from various sources such as Google Maps and Open Street Map."
     },
     {
