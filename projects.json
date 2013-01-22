@@ -5,7 +5,17 @@
         "year": [2012, 2013],
         "type": "proprietary",
         "languages": ["Java"],
-        "tags": ["application", "interdisciplinary"],
+        "keywords": ["application", "interdisciplinary", "big-data"],
+        "description": "s an ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to build an Android app for user guidance and data collection."
+    },
+    {
+        "_id": "50988e313d05d7ef145a707c27603d8193440871",
+        "name": "Purpose-built Appliance",
+        "url": "https://github.com/suminb/scalable-appliance",
+        "year": 2012,
+        "type": "academic",
+        "languages": ["Python", "JavaScript"],
+        "keywords": ["application", "big-data"],
         "description": "s an ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to build an Android app for user guidance and data collection."
     },
     {
@@ -14,9 +24,7 @@
         "year": 2012,
         "type": "proprietary",
         "languages": ["Objective C", "Python"],
-        "tags": [
-            "application"
-        ],
+        "keywords": ["application", "chemistry"],
         "description": "is an one-stop-shop for writing chemistry lab reports."
     },
     {
@@ -26,7 +34,7 @@
         "year": 2011,
         "type": "proprietary",
         "languages": ["Python", "JavaScript"],
-        "tags": ["application"],
+        "keywords": ["application"],
         "description": ""
     },
     {
@@ -36,7 +44,7 @@
         "year": 2011,
         "type": "proprietary",
         "languages": ["Python", "JavaScript"],
-        "tags": ["application"],
+        "keywords": ["application", "web"],
         "description": "is an RSS/Atom feed aggregation service for Amazon Kindle."
     },
     {
@@ -46,7 +54,7 @@
         "year": 2011,
         "type": "academic",
         "languages": ["Action Script"],
-        "tags": ["application"],
+        "keywords": ["application", "web"],
         "description": "is a project to create a society for students in which learning and creativity is rewarded with points that can be redeemed for goods."
     },
     {
@@ -55,7 +63,7 @@
         "year": 2010,
         "type": "academic",
         "languages": ["Java", "C++"],
-        "tags": ["machine-learning", "interdisciplinary"],
+        "keywords": ["machine-learning", "interdisciplinary"],
         "description": "is a DARPA sponsored project to develop an <em>electronic student</em> that can learn from natural human instruction close to the way humans do."
     },
     {
@@ -65,7 +73,7 @@
         "year": 2011,
         "type": "open-source",
         "languages": ["Python"],
-        "tags": ["library", "database", "open-source"],
+        "keywords": ["library", "database", "open-source"],
         "description": "is a Python library to use Google Spreadsheet as a database."
     },
     {
@@ -74,7 +82,7 @@
         "year": 2010,
         "type": "classified",
         "languages": ["Python"],
-        "tags": ["big-data", "data-mining"],
+        "keywords": ["big-data", "data-mining"],
         "description": "is a project to reconstruct a map in global scale by collecting map tiles from various sources such as Google Maps and Open Street Map."
     },
     {
@@ -83,7 +91,7 @@
         "year": 2010,
         "type": "proprietary",
         "languages": ["Objective C"],
-        "tags": ["application", "mobile"],
+        "keywords": ["application", "mobile"],
         "description": "is a children's book for iPad with user-interactable animations."
     },
     {
@@ -93,7 +101,7 @@
         "year": 2010,
         "type": "open-source",
         "languages": ["Objective C"],
-        "tags": ["application", "mac"],
+        "keywords": ["application", "mac", "open-source"],
         "description": "is a Markdown reader for Mac OS X."
     },
     {
@@ -103,7 +111,7 @@
         "year": [2008, 2009],
         "type": "proprietary",
         "languages": ["PHP", "JavaScript"],
-        "tags": ["application", "web"],
+        "keywords": ["application", "web"],
         "description": ""
     },
         {
@@ -112,7 +120,7 @@
         "year": 2008,
         "type": "proprietary",
         "languages": ["Objective C"],
-        "tags": ["application", "mobile"],
+        "keywords": ["application", "mobile", "game"],
         "description": "is a labyrinth-like puzzle game for iPhone."
     },
     {
@@ -121,7 +129,7 @@
         "year": 2008,
         "type": "academic",
         "languages": ["Java", "C"],
-        "tags": ["application"],
+        "keywords": ["application"],
         "description": "is a distributed processing project to draw a mandelbrot set using multiple computers."
     }
 ]
