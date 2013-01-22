@@ -38,7 +38,7 @@ def category(tag):
     db.authenticate(settings.DB_USERNAME, settings.DB_PASSWORD)
 
     # http://docs.mongodb.org/manual/reference/operator/or/#_S_or
-    projects = db.projects.find({'$or': [{'keywords':tag}, {'languages':tag}, {'year':int(tag)}]})
+    projects = db.projects.find({'$or': [{'keywords':tag}, {'languages':tag}, {'year':tag}]})
 
     return render_template("projects.html", projects=projects)
 

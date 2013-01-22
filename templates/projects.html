@@ -5,7 +5,7 @@
 
 {% for project in projects %}
   <h3>{{ project.name }}</h3>
-  {{ project.tags|format_tags }}
+  {{ project.keywords|format_tags('keywords') }}
   {{ project.languages|format_tags('languages') }}
   {{ project.year|format_tags('year') }}
   {{ project.url|urlize }}
