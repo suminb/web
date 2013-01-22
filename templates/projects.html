@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div id="content">
+
+{% for project in projects %}
+  <h3>{{ project.name }}</h3>
+  {{ project.tags|format_tags }}
+  {{ project.languages|format_tags('languages') }}
+  {{ project.year|format_tags('year') }}
+  {{ project.url|urlize }}
+  {{ project.description }}
+{% endfor %}
+
+</div> <!-- end of #content -->
+
+{% endblock %}

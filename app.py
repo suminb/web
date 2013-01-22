@@ -2,16 +2,42 @@ import os
 
 from flask import Flask
 from flask import render_template
+from jinja2 import evalcontextfilter, Markup, escape
+from jinja2.environment import Environment
 
-app = Flask(__name__, )
+#
+# Custom filters for Jinja
+#
+@evalcontextfilter
+def format_tags(eval_ctx, value, attr=''):
+    f = lambda x: '<span class="tag %s">%s</span>' % (attr, x)
+    
+    if isinstance(value, list):
+        return Markup(' '.join(map(f, value)))
+    else:
+        return Markup(f(value))
 
+app = Flask(__name__)
+app.jinja_env.filters['format_tags'] = format_tags
+
+#
+# Request handlers
+#
 @app.route("/")
 def index():
     return render_template("index.html")
 
 @app.route("/tag/<tag>")
 def category(tag):
-    return render_template("tag.html")
+    from pymongo import MongoClient
+    import settings
+
+    connection = MongoClient(settings.DB_URL, settings.DB_PORT)
+    db = connection.resume
+    db.authenticate(settings.DB_USERNAME, settings.DB_PASSWORD)
+    projects = db.projects.find({'tags':tag})
+
+    return render_template("projects.html", projects=projects)
 
 if __name__ == "__main__":
     host = os.environ.get("HOST", "127.0.0.1")
