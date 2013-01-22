@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro|ABeeZee|Acme);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Acme);
 
 /*****************************************************************************
  * Global
@@ -14,8 +14,7 @@ body {
 }
 
 h1, h2, h3 {
-    font-family: 'Acme', sans-serif;
-    font-weight: normal;
+    
 }
 
 a {
@@ -71,7 +70,6 @@ span.tag {
     width: 100%;
     height: 72px;
     /*background-image: url(/static/images/pw_maze_white.png);*/
-    font-family: 'ABeeZee', sans-serif;
 }
 #profile-pic {
     float: left;
@@ -82,6 +80,8 @@ span.tag {
     padding-left: 8px;
 }
 #title h1 {
+    font-family: 'Acme', sans-serif;
+    font-weight: normal;
     margin: 14px 0 14px 0;
     font-size: 30pt;
 }
