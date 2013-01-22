@@ -11,7 +11,7 @@ from jinja2.environment import Environment
 @evalcontextfilter
 def format_tags(eval_ctx, value, attr=''):
     f = lambda x: '<span class="tag %s">%s</span>' % (attr, x)
-    
+
     if isinstance(value, list):
         return Markup(' '.join(map(f, value)))
     else:
@@ -35,7 +35,9 @@ def category(tag):
     connection = MongoClient(settings.DB_URL, settings.DB_PORT)
     db = connection.resume
     db.authenticate(settings.DB_USERNAME, settings.DB_PASSWORD)
-    projects = db.projects.find({'tags':tag})
+
+    # http://docs.mongodb.org/manual/reference/operator/or/#_S_or
+    projects = db.projects.find({'$or': [{'keywords':tag}, {'languages':tag}, {'year':int(tag)}]})
 
     return render_template("projects.html", projects=projects)
 
