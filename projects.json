@@ -1,0 +1,93 @@
+[
+    {
+        "_id": "5ead8f59d5184b6b3c7f064a1aa103593f54c382",
+        "name": "ChemBook",
+        "year": 2012,
+        "type": "proprietary",
+        "languages": ["Objective C", "Python"],
+        "tags": [
+            "application"
+        ],
+        "description": "is an one-stop-shop for writing chemistry lab reports."
+    },
+    {
+        "_id": "",
+        "name": "한자-한글 변환기",
+        "url": "http://hanja.suminb.com",
+        "year": 2011,
+        "type": "proprietary",
+        "languages": ["Python", "JavaScript"],
+        "tags": ["application"],
+        "description": ""
+    },
+    {
+        "_id": "",
+        "name": "Kindleholic",
+        "url": "http://kindleholic.net",
+        "year": 2011,
+        "type": "proprietary",
+        "languages": ["Python", "JavaScript"],
+        "tags": ["application"],
+        "description": "is an RSS/Atom feed aggregation service for Amazon Kindle."
+    },
+    {
+        "_id": "68439cbc741226a53a410eb6605e1e5ea7003d88",
+        "name": "Bootstrapped Learning",
+        "year": 2010,
+        "type": "academic",
+        "languages": ["Java", "C++"],
+        "tags": ["machine-learning"],
+        "description": "is a DARPA sponsored project to develop an <em>electronic student</em> that can learn from natural human instruction close to the way humans do."
+    },
+    {
+        "_id": "",
+        "name": "",
+        "url": "http://",
+        "year": 2011,
+        "type": "proprietary",
+        "languages": [""],
+        "tags": [""],
+        "description": ""
+    },
+    {
+        "_id": "",
+        "name": "",
+        "url": "http://",
+        "year": 2011,
+        "type": "proprietary",
+        "languages": [""],
+        "tags": [""],
+        "description": ""
+    },
+    {
+        "_id": "",
+        "name": "",
+        "url": "http://",
+        "year": 2011,
+        "type": "proprietary",
+        "languages": [""],
+        "tags": [""],
+        "description": ""
+    },
+    {
+        "_id": "",
+        "name": "",
+        "url": "http://",
+        "year": 2011,
+        "type": "proprietary",
+        "languages": [""],
+        "tags": [""],
+        "description": ""
+    },
+    {
+        "_id": "",
+        "name": "",
+        "url": "http://",
+        "year": 2011,
+        "type": "proprietary",
+        "languages": [""],
+        "tags": [""],
+        "description": ""
+    },
+
+]

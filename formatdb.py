@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# One document per line
+
 import json
 
 with open('projects.json') as f:
