@@ -25,6 +25,7 @@ app.jinja_env.filters['format_tags'] = format_tags
 #
 @app.route("/")
 def index():
+    print extract_tags()
     return render_template("index.html")
 
 @app.route("/tag/<tag>")
@@ -40,6 +41,33 @@ def category(tag):
     projects = db.projects.find({'$or': [{'keywords':tag}, {'languages':tag}, {'year':int(tag)}]})
 
     return render_template("projects.html", projects=projects)
+
+def extract_tags():
+    import json 
+
+    def register_tag(tag_collection, tag):
+        if tag not in tag_collection:
+            tag_collection[tag] = 1
+        else:
+            tag_collection[tag] += 1
+
+    tags = {}
+    with open('projects.json') as f:
+        data = json.loads(f.read())
+
+        for row in data:
+            for kw in row['keywords']:
+                register_tag(tags, kw)
+            for ln in row['languages']:
+                register_tag(tags, ln)
+
+            if isinstance(row['year'], list):
+                for y in row['year']:
+                    register_tag(tags, y)
+            else:
+                register_tag(tags, row['year'])
+
+    print tags
 
 if __name__ == "__main__":
     host = os.environ.get("HOST", "127.0.0.1")
