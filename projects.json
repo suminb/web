@@ -43,17 +43,6 @@
         "description": ""
     },
     {
-        "_id": "c28be2b13e7c089d2c15e7e6524e70f4d39689c2",
-        "name": "한자-한글 변환기",
-        "url": "http://hanja.suminb.com",
-        "year": 2011,
-        "type": "proprietary",
-        "languages": ["Python", "JavaScript"],
-        "keywords": ["application"],
-        "description": ""
-    },
-    {
-        "_id": "7e235aa711bcb3259b3bed181a1478e4eded5955",
         "name": "Kindleholic",
         "url": "http://kindleholic.net",
         "year": 2011,
@@ -63,7 +52,6 @@
         "description": "is an RSS/Atom feed aggregation service for Amazon Kindle."
     },
     {
-        "_id": "4c47297ba0021b58ed41802704d2611f15022410",
         "name": "Teach Ourselves",
         "url": "http://roslin.cs.arizona.edu/teachourselves/",
         "year": 2011,
@@ -73,7 +61,6 @@
         "description": "is a project to create a society for students in which learning and creativity is rewarded with points that can be redeemed for goods."
     },
     {
-        "_id": "68439cbc741226a53a410eb6605e1e5ea7003d88",
         "name": "Bootstrapped Learning",
         "year": 2010,
         "type": "academic",
@@ -82,7 +69,6 @@
         "description": "is a DARPA sponsored project to develop an <em>electronic student</em> that can learn from natural human instruction close to the way humans do."
     },
     {
-        "_id": "59df56e5459ef647f70f023a85928824a8afa576",
         "name": "gdocsdb",
         "url": "https://bitbucket.org/suminb/gdocsdb",
         "year": 2011,
@@ -92,7 +78,6 @@
         "description": "is a Python library to use Google Spreadsheet as a database."
     },
     {
-        "_id": "7930e06c7ddb2c362f626fb6fb266e8b42b6c447",
         "name": "maps",
         "year": 2010,
         "type": "classified",
@@ -101,7 +86,6 @@
         "description": "is a project to reconstruct a map in global scale by collecting map tiles from various sources such as Google Maps and Open Street Map."
     },
     {
-        "_id": "ddcd2f2e783a0ee9fa8d93732423a0504c651596",
         "name": "Violet",
         "year": 2010,
         "type": "proprietary",
@@ -110,7 +94,6 @@
         "description": "is a children's book for iPad with user-interactable animations."
     },
     {
-        "_id": "d1602d8ade01ed2e1993b96ed017938dc4779dad",
         "name": "Readown",
         "url": "https://github.com/suminb/readown",
         "year": 2010,
@@ -120,7 +103,6 @@
         "description": "is a Markdown reader for Mac OS X."
     },
     {
-        "_id": "77a56df42189e9b15d80511166be52de11922a01",
         "name": "Notehall",
         "url": "http://www.notehall.com/",
         "year": [2008, 2009],
@@ -129,8 +111,7 @@
         "keywords": ["application", "web"],
         "description": ""
     },
-        {
-        "_id": "6fd05b74f597a2f253724c7175edf85cbad40fe4",
+    {
         "name": "CQube",
         "year": 2008,
         "type": "proprietary",
@@ -139,7 +120,6 @@
         "description": "is a labyrinth-like puzzle game for iPhone."
     },
     {
-        "_id": "26fa0df88e05322932ac7bfcc55593a970a1ae34",
         "name": "Mandelbrot set",
         "year": 2008,
         "type": "academic",
