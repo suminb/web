@@ -36,6 +36,10 @@ app.jinja_env.filters['optional_url'] = optional_url
 def index():
     return render_template("index.html")
 
+@app.route("/history")
+def history():
+    return render_template("history.html")
+
 @app.route("/tagcloud")
 def tagcloud():
     tags = extract_tags()

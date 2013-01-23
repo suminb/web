@@ -1,15 +1,18 @@
 {% extends "layout.html" %}
 {% block body %}
 
-  <ul class="projects">
-  {% for project in projects %}
-    <li>
-      <h3>{{ project.name|optional_url(project.url) }}</h3>
-      {{ project.keywords|format_tags('keywords') }}
-      {{ project.languages|format_tags('languages') }}
-      {{ project.year|format_tags('year') }}
-      <div>{{ project.description }}</div>
-    </li>
-  {% endfor %}
-  </ul>
+  <div id="content">
+    <ul class="projects">
+    {% for project in projects %}
+      <li>
+        <h3>{{ project.name|optional_url(project.url) }}</h3>
+        {{ project.keywords|format_tags('keywords') }}
+        {{ project.languages|format_tags('languages') }}
+        {{ project.year|format_tags('year') }}
+        <div>{{ project.description }}</div>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+  
 {% endblock %}

@@ -42,6 +42,9 @@ ul li {
     margin: 0;
     padding: 0;
 }
+ul li h1, h2, h3 {
+    margin: 1em 0 0 0;
+}
 
 span.tag {
     padding: 1px 4px 1px 4px;
@@ -63,16 +66,17 @@ span.year {
     background-color: #E8E0E0;
 }
 
-#content {
+#layout {
     width: 960px;
     margin: auto;
     padding-top: 24px;
     background-color: #FAFAFA;
 }
-#content p {
+#content {
     margin: 0;
     padding: 1em 2em 1em 2em;
 }
+
 
 /*****************************************************************************
  * Title bar
@@ -112,19 +116,7 @@ ul.links a.title:hover {
 }
 
 /*****************************************************************************
- * Known affiliates section
- *****************************************************************************/
-
-ul.affiliates a.title {
-    color: #309030;
-}
-ul.affiliates a.title:hover {
-    background-color: #309030;
-    color: #FFF;
-}
-
-/*****************************************************************************
- * Projects section
+ * Projects page
  *****************************************************************************/
 
 ul.projects a.title {
@@ -138,6 +130,21 @@ ul.projects h3 {
     margin: 1em 0 0 0;
 }
 
-#expandable {
-    display: none;
+/*****************************************************************************
+ * History page
+ *****************************************************************************/
+
+ul.education li ul {
+    list-style-type: circle;
+}
+ul.education li ul li {
+    margin: 0;
+    padding: 0;
+}
+
+ul.work-experiences span {
+    margin: 1px;
+}
+ul.work-experiences span.date {
+    color: #969696;
 }
