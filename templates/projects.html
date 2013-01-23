@@ -1,8 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<div id="content">
-
 {% for project in projects %}
   <h3>{{ project.name }}</h3>
   {{ project.keywords|format_tags('keywords') }}
@@ -11,7 +9,5 @@
   {{ project.url|urlize }}
   {{ project.description }}
 {% endfor %}
-
-</div> <!-- end of #content -->
 
 {% endblock %}
