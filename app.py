@@ -4,21 +4,30 @@ from flask import Flask
 from flask import render_template
 from jinja2 import evalcontextfilter, Markup, escape
 from jinja2.environment import Environment
+from urllib import quote
 
 #
 # Custom filters for Jinja
 #
 @evalcontextfilter
 def format_tags(eval_ctx, value, attr=''):
-    f = lambda x: '<span class="tag %s">%s</span>' % (attr, x)
+    f = lambda x: '<span class="tag %s"><a href="/tag/%s">%s</a></span>' % (attr, x, x)
 
     if isinstance(value, list):
         return Markup(' '.join(map(f, value)))
     else:
         return Markup(f(value))
 
+@evalcontextfilter
+def optional_url(eval_ctx, name, url):
+    if url != None and len(url) > 0:
+        return Markup('<a href="%s">%s</a>' % (quote(url), name))
+    else:
+        return name
+
 app = Flask(__name__)
 app.jinja_env.filters['format_tags'] = format_tags
+app.jinja_env.filters['optional_url'] = optional_url
 
 #
 # Request handlers

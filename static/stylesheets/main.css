@@ -44,11 +44,23 @@ ul li {
 }
 
 span.tag {
-    padding: 0 2px 0 2px;
+    padding: 1px 4px 1px 4px;
     background-color: #EFEFEF;
     color: #707070;
-    font-family: Helvetica, sans-serif;
-    font-size: 9pt;
+    font-size: 10pt;
+}
+span.tag a {
+    text-decoration: none;
+    color: #505050;
+}
+span.keywords {
+    background-color: #E0E0E8;
+}
+span.languages {
+    background-color: #E0E8E0;
+}
+span.year {
+    background-color: #E8E0E0;
 }
 
 #content {
@@ -121,6 +133,9 @@ ul.projects a.title {
 ul.projects a.title:hover {
     background-color: #D06020;
     color: #FFF;
+}
+ul.projects h3 {
+    margin: 1em 0 0 0;
 }
 
 #expandable {
