@@ -25,8 +25,16 @@ app.jinja_env.filters['format_tags'] = format_tags
 #
 @app.route("/")
 def index():
-    print extract_tags()
     return render_template("index.html")
+
+@app.route("/tagcloud")
+def tagcloud():
+    tags = extract_tags()
+    cloud = map(lambda t: '{text: "%s", weight: %d, link: "/tag/%s"}' % (t, tags[t], t), tags)
+    cloud_js = ",\n".join(cloud)
+
+    return render_template("tagcloud.html", cloud=Markup(cloud_js))
+
 
 @app.route("/tag/<tag>")
 def category(tag):
@@ -67,7 +75,7 @@ def extract_tags():
             else:
                 register_tag(tags, row['year'])
 
-    print tags
+    return tags
 
 if __name__ == "__main__":
     host = os.environ.get("HOST", "127.0.0.1")

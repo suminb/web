@@ -72,7 +72,7 @@
         "name": "gdocsdb",
         "url": "https://bitbucket.org/suminb/gdocsdb",
         "year": 2011,
-        "type": "open-source",
+        "type": "open source",
         "languages": ["Python"],
         "keywords": ["library", "database", "open source"],
         "description": "is a Python library to use Google Spreadsheet as a database."
@@ -97,9 +97,9 @@
         "name": "Readown",
         "url": "https://github.com/suminb/readown",
         "year": 2010,
-        "type": "open-source",
+        "type": "open source",
         "languages": ["Objective C"],
-        "keywords": ["application", "mac", "open-source"],
+        "keywords": ["application", "mac", "open source"],
         "description": "is a Markdown reader for Mac OS X."
     },
     {
