@@ -9,7 +9,7 @@
         {{ project.keywords|format_tags('keywords') }}
         {{ project.languages|format_tags('languages') }}
         {{ project.year|format_tags('year') }}
-        <div>{{ project.description }}</div>
+        <div>{{ project.description|safe }}</div><!-- 'safe' filter to show HTML as is -->
       </li>
     {% endfor %}
     </ul>
