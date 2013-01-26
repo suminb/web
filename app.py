@@ -21,7 +21,7 @@ def format_tags(eval_ctx, value, attr=''):
 @evalcontextfilter
 def optional_url(eval_ctx, name, url):
     if url != None and len(url) > 0:
-        return Markup('<a href="%s">%s</a>' % (quote(url), name))
+        return Markup('<a href="%s">%s</a>' % (url, name))
     else:
         return name
 
@@ -36,6 +36,10 @@ app.jinja_env.filters['optional_url'] = optional_url
 def index():
     return render_template("index.html")
 
+@app.route("/byeonbread")
+def byeonbread():
+    return render_template("byeonbread.html")
+
 @app.route("/history")
 def history():
     return render_template("history.html")
@@ -49,8 +53,9 @@ def tagcloud():
     return render_template("tagcloud.html", cloud=Markup(cloud_js))
 
 
+@app.route("/projects")
 @app.route("/tag/<tag>")
-def category(tag):
+def projects(tag=None):
     from pymongo import MongoClient
     import settings
 
@@ -58,8 +63,12 @@ def category(tag):
     db = connection.resume
     db.authenticate(settings.DB_USERNAME, settings.DB_PASSWORD)
 
-    # http://docs.mongodb.org/manual/reference/operator/or/#_S_or
-    projects = db.projects.find({'$or': [{'keywords':tag}, {'languages':tag}, {'year':tag}]})
+    query = None
+    if tag != None:
+        # http://docs.mongodb.org/manual/reference/operator/or/#_S_or
+        query = {'$or': [{'keywords':tag}, {'languages':tag}, {'year':tag}]}
+        
+    projects = db.projects.find(query)
 
     return render_template("projects.html", projects=projects)
 
