@@ -43,6 +43,15 @@
         "description": ""
     },
     {
+        "name": "Slow Drivers",
+        "url": "http://labs.suminb.com/drivers",
+        "year": 2011,
+        "type": "proprietary",
+        "languages": ["Python", "JavaScript"],
+        "keywords": ["data visualization", "data mining"],
+        "description": ""
+    },
+    {
         "name": "Kindleholic",
         "url": "http://kindleholic.net",
         "year": 2011,
@@ -79,6 +88,7 @@
     },
     {
         "name": "maps",
+        "url": "http://labs.suminb.com/maps",
         "year": 2010,
         "type": "classified",
         "languages": ["Python"],
