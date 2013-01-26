@@ -4,8 +4,8 @@
         "year": [2012, 2013],
         "type": "proprietary",
         "languages": ["Java"],
-        "keywords": ["application", "interdisciplinary", "big data"],
-        "description": "s an ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to build an Android app for user guidance and data collection."
+        "keywords": ["application", "transportation", "big data"],
+        "description": "is an ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to build an Android app for user guidance and data collection."
     },
     {
         "name": "Purpose-built Appliance",
@@ -22,7 +22,7 @@
         "type": "proprietary",
         "languages": ["Objective C", "Python"],
         "keywords": ["application", "chemistry"],
-        "description": "is an one-stop-shop for writing chemistry lab reports."
+        "description": "is an iOS app to help students with writing chemistry lab reports."
     },
     {
         "name": "Radioactivity",
@@ -48,7 +48,7 @@
         "year": 2011,
         "type": "proprietary",
         "languages": ["Python", "JavaScript"],
-        "keywords": ["data visualization", "data mining"],
+        "keywords": ["data visualization", "data mining", "transportation"],
         "description": ""
     },
     {
@@ -57,7 +57,7 @@
         "year": 2011,
         "type": "proprietary",
         "languages": ["Python", "JavaScript"],
-        "keywords": ["application", "web"],
+        "keywords": ["application", "web", "ebook"],
         "description": "is an RSS/Atom feed aggregation service for Amazon Kindle."
     },
     {
@@ -110,6 +110,15 @@
         "type": "open source",
         "languages": ["Objective C"],
         "keywords": ["application", "mac", "open source"],
+        "description": "is a Markdown reader for Mac OS X."
+    },
+    {
+        "name": "Chemtalk",
+        "url": "http://labs.suminb.com/chemtalk",
+        "year": 2010,
+        "type": "proprietary",
+        "languages": ["Python", "JavaScript"],
+        "keywords": ["application", "chemistry", "web"],
         "description": "is a Markdown reader for Mac OS X."
     },
     {
