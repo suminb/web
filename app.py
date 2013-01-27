@@ -57,11 +57,10 @@ def tagcloud():
 @app.route("/tag/<tag>")
 def projects(tag=None):
     from pymongo import MongoClient
-    import settings
 
-    connection = MongoClient(settings.DB_URL, settings.DB_PORT)
+    connection = MongoClient(os.environ['DB_URL'], int(os.environ['DB_PORT']))
     db = connection.resume
-    db.authenticate(settings.DB_USERNAME, settings.DB_PASSWORD)
+    db.authenticate(os.environ['DB_USERNAME'], os.environ['DB_PASSWORD'])
 
     query = None
     if tag != None:
