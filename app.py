@@ -100,9 +100,9 @@ def extract_tags():
     return tags
 
 if __name__ == "__main__":
-    host = os.environ.get("HOST", "127.0.0.1")
+    host = os.environ.get("HOST", "0.0.0.0")
     port = int(os.environ.get("PORT", 80))
-    debug = bool(os.environ.get("DEBUG", 1))
+    debug = bool(os.environ.get("DEBUG", 0))
 
     app.run(host=host, port=port, debug=debug)
 
