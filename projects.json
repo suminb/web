@@ -1,0 +1,149 @@
+[
+    {
+        "name": "Smartrek",
+        "year": [2012, 2013],
+        "type": "proprietary",
+        "languages": ["Java"],
+        "keywords": ["application", "transportation", "big data"],
+        "description": "is an ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to build an Android app for user guidance and data collection."
+    },
+    {
+        "name": "Purpose-built Appliance",
+        "url": "https://github.com/suminb/scalable-appliance",
+        "year": 2012,
+        "type": "academic",
+        "languages": ["Python", "JavaScript"],
+        "keywords": ["application", "big data"],
+        "description": "s an ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to build an Android app for user guidance and data collection."
+    },
+    {
+        "name": "ChemBook",
+        "year": 2012,
+        "type": "proprietary",
+        "languages": ["Objective C", "Python"],
+        "keywords": ["application", "chemistry"],
+        "description": "is an iOS app to help students with writing chemistry lab reports."
+    },
+    {
+        "name": "Radioactivity",
+        "url": "https://bitbucket.org/suminb/radioactivity",
+        "year": 2012,
+        "type": "open source",
+        "languages": ["Python", "JavaScript"],
+        "keywords": ["application", "web", "data visualization"],
+        "description": "The project radioactivity had started in March of 2011 in an attempt to help the general public to be alerted regarding the spread of radiation and other radioactive materials originated from the catastrophic incident in the Fukushima nuclear power plant in Japan, by providing visual information of city-wise radition levels."
+    },
+    {
+        "name": "한자-한글 변환기",
+        "url": "http://hanja.suminb.com",
+        "year": 2011,
+        "type": "proprietary",
+        "languages": ["Python", "JavaScript"],
+        "keywords": ["application"],
+        "description": ""
+    },
+    {
+        "name": "Slow Drivers",
+        "url": "http://labs.suminb.com/drivers",
+        "year": 2011,
+        "type": "proprietary",
+        "languages": ["Python", "JavaScript"],
+        "keywords": ["data visualization", "data mining", "transportation"],
+        "description": ""
+    },
+    {
+        "name": "Kindleholic",
+        "url": "http://kindleholic.net",
+        "year": 2011,
+        "type": "proprietary",
+        "languages": ["Python", "JavaScript"],
+        "keywords": ["application", "web", "ebook"],
+        "description": "is an RSS/Atom feed aggregation service for Amazon Kindle."
+    },
+    {
+        "name": "Teach Ourselves",
+        "url": "http://roslin.cs.arizona.edu/teachourselves/",
+        "year": 2011,
+        "type": "academic",
+        "languages": ["Action Script"],
+        "keywords": ["application", "web"],
+        "description": "is a project to create a society for students in which learning and creativity is rewarded with points that can be redeemed for goods."
+    },
+    {
+        "name": "Bootstrapped Learning",
+        "year": 2010,
+        "type": "academic",
+        "languages": ["Java", "C++"],
+        "keywords": ["machine learning", "interdisciplinary"],
+        "description": "is a DARPA sponsored project to develop an <em>electronic student</em> that can learn from natural human instruction close to the way humans do."
+    },
+    {
+        "name": "gdocsdb",
+        "url": "https://bitbucket.org/suminb/gdocsdb",
+        "year": 2011,
+        "type": "open source",
+        "languages": ["Python"],
+        "keywords": ["library", "database", "open source"],
+        "description": "is a Python library to use Google Spreadsheet as a database."
+    },
+    {
+        "name": "maps",
+        "url": "http://labs.suminb.com/maps",
+        "year": 2010,
+        "type": "classified",
+        "languages": ["Python"],
+        "keywords": ["big data", "data mining"],
+        "description": "is a project to reconstruct a map in global scale by collecting map tiles from various sources such as Google Maps and Open Street Map."
+    },
+    {
+        "name": "Violet",
+        "year": 2010,
+        "type": "proprietary",
+        "languages": ["Objective C"],
+        "keywords": ["application", "mobile"],
+        "description": "is a children's book for iPad with user-interactable animations."
+    },
+    {
+        "name": "Readown",
+        "url": "https://github.com/suminb/readown",
+        "year": 2010,
+        "type": "open source",
+        "languages": ["Objective C"],
+        "keywords": ["application", "mac", "open source"],
+        "description": "is a Markdown reader for Mac OS X."
+    },
+    {
+        "name": "Chemtalk",
+        "url": "http://labs.suminb.com/chemtalk",
+        "year": 2010,
+        "type": "proprietary",
+        "languages": ["Python", "JavaScript"],
+        "keywords": ["application", "chemistry", "web"],
+        "description": "is a Markdown reader for Mac OS X."
+    },
+    {
+        "name": "Notehall",
+        "url": "http://www.notehall.com/",
+        "year": [2008, 2009],
+        "type": "proprietary",
+        "languages": ["PHP", "JavaScript"],
+        "keywords": ["application", "web"],
+        "description": ""
+    },
+    {
+        "name": "CQube",
+        "year": 2008,
+        "type": "proprietary",
+        "languages": ["Objective C"],
+        "keywords": ["application", "mobile", "game"],
+        "description": "is a labyrinth-like puzzle game for iPhone."
+    },
+    {
+        "name": "Mandelbrot set",
+        "year": 2008,
+        "type": "academic",
+        "languages": ["Java", "C"],
+        "keywords": ["application"],
+        "description": "is a distributed processing project to draw a mandelbrot set using multiple computers."
+    }
+]
