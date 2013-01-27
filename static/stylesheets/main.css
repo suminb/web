@@ -63,16 +63,12 @@ span.year {
     background-color: #E4E0E0;
 }
 
-p.content {
-    padding: 0.5em 1em 0.5em 1em;
-}
-
 #layout {
     width: 960px;
     margin: auto;
     background-color: #FAFAFA;
 }
-#content {
+#content, .content {
     margin: 0;
     padding: 1em 2em 1em 2em;
 }
