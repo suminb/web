@@ -165,3 +165,11 @@ ul.work-experiences span {
 ul.work-experiences span.date {
     color: #969696;
 }
+
+
+#addthis {
+    text-align: center
+}
+#addthis div.addthis_default_style {
+    display: inline-block;
+}
