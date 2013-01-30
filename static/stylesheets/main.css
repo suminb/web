@@ -168,8 +168,10 @@ ul.work-experiences span.date {
 
 
 #addthis {
-    text-align: center
+    
 }
 #addthis div.addthis_default_style {
     display: inline-block;
+    width: 400px;
+    margin-left: 280px;
 }
