@@ -14,7 +14,7 @@
         "type": "academic",
         "languages": ["Python", "JavaScript"],
         "keywords": ["application", "big data"],
-        "description": "s an ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to build an Android app for user guidance and data collection."
+        "description": ""
     },
     {
         "name": "ChemBook",
@@ -40,7 +40,7 @@
         "type": "proprietary",
         "languages": ["Python", "JavaScript"],
         "keywords": ["application"],
-        "description": ""
+        "description": "The name of the project is self-explanatory."
     },
     {
         "name": "Slow Drivers",
