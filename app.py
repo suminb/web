@@ -57,6 +57,7 @@ def tagcloud():
 @app.route("/tag/<tag>")
 def projects(tag=None):
     from pymongo import MongoClient
+    import re
 
     connection = MongoClient(os.environ['DB_URL'], int(os.environ['DB_PORT']))
     db = connection.resume
@@ -65,7 +66,12 @@ def projects(tag=None):
     query = None
     if tag != None:
         # http://docs.mongodb.org/manual/reference/operator/or/#_S_or
-        query = {'$or': [{'keywords':tag}, {'languages':tag}, {'year':tag}]}
+        if re.match(r'\d+', tag):
+            print 'year'
+            query = {'year':int(tag)}
+        else:
+            print 'keyword'
+            query = {'$or': [{'keywords':tag}, {'languages':tag}]}
         
     projects = db.projects.find(query)
 
