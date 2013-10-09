@@ -1,11 +1,30 @@
 [
     {
+        "name": "Better Translator",
+        "url": "http://better-translator.com",
+        "year": 2013,
+        "type": "open source",
+        "languages": ["Python", "JavaScript"],
+        "keywords": ["application", "web"],
+        "description": "is language translator that uses Japanese as an intermediate language. Processes +20,000 translation requests on a daily basis (as of Sep 2013)."
+    },
+    {
+        "name": "Winnowing",
+        "url": "https://github.com/suminb/winnowing",
+        "year": 2013,
+        "type": "open source",
+        "languages": ["Python"],
+        "keywords": ["algorithm", "document fingerprinting"],
+        "description": "A Python implementation of the <a href=\"http://theory.stanford.edu/~aiken/publications/papers/sigmod03.pdf\">Winnowing</a> (local algorithms for document fingerprinting)"
+    },
+    {
         "name": "Smartrek",
+        "url": "http://www.smartrekmobile.com",
         "year": [2012, 2013],
         "type": "proprietary",
         "languages": ["Java"],
         "keywords": ["application", "transportation", "big data"],
-        "description": "is an ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to build an Android app for user guidance and data collection."
+        "description": "is an ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to build a scalable system with Amazon EC2 platform, and to build in-house software for data analysis."
     },
     {
         "name": "Purpose-built Appliance",
@@ -119,7 +138,7 @@
         "type": "proprietary",
         "languages": ["Python", "JavaScript"],
         "keywords": ["application", "chemistry", "web"],
-        "description": "is a Markdown reader for Mac OS X."
+        "description": ""
     },
     {
         "name": "Notehall",
