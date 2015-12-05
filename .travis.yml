@@ -8,4 +8,8 @@ install:
 
 script:
   - echo "Currently has no test case."
+  - export PYTHONPATH=$PYTHONPATH:.
+  - py.test tests --cov app --durations=10
 
+after_success:
+  - coveralls
