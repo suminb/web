@@ -4,8 +4,7 @@
  * Global
  *****************************************************************************/
 body {
-    /*font-family: "Lucida Grande", "Lucida Sans", sans-serif;*/
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: sans-serif;
     color: #505050;
     margin: 0;
     line-height: 135%;
@@ -40,7 +39,7 @@ ul li {
     padding: 0;
 }
 ul li h1, h2, h3 {
-    margin: 1em 0 .25em 0;
+    margin: 1em 1em .25em 1em;
 }
 
 span.tag {
@@ -61,6 +60,11 @@ span.languages {
 }
 span.year {
     background-color: #E4E0E0;
+}
+
+img.commit-freq {
+  display: block;
+  margin: 0 auto;
 }
 
 #layout {
