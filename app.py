@@ -4,7 +4,10 @@ from flask import Flask
 from flask import render_template
 from jinja2 import evalcontextfilter, Markup, escape
 from jinja2.environment import Environment
-from urllib import quote
+try:
+    from urllib import quote
+except:
+    pass
 
 #
 # Custom filters for Jinja
@@ -64,18 +67,19 @@ def projects(tag=None):
     db.authenticate(os.environ['DB_USERNAME'], os.environ['DB_PASSWORD'])
 
     query = None
-    if tag != None:
+    if tag is None:
         # http://docs.mongodb.org/manual/reference/operator/or/#_S_or
         if re.match(r'\d+', tag):
-            print 'year'
-            query = {'year':int(tag)}
+            print('year')
+            query = {'year': int(tag)}
         else:
-            print 'keyword'
+            print('keyword')
             query = {'$or': [{'keywords':tag}, {'languages':tag}]}
-        
+
     projects = db.projects.find(query)
 
     return render_template("projects.html", projects=projects)
+
 
 def extract_tags():
     import json 
@@ -106,7 +110,7 @@ def extract_tags():
 
 if __name__ == "__main__":
     host = os.environ.get("HOST", "0.0.0.0")
-    port = int(os.environ.get("PORT", 80))
+    port = int(os.environ.get("PORT", 8024))
     debug = bool(os.environ.get("DEBUG", 0))
 
     app.run(host=host, port=port, debug=debug)
