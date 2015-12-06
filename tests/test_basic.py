@@ -3,7 +3,7 @@ import pytest
 
 @pytest.fixture
 def testapp():
-    from app import app
+    from web import app
     return app.test_client()
 
 
