@@ -1,10 +1,4 @@
-import pytest
-
-
-@pytest.fixture
-def testapp():
-    from web import app
-    return app.test_client()
+from . import testapp
 
 
 def test_pages(testapp):
