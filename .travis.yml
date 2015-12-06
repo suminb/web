@@ -10,7 +10,7 @@ install:
 
 script:
   - export PYTHONPATH=$PYTHONPATH:.
-  - py.test tests --cov web --durations=10
+  - py.test --cov web --cov-report term-missing --durations=10
 
 after_success:
   - coveralls
