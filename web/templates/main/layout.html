@@ -10,8 +10,10 @@
   <meta property="fb:admins" content="10132775"/>
   <meta property="og:description" content="Sumin Byeon - A graduate research assistant at the University of Arizona"/>
 
+  <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css" integrity="sha384-XXXXXXXX" crossorigin="anonymous">
+  <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js" integrity="sha384-XXXXXXXX" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main.css') }}"/>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/wowslider.css') }}"/>
 
 {% block stylesheets %}{% endblock %}
 
@@ -22,31 +24,9 @@
 </head>
 <body>
   <div id="layout">
-    <div id="title-bar">
-      <div id="profile-pic">
-        <a href="/byeonbread"><img src="/static/images/byeonbread_72.jpg" alt=""/></a>
-      </div>
-      <div id="title">
-        <h1>Sumin Byeon</h1>
-        Graduate research assistant at the <a href="http://arizona.edu">University of Arizona</a>
-      </div>
+    <div id="title">
+      <h1>Sumin Byeon</h1>
     </div>
-
-    <div style="clear:both;"></div>
-
-    <div id="menu">
-      <ul>
-        <li><a href="/">Intro</a></li>
-        <li><a href="/history">History</a></li>
-        <li><a href="/tagcloud">Projects</a></li>
-        <li><a href="http://blog.suminb.com">Blog</a></li>
-        <li><a href="http://labs.suminb.com">Labs</a></li>
-        <li><a href="http://github.com/suminb">GitHub</a></li>
-        <li><a href="http://bitbucket.org/suminb">Bitbucket</a></li>
-        <li><a href="http://www.linkedin.com/in/suminb">LinkedIn</a></li>
-      </ul>
-    </div>
-    <div style="clear:both;"></div>
 
 {% block body %}{% endblock %}
 
