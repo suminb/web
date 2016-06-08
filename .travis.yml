@@ -1,11 +1,16 @@
 language: python
+sudo: false
 
 python:
   - "2.7"
+  - "3.5"
 
 install:
-  - pip install -r requirements.txt --use-mirrors
+  - pip install -r requirements.txt
 
 script:
-  - echo "Currently has no test case."
+  - export PYTHONPATH=$PYTHONPATH:.
+  - py.test --cov web --cov-report term-missing --durations=10
 
+after_success:
+  - coveralls

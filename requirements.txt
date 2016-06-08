@@ -2,3 +2,6 @@ Flask
 Jinja2
 Werkzeug
 pymongo
+pytest
+pytest-cov
+coveralls

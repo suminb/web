@@ -1,0 +1,15 @@
+/*****************************************************************************
+ * Global
+ *****************************************************************************/
+body {
+    font-family: sans-serif;
+    color: #505050;
+    margin: 1em;
+    line-height: 135%;
+}
+#addthis {
+    width: 380px;
+    margin: 10px auto;
+}
+#addthis div.addthis_default_style {
+}
