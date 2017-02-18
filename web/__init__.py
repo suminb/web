@@ -1,12 +1,5 @@
-import os
-
 from flask import Flask
-from jinja2 import evalcontextfilter, Markup, escape
-from jinja2.environment import Environment
-try:
-    from urllib import quote
-except:
-    pass
+from jinja2 import evalcontextfilter, Markup
 
 
 __version__ = '2.1.1'
