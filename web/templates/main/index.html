@@ -1,34 +1,80 @@
 {% extends "layout.html" %}
+{% from "macros.html" import main_menu %}
 {% block body %}
 
-  <p class="content">
-    Sumin is a game server developer at Nexon. He writes code on his spare
-    time for a wide range of projects, using different languages.
+  <!-- Page Contents -->
+  <div class="pusher">
+    <div class="ui inverted vertical masthead center aligned segment">
 
-    <h2>Current Projects</h2>
-    <ul>
-      <li><a href="http://durango.nexon.com">Durango</a></li>
-      <li><a href="http://github.com/suminb/finance">SB Finance Project</a></li>
-    </ul>
+      <div class="ui container">
+        <div class="ui large secondary inverted pointing menu">
+          <a class="toc item">
+            <i class="sidebar icon"></i>
+          </a>
+          {{ main_menu() }}
+        </div>
+      </div>
 
-    <h2>Contacts</h2>
+      <div class="ui text container">
+        <h1 class="ui inverted header">Sumin Byeon</h1>
+        <h2>Brogrammer - A socialable programmer</h2>
+        <!--
+        <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>
+        -->
+      </div>
+    </div>
 
-    <ul>
-      <li><a href="http://blog.suminb.com">Blog</a></li>
-      <li><a href="http://github.com/suminb">GitHub</a></li>
-      <li><a href="http://www.linkedin.com/in/suminb">LinkedIn</a></li>
-    </ul>
-  </p>
+    <div class="ui vertical stripe segment">
+      <div class="ui text container">
+        <p>
+          Sumin is a game server developer at
+          <a href="http://nexon.com">Nexon</a>. He has attained, in his current
+          position, a substantial amount experience in designing and
+          implementing a highly distributed, scalable system to perform a large
+          amount of calculations. He writes code on his spare time for a wide
+          range of hobby projects using different languages and libraries.
+        </p>
+        <h3 class="ui header">Current Projects</h3>
+        <ul>
+          <li><a href="http://durango.nexon.com">Durango</a></li>
+          <li><a href="http://github.com/suminb/finance">SB Finance Project</a></li>
+        </ul>
+        <h3 class="ui header">Contacts</h3>
+        <ul>
+          <li><a href="http://philosophical.one">Blog</a></li>
+          <li><a href="http://github.com/suminb">GitHub</a></li>
+          <li><a href="http://www.linkedin.com/in/suminb">LinkedIn</a></li>
+        </ul>
+        <!--
+        <h4 class="ui horizontal header divider">
+          <a href="#">Case Studies</a>
+        </h4>
+        -->
+      </div>
+    </div>
 
-  <!--
-  <p class="content">
-    This website was written in Python with
-    <a href="http://flask.pocoo.org/">Flask</a> and
-    <a href="http://jinja.pocoo.org/docs/">Jinja2</a>.
-    The source code of this website is available on
-    <a href="https://github.com/suminb/web">a GitHub repository</a>
-    under the terms of <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.
-  </p>
-  -->
+
+    <div class="ui inverted vertical footer segment">
+      <div class="ui container">
+        <div class="ui stackable inverted divided equal height stackable grid">
+          <div class="three wide column">
+            <h4 class="ui inverted header">Other Projects</h4>
+            <div class="ui inverted link list">
+              <a href="http://labs.suminb.com" class="item">Labs</a>
+              <a href="http://better-translator.com" class="item">Better Translator</a>
+              <a href="http://tldr.kr" class="item">TL;DR</a>
+              <a href="https://boincstats.com/en/stats/-1/user/detail/a077d8a4dee6d1c4836f80c4ebcdb8bb/" class="item">
+                BOINC
+              </a>
+            </div>
+          </div>
+          <div class="seven wide column">
+            <h4 class="ui inverted header"></h4>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
