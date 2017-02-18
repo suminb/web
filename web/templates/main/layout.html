@@ -4,6 +4,8 @@
 <head>
   <title>Sumin Byeon</title>
 
+  <meta name="viewport" content="width=device-width"/>
+
   <meta property="og:title" content="Sumin's Resume"/>
   <meta property="og:type" content="website"/>
   <meta property="og:image" content="http://resume.suminb.com/static/images/byeonbread_72.jpg"/>
@@ -75,11 +77,12 @@
     </div>
   </div>
 
-  <div id="layout">
+  <!-- Sidebar Menu -->
+  <div class="ui vertical inverted sidebar menu">
+    {{ main_menu() }}
+  </div>
 
 {% block body %}{% endblock %}
-
-  </div> <!-- end of #content -->
 
   <script type="text/javascript">
     var _gaq = _gaq || [];
