@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% from "macros.html" import main_menu %}
+{% block body %}
+
+  <!-- Page Contents -->
+  <div class="pusher">
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+      <div class="ui container">
+        {{ main_menu(current_page) }}
+      </div>
+    </div>
+    <!-- Sidebar Menu -->
+    <div class="ui vertical inverted sidebar menu">
+      {{ main_menu(current_page) }}
+    </div>
+
+    <div class="ui vertical stripe segment">
+      <div class="ui text container">
+        <h3 class="ui header">Coding Expedition</h3>
+
+        <p>
+          <strong>Coding Expedition</strong> is an act of writing code in
+          anywhere but home or office.  It generally, but not necessarily, takes
+          place in remote locations far from all the distractions and pollutions 
+          of a large city.
+        </p>
+        <p>
+          I like coding and I also like going on a trip.  A drawback of having
+          these as a hobby is that both activities require a non-trivial amount
+          of time, which I lack the most.  My solution was to combine these
+          two.  Whenever I feel like, I open the Google Maps, pick a decent
+          cafe or something comparable, grab my MacBook, and drive to the
+          destination, without thinking too much. The trip may be contained in
+          a single day, or it may last for a couple of days.
+        </p>
+        <p>
+          On a good day, I get a good amount of work done. A couple of features
+          or so in one of my hobby projects. If not, that's not the end of the
+          world.  I still get to enjoy some great local food, engage in a
+          conversion with local people. It is a good way to expand my
+          intellectual and cultural horizon because interaction with people
+          outside my circle almost always gives me a new, fresh perspective.
+        </p>
+
+        <!-- TODO: Add 'lodging' section explaining how to pick a place to stay
+                   overnight -->
+        <!-- TODO: Put a Google Maps widget showing coding expedition locations)
+        -->
+      </div>
+    </div>
+  </div>
+{% endblock %}
