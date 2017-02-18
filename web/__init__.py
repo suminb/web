@@ -10,7 +10,8 @@ __version__ = '2.1.1'
 #
 @evalcontextfilter
 def format_tags(eval_ctx, value, attr=''):
-    f = lambda x: '<span class="tag %s"><a href="/tag/%s">%s</a></span>' % (attr, x, x)
+    f = lambda x: '<span class="tag %s"><a href="/tag/%s">%s</a></span>' \
+        % (attr, x, x)
 
     if isinstance(value, list):
         return Markup(' '.join(map(f, value)))
@@ -20,7 +21,7 @@ def format_tags(eval_ctx, value, attr=''):
 
 @evalcontextfilter
 def optional_url(eval_ctx, name, url):
-    if url != None and len(url) > 0:
+    if url is not None and len(url) > 0:
         return Markup('<a href="%s">%s</a>' % (url, name))
     else:
         return name
