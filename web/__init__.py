@@ -30,6 +30,10 @@ def optional_url(eval_ctx, name, url):
 def create_app(name=__name__, config={}, static_folder='static',
                template_folder='templates'):
     app = Flask(name)
+    app.config.update(config)
+
+    if app.debug:
+        app.config['TEMPLATES_AUTO_RELOAD'] = True
 
     from web.main import main_module
     from web.api import api_module
