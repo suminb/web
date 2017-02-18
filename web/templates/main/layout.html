@@ -73,13 +73,13 @@
   <!-- Following Menu -->
   <div class="ui large top fixed hidden menu">
     <div class="ui container">
-      {{ main_menu() }}
+      {{ main_menu(current_page) }}
     </div>
   </div>
 
   <!-- Sidebar Menu -->
   <div class="ui vertical inverted sidebar menu">
-    {{ main_menu() }}
+    {{ main_menu(current_page) }}
   </div>
 
 {% block body %}{% endblock %}
