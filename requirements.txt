@@ -5,3 +5,4 @@ pymongo
 pytest
 pytest-cov
 coveralls
+logbook>=1.0.0

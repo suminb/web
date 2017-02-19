@@ -1,7 +1,13 @@
+import sys
+
 from flask import Blueprint, render_template
+from logbook import Logger, StreamHandler
 
 
 main_module = Blueprint('main', __name__, template_folder='templates/main')
+
+StreamHandler(sys.stdout).push_application()
+log = Logger(__name__)
 
 
 @main_module.route('/')
