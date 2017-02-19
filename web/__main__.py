@@ -19,7 +19,8 @@ def cli():
 
 
 @cli.command()
-def freeze():
+def build():
+    """Builds static web pages."""
     app = create_app()
     with app.app_context():
         freezer = Freezer(app)
