@@ -16,7 +16,7 @@ import requests
 from web import create_app
 
 
-StreamHandler(sys.stdout).push_application()
+StreamHandler(sys.stderr).push_application()
 log = Logger(__name__)
 
 

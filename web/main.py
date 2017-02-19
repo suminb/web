@@ -7,7 +7,7 @@ from logbook import Logger, StreamHandler
 
 main_module = Blueprint('main', __name__, template_folder='templates/main')
 
-StreamHandler(sys.stdout).push_application()
+StreamHandler(sys.stderr).push_application()
 log = Logger(__name__)
 
 
