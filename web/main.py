@@ -1,3 +1,4 @@
+import os
 import sys
 
 from flask import Blueprint, render_template
@@ -20,5 +21,6 @@ def index():
 def coding_expedition():
     context = {
         'current_page': 'coding_expedition',
+        'google_maps_api_key': os.environ['GOOGLE_MAPS_API_KEY'],
     }
     return render_template('coding_expedition.html', **context)
