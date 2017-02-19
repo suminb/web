@@ -1,4 +1,5 @@
 Flask
+frozen-flask>=0.13
 Jinja2
 Werkzeug
 pymongo

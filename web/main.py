@@ -16,7 +16,7 @@ def index():
     return render_template('index.html', **{'current_page': 'index'})
 
 
-@main_module.route('/coding-expedition')
+@main_module.route('/coding-expedition.html')
 def coding_expedition():
     context = {'current_page': 'coding_expedition'}
     return render_template('coding_expedition.html', **context)
