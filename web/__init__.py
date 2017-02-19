@@ -1,15 +1,8 @@
-import os
-
 from flask import Flask
-from jinja2 import evalcontextfilter, Markup, escape
-from jinja2.environment import Environment
-try:
-    from urllib import quote
-except:
-    pass
+from jinja2 import evalcontextfilter, Markup
 
 
-__version__ = '2.1.1'
+__version__ = '2.2.1'
 
 
 #
@@ -17,7 +10,8 @@ __version__ = '2.1.1'
 #
 @evalcontextfilter
 def format_tags(eval_ctx, value, attr=''):
-    f = lambda x: '<span class="tag %s"><a href="/tag/%s">%s</a></span>' % (attr, x, x)
+    f = lambda x: '<span class="tag %s"><a href="/tag/%s">%s</a></span>' \
+        % (attr, x, x)
 
     if isinstance(value, list):
         return Markup(' '.join(map(f, value)))
@@ -27,7 +21,7 @@ def format_tags(eval_ctx, value, attr=''):
 
 @evalcontextfilter
 def optional_url(eval_ctx, name, url):
-    if url != None and len(url) > 0:
+    if url is not None and len(url) > 0:
         return Markup('<a href="%s">%s</a>' % (url, name))
     else:
         return name
@@ -36,6 +30,10 @@ def optional_url(eval_ctx, name, url):
 def create_app(name=__name__, config={}, static_folder='static',
                template_folder='templates'):
     app = Flask(name)
+    app.config.update(config)
+
+    if app.debug:
+        app.config['TEMPLATES_AUTO_RELOAD'] = True
 
     from web.main import main_module
     from web.api import api_module
