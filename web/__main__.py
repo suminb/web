@@ -50,6 +50,8 @@ def import_gspread(gspread_key):
     log.info('Getting all values from the sheet...')
     values = worksheet.get_all_values()
 
+    buf = []
+
     for row in values[1:]:
         postal_address = row[1]
         try:
@@ -58,10 +60,13 @@ def import_gspread(gspread_key):
             coordinate = geocoding(postal_address)
         log.info('{} -> {}', postal_address, coordinate)
 
+        buf.append({'lat': coordinate[0], 'lng': coordinate[1]})
+
+    print('var locations = ' + json.dumps(buf))
 
 def geocoding(postal_address):
     google_maps_api_key = os.environ['GOOGLE_MAPS_API_KEY']
-    url = 'https://maps.googleapis.com/maps/api/geocode/json?address={}'
+    url = 'https://maps.googleapis.com/maps/api/geocode/json?address={}' \
           '&key={}'.format(quote_plus(postal_address), google_maps_api_key)
 
     resp = requests.get(url)
