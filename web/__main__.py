@@ -47,6 +47,5 @@ def import_gspread(gspread_key):
         print(row)
 
 
-
 if __name__ == '__main__':
     cli()
