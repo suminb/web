@@ -1,6 +1,8 @@
-{% macro main_menu() -%}
-  <a href="/" class="active item">Home</a>
-  <a href="#" class="item">Coding Expedition</a>
+{% macro main_menu(current) -%}
+<a href="{{ url_for('main.index') }}"
+  class="{% if current == 'index' %}active{% endif %} item">Home</a>
+<a href="{{ url_for('main.coding_expedition') }}"
+  class="{% if current == 'coding_expedition' %}active{% endif %} item">Coding Expedition</a>
   <!--
   <div class="right item">
     <a class="ui inverted button">Log in</a>
