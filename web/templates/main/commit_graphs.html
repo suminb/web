@@ -17,6 +17,15 @@
     <div class="ui main text container" style="margin-top: 2em;">
       <h1 class="ui header">Commit Graphs</h1>
 
+      <!-- NOTE: Embedded style properties is a temporary workaround -->
+      <div style="font-size:0.8em; color:#707070;">
+        <div style="width:1em; height:1em; margin:4px; background-color:#3A62EE; float:left;"></div>
+        <div style="float:left;">Mine</div>
+        <div style="width:1em; height:1em; margin:4px; background-color:#EE3A62; float:left;"></div>
+        <div style="float:left;">Others</div>
+        <div style="clear:both;"></div>
+      </div>
+
       {% for year in years -%}
       <h2 class="ui header">{{ year }}</h2>
 
