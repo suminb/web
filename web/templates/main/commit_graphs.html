@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "macros.html" import main_menu %}
+{% from "macros.html" import footer, main_menu %}
 {% block body %}
 
   <!-- Page Contents -->
@@ -17,8 +17,14 @@
     <div class="ui main text container" style="margin-top: 2em;">
       <h1 class="ui header">Commit Graphs</h1>
 
-      <img src="/static/2015.svg"/>
+      {% for year in years -%}
+      <h2 class="ui header">{{ year }}</h2>
+
+      <!-- NOTE: Embedded style properties is a temporary workaround -->
+      <img src="/static/commit_graphs/{{ year }}.svg" style="max-width: 100%;"/>
+      {%- endfor %}
     </div>
 
   </div>
+  {{ footer() }}
 {% endblock %}

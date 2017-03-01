@@ -21,6 +21,7 @@ def index():
 def commit_graphs():
     context = {
         'current_page': 'commit_graphs',
+        'years': range(2017, 2008, -1),
     }
     return render_template('commit_graphs.html', **context)
 
