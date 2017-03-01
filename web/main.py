@@ -17,6 +17,14 @@ def index():
     return render_template('index.html', **{'current_page': 'index'})
 
 
+@main_module.route('/commit-graphs.html')
+def commit_graphs():
+    context = {
+        'current_page': 'commit_graphs',
+    }
+    return render_template('commit_graphs.html', **context)
+
+
 @main_module.route('/coding-expedition.html')
 def coding_expedition():
     context = {

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% from "macros.html" import main_menu %}
+{% block body %}
+
+  <!-- Page Contents -->
+  <div class="pusher">
+    <div class="ui container">
+      <div class="ui large secondary pointing menu">
+        <a class="toc item">
+          <i class="sidebar icon"></i>
+        </a>
+        {{ main_menu(current_page) }}
+      </div>
+    </div>
+
+    <!-- NOTE: Embedded style properties is a temporary workaround -->
+    <div class="ui main text container" style="margin-top: 2em;">
+      <h1 class="ui header">Commit Graphs</h1>
+
+      <img src="/static/2015.svg"/>
+    </div>
+
+  </div>
+{% endblock %}

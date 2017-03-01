@@ -1,6 +1,8 @@
 {% macro main_menu(current) -%}
 <a href="{{ url_for('main.index') }}"
   class="{% if current == 'index' %}active{% endif %} item">Home</a>
+<a href="{{ url_for('main.commit_graphs') }}"
+  class="{% if current == 'commit_graphs' %}active{% endif %} item">Commit Graphs</a>
 <a href="{{ url_for('main.coding_expedition') }}"
   class="{% if current == 'coding_expedition' %}active{% endif %} item">Coding Expedition</a>
   <!--
