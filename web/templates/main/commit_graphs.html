@@ -23,6 +23,17 @@
       <!-- NOTE: Embedded style properties is a temporary workaround -->
       <img src="/static/commit_graphs/{{ year }}.svg" style="max-width: 100%;"/>
       {%- endfor %}
+
+      <p>
+        NOTE: Prior to 2009, I was using
+        <a href="https://subversion.apache.org/">Subversion</a> for version
+        control. <a href="https://github.com/suminb/gitstats">Gitstats</a>, the
+        Python program that generates the commit graphs above is not capable of
+        analyzing Subversion commit logs and therefore any commit logs made
+        before 2009 will not be shown in this page.
+      </p>
+
+      <p><!-- FIXME: placeholder --></p>
     </div>
 
   </div>
