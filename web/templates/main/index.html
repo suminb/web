@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "macros.html" import main_menu %}
+{% from "macros.html" import footer, main_menu %}
 {% block body %}
 
   <!-- Page Contents -->
@@ -55,28 +55,7 @@
       </div>
     </div>
 
-
-    <div class="ui inverted vertical footer segment">
-      <div class="ui container">
-        <div class="ui stackable inverted divided equal height stackable grid">
-          <div class="three wide column">
-            <h4 class="ui inverted header">Other Projects</h4>
-            <div class="ui inverted link list">
-              <a href="http://labs.suminb.com" class="item">Labs</a>
-              <a href="http://better-translator.com" class="item">Better Translator</a>
-              <a href="http://tldr.kr" class="item">TL;DR</a>
-              <a href="https://boincstats.com/en/stats/-1/user/detail/a077d8a4dee6d1c4836f80c4ebcdb8bb/" class="item">
-                BOINC
-              </a>
-            </div>
-          </div>
-          <div class="seven wide column">
-            <h4 class="ui inverted header"></h4>
-            <p></p>
-          </div>
-        </div>
-      </div>
-    </div>
+    {{ footer() }}
   </div>
 
 {% endblock %}

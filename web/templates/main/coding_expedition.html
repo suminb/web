@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "macros.html" import main_menu %}
+{% from "macros.html" import footer, main_menu %}
 {% block body %}
 
   <!-- Page Contents -->
@@ -50,6 +50,7 @@
         <div id="map" style="height: 600px;"></div>
       </div>
     </div>
+    {{ footer() }}
   </div>
 
   <script src="{{ url_for('static', filename='locations.js') }}"></script>
