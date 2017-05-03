@@ -13,7 +13,10 @@
       </div>
     </div>
 
-    <div class="ui vertical stripe segment">
+    <div id="map" style="height: 600px;"></div>
+    <!-- TODO: Show the date/time when the map has been updated -->
+
+    <div class="ui vertical stripe segment" style="padding-top:4em">
       <div class="ui text container">
         <h3 class="ui header">Coding Expedition</h3>
 
@@ -43,12 +46,6 @@
 
         <!-- TODO: Add 'lodging' section explaining how to pick a place to stay
                    overnight -->
-        <!-- TODO: Put a Google Maps widget showing coding expedition locations)
-        -->
-
-        <h3 class="ui header">Maps</h3>
-        <div id="map" style="height: 600px;"></div>
-        <p>(TODO: Show the date/time when the map has been updated)</p>
 
         <h3 class="ui header">Projects</h3>
         <p>"So what kind of projects are you working on?"</p>
@@ -68,7 +65,7 @@
 
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 7,
-        center: {lat: 36.3504, lng: 127.3845}
+        center: {lat: 36.005, lng: 127.3845}
       });
 
       // Create an array of alphabetical characters used to label the markers.
