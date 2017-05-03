@@ -59,32 +59,45 @@
     {{ footer() }}
   </div>
 
-  <script src="{{ url_for('static', filename='locations.js') }}"></script>
   <script>
-    function initMap() {
+    // Not entirely sure if using a global variable is good idea, but no doubt
+    // that this makes certain tasks much easier.
+    var map;
 
-      var map = new google.maps.Map(document.getElementById('map'), {
+    var markerColor = '#d9480f';
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
         zoom: 7,
         center: {lat: 36.005, lng: 127.3845}
       });
 
-      // Create an array of alphabetical characters used to label the markers.
-      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-      // Add some markers to the map.
-      // Note: The code uses the JavaScript Array.prototype.map() method to
-      // create an array of markers based on a given "locations" array.
-      // The map() method here has nothing to do with the Google Maps API.
-      var markers = locations.map(function(location, i) {
-        return new google.maps.Marker({
-          position: location,
-          label: labels[i % labels.length]
-        });
+      var url = "{{ url_for('static', filename='locations.json') }}";
+      $.getJSON(url, function(data) {
+        console.log(data);
+        map.data.addGeoJson(data);
       });
 
-      // Add a marker clusterer to manage the markers.
-      var markerCluster = new MarkerClusterer(map, markers,
-          {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      // NOTE: We are using the idential circle for every data point (for now)
+      var circle = getCircle();
+
+      map.data.setStyle(function(feature) {
+        return {
+          icon: circle
+        };
+      });
+
+    }
+
+    function getCircle() {
+      return {
+        path: google.maps.SymbolPath.CIRCLE,
+        fillColor: markerColor,
+        fillOpacity: .25,
+        scale: 10,
+        strokeColor: markerColor,
+        strokeWeight: .5
+      };
     }
   </script>
   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
