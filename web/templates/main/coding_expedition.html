@@ -78,23 +78,29 @@
         map.data.addGeoJson(data);
       });
 
-      // NOTE: We are using the idential circle for every data point (for now)
-      var circle = getCircle();
+      setMapStyle(map);
 
-      map.data.setStyle(function(feature) {
-        return {
-          icon: circle
-        };
+      // Change the circle radius depending on the zoom level
+      map.addListener('zoom_changed', function() {
+        setMapStyle(map);
       });
 
     }
 
-    function getCircle() {
+    function setMapStyle(map) {
+      map.data.setStyle(function(feature) {
+        return {
+          icon: getCircle(map.getZoom())
+        };
+      });
+    }
+
+    function getCircle(zoom) {
       return {
         path: google.maps.SymbolPath.CIRCLE,
         fillColor: markerColor,
         fillOpacity: .25,
-        scale: 10,
+        scale: (zoom + 1) * 1.5,
         strokeColor: markerColor,
         strokeWeight: .5
       };
