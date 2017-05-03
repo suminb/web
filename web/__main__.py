@@ -57,6 +57,7 @@ def import_gspread(gspread_key):
 
     for row in values[1:]:
         postal_address = row[1]
+        trip_category = row[5]
         try:
             coordinate = [float(x) for x in row[2:4]]
         except ValueError:
@@ -65,7 +66,9 @@ def import_gspread(gspread_key):
 
         feature = {
             'type': 'Feature',
-            'properties': {},
+            'properties': {
+                'category': trip_category,
+            },
             'geometry': {
                 'type': 'Point',
                 'coordinates': [coordinate[1], coordinate[0]],
