@@ -64,7 +64,12 @@
     // that this makes certain tasks much easier.
     var map;
 
-    var markerColor = '#d9480f';
+    var markerColors = {
+      Coding: '#f03e3e',
+      Business: '#f03e3e',
+      Personal: '#2f9e44',
+      Unknown: '#343a40'
+    };
 
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
@@ -90,18 +95,18 @@
     function setMapStyle(map) {
       map.data.setStyle(function(feature) {
         return {
-          icon: getCircle(map.getZoom())
+          icon: getCircle(map.getZoom(), feature.getProperty('category'))
         };
       });
     }
 
-    function getCircle(zoom) {
+    function getCircle(zoom, category) {
       return {
         path: google.maps.SymbolPath.CIRCLE,
-        fillColor: markerColor,
-        fillOpacity: .25,
+        fillColor: markerColors[category],
+        fillOpacity: .4,
         scale: (zoom + 1) * 1.5,
-        strokeColor: markerColor,
+        strokeColor: markerColors[category],
         strokeWeight: .5
       };
     }
