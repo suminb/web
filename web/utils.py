@@ -1,12 +1,8 @@
 import json
 import os
-try:
-    from urllib.parse import quote_plus
-except ModuleNotFoundError:
-    from urllib import quote_plus
+from urllib.parse import quote_plus
 
 import requests
-
 
 POSTAL_ADDRESS_COLUMN = 1
 LATITUDE_COLUMN = 2
@@ -50,5 +46,3 @@ def geocoding(postal_address):
         return location['lat'], location['lng']
     else:
         return None
-
-
