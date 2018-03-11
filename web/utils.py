@@ -25,11 +25,11 @@ def update_geocoordinate(worksheet, row_index, coordinate):
 
 def is_valid_coordinate(coordinate):
     try:
-        lat, lng = coordinate
+        lat, lng = map(float, coordinate)
     except (TypeError, ValueError):
         return False
-
-    return all(isinstance(coordinate[i], float) for i in range(2))
+    else:
+        return True
 
 
 def geocoding(postal_address):

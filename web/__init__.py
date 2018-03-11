@@ -36,9 +36,7 @@ def create_app(name=__name__, config={}, static_folder='static',
         app.config['TEMPLATES_AUTO_RELOAD'] = True
 
     from web.main import main_module
-    from web.api import api_module
     app.register_blueprint(main_module, url_prefix='')
-    app.register_blueprint(api_module, url_prefix='/api')
 
     app.jinja_env.filters['format_tags'] = format_tags
     app.jinja_env.filters['optional_url'] = optional_url
