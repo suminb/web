@@ -34,6 +34,12 @@ def build():
         freezer.freeze()
 
 
+POSTAL_ADDRESS_COLUMN = 1
+LATITUDE_COLUMN = 2
+LONGITUDE_COLUMN = 3
+CATEGORY_COLUMN = 5
+
+
 @cli.command()
 @click.argument('gspread_key')
 def import_gspread(gspread_key):
@@ -55,14 +61,23 @@ def import_gspread(gspread_key):
         'features': [],
     }
 
-    for row in values[1:]:
-        postal_address = row[1]
-        trip_category = row[5]
+    for row_index, row in enumerate(values[1:], start=1):
+        postal_address = row[POSTAL_ADDRESS_COLUMN]
+        trip_category = row[CATEGORY_COLUMN]
         try:
             coordinate = [float(x) for x in row[2:4]]
         except ValueError:
+            log.info('Geocoding {0}...', postal_address)
             coordinate = geocoding(postal_address)
-        log.info('{} -> {}', postal_address, coordinate)
+            log.info('Updating the spreadsheet with {0}...', coordinate)
+            update_geocoordinate(worksheet, row_index, coordinate)
+        else:
+            log.info('Fetched geocoding: {0} -> {1}',
+                     postal_address, coordinate)
+
+        if not is_valid_coordinate(coordinate):
+            log.warn('{0} is not a valid coordinate', coordinate)
+            continue
 
         feature = {
             'type': 'Feature',
@@ -77,6 +92,28 @@ def import_gspread(gspread_key):
         geojson['features'].append(feature)
 
     print(json.dumps(geojson))
+
+
+def update_geocoordinate(worksheet, row_index, coordinate):
+    """Updates Google Spreadsheet so that we don't have to do geocoding again
+    in the future.
+    """
+    if not is_valid_coordinate(coordinate):
+        return
+
+    # NOTE: Cell coordinates in gspread, unlike all other parts of our code,
+    # is one-based rather than zero-based.
+    worksheet.update_cell(row_index + 1, LATITUDE_COLUMN + 1, coordinate[0])
+    worksheet.update_cell(row_index + 1, LONGITUDE_COLUMN + 1, coordinate[1])
+
+
+def is_valid_coordinate(coordinate):
+    try:
+        lat, lng = coordinate
+    except (TypeError, ValueError):
+        return False
+
+    return all(isinstance(coordinate[i], float) for i in range(2))
 
 
 def geocoding(postal_address):
