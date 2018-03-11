@@ -1,20 +1,15 @@
 import json
-import os
 import sys
-try:
-    from urllib.parse import quote_plus
-except ModuleNotFoundError:
-    from urllib import quote_plus
 
 import click
-from flask_frozen import Freezer
 import gspread
+from flask_frozen import Freezer
 from logbook import Logger, StreamHandler
 from oauth2client.service_account import ServiceAccountCredentials
-import requests
 
 from web import create_app
-
+from web.utils import (CATEGORY_COLUMN, POSTAL_ADDRESS_COLUMN, geocoding,
+                       is_valid_coordinate, update_geocoordinate)
 
 StreamHandler(sys.stderr).push_application()
 log = Logger(__name__)
@@ -55,14 +50,23 @@ def import_gspread(gspread_key):
         'features': [],
     }
 
-    for row in values[1:]:
-        postal_address = row[1]
-        trip_category = row[5]
+    for row_index, row in enumerate(values[1:], start=1):
+        postal_address = row[POSTAL_ADDRESS_COLUMN]
+        trip_category = row[CATEGORY_COLUMN]
         try:
             coordinate = [float(x) for x in row[2:4]]
         except ValueError:
+            log.info('Geocoding {0}...', postal_address)
             coordinate = geocoding(postal_address)
-        log.info('{} -> {}', postal_address, coordinate)
+            log.info('Updating the spreadsheet with {0}...', coordinate)
+            update_geocoordinate(worksheet, row_index, coordinate)
+        else:
+            log.info('Fetched geocoding: {0} -> {1}',
+                     postal_address, coordinate)
+
+        if not is_valid_coordinate(coordinate):
+            log.warn('{0} is not a valid coordinate', coordinate)
+            continue
 
         feature = {
             'type': 'Feature',
@@ -77,22 +81,6 @@ def import_gspread(gspread_key):
         geojson['features'].append(feature)
 
     print(json.dumps(geojson))
-
-
-def geocoding(postal_address):
-    google_maps_api_key = os.environ['GOOGLE_MAPS_API_KEY']
-    url = 'https://maps.googleapis.com/maps/api/geocode/json?address={}' \
-          '&key={}'.format(quote_plus(postal_address), google_maps_api_key)
-
-    resp = requests.get(url)
-    results = json.loads(resp.text)
-
-    # TODO: Refactor the following section
-    if results['results']:
-        location = results['results'][0]['geometry']['location']
-        return location['lat'], location['lng']
-    else:
-        return None
 
 
 if __name__ == '__main__':
