@@ -1,21 +1,22 @@
 {% extends "layout.html" %}
-{% from "macros.html" import main_menu %}
+{% from "macros.html" import footer, main_menu %}
 {% block body %}
 
   <!-- Page Contents -->
   <div class="pusher">
-    <!-- Following Menu -->
-    <div class="ui large top fixed menu">
-      <div class="ui container">
+    <div class="ui container">
+      <div class="ui large secondary pointing menu">
+        <a class="toc item">
+          <i class="sidebar icon"></i>
+        </a>
         {{ main_menu(current_page) }}
       </div>
     </div>
-    <!-- Sidebar Menu -->
-    <div class="ui vertical inverted sidebar menu">
-      {{ main_menu(current_page) }}
-    </div>
 
-    <div class="ui vertical stripe segment">
+    <div id="map" style="height: 600px;"></div>
+    <!-- TODO: Show the date/time when the map has been updated -->
+
+    <div class="ui vertical stripe segment" style="padding-top:4em">
       <div class="ui text container">
         <h3 class="ui header">Coding Expedition</h3>
 
@@ -45,9 +46,74 @@
 
         <!-- TODO: Add 'lodging' section explaining how to pick a place to stay
                    overnight -->
-        <!-- TODO: Put a Google Maps widget showing coding expedition locations)
-        -->
+
+        <h3 class="ui header">Projects</h3>
+        <p>"So what kind of projects are you working on?"</p>
+        <p>This is a reasonable question to be asked at this point. My answer
+          to that question is, "it's classified." No, I'm just kidding. I need
+          to write some code to list up all projects I'm working on and
+          automatically update them. That will be done on one of my future
+          coding expeditions. Stay tuned.<p>
       </div>
     </div>
+    {{ footer() }}
   </div>
+
+  <script>
+    // Not entirely sure if using a global variable is good idea, but no doubt
+    // that this makes certain tasks much easier.
+    var map;
+
+    var markerColors = {
+      Coding: '#f03e3e',
+      Business: '#f03e3e',
+      Personal: '#2f9e44',
+      Unknown: '#343a40'
+    };
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 7,
+        center: {lat: 36.005, lng: 127.3845}
+      });
+
+      var url = "{{ url_for('static', filename='locations.json') }}";
+      $.getJSON(url, function(data) {
+        console.log(data);
+        map.data.addGeoJson(data);
+      });
+
+      setMapStyle(map);
+
+      // Change the circle radius depending on the zoom level
+      map.addListener('zoom_changed', function() {
+        setMapStyle(map);
+      });
+
+    }
+
+    function setMapStyle(map) {
+      map.data.setStyle(function(feature) {
+        return {
+          icon: getCircle(map.getZoom(), feature.getProperty('category'))
+        };
+      });
+    }
+
+    function getCircle(zoom, category) {
+      return {
+        path: google.maps.SymbolPath.CIRCLE,
+        fillColor: markerColors[category],
+        fillOpacity: .4,
+        scale: (zoom + 1) * 1.5,
+        strokeColor: markerColors[category],
+        strokeWeight: .5
+      };
+    }
+  </script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initMap">
+  </script>
 {% endblock %}
