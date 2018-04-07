@@ -24,3 +24,8 @@ def coding_expedition():
         'google_maps_api_key': os.environ['GOOGLE_MAPS_API_KEY'],
     }
     return render_template('coding_expedition.html', **context)
+
+
+@main_module.route('/experience.html')
+def experience():
+    return render_template('experience.html', **{'current_page': 'experience'})
