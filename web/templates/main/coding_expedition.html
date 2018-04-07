@@ -16,7 +16,13 @@
     <div id="map" style="height: 600px;"></div>
     <!-- TODO: Show the date/time when the map has been updated -->
 
-    <div class="ui vertical stripe segment" style="padding-top:4em">
+    <div class="ui text container" style="padding-top:4px">
+      <i class="map outline icon" title="View as in"></i>
+      <button class="ui basic small button" onclick="focusMap(map, world.center, world.zoom)">World</button>
+      <button class="ui basic small button" onclick="focusMap(map, ko.center, ko.zoom)">South Korea</button>
+      <button class="ui basic small button" onclick="focusMap(map, us.center, us.zoom)">United States</button>
+    </div>
+    <div class="ui vertical stripe segment" style="padding-top:3em">
       <div class="ui text container">
         <h3 class="ui header">Coding Expedition</h3>
 
@@ -64,6 +70,19 @@
     // that this makes certain tasks much easier.
     var map;
 
+    var world = {
+      zoom: 2,
+      center: {lat: 36.005, lng: 127.3845}
+    }
+    var ko = {
+      zoom: 7,
+      center: {lat: 36.005, lng: 127.3845}
+    };
+    var us = {
+      zoom: 5,
+      center: {lat: 37.0902, lng: -95.7129}
+    }
+
     var markerColors = {
       Coding: '#f03e3e',
       Business: '#f03e3e',
@@ -72,10 +91,7 @@
     };
 
     function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 2,
-        center: {lat: 36.005, lng: 127.3845}
-      });
+      map = new google.maps.Map(document.getElementById('map'), world);
 
       var url = "{{ url_for('static', filename='locations.json') }}";
       $.getJSON(url, function(data) {
@@ -90,6 +106,11 @@
         setMapStyle(map);
       });
 
+    }
+
+    function focusMap(map, center, zoom) {
+      map.setZoom(zoom);
+      map.setCenter(center);
     }
 
     function setMapStyle(map) {
