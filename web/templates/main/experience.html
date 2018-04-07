@@ -111,8 +111,8 @@ This project had started in March of 2011 in an attempt to help the general publ
     $(function() {
         var markdown = $("#markdown-body").text();
         // NOTE: Without this line, things won't get initialized and showdown.makeHtml() function will not be available.
-        showdown.Converter({});
-        var html = showdown.makeHtml(markdown);
+        var converter = new showdown.Converter({});
+        var html = converter.makeHtml(markdown);
         $("#markdown-body").html(html);
     });
   </script>
