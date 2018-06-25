@@ -1,7 +1,7 @@
 Introduction
 -------------
 
-This is a resume web site for Sumin Byeon.
+This is a personal website for Sumin Byeon.
 
 Build Status
 ------------
