@@ -32,4 +32,4 @@ There is a shell script for that.
 
 ### Compile a list of geocoordinates from Google Spreadsheet
 
-    python web/__main__.py import_gspread (access_key) > web/static/locations.json
+    python web/__main__.py import_gspread (gspread_key) > web/static/locations.json
