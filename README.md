@@ -9,6 +9,12 @@ Build Status
 [![Build Status](https://travis-ci.org/suminb/web.svg?branch=develop)](https://travis-ci.org/suminb/web)
 [![Coverage Status](https://coveralls.io/repos/suminb/web/badge.svg?branch=develop&service=github)](https://coveralls.io/github/suminb/web?branch=develop)
 
+Prerequisites
+-------------
+
+- A Google Sheet document and its ID. The ID is expected to be stored in `GSPREAD_KEY` environment variable.
+- A Google API key (refer [this page](https://developers.google.com/maps/documentation/geocoding/get-api-key) for details).
+
 Deployment
 ----------
 
