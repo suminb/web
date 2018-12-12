@@ -34,8 +34,11 @@ def markdown(eval_ctx, value, attr=''):
     return markdown_(value)
 
 
-def create_app(name=__name__, config={}, static_folder='static',
+def create_app(name=__name__, config=None, static_folder='static',
                template_folder='templates'):
+    if config is None:
+        config = {}
+
     app = Flask(name)
     app.config.update(config)
 
