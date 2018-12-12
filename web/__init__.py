@@ -10,8 +10,9 @@ __version__ = '2.3.0'
 #
 @evalcontextfilter
 def format_tags(eval_ctx, value, attr=''):
-    f = lambda x: '<span class="tag %s"><a href="/tag/%s">%s</a></span>' \
-        % (attr, x, x)
+    def f(x):
+        return '<span class="tag %s"><a href="/tag/%s">%s</a></span>' \
+            % (attr, x, x)
 
     if isinstance(value, list):
         return Markup(' '.join(map(f, value)))
