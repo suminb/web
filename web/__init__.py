@@ -1,5 +1,6 @@
 from flask import Flask
 from jinja2 import evalcontextfilter, Markup
+from markdown import markdown as markdown_
 
 
 __version__ = '2.3.0'
@@ -28,6 +29,11 @@ def optional_url(eval_ctx, name, url):
         return name
 
 
+@evalcontextfilter
+def markdown(eval_ctx, value, attr=''):
+    return markdown_(value)
+
+
 def create_app(name=__name__, config={}, static_folder='static',
                template_folder='templates'):
     app = Flask(name)
@@ -39,7 +45,8 @@ def create_app(name=__name__, config={}, static_folder='static',
     from web.main import main_module
     app.register_blueprint(main_module, url_prefix='')
 
-    app.jinja_env.filters['format_tags'] = format_tags
-    app.jinja_env.filters['optional_url'] = optional_url
+    filters = ['format_tags', 'optional_url', 'markdown']
+    for filter_ in filters:
+        app.jinja_env.filters[filter_] = globals()[filter_]
 
     return app

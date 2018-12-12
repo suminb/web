@@ -12,6 +12,7 @@
       </div>
     </div>
     <div class="ui text container" id="markdown-body" style="padding: 3em 0 3em 0;">
+{% filter markdown %}
 ## Experience
 
 ### Software Engineer - [Nexon](http://company.nexon.com) (Jul 2014 - Present)
@@ -103,18 +104,9 @@ Providing 127GFLOPs on average to tackle difficult scientific problems such as c
 ### [Radioactivity](https://bitbucket.org/suminb/radioactivity) (Discontinued)
 
 This project had started in March of 2011 in an attempt to help the general public to be alerted regarding the spread of radiation and other radioactive materials originated from the catastrophic incident in the Fukushima nuclear power plant in Japan, by visualizing city-wise radition levels in near real time.
+{% endfilter %}
     </div>
     {{ footer() }}
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
-  <script>
-    $(function() {
-        var markdown = $("#markdown-body").text();
-        // NOTE: Without this line, things won't get initialized and showdown.makeHtml() function will not be available.
-        var converter = new showdown.Converter({});
-        var html = converter.makeHtml(markdown);
-        $("#markdown-body").html(html);
-    });
-  </script>
 
 {% endblock %}
