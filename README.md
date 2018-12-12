@@ -15,6 +15,19 @@ Prerequisites
 - A Google Sheet document and its ID. The ID is expected to be stored in `GSPREAD_KEY` environment variable.
 - A Google API key (refer [this page](https://developers.google.com/maps/documentation/geocoding/get-api-key) for details).
 
+Build
+-----
+
+### Install `gulp`
+
+    npm install -g gulp
+
+### Build Semantic UI
+
+    npm install semantic-ui --save
+    cd semantics
+    gulp build
+
 Deployment
 ----------
 
