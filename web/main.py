@@ -4,11 +4,15 @@ import sys
 from flask import Blueprint, render_template
 from logbook import Logger, StreamHandler
 
+from web.models import ExperienceCollection
+
 
 main_module = Blueprint('main', __name__, template_folder='templates/main')
 
 StreamHandler(sys.stderr).push_application()
 log = Logger(__name__)
+
+DATA_FILE = 'data/experiences.yml'
 
 
 @main_module.route('/')
