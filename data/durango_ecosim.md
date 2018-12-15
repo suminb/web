@@ -33,7 +33,7 @@ they can be summarized as follows.
 
 One of important criteria is something we internally called *biomass*, which
 essentially refers the weight or the predominance of each biological entity. In
-generally, bigger species such as [baobab trees][baobab] have higher biomass
+general, bigger species such as [baobab trees][baobab] have higher biomass
 whereas smaller species have lower biomass. Each speice has different
 requirement for surrounding biomass; some prefer higher biomasses nearby, others
 prefer lower biomass in the vicinity.
@@ -133,7 +133,7 @@ administrative burdens.
 More information (in Korean) can be found in the following public speech deck
 from Nexon Developers Conference (NDC) 2015:
 
-<https://www.slideshare.net/suminb/durango-opencl>
+<http://ndcreplay.nexon.com/NDC2015/sessions/NDC2015_0063.html>
 
 
 [^1]: <https://en.wikipedia.org/wiki/Strassen_algorithm>
