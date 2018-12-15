@@ -36,3 +36,30 @@ def experience_summary():
         'current_page': 'experience',
     }
     return render_template('experience_summary.html', **context)
+
+
+@main_module.route('/experience/<key>.html')
+def experience(key):
+    collection = ExperienceCollection.load(DATA_FILE)
+    # FIXME: Code refactoring required
+    try:
+        experience = collection[key]
+    except KeyError:
+        return '', 404
+
+    context = {
+        'current_page': 'experience',
+        'collection': collection,
+        'experience': experience,
+    }
+    return render_template('experience.html', **context)
+
+
+@main_module.route('/experience/tag/<tag>.html')
+def experiences_with_tag(tag):
+    collection = ExperienceCollection.load(DATA_FILE)
+    context = {
+        'current_page': 'experience',
+        'experiences': collection.find_experiences_with_tag(tag),
+    }
+    return render_template('experiences.html', **context)
