@@ -45,6 +45,9 @@ def create_app(name=__name__, config=None, static_folder='static',
     if app.debug:
         app.config['TEMPLATES_AUTO_RELOAD'] = True
 
+    from web.models import CustomJSONEncoder
+    app.json_encoder = CustomJSONEncoder
+
     from web.main import main_module
     app.register_blueprint(main_module, url_prefix='')
 
