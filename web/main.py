@@ -27,5 +27,8 @@ def coding_expedition():
 
 
 @main_module.route('/experience.html')
-def experience():
-    return render_template('experience.html', **{'current_page': 'experience'})
+def experience_summary():
+    context = {
+        'current_page': 'experience',
+    }
+    return render_template('experience_summary.html', **context)
