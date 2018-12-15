@@ -13,33 +13,15 @@
   <meta property="fb:admins" content="10132775"/>
   <meta property="og:description" content="Sumin Byeon - Game server programmer at Nexon"/>
 
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/reset.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/site.css') }}">
-
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/container.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/grid.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/header.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/image.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/menu.css') }}">
-
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/divider.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/dropdown.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/segment.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/button.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/list.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/icon.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/sidebar.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='components/transition.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='semantic.min.css') }}">
 
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main.css') }}"/>
 
 {% block stylesheets %}{% endblock %}
 
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-  <script src="{{ url_for('static', filename='components/visibility.js') }}"></script>
-  <script src="{{ url_for('static', filename='components/sidebar.js') }}"></script>
-  <script src="{{ url_for('static', filename='components/transition.js') }}"></script>
+  <script src="{{ url_for('static', filename='semantic.min.js') }}"></script>
   <script>
   $(document)
     .ready(function() {
