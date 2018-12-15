@@ -11,130 +11,17 @@
         {{ main_menu(current_page) }}
       </div>
     </div>
-    <div class="ui text container" id="markdown-body" style="padding: 3em 0 3em 0;">
-{% filter markdown %}
-## Introduction
-
-Enjoys writing code at work, and in his spare time to solve all kinds of
-problems faced in life. Recently became aware of new area of interest: to
-refactor code, and to re-organize software components to make things faster,
-more efficient, and more scalable. This is known as *The Maserati Problem*, a
-problem that you should not be concerned with until you have a *Maserati*
-(i.e., a large volume of users, data, etc.)
-
-## Experience
-
-### Senior Software Engineer - [Coupang](https://www.linkedin.com/company/coupang/) (Jul 2018 - Present)
-
-- Building a microservice to manage order/shipment states
-    - [Cassandra](http://cassandra.apache.org/): to handle a large volume of
-      accumulating data
-    - [Spring Reactive](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html): 
-      asynchronous handling of requests for higher throughput
-- Routing service (currently on hold)
-    - Given a list of destinations and a set of constraints, find the optimal
-      sequence and paths for delivery
-
-### Software Engineer - [Nexon](http://company.nexon.com) (Jul 2014 - Jul 2018)
-
-- Building a distributed MMORPG server system ([Durango](https://durango.nexon.com/En))
-    - Marketplace
-        - Handling inter-document, inter-database transactions
-        - Performance improvement with AWS Aurora and Elasticsearch
-    - Natural environment simulation
-        - Designing and building a highly scalable, fault-tolerant software architecture with AWS
-        - Automating complicated workflows
-        - Building in-house tools for distribution of in-game terrains
-    - Cost reduction by optimizing our infrastructure
-        - Saved (undisclosed amount)/year by employing multi-regional object storage
-        - A number of other micro-savings
-
-### Software Engineer - [Spoqa](https://www.spoqa.com) (Mar 2014 - Jul 2014)
-
-- Building a customer-facing Android app
-- Building a backend for commercial loyalty service
-
-### Research Software Engineer - [Metropia, Inc](http://www.metropia.com) (Jan 2012 - Dec 2013)
-
-- Designing and building an automated pipeline to generate rasterized map tiles from raw geospatial data (from [OpenStreetMap](https://www.openstreetmap.org)) in global-scale.
-- Building a navigation app (Android)
-- Designing and implementing RESTful API for the navigation app (Python)
-
-## Education
-
-- University of Arizona (Tucson, AZ, USA) - MS in Computer Science (Aug 2011 - Dec 2013)
-- University of Arizona (Tucson, AZ, USA) - BS in Computer Science, Mathematics (Jan 2006 - Dec 2010)
-
-### Postgraduate Education
-
-- Occasionally, but constantly taking classes from [Coursera](https://www.coursera.org), [Udacity](https://www.udacity.com)
-    - Machine Learning
-    - Design of Computer Programs
-    - Computational Finance
-- Founding and leading an unofficial research paper reading group in Nexon (2015)
-
-## Public Speeches
-
-### AWS re:Invent 2017: [Automating Mother Nature](https://www.youtube.com/watch?v=H7kF7r7UBFE)
-
-Discussed the architecture that we settled on for algorithmic generation of game content in a large scale with a number of components provided by Amazon Web Services such as distributed messaging queues (SQS), containerized application clusters (ECS), and object storages (S3).
-
-### Nexon Developers Conference 2016: [Automated Game Terrain Management for Durango](http://ndcreplay.nexon.com/NDC2016/sessions/NDC2016_0062.html)
-
-Discussed how we built an automated pipeline to supply natural resources. Due to the sheer size of the in-game world, the environment simulation is performed on-demand, within a limited geographic boundary, in accordance with player activities.
-
-### Nexon Developers Conference 2015: [Natural Environment Simulation for Durango](http://ndcreplay.nexon.com/NDC2015/sessions/NDC2015_0063.html)
-
-Discussed how we built an in-game environment simulator with OpenCL to handle a massive parallel processing. The primary purpose of the simulator is to provide natural resources based on realistic simulations by taking a number of geographic features, such as topography, temperature, humidity, soil fertility, into consideration.
-
-## Patents &amp; Research Papers
-
-### [Patent #1020160025511: A system for simulating a game environment](https://doi.org/10.8080/1020160025511) (Mar 2016)
-
-Nexon decided to file a patent with the work referred above as *natural environment simulation*. I was listed as a co-author along with the game designer who pioneered the concept.
-
-### [Human Natural Instruction of a Simulated Electronic Student](https://www.researchgate.net/publication/221250935_Human_Natural_Instruction_of_a_Simulated_Electronic_Student) (Jan 2011)
-
-Discusses how *human-instructable computing* can be achieved. That is, how an *electronic student* can be taught using the same natural instruction methods humans use.
-
-## Open Source Activities
-
-### [Hanja](https://github.com/suminb/hanja)
-
-A Python library to [read Chinese characters in Korean sound values](https://ko.wikipedia.org/wiki/%EC%9D%8C%EB%8F%85).
-
-### [Winnowing](https://github.com/suminb/winnowing)
-
-A Python implementation of local algorithms for document fingerprinting.
-
-### [Base62](https://github.com/suminb/base62)
-
-A Python library to encode and decode any arbitrary data in base62 (duosexagesimal; using 0-9, A-Z, and a-z) for URL-safety. I was recently able to convince my colleagues to use this library for work.
-
-### [Gspread](https://github.com/burnash/gspread)
-
-A Python library to access and manipulate Google Spreadsheets. I was [one of the contributors](https://github.com/burnash/gspread/graphs/contributors).
-
-## Personal Projects
-
-### [Dollar Auction](http://1000won.auction/auctions)
-
-An improvised marketplace to sell underused personal belongings.
-
-### [SB Finance](https://github.com/suminb/finance)
-
-A collection of computational finance primitives to achieve a long-term value investment.
-
-## Volunteer Works
-
-### [BOINC](https://en.wikipedia.org/wiki/Berkeley_Open_Infrastructure_for_Network_Computing)
-
-Providing 127GFLOPs on average to tackle difficult scientific problems such as climate modeling, discovering large prime numbers, and generating accurate three-dimensional dynamic models of stellar streams in the immediate vicinity of the Milky Way galaxy.
-
-### [Radioactivity](https://bitbucket.org/suminb/radioactivity) (Discontinued)
-
-This project had started in March of 2011 in an attempt to help the general public to be alerted regarding the spread of radiation and other radioactive materials originated from the catastrophic incident in the Fukushima nuclear power plant in Japan, by visualizing city-wise radition levels in near real time.
-{% endfilter %}
+    <div class="ui text container" style="margin: 2em 0 2em 0;">
+      <h1>{{ experience.title }}</h1>
+      <div>
+        <i class="calendar alternate icon"></i>
+        {{ experience.starts_at }} - {{ experience.ends_at }}
+      </div>
+      <div>
+        <i class="tags icon"></i>
+        {{ render_tags(experience.tags) }}
+      </div>
+      <p>{{ experience.description|markdown|safe }}</p>
     </div>
     {{ footer() }}
   </div>

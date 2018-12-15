@@ -32,6 +32,7 @@ durango:
   - python
   - couchbase
   - distributed
+  - game
   description: !include durango.md
 
 durango_ecosim:
@@ -41,55 +42,11 @@ durango_ecosim:
   ends_at: "Sep 2015 (approx.)"
   category: "Problem Solving"
   tags:
+  - csharp
   - opencl
   - simulation
-  description: |
-    It was summer of 2014 when I joined [the team](https://what.studio/). The
-    team size was quite small at the time, with less than 30 people or so, and
-    [our game](https://durango.nexon.com/) was still in the early stage of
-    development, trying out new things and explore all the possibilities out
-    there. It was a lot of fun.
-
-    One day, my boss came along saying "hey, we want to make a realistic in-game
-    ecosystem, would you like to take charge on that?" So what do you mean by a
-    *realistic ecosystem*? We have a spectacular in-game view of wild lands, but
-    what we wanted was far beyond than just looking good. In essence, we wanted
-    to make an in-game ecosystem that resembles the real-world.
-    
-    It would be impractical to plant trees and other vegetation manually or
-    randomly. Manual planting would hardly work due to the the sheer size of the
-    in-game world. Random planting, on the other thand, would certainly violate
-    a number of rules to which the real ecosystem conforms. For example, we
-    wouldn't want to plant banana trees in a snow land.
-
-    In order to make our dream come true, we decided to develop a very
-    sophisticated algorithm to determine the location and the type of plants.
-    The algorithm considers the type of soil, the temperature, the humidity and
-    other surrounding conditions. 
-    
-    <img src="/static/images/ecosim.png"/>
-
-    The biggest challenge was the sheer volume of computations it takes to come up with a solution.
-
-    ### First Apprach: OpenCL
-
-    One of irresistable solutions to handle computionally intensive tasks is
-    [GPGPU](https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units).
-    That is exactly what those GPUs are made for: crunching numbers.
-
-    (TODO: Complete this section)
-    
-    ### Second Approach: Matrix Multiplication
-
-    (TODO: Explain about pre-calculation of biomass matrices)
-
-    ### Third Approach: Compressed Sparse Row
-
-    (TODO: Explain what this is)
-
-    ### Public Speech On This Topic
-
-    <https://www.slideshare.net/suminb/durango-opencl>
+  - game
+  description: !include durango_ecosim.md
 
 durango_ecosim_pipeline:
   parent: durango
@@ -102,6 +59,7 @@ durango_ecosim_pipeline:
   - distributed
   - scalability
   - aws
+  - game
 
 durango_marketplace:
   parent: durango
@@ -112,12 +70,8 @@ durango_marketplace:
   tags:
   - python
   - database
-  description: |
-    A market is a place where participants may exchange goods for money or vice versa.
-    It is the paramount part of the real-world economy that makes our everyday lives possible.
-    Without it, our standard of living wouldn't be much different from cavemen.
-
-    As crutial as the market can be in the real-world, it is as important in the game world.
+  - game
+  description: !include durango_marketplace.md
 
 durango_marketplace_modeling:
   parent: durango_marketplace
@@ -127,14 +81,9 @@ durango_marketplace_modeling:
   category: "Database"
   tags:
   - database
-  description: |
-    (Some long description here)
+  description: !include durango_marketplace_modeling.md
 
-    The biggest challenge was to make things searchable.
-
-    In the end, we decided to use Elasticsearch because we were not able to make JOIN fast enough.
-
-paper_reading_gruop:
+paper_reading_group:
   parent: null
   title: "Research Paper Reading Group"
   starts_at: "Feb 2015"
@@ -143,29 +92,7 @@ paper_reading_gruop:
   tags:
   - research
   - leadership
-  description: |
-    I founded and led an unofficial research paper reading group in Nexon. I
-    thought it is important to maintain a certain level of academic sharpness,
-    even though I'm currently at a distance from the academia. Although it might
-    be difficult to find immediate applications of those research papers,
-    knowing such ideas exist makes a huge difference.
-
-    I realized it is a tremendous challenge to motivate and persuade people to
-    do something without having any authority over them. People get busy with
-    their daily lives and they easily lose interest for things they don't have
-    to do. However, if I could get them on the same page with the rationale
-    (i.e., *why* we need to read research papers) they tend to retain a certain
-    level of activeness.
-
-    ### Papers
-
-    These are some papers that my team members and myself have read:
-
-    - MMORPG 서버를 위한 게임 사용자 중심의 부하 분산 기법에 관한 연구
-    - 소셜 네트워크 분석 기법을 활용한 협업필터링의 특이취향 사용자(Gray Sheep) 문제 해결
-    - An Introduction to the OpenCL Programming Model
-    - Automatic License Plate Recognition using Python and OpenCV
-    - (There are definitely a lot more than this; I'm trying to find all records)
+  description: !include paper_reading_group.md
 
 coding_workshop:
   parent: null
@@ -176,32 +103,7 @@ coding_workshop:
   tags:
   - python
   - leadership
-  description: |
-    When I was young, I was not interested in becoming a leader or a manager at
-    all. I was happy with writing code on my own, not having to deal with
-    managerial tasks. However, as growing up as a senior software engineer, the
-    scope of my roles and responsibilities has gradually expanded. Not only in a
-    technical sense, but in *diplomatic* sense as well.
-    
-    At some point, I realized that the boundary of solitary projects is quite
-    limited. If you want to accomplish great things, you have to work with other
-    people. You have no choice but to become a leader. In fact, the director at my
-    previous job once said this [at a conference](https://www.slideshare.net/paparanga/ndc-2016).
-
-    > If you want to go fast, go alone. If you want to go far, go together.
-
-    I completely agree with his statement, and I thought teaching something
-    people would be a good first step to gain some leadership experience.
-
-    <!--
-    Software engineering is like a team sports. The boundary of solitary
-    projects is quite limited. In that sense, supporting other team members to
-    perform at their best is as important as carrying out my own duties.
-    -->
-
-    ### Lecture Notes &amp; Homeworks
-
-    <https://github.com/suminb/sbcw>
+  description: !include coding_workshop.md
 
 log_structured_filesystem:
   parent: null
