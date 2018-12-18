@@ -47,6 +47,9 @@ def experience(key):
     except KeyError:
         return '', 404
 
+    if not experience.published and not os.environ.get('DEBUG'):
+        return '', 404
+
     context = {
         'current_page': 'experience',
         'collection': collection,

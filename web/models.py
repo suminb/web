@@ -69,9 +69,10 @@ class ExperienceCollection:
 
 class Experience:
 
-    def __init__(self, key, parent, title, description, starts_at, ends_at,
-                 category, tags):
+    def __init__(self, key, published, parent, title, description, starts_at,
+                 ends_at, category, tags):
         self.key = key
+        self.published = published
         self.parent = parent
         self.title = title
         self.description = description
