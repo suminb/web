@@ -38,7 +38,7 @@ def experience_summary():
     return render_template('experience_summary.html', **context)
 
 
-@main_module.route('/experience/<key>.html')
+@main_module.route('/experiences/<key>.html')
 def experience(key):
     collection = ExperienceCollection.load(DATA_FILE)
     # FIXME: Code refactoring required
@@ -55,7 +55,7 @@ def experience(key):
     return render_template('experience.html', **context)
 
 
-@main_module.route('/experience/tag/<tag>.html')
+@main_module.route('/experiences/tags/<tag>.html')
 def experiences_with_tag(tag):
     collection = ExperienceCollection.load(DATA_FILE)
     context = {
