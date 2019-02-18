@@ -1,4 +1,5 @@
 routing_service:
+  published: false
   parent: null
   title: "Routing Service (currently on hold)"
   starts_at: "2018-08-01"
@@ -11,18 +12,20 @@ routing_service:
     Given a list of destinations and a set of constraints, find the optimal
     sequence and paths for delivery.
 
-shipment_object_service:
+flow:
+  published: false
   parent: null
-  title: "Shipment Object Service (temporary name)"
+  title: "FLOW"
   starts_at: "Dec 2018"
   ends_at: "Current"
   category: ""
   tags:
     - java
     - cassandra
-  description: |
+  description: 
 
 durango:
+  published: true
   parent: null
   title: "Distributed MMORPG Server System (Durango)"
   starts_at: "Jul 2014"
@@ -36,34 +39,38 @@ durango:
   description: !include durango.md
 
 durango_ecosim:
+  published: true
   parent: durango
-  title: "In-game Ecosystem Simulator"
+  title: "Ecosystem Simulator"
   starts_at: "Sep 2014"
-  ends_at: "Sep 2015 (approx.)"
+  ends_at: "Sep 2016 (approx.)"
   category: "Problem Solving"
   tags:
   - csharp
   - opencl
   - simulation
+  - math
   - game
   description: !include durango_ecosim.md
 
 durango_ecosim_pipeline:
+  published: true
   parent: durango
-  title: "In-game Ecosystem Pipeline"
-  starts_at: "??? 2015"
-  ends_at: "2017"
-  description: |
+  title: "Ecosystem Pipeline"
+  starts_at: "Sep 2015 (approx.)"
+  ends_at: "Sep 2017 (approx.)"
   category: "Scalable Systems"
   tags:
   - distributed
   - scalability
   - aws
   - game
+  description: !include durango_ecosim_pipeline.md
 
 durango_marketplace:
+  published: false
   parent: durango
-  title: "In-game Marketplace"
+  title: "Durango Marketplace"
   starts_at: "Jan 2017"
   ends_at: "Jul 2018"
   category: "Game"
@@ -71,9 +78,10 @@ durango_marketplace:
   - python
   - database
   - game
-  description: !include durango_marketplace.md
+  description: ""
 
 durango_marketplace_modeling:
+  published: false
   parent: durango_marketplace
   title: "Data Modeling for Durango Marketplace"
   starts_at: "Unknown"
@@ -81,9 +89,10 @@ durango_marketplace_modeling:
   category: "Database"
   tags:
   - database
-  description: !include durango_marketplace_modeling.md
+  description: ""
 
 paper_reading_group:
+  published: true
   parent: null
   title: "Research Paper Reading Group"
   starts_at: "Feb 2015"
@@ -95,6 +104,7 @@ paper_reading_group:
   description: !include paper_reading_group.md
 
 coding_workshop:
+  published: true
   parent: null
   title: "SB Coding Workshop"
   starts_at: "Oct 2018"
@@ -103,15 +113,16 @@ coding_workshop:
   tags:
   - python
   - leadership
-  description: !include coding_workshop.md
+  description: ""
 
 log_structured_filesystem:
+  published: false
   parent: null
   title: "Log Structured Filesystem"
-  starts_at: "2012"
-  ends_at: "2012"
+  starts_at: "Aug 2013"
+  ends_at: "Dec 2013"
   category: "Operating Systems"
   tags:
   - storage
   - filesystem
-  description: |
+  description: ""
