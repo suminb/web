@@ -1,13 +1,32 @@
 Introduction
 -------------
 
-This is a resume web site for Sumin Byeon.
+This is a personal website for Sumin Byeon.
 
 Build Status
 ------------
 
 [![Build Status](https://travis-ci.org/suminb/web.svg?branch=develop)](https://travis-ci.org/suminb/web)
 [![Coverage Status](https://coveralls.io/repos/suminb/web/badge.svg?branch=develop&service=github)](https://coveralls.io/github/suminb/web?branch=develop)
+
+Prerequisites
+-------------
+
+- A Google Sheet document and its ID. The ID is expected to be stored in `GSPREAD_KEY` environment variable.
+- A Google API key (refer [this page](https://developers.google.com/maps/documentation/geocoding/get-api-key) for details).
+
+Build
+-----
+
+### Install `gulp`
+
+    npm install -g gulp
+
+### Build Semantic UI
+
+    npm install semantic-ui --save
+    cd semantics
+    gulp build
 
 Deployment
 ----------
@@ -26,4 +45,11 @@ There is a shell script for that.
 
 ### Compile a list of geocoordinates from Google Spreadsheet
 
-    python web/__main__.py import_gspread (access_key) > web/static/locations.json
+    python web/__main__.py import_gspread $GSPREAD_KEY > web/static/locations.json
+
+NOTE: This is automatically handled by `publish.sh` script, and thus no need to
+be run unless for testing.
+
+`$GSPREAD_KEY` is a Google Docs document ID. The Google service credentials is
+stored in a `.json` file, which is automatically generated upon a Google
+Service Key.  For more details, refer [this page](https://gspread.readthedocs.io/en/latest/oauth2.html).

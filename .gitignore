@@ -1,7 +1,15 @@
 .DS_Store
 log
 tmp
+provision.sh
+
 .cache
 __pycache__
+web.egg-info
+web/build
+
+node_modules
+
+*.json
 *.pyc
 *.swp

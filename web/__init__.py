@@ -1,8 +1,9 @@
 from flask import Flask
 from jinja2 import evalcontextfilter, Markup
+from markdown import markdown as markdown_
 
 
-__version__ = '2.3.0'
+__version__ = '2.3.1'
 
 
 #
@@ -10,8 +11,9 @@ __version__ = '2.3.0'
 #
 @evalcontextfilter
 def format_tags(eval_ctx, value, attr=''):
-    f = lambda x: '<span class="tag %s"><a href="/tag/%s">%s</a></span>' \
-        % (attr, x, x)
+    def f(x):
+        return '<span class="tag %s"><a href="/tag/%s">%s</a></span>' \
+            % (attr, x, x)
 
     if isinstance(value, list):
         return Markup(' '.join(map(f, value)))
@@ -27,8 +29,16 @@ def optional_url(eval_ctx, name, url):
         return name
 
 
-def create_app(name=__name__, config={}, static_folder='static',
+@evalcontextfilter
+def markdown(eval_ctx, value, attr=''):
+    return markdown_(value)
+
+
+def create_app(name=__name__, config=None, static_folder='static',
                template_folder='templates'):
+    if config is None:
+        config = {}
+
     app = Flask(name)
     app.config.update(config)
 
@@ -38,7 +48,8 @@ def create_app(name=__name__, config={}, static_folder='static',
     from web.main import main_module
     app.register_blueprint(main_module, url_prefix='')
 
-    app.jinja_env.filters['format_tags'] = format_tags
-    app.jinja_env.filters['optional_url'] = optional_url
+    filters = ['format_tags', 'optional_url', 'markdown']
+    for filter_ in filters:
+        app.jinja_env.filters[filter_] = globals()[filter_]
 
     return app
