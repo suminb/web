@@ -3,7 +3,7 @@ from jinja2 import evalcontextfilter, Markup
 from markdown import markdown as markdown_
 
 
-__version__ = '2.3.0'
+__version__ = '2.3.1'
 
 
 #
