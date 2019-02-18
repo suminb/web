@@ -10,5 +10,6 @@ web/build
 
 node_modules
 
+*.json
 *.pyc
 *.swp
