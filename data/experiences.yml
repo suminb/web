@@ -104,7 +104,7 @@ paper_reading_group:
   description: !include paper_reading_group.md
 
 coding_workshop:
-  published: true
+  published: false
   parent: null
   title: "SB Coding Workshop"
   starts_at: "Oct 2018"
