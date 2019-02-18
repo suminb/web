@@ -73,6 +73,7 @@ class Experience:
                  ends_at, category, tags):
         self.key = key
         self.published = published
+        self.key = key
         self.parent = parent
         self.title = title
         self.description = description
