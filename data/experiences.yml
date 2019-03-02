@@ -1,0 +1,151 @@
+routing_service:
+  published: false
+  parent: null
+  title: "Routing Service (currently on hold)"
+  starts_at: "2018-08-01"
+  ends_at: "On hold"
+  category: "Problem Solving"
+  tags:
+    - gis
+    - optimization
+  description: |
+    Given a list of destinations and a set of constraints, find the optimal
+    sequence and paths for delivery.
+
+flow:
+  published: false
+  parent: null
+  title: "FLOW"
+  starts_at: "Dec 2018"
+  ends_at: "Current"
+  category: ""
+  tags:
+    - java
+    - cassandra
+  description: 
+
+durango:
+  published: true
+  parent: null
+  title: "Distributed MMORPG Server System (Durango)"
+  starts_at: "Jul 2014"
+  ends_at: "Jul 2018"
+  category: "Game"
+  tags:
+  - python
+  - couchbase
+  - distributed
+  - game
+  description: !include durango.md
+
+durango_ecosim:
+  published: true
+  parent: durango
+  title: "Ecosystem Simulator"
+  starts_at: "Sep 2014"
+  ends_at: "Sep 2016 (approx.)"
+  category: "Problem Solving"
+  tags:
+  - csharp
+  - opencl
+  - simulation
+  - math
+  - game
+  description: !include durango_ecosim.md
+
+durango_ecosim_pipeline:
+  published: true
+  parent: durango
+  title: "Ecosystem Pipeline"
+  starts_at: "Sep 2015 (approx.)"
+  ends_at: "Sep 2017 (approx.)"
+  category: "Scalable Systems"
+  tags:
+  - distributed
+  - scalability
+  - aws
+  - game
+  description: !include durango_ecosim_pipeline.md
+
+durango_marketplace:
+  published: false
+  parent: durango
+  title: "Durango Marketplace"
+  starts_at: "Jan 2017"
+  ends_at: "Jul 2018"
+  category: "Game"
+  tags:
+  - python
+  - database
+  - game
+  description: ""
+
+durango_marketplace_modeling:
+  published: false
+  parent: durango_marketplace
+  title: "Data Modeling for Durango Marketplace"
+  starts_at: "Unknown"
+  ends_at: "Unknown"
+  category: "Database"
+  tags:
+  - database
+  description: ""
+
+paper_reading_group:
+  published: true
+  parent: null
+  title: "Research Paper Reading Group"
+  starts_at: "Feb 2015"
+  ends_at: "Nov 2015"
+  category: "Education"
+  tags:
+  - research
+  - leadership
+  description: !include paper_reading_group.md
+
+coding_workshop:
+  published: false
+  parent: null
+  title: "SB Coding Workshop"
+  starts_at: "Oct 2018"
+  ends_at: "Present"
+  category: "Education"
+  tags:
+  - python
+  - leadership
+  description: ""
+
+log_structured_filesystem:
+  published: false
+  parent: null
+  title: "Log Structured Filesystem"
+  starts_at: "Aug 2013"
+  ends_at: "Dec 2013"
+  category: "Operating Systems"
+  tags:
+  - storage
+  - filesystem
+  description: ""
+
+ccna:
+  published: true
+  parent: null
+  title: "Cisco Certified Network Associate (CCNA)"
+  starts_at: "Mar 2005"
+  ends_at: "Mar 2008"
+  category: "Networks"
+  tags:
+  - cisco
+  description: "Credential ID: sr1894865"
+
+scjp:
+  published: true
+  parent: null
+  title: "Sun Certified Java Programmer (SCJP)"
+  starts_at: "Feb 2005"
+  ends_at: "Feb 2008"
+  category: ""
+  tags:
+  - java
+  - sun-microsystems
+  description: ""
