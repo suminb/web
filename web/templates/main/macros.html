@@ -13,6 +13,48 @@
   -->
 {%- endmacro %}
 
+{% macro exp_menu(current) -%}
+<div class="ui secondary vertical menu">
+  <div class="item">
+    <div class="header">Database</div>
+    <div class="menu">
+      <a class="item">Relational Modeling</a>
+      <a class="item">Cassandra</a>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="header">Operating Systems</div>
+    <div class="menu">
+      <a class="item">Log-structured Filesystem</a>
+      <a class="item"></a>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="header">Problem Solving</div>
+    <div class="menu">
+      <a class="item">Ecosystem Simulator</a>
+      <a class="item">Routing Service</a>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="header">Scalable Systems</div>
+    <div class="menu">
+      <a class="item">Ecosystem Simulator Pipeline</a>
+      <a class="item"></a>
+    </div>
+  </div>
+</div>
+{%- endmacro %}
+
+{% macro render_tags(tags) -%}
+  {% for tag in tags %}
+  <a href="{{ url_for('main.experiences_with_tag', tag=tag) }}" class="ui label">{{ tag }}</a>
+  {% endfor %}
+{%- endmacro %}
+
 {% macro footer() -%}
 <div class="ui inverted vertical footer segment">
   <div class="ui container">
