@@ -126,3 +126,26 @@ log_structured_filesystem:
   - storage
   - filesystem
   description: ""
+
+ccna:
+  published: true
+  parent: null
+  title: "Cisco Certified Network Associate (CCNA)"
+  starts_at: "Mar 2005"
+  ends_at: "Mar 2008"
+  category: "Networks"
+  tags:
+  - cisco
+  description: "Credential ID: sr1894865"
+
+scjp:
+  published: true
+  parent: null
+  title: "Sun Certified Java Programmer (SCJP)"
+  starts_at: "Feb 2005"
+  ends_at: "Feb 2008"
+  category: ""
+  tags:
+  - java
+  - sun-microsystems
+  description: ""
