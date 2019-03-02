@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% from "macros.html" import exp_menu, footer, main_menu, render_tags %}
+{% block body %}
+  <!-- Page Contents -->
+  <div class="pusher">
+    <div class="ui container">
+      <div class="ui large secondary pointing menu">
+        <a class="toc item">
+          <i class="sidebar icon"></i>
+        </a>
+        {{ main_menu(current_page) }}
+      </div>
+    </div>
+    <div class="ui text container" style="margin: 2em 0 2em 0;">
+      {% for experience in experiences %}
+      <h2>
+        <a href="{{ url_for('main.experience', key=experience.key) }}">{{ experience.title }}</a></h2>
+      <div>
+        <i class="calendar alternate icon"></i>
+        {{ experience.starts_at }} - {{ experience.ends_at }}
+      </div>
+      <div>
+        <i class="tags icon"></i>
+        {{ render_tags(experience.tags) }}
+      </div>
+      <p>{{ experience.description|markdown|truncate(250) }}</p>
+      {% endfor %}
+    </div>
+    {{ footer() }}
+  </div>
+
+{% endblock %}
+

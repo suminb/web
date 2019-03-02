@@ -1,6 +1,7 @@
 from flask import Flask
 from jinja2 import evalcontextfilter, Markup
 from markdown import markdown as markdown_
+from markdown.extensions.footnotes import FootnoteExtension
 
 
 __version__ = '2.3.1'
@@ -31,7 +32,7 @@ def optional_url(eval_ctx, name, url):
 
 @evalcontextfilter
 def markdown(eval_ctx, value, attr=''):
-    return markdown_(value)
+    return markdown_(value, extensions=[FootnoteExtension()])
 
 
 def create_app(name=__name__, config=None, static_folder='static',
@@ -44,6 +45,9 @@ def create_app(name=__name__, config=None, static_folder='static',
 
     if app.debug:
         app.config['TEMPLATES_AUTO_RELOAD'] = True
+
+    from web.models import CustomJSONEncoder
+    app.json_encoder = CustomJSONEncoder
 
     from web.main import main_module
     app.register_blueprint(main_module, url_prefix='')
