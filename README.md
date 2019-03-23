@@ -8,6 +8,7 @@ Build Status
 
 [![Build Status](https://travis-ci.org/suminb/web.svg?branch=develop)](https://travis-ci.org/suminb/web)
 [![Coverage Status](https://coveralls.io/repos/suminb/web/badge.svg?branch=develop&service=github)](https://coveralls.io/github/suminb/web?branch=develop)
+[![Sonar](https://sonarcloud.io/api/project_badges/measure?project=suminb_web&metric=alert_status)](https://sonarcloud.io/dashboard?id=suminb_web)
 
 Prerequisites
 -------------
