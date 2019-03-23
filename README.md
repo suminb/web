@@ -45,7 +45,7 @@ There is a shell script for that.
 
 ### Compile a list of geocoordinates from Google Spreadsheet
 
-    python web/__main__.py import-gspread $GSPREAD_KEY > web/static/locations.js
+    web import-gspread $GSPREAD_KEY > web/static/locations.js
 
 NOTE: This is automatically handled by `publish.sh` script, and thus no need to
 be run unless for testing.

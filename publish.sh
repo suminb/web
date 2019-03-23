@@ -10,7 +10,7 @@ echo -n "Would you like to generate locations.js? (yes/no) "
 read generate_locations_js
 
 if [[ $generate_locations_js = "yes" ]]; then
-    python web/__main__.py import-gspread "$GSPREAD_KEY" > web/static/locations.js
+    web import-gspread "$GSPREAD_KEY" > web/static/locations.js
 fi
 
 rm -rf $BUILD_DIR
