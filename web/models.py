@@ -52,7 +52,7 @@ class ExperienceCollection:
         return self.data.items()
 
     def find_experiences_with_tag(self, tag):
-        return [v for k, v in self.items() if tag in v.tags]
+        return [v for k, v in self.items() if tag in v.tags and v.published]
 
     @property
     def categories(self):
