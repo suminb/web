@@ -93,7 +93,7 @@
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), world);
 
-      var url = "{{ url_for('static', filename='locations.json') }}";
+      var url = "{{ url_for('static', filename='locations.js') }}";
       $.getJSON(url, function(data) {
         console.log(data);
         map.data.addGeoJson(data);
