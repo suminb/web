@@ -1,49 +1,49 @@
-It was summer of 2014 when I joined [the team](https://what.studio/). The
+It was the summer of 2014 when I joined [the team](https://what.studio/). The
 team size was quite small at the time, with less than 30 people or so, and
 [our game](https://durango.nexon.com/) was still in the early stage of
 development, trying out new things and explore all the possibilities out
 there. It was a lot of fun.
 
 One day, my boss came along saying "hey, we want to make a realistic in-game
-ecosystem, would you like to take charge on that?" So what do you mean by a
+ecosystem, would you like to take charge of that?" So what do you mean by a
 *realistic ecosystem*? We have a spectacular in-game view of wild lands, but
-what we wanted was far beyond than just looking good. In essence, we wanted
-to make an in-game ecosystem that resembles the real-world.
+what we wanted was far beyond just looking good. In essence, we wanted to make
+an in-game ecosystem that resembles the real world.
 
-It would be impractical to plant vegetation and other natural resources manually
-or randomly. Manual planting would hardly work due to the the sheer size of the
-in-game world. Random planting, on the other thand, would certainly violate a
-number of rules to which the real ecosystem conforms. For example, we wouldn't
-want to plant banana trees in a snow land or in the middle of the ocean.
+It would be impractical to plant vegetation and other natural resources
+manually or randomly. Manual planting would hardly work due to the sheer size
+of the in-game world. Random planting, on the other hand, would certainly
+violate manu rules to which the real ecosystem conforms. For example, we
+wouldn't want to plant banana trees in a snow land or the middle of the ocean.
 
-In order to make our dream come true, we decided to develop a very sophisticated
+To make our dream come true, we decided to develop a very sophisticated
 algorithm to determine the location and the type of plants. The algorithm
-considers the type of soil, the temperature, the humidity, and other surrounding
-conditions.
+considers the type of soil, the temperature, the humidity, and other
+surrounding conditions.
 
 <figure>
   <img src="/static/images/ecosim.png" style="max-width:70%"/>
 </figure>
 
-The biggest challenge was the sheer volume of computations it takes to construct
-a solution. We had tried a number of ways to make these computations fast and
-they can be summarized as follows.
+The biggest challenge was the sheer volume of computations it takes to
+construct a solution. We had tried several ways to make these computations fast
+and they can be summarized as follows.
 
 ## First Approach: Matrix Multiplication For Biomass Precalculation
 
-One of important criteria is something we internally called *biomass*, which
-essentially refers the weight or the predominance of each biological entity. In
-general, bigger species such as [baobab trees][baobab] have higher biomass
-whereas smaller species have lower biomass. Each speice has different
-requirement for surrounding biomass; some prefer higher biomasses nearby, others
-prefer lower biomass in the vicinity.
+One of the important criteria is something we internally called *biomass*,
+which essentially refers to the weight or the predominance of each biological
+entity. In general, bigger species such as [baobab trees][baobab] have higher
+biomass whereas smaller species have lower biomass. Each species has different
+requirements for surrounding biomass; some prefer higher biomasses nearby,
+others prefer lower biomass in the vicinity.
 
 What we need to take into consideration is the sum of all biomasses within the
 nearby region when given a particular coordinate, not the biomass of a single
 coordinate. Calculating the sum of biomasses within a certain region yields a
 time complexity of *O(n<sup>2</sup>)* where *n* is the radius of the region.
 Given that we have a square-shaped world (conceptually, in terms of coordinate
-systems) of a width of *m*, the total time complexity to calcuate the sum of
+systems) of a width of *m*, the total time complexity to calculate the sum of
 biomasses for all possible locations is *O(m<sup>2</sup>n<sup>2</sup>)* and this
 can be enormous.
 
@@ -59,10 +59,10 @@ coordinate, the biomass map stores the sum of the biomasses in the vicinity.
 </figure>
 
 The naive algorithm for matrix multiplication yields *O(m<sup>3</sup>)*, which
-has virtually no advantage over our original method. However, there is faster
+has virtually no advantage over our original method. However, there is a faster
 algorithm for matrix multiplication that yields *O(m<sup>2.807</sup>)*.[^1] This
-gives us a practical headstart by saving a large number of multiplication
-operations. Moveover, there is an additional advantage in an engineering
+gives us practical headstart by saving a large number of multiplication
+operations. Moreover, there is an additional advantage in an engineering
 perspective: sequential memory access is faster than random access.[^2]
 
 <figure>
@@ -77,7 +77,7 @@ we decided to look into other options.
 
 ## Second Apprach: OpenCL
 
-One of irresistable solutions to handle computionally intensive tasks is
+One of irresistible solutions to handle computationally intensive tasks is
 [GPGPU][gpgpu]. That is exactly what those [GPU][gpu]s are made for: crunching
 numbers. There are two major choices when it comes to GPGPU: [OpenCL][opencl]
 and [CUDA][cuda]. Although CUDA could achieve a higher performance<sup>[citation
@@ -88,12 +88,12 @@ Long story short, we wrote an OpenCL kernel for biomass maps pre-calculation. As
 a result, we were able to reduce the 30-minute runtime down to one minute and
 fifteen seconds, which is a 96% improvement.
 
-Nevertheless, the GPGPU solution definitely offers remarkable performance gains,
-it comes at a price. Most of all, it was a great engineering challenge; it was
-difficult to debug, difficult to profile, and difficult to do anything with it.
-That's probably because we had no prior GPGPU experience whatsoever. Another
-concern was maintenance and recruiting. Software engineers with GPGPU experience
-were rare commodities in the job market (at least in 2014, in South Korea).
+Nevertheless, the GPGPU solution offers remarkable performance gains, it comes
+at a price. Most of all, it was a great engineering challenge; it was difficult
+to debug, difficult to profile, and difficult to do anything with it. That's
+probably because we had no prior GPGPU experience whatsoever. Another concern
+was maintenance and recruiting. Software engineers with GPGPU experience were
+rare commodities in the job market (at least in 2014, in South Korea).
 
 For this reason, we decided to discard the GPGPU option and move onto a
 different one, which will be explained in the next section.
@@ -101,12 +101,12 @@ different one, which will be explained in the next section.
 ## Third Approach: Compressed Sparse Row
 
 One characteristic of our game world we could exploit was that it is mostly
-empty. In many cases, a half of the worlds is deep ocean; players may enter
+empty. In many cases, half of the world is deep ocean; players may enter
 shallow water areas but they are not allowed to swim into the deep ocean, and
-thus there is no biological entities nor natural resources in the deep ocean.
+thus there are no biological entities nor natural resources in the deep ocean.
 Furthermore, not all land spaces are fully occupied.
 
-This suggests that we might be able to represent our matrices in a [compresses
+This suggests that we might be able to represent our matrices in a [compressed
 sparse row (CSR)][csr] format. Then the time complexity will no longer be
 relevant to the size of the world, but rather the number of biological entities
 and natural resources in the world.
@@ -119,12 +119,12 @@ acceptable.
 
 ## Conclusion
 
-Ecosystem simulation is inherently computationally intensive. We have explored a
-number of different strategies to minimize the computing time. GPGPU offers
+Ecosystem simulation is inherently computationally intensive. We have explored 
+several different strategies to minimize the computing time. GPGPU offers
 lucrative benefits when it comes to large-scale number crunching operations,
 however, given our circumstances, it was difficult to employ GPGPU for
 production due to practical constraints. We decided to settle with the
-compressed sparse row (CSR) representation of matrices as it provides a
+compressed sparse row (CSR) representation of matrices as it provides
 comparable performance to that of GPGPU without having engineering and
 administrative burdens.
 
