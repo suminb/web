@@ -14,19 +14,47 @@
     <div class="ui text container" style="margin: 2em 0;">
       {%- filter markdown -%}
 
-## Introduction
+## Summary
 
-Enjoys writing code at work, and in his spare time to solve all kinds of
-problems faced in life. Recently became aware of new area of interest: to
-refactor code, and to re-organize software components to make things faster,
-more efficient, and more scalable. This is known as *The Maserati Problem*, a
-problem that you should not be concerned with until you have a *Maserati*
-(i.e., a large volume of users, data, etc.)
+- Experienced software engineer with a passion for distributed systems, scalability problems, and dealing with a large amount of data
+- Another area of interest is internal tools development to boost the productivity of colleagues
+- Keeps communication skills honed by actively engaging in conversations, public speeches, and ritually writing daily journals and various social media posts of substantial lengths
+- Maintains athletic competence above average, with emphasis on core muscle strength and endurance → no back pain even after an extended period of working in a sitting position (does not happen too often, but inevitable under exceptional circumstances)
 
-## Experience
+## Work Experience
 
-### Senior Software Engineer - [Coupang](https://www.linkedin.com/company/coupang/) (Jul 2018 - Present)
+### Senior Software Engineer @[Coupang](https://www.linkedin.com/company/coupang/)
 
+<div style="margin-top: -0.5em">
+  <i class="info circle icon"></i>
+  Korean version of Amazon.com; largest e-commerce, logistics company
+</div>
+<div>
+  <i class="calendar alternate icon"></i>Jul 2018 - Present
+  &nbsp;
+  <i class="map marker alternate icon"></i><a href="https://goo.gl/maps/iQoVxrCzRTL7buMM9">Seoul, South Korea</a>
+</div>
+
+#### Flow
+
+- Inter-domain logistics state management system
+- Handling write-heavy workloads with [Cassandra](http://cassandra.apache.org/)
+- Message ordering guarantee with a distributed queue
+- RESTful API for internal customers (domain teams)
+- Voluntarily undertook item picking operations, package sorting operations, and actual delivery operations (driving our delivery trucks to make deliveries to the customers) to gain comprehensive understanding of end-to-end logistics operations
+
+#### Flow Data Validation
+
+- Daily batch job to validate Flow data
+- Spark jobs written in Scala, fully automated with [Airflow](https://airflow.apache.org/)
+- Leading technical decisions and code management aspects
+
+#### Internal Tools & Extracurricular Activities
+
+- `awsauth`: Command line tool written in Golang to issue temporary AWS access keys with AD FS and AWS STS
+- Leading an unofficially-organized class to teach Python to colleagues
+
+<!--
 - Building a microservice to manage order/shipment states
     - [Cassandra](http://cassandra.apache.org/): to handle a large volume of
       accumulating data
@@ -36,9 +64,43 @@ problem that you should not be concerned with until you have a *Maserati*
     - Given a list of destinations and a set of constraints, find the optimal
       sequence and paths for delivery
     - Solves constrained optimization problems
+-->
 
-### Software Engineer - [Nexon](http://company.nexon.com) (Jul 2014 - Jul 2018)
+### Software Engineer @[Nexon](http://company.nexon.com)
 
+<div style="margin-top: -0.5em">
+  <i class="info circle icon"></i>
+  Largest gaming company in South Korea, servicing +100 titles in +190 nations world-wide
+</div>
+<div>
+  <i class="calendar alternate icon"></i>Jul 2014 - Jul 2018
+  &nbsp;
+  <i class="map marker alternate icon"></i><a href="https://goo.gl/maps/NJQdbg6n5rPBAeG28">Seongnam, South Korea</a>
+</div>
+
+#### Marketplace
+
+- In-game marketplace where players exchange goods with money and vice versa
+- Inter-database transactions (Couchbase ↔︎ AWS Aurora)
+- Complex search query support with Elasticsearch
+- Driving most of technical decisions
+
+#### Ecosystem Simulator & Pipeline
+
+- In-game natural environment that resembles that of the real world
+- Number crunching with OpenCL and C# math library
+- ECS, ECR, data pipeline
+- Cost saving (est. $300,000/year) with architectural revisions
+- Implementing precautionary measures: data validator, auto-scaling
+- Public speech on this topic: [Automating Mother Nature @AWS re:Invent 2017](https://www.youtube.com/watch?v=H7kF7r7UBFE)
+- More detailed stories can be found [here]({{ url_for('main.experience', key='durango_ecosim') }})
+
+#### Internal Tools
+
+- Wheelhouse: Automated Python package pre-build system for internal PyPI repository
+- Game world packaging and distribution tools for internal customers (game designers, non-tech users)
+
+<!--
 - Building a distributed MMORPG server system ([Durango](https://durango.nexon.com/En))
     - Marketplace
         - Handling inter-document, inter-database transactions
@@ -50,13 +112,27 @@ problem that you should not be concerned with until you have a *Maserati*
     - Cost reduction by optimizing our infrastructure
         - Saved (undisclosed amount)/year by employing multi-regional object storage
         - A number of other micro-savings
+-->
 
-### Software Engineer - [Spoqa](https://www.spoqa.com) (Mar 2014 - Jul 2014)
+### Software Engineer @[Spoqa](https://www.spoqa.com)
+
+<div style="margin-top: -0.5em">
+  <i class="calendar alternate icon"></i>Mar 2014 - Jul 2014
+  &nbsp;
+  <i class="map marker alternate icon"></i>Seoul, South Korea
+</div>
 
 - Building a customer-facing Android app
 - Building a backend for commercial loyalty service
 
-### Research Software Engineer - [Metropia, Inc](http://www.metropia.com) (Jan 2012 - Dec 2013)
+<!--
+### Part-Time Software Engineer @[Metropia, Inc](http://www.metropia.com) 
+
+<div style="margin-top: -0.5em">
+  <i class="calendar alternate icon"></i>Jan 2012 - Dec 2013
+  &nbsp;
+  <i class="map marker alternate icon"></i>Tucson, AZ, USA
+</div>
 
 - Designing and building an automated pipeline to generate rasterized map tiles
   from raw geospatial data (from [OpenStreetMap](https://www.openstreetmap.org))
@@ -64,14 +140,33 @@ problem that you should not be concerned with until you have a *Maserati*
 - Building a navigation app (Android)
 - Designing and implementing RESTful API for the navigation app (Python)
 
+### Research Programmer @University of Arizona
+
+Jun 2010 - Jun 2011, Tucson, AZ
+
+- Developed internal tools to conduct machine learning researches
+
+-->
+
 ## Education
 
-- University of Arizona (Tucson, AZ, USA) - MS in Computer Science (Aug 2011 - Dec 2013)
-- University of Arizona (Tucson, AZ, USA) - BS in Computer Science, Mathematics (Jan 2006 - Dec 2010)
+### MS in Computer Science @University of Arizona
+<div style="margin-top: -0.5em">
+  <i class="calendar alternate icon"></i>Aug 2011 - Dec 2013
+  &nbsp;
+  <i class="map marker alternate icon"></i>Tucson, AZ, USA
+</div>
+
+### BS in Computer Science, Mathematics @University of Arizona
+<div style="margin-top: -0.5em">
+    <i class="calendar alternate icon"></i>Jan 2006 - Dec 2010
+    &nbsp;
+    <i class="map marker alternate icon"></i>Tucson, AZ, USA
+  </div>
 
 ### Postgraduate Education
 
-- Occasionally, but constantly taking classes from [Coursera](https://www.coursera.org), [Udacity](https://www.udacity.com)
+- Occasionally, but persistently taking classes from [Coursera](https://www.coursera.org), [Udacity](https://www.udacity.com)
     - Machine Learning
     - Design of Computer Programs
     - Computational Finance
@@ -103,21 +198,17 @@ Discusses how *human-instructable computing* can be achieved. That is, how an *e
 
 ## Open Source Activities
 
-### [Hanja](https://github.com/suminb/hanja)
+### Contributions to others
 
-A Python library to [read Chinese characters in Korean sound values](https://ko.wikipedia.org/wiki/%EC%9D%8C%EB%8F%85).
+* [pandas-datareader](https://github.com/pydata/pandas-datareader/pulls?utf8=✓&q=author%3Asuminb): Extract data from a wide range of Internet sources into a pandas `DataFrame`.
+* [secor](https://github.com/pinterest/secor/pulls?utf8=%E2%9C%93&q=author%3Asuminb): Kafka log persistence.
+* [gspread](https://github.com/burnash/gspread/pulls?utf8=%E2%9C%93&q=author%3Asuminb): A Python library to access and manipulate Google Spreadsheets.
 
-### [Winnowing](https://github.com/suminb/winnowing)
+### My own projects
 
-A Python implementation of local algorithms for document fingerprinting.
-
-### [Base62](https://github.com/suminb/base62)
-
-A Python library to encode and decode any arbitrary data in base62 (duosexagesimal; using 0-9, A-Z, and a-z) for URL-safety. I was recently able to convince my colleagues to use this library for work.
-
-### [Gspread](https://github.com/burnash/gspread)
-
-A Python library to access and manipulate Google Spreadsheets. I was [one of the contributors](https://github.com/burnash/gspread/graphs/contributors).
+* [Hanja](https://github.com/suminb/hanja): A Python library to [read Chinese characters in Korean sound values](https://ko.wikipedia.org/wiki/%EC%9D%8C%EB%8F%85).
+* [Winnowing](https://github.com/suminb/winnowing): A Python implementation of local algorithms for document fingerprinting.
+* [Base62](https://github.com/suminb/base62): A Python library to encode and decode any arbitrary data in base62 (duosexagesimal; using 0-9, A-Z, and a-z) for URL-safety. I was recently able to convince my colleagues to use this library for work.
 
 ## Personal Projects
 
@@ -138,6 +229,8 @@ Providing 127GFLOPs on average to tackle difficult scientific problems such as c
 ### [Radioactivity](https://bitbucket.org/suminb/radioactivity) (Discontinued)
 
 This project had started in March of 2011 in an attempt to help the general public to be alerted regarding the spread of radiation and other radioactive materials originated from the catastrophic incident in the Fukushima nuclear power plant in Japan, by visualizing city-wise radition levels in near real time.
+
+[seoul]: https://www.google.com/maps/place/Seoul/@37.5650172,126.8494673,11z
 
       {%- endfilter -%}
     </div>

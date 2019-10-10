@@ -1,8 +1,13 @@
-language: python
 sudo: false
 
+language: python
 python:
-  - "3.6"
+  - "3.7"
+  - "3.8-dev"
+
+addons:
+  sonarcloud:
+    organization: "suminb-github"
 
 install:
   - pip install -r requirements.txt
@@ -14,3 +19,4 @@ script:
 
 after_success:
   - coveralls
+  - sonar-scanner

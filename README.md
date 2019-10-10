@@ -8,6 +8,7 @@ Build Status
 
 [![Build Status](https://travis-ci.org/suminb/web.svg?branch=develop)](https://travis-ci.org/suminb/web)
 [![Coverage Status](https://coveralls.io/repos/suminb/web/badge.svg?branch=develop&service=github)](https://coveralls.io/github/suminb/web?branch=develop)
+[![Sonar](https://sonarcloud.io/api/project_badges/measure?project=suminb_web&metric=alert_status)](https://sonarcloud.io/dashboard?id=suminb_web)
 
 Prerequisites
 -------------
@@ -45,7 +46,7 @@ There is a shell script for that.
 
 ### Compile a list of geocoordinates from Google Spreadsheet
 
-    python web/__main__.py import_gspread $GSPREAD_KEY > web/static/locations.json
+    web import-gspread $GSPREAD_KEY > web/static/locations.js
 
 NOTE: This is automatically handled by `publish.sh` script, and thus no need to
 be run unless for testing.

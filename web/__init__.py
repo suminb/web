@@ -4,7 +4,7 @@ from markdown import markdown as markdown_
 from markdown.extensions.footnotes import FootnoteExtension
 
 
-__version__ = '2.4.0'
+__version__ = '2.4.1'
 
 
 #
