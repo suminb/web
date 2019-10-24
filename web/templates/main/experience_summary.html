@@ -16,10 +16,20 @@
 
 ## Summary
 
-- Experienced software engineer with a passion for distributed systems, scalability problems, and dealing with a large amount of data
-- Another area of interest is internal tools development to boost the productivity of colleagues
-- Keeps communication skills honed by actively engaging in conversations, public speeches, and ritually writing daily journals and various social media posts of substantial lengths
-- Maintains athletic competence above average, with emphasis on core muscle strength and endurance → no back pain even after an extended period of working in a sitting position (does not happen too often, but inevitable under exceptional circumstances)
+- Experienced software engineer with a passion for distributed systems,
+  scalability problems, and dealing with a large amount of data
+- Another area of interest is internal tools development to boost the
+  productivity of colleagues
+- Keeps communication skills honed by actively engaging in conversations,
+  public speeches, and ritually writing daily journals and various social media
+  posts of substantial lengths
+
+<!--
+- Maintains athletic competence above average, with emphasis on core muscle
+  strength and endurance → no back pain even after an extended period of working
+  in a sitting position (does not happen too often, but inevitable under
+  exceptional circumstances)
+-->
 
 ## Work Experience
 
@@ -35,23 +45,36 @@
   <i class="map marker alternate icon"></i><a href="https://goo.gl/maps/iQoVxrCzRTL7buMM9">Seoul, South Korea</a>
 </div>
 
-#### Flow
+#### Data Engineering
 
-- Inter-domain logistics state management system
+- Kafka log persistence
+- Kafka schema registry
+- Handling extract, transform, load (ETL) tasks with Spark
+
+#### Inter-domain logistics state management system (Flow)
+
 - Handling write-heavy workloads with [Cassandra](http://cassandra.apache.org/)
 - Message ordering guarantee with a distributed queue
 - RESTful API for internal customers (domain teams)
-- Voluntarily undertook item picking operations, package sorting operations, and actual delivery operations (driving our delivery trucks to make deliveries to the customers) to gain comprehensive understanding of end-to-end logistics operations
+- Spark jobs for data validation, written in Scala, fully automated with
+  [Airflow](https://airflow.apache.org/)
 
-#### Flow Data Validation
-
-- Daily batch job to validate Flow data
-- Spark jobs written in Scala, fully automated with [Airflow](https://airflow.apache.org/)
-- Leading technical decisions and code management aspects
+<!--
+- Voluntarily undertook item picking operations, package sorting operations,
+  and actual delivery operations (driving our delivery trucks to make deliveries
+  to the customers) to gain comprehensive understanding of end-to-end logistics
+  operations
+- Leading technical decisions and code management aspects (for the data
+  validation part)
+-->
 
 #### Internal Tools & Extracurricular Activities
 
-- `awsauth`: Command line tool written in Golang to issue temporary AWS access keys with AD FS and AWS STS
+- `awsauth`: Command line tool written in Golang to issue temporary AWS access
+  keys with AD FS and AWS STS
+- `schema-extractor`: Command line tool to generate an ORC schema from a Java
+  DTO class using
+  [reflection](https://www.geeksforgeeks.org/reflection-in-java/).
 - Leading an unofficially-organized class to teach Python to colleagues
 
 <!--
@@ -139,14 +162,13 @@
   in global-scale.
 - Building a navigation app (Android)
 - Designing and implementing RESTful API for the navigation app (Python)
+-->
 
 ### Research Programmer @University of Arizona
 
 Jun 2010 - Jun 2011, Tucson, AZ
 
 - Developed internal tools to conduct machine learning researches
-
--->
 
 ## Education
 
@@ -176,25 +198,39 @@ Jun 2010 - Jun 2011, Tucson, AZ
 
 ### AWS re:Invent 2017: [Automating Mother Nature](https://www.youtube.com/watch?v=H7kF7r7UBFE)
 
-Discussed the architecture that we settled on for algorithmic generation of game content in a large scale with a number of components provided by Amazon Web Services such as distributed messaging queues (SQS), containerized application clusters (ECS), and object storages (S3).
+Discussed the architecture that we settled on for algorithmic generation of
+game content in a large scale with a number of components provided by Amazon
+Web Services such as distributed messaging queues (SQS), containerized
+application clusters (ECS), and object storages (S3).
 
 ### Nexon Developers Conference 2016: [Automated Game Terrain Management for Durango](http://ndcreplay.nexon.com/NDC2016/sessions/NDC2016_0062.html)
 
-Discussed how we built an automated pipeline to supply natural resources. Due to the sheer size of the in-game world, the environment simulation is performed on-demand, within a limited geographic boundary, in accordance with player activities.
+Discussed how we built an automated pipeline to supply natural resources. Due
+to the sheer size of the in-game world, the environment simulation is performed
+on-demand, within a limited geographic boundary, in accordance with player
+activities.
 
 ### Nexon Developers Conference 2015: [Natural Environment Simulation for Durango](http://ndcreplay.nexon.com/NDC2015/sessions/NDC2015_0063.html)
 
-Discussed how we built an in-game environment simulator with OpenCL to handle a massive parallel processing. The primary purpose of the simulator is to provide natural resources based on realistic simulations by taking a number of geographic features, such as topography, temperature, humidity, soil fertility, into consideration.
+Discussed how we built an in-game environment simulator with OpenCL to handle a
+massive parallel processing. The primary purpose of the simulator is to provide
+natural resources based on realistic simulations by taking a number of
+geographic features, such as topography, temperature, humidity, soil fertility,
+into consideration.
 
 ## Patents &amp; Research Papers
 
 ### [Patent #1020160025511: A system for simulating a game environment](https://doi.org/10.8080/1020160025511) (Mar 2016)
 
-Nexon decided to file a patent with the work referred above as *natural environment simulation*. I was listed as a co-author along with the game designer who pioneered the concept.
+Nexon decided to file a patent with the work referred above as *natural
+environment simulation*. I was listed as a co-author along with the game
+designer who pioneered the concept.
 
 ### [Human Natural Instruction of a Simulated Electronic Student](https://www.researchgate.net/publication/221250935_Human_Natural_Instruction_of_a_Simulated_Electronic_Student) (Jan 2011)
 
-Discusses how *human-instructable computing* can be achieved. That is, how an *electronic student* can be taught using the same natural instruction methods humans use.
+Discusses how *human-instructable computing* can be achieved. That is, how an
+*electronic student* can be taught using the same natural instruction methods
+humans use.
 
 ## Open Source Activities
 
@@ -209,26 +245,35 @@ Discusses how *human-instructable computing* can be achieved. That is, how an *e
 * [Hanja](https://github.com/suminb/hanja): A Python library to [read Chinese characters in Korean sound values](https://ko.wikipedia.org/wiki/%EC%9D%8C%EB%8F%85).
 * [Winnowing](https://github.com/suminb/winnowing): A Python implementation of local algorithms for document fingerprinting.
 * [Base62](https://github.com/suminb/base62): A Python library to encode and decode any arbitrary data in base62 (duosexagesimal; using 0-9, A-Z, and a-z) for URL-safety. I was recently able to convince my colleagues to use this library for work.
+* [And more on my GitHub page](https://github.com/suminb)
 
 ## Personal Projects
 
-### [Dollar Auction](http://1000won.auction/auctions)
+### [Dollar Auction](http://auctions.shortbread.io/auctions)
 
-An improvised marketplace to sell underused personal belongings.
+An improvised marketplace to sell underused personal belongings where every
+auction starts at KRW 1,000 (approximately USD 1).
 
 ### [SB Finance](https://github.com/suminb/finance)
 
-A collection of computational finance primitives to achieve a long-term value investment.
+Set of code for personal asset management and quantitative investment.
 
 ## Volunteer Works
 
 ### [BOINC](https://en.wikipedia.org/wiki/Berkeley_Open_Infrastructure_for_Network_Computing)
 
-Providing 127GFLOPs on average to tackle difficult scientific problems such as climate modeling, discovering large prime numbers, and generating accurate three-dimensional dynamic models of stellar streams in the immediate vicinity of the Milky Way galaxy.
+Providing 127GFLOPs on average to tackle difficult scientific problems such as
+climate modeling, discovering large prime numbers, and generating accurate
+three-dimensional dynamic models of stellar streams in the immediate vicinity
+of the Milky Way galaxy.
 
 ### [Radioactivity](https://bitbucket.org/suminb/radioactivity) (Discontinued)
 
-This project had started in March of 2011 in an attempt to help the general public to be alerted regarding the spread of radiation and other radioactive materials originated from the catastrophic incident in the Fukushima nuclear power plant in Japan, by visualizing city-wise radition levels in near real time.
+This project had started in March of 2011 in an attempt to help the general
+public to be alerted regarding the spread of radiation and other radioactive
+materials originated from the catastrophic incident in the Fukushima nuclear
+power plant in Japan, by visualizing city-wise radition levels in near real
+time.
 
 [seoul]: https://www.google.com/maps/place/Seoul/@37.5650172,126.8494673,11z
 
