@@ -6,11 +6,10 @@ import pytest
 def testapp(request):
     """Session-wide test `Flask` application."""
     settings_override = {
-        'TESTING': True,
-        'DEBUG': True,
+        "TESTING": True,
+        "DEBUG": True,
     }
-    app = create_app(__name__, config=settings_override,
-                     template_folder='../templates')
+    app = create_app(__name__, config=settings_override, template_folder="../templates")
 
     # Establish an application context before running the tests.
     ctx = app.app_context()

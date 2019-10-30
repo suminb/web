@@ -12,9 +12,11 @@ addons:
 install:
   - pip install -r requirements.txt
   - pip install -r web/tests/requirements.txt
+  - pip install black
 
 script:
   - export PYTHONPATH=$PYTHONPATH:.
+  - black --check .
   - py.test --cov web --cov-report term-missing --durations=10
 
 after_success:

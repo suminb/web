@@ -6,16 +6,14 @@ import yaml
 
 
 class CustomJSONEncoder(JSONEncoder):
-
     def default(self, obj):
         if isinstance(obj, datetime):
-            return obj.strftime('%Y-%m-%dT%H:%M')
+            return obj.strftime("%Y-%m-%dT%H:%M")
         else:
             return super(JSONEncoder, self).default(obj)
 
 
 class Loader(yaml.SafeLoader):
-
     def __init__(self, stream):
         self._root = os.path.split(stream.name)[0]
         super(Loader, self).__init__(stream)
@@ -23,14 +21,14 @@ class Loader(yaml.SafeLoader):
     def include(self, node):
         filename = os.path.join(self._root, self.construct_scalar(node))
         _, ext = os.path.splitext(filename)
-        with open(filename, 'r') as f:
-            if ext == '.yml':
+        with open(filename, "r") as f:
+            if ext == ".yml":
                 return yaml.load(f, Loader)
             else:
                 return f.read()
 
 
-Loader.add_constructor('!include', Loader.include)
+Loader.add_constructor("!include", Loader.include)
 
 
 class ExperienceCollection:
@@ -68,9 +66,18 @@ class ExperienceCollection:
 
 
 class Experience:
-
-    def __init__(self, key, published, parent, title, description, starts_at,
-                 ends_at, category, tags):
+    def __init__(
+        self,
+        key,
+        published,
+        parent,
+        title,
+        description,
+        starts_at,
+        ends_at,
+        category,
+        tags,
+    ):
         self.key = key
         self.published = published
         self.key = key
