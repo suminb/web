@@ -1,5 +1,5 @@
 def test_pages(testapp):
-    pages = ('/',)
+    pages = ("/",)
     for page in pages:
         resp = testapp.get(page)
         assert resp.status_code == 200
