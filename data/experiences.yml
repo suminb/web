@@ -12,17 +12,78 @@ routing_service:
     Given a list of destinations and a set of constraints, find the optimal
     sequence and paths for delivery.
 
-flow:
-  published: false
+datalake:
+  published: true
   parent: null
-  title: "FLOW"
+  title: "Data Lake"
+  starts_at: "Sep 2019"
+  ends_at: "Present"
+  category: ""
+  tags:
+    - scala
+    - kafka 
+    - s3
+    - spark
+    - avro
+    - etl
+  description: |
+    Inter-domain logistics state management system
+
+flow:
+  published: true
+  parent: null
+  title: "Inter-domain logistics state management system (Flow)"
   starts_at: "Dec 2018"
-  ends_at: "Current"
+  ends_at: "Jul 2019"
   category: ""
   tags:
     - java
+    - spring
     - cassandra
-  description: 
+    - kafka
+    - spark
+  description: |
+    Inter-domain logistics state management system
+
+awsauth:
+  published: true
+  parent: null
+  title: "awsauth"
+  starts_at: "Dec 2018"
+  ends_at: "Jul 2019"
+  category: ""
+  tags:
+    - go 
+    - aws
+    - sts
+  description: |
+    Command line tool written in Golang to issue temporary AWS access keys with AD FS and AWS STS
+
+sbcw:
+  published: true
+  parent: null
+  title: "SB Coding Workshop"
+  starts_at: "2018"
+  ends_at: "2019"
+  category: ""
+  tags:
+    - python
+    - teaching
+  description: |
+    Teaching advanced Python for software engineers. http://github.com/suminb/sbcw
+
+sbcw_coupang:
+  published: true
+  parent: null
+  title: "SB Coding Workshop (for Coupang)"
+  starts_at: "Oct 2018"
+  ends_at: "Nov 2018"
+  category: ""
+  tags:
+    - python
+    - teaching
+  description: |
+    Leading an unofficial Python class within the company
 
 durango:
   published: true
@@ -76,7 +137,8 @@ durango_marketplace:
   category: "Game"
   tags:
   - python
-  - database
+  - couchbase
+  - postgresql
   - game
   description: ""
 
