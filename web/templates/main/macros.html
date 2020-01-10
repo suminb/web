@@ -49,11 +49,15 @@
 </div>
 {%- endmacro %}
 
-{% macro render_tags(tags) -%}
+{%- macro render_tag(tag, css_class='ui label') -%}
+  <a href="{{ url_for('main.experiences_with_tag', tag=tag) }}" class="{{ css_class }}">{{ tag }}</a>
+{%- endmacro -%}
+
+{%- macro render_tags(tags, css_class='ui label') -%}
   {% for tag in tags %}
-  <a href="{{ url_for('main.experiences_with_tag', tag=tag) }}" class="ui label">{{ tag }}</a>
+  {{- render_tag(tag, css_class) -}}
   {% endfor %}
-{%- endmacro %}
+{%- endmacro -%}
 
 {% macro footer() -%}
 <div class="ui inverted vertical footer segment">
