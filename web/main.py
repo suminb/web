@@ -32,8 +32,10 @@ def coding_expedition():
 
 @main_module.route("/experience.html")
 def experience_summary():
+    experiences = ExperienceCollection.load(DATA_FILE)
     context = {
         "current_page": "experience",
+        "experiences": experiences,
     }
     return render_template("experience_summary.html", **context)
 

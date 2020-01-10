@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 {% from "macros.html" import exp_menu, footer, main_menu, render_tags %}
+{% macro minitag(tag) %}
+  <div class="ui tiny label">
+    spark
+  </div>
+{% endmacro %}
 {% block body %}
   <!-- Page Contents -->
   <div class="pusher">
@@ -45,13 +50,15 @@
   <i class="map marker alternate icon"></i><a href="https://goo.gl/maps/iQoVxrCzRTL7buMM9">Seoul, South Korea</a>
 </div>
 
-#### Data Engineering
+<h4 style="margin-bottom: 0.25em">{{ experiences.datalake.title }}</h4>
+{{ render_tags(experiences.datalake.tags, css_class='ui tiny label')}}
 
 - Kafka log persistence
 - Kafka schema registry
 - Handling extract, transform, load (ETL) tasks with Spark
 
-#### Inter-domain logistics state management system (Flow)
+<h4 style="margin-bottom: 0.25em">{{ experiences.flow.title }}</h4>
+{{ render_tags(experiences.flow.tags, css_class='ui tiny label')}}
 
 - Handling write-heavy workloads with [Cassandra](http://cassandra.apache.org/)
 - Message ordering guarantee with a distributed queue
@@ -72,10 +79,12 @@
 
 - `awsauth`: Command line tool written in Golang to issue temporary AWS access
   keys with AD FS and AWS STS
+  {{ render_tags(experiences.awsauth.tags, css_class='ui tiny label') }}
 - `schema-extractor`: Command line tool to generate an ORC schema from a Java
   DTO class using
   [reflection](https://www.geeksforgeeks.org/reflection-in-java/).
 - Leading an unofficially-organized class to teach Python to colleagues
+  {{ render_tags(experiences.sbcw_coupang.tags, css_class='ui tiny label') }}
 
 <!--
 - Building a microservice to manage order/shipment states
@@ -101,7 +110,8 @@
   <i class="map marker alternate icon"></i><a href="https://goo.gl/maps/NJQdbg6n5rPBAeG28">Seongnam, South Korea</a>
 </div>
 
-#### Marketplace
+<h4 style="margin-bottom: 0.25em">{{ experiences.durango_marketplace.title }}</h4>
+{{ render_tags(experiences.durango_marketplace.tags, css_class='ui tiny label')}}
 
 - In-game marketplace where players exchange goods with money and vice versa
 - Inter-database transactions (Couchbase ↔︎ AWS Aurora)
@@ -109,6 +119,9 @@
 - Driving most of technical decisions
 
 #### [Ecosystem Simulator][durango_ecosim] & [Pipeline][durango_ecosim_pipeline]
+{{ render_tags(experiences.durango_ecosim.tags + experiences.durango_ecosim_pipeline.tags,
+  css_class='ui tiny label')
+}}
 
 - In-game natural environment that resembles that of the real world
 - Number crunching with OpenCL and C# math library
