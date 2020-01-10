@@ -26,13 +26,14 @@ datalake:
     - spark
     - avro
     - etl
+    - distributed
   description: |
-    Inter-domain logistics state management system
+    Building a large scale datastore.
 
 flow:
   published: true
   parent: null
-  title: "Inter-domain logistics state management system (Flow)"
+  title: "Inter-domain Logistics State Management System (Flow)"
   starts_at: "Dec 2018"
   ends_at: "Jul 2019"
   category: ""
@@ -42,8 +43,9 @@ flow:
     - cassandra
     - kafka
     - spark
+    - distributed
   description: |
-    Inter-domain logistics state management system
+    Inter-domain logistics state management system.
 
 awsauth:
   published: true
@@ -57,7 +59,7 @@ awsauth:
     - aws
     - sts
   description: |
-    Command line tool written in Golang to issue temporary AWS access keys with AD FS and AWS STS
+    Command line tool written in Golang to issue temporary AWS access keys with AD FS and AWS STS.
 
 sbcw:
   published: true
@@ -83,12 +85,12 @@ sbcw_coupang:
     - python
     - teaching
   description: |
-    Leading an unofficial Python class within the company
+    Leading an unofficial Python class within the company.
 
 durango:
   published: true
   parent: null
-  title: "Distributed MMORPG Server System (Durango)"
+  title: "Distributed MMORPG Server (Durango)"
   starts_at: "Jul 2014"
   ends_at: "Jul 2018"
   category: "Game"
@@ -185,6 +187,7 @@ log_structured_filesystem:
   ends_at: "Dec 2013"
   category: "Operating Systems"
   tags:
+  - c
   - storage
   - filesystem
   description: ""
