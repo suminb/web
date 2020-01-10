@@ -23,7 +23,7 @@
         <i class="tags icon"></i>
         {{ render_tags(experience.tags) }}
       </div>
-      <p>{{ experience.description|markdown|truncate(250) }}</p>
+      <p>{{ experience.description|markdown|safe|truncate(250) }}</p>
       {% endfor %}
     </div>
     {{ footer() }}
