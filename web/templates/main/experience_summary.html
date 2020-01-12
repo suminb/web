@@ -50,7 +50,11 @@
   <i class="map marker alternate icon"></i><a href="https://goo.gl/maps/iQoVxrCzRTL7buMM9">Seoul, South Korea</a>
 </div>
 
-<h4 style="margin-bottom: 0.25em">{{ experiences.datalake.title }}</h4>
+<h4 style="margin-bottom: 0.25em">
+  <a href="{{ url_for('main.experience', key=experiences.datalake.key) }}">
+    {{ experiences.datalake.title }}
+  </a>
+</h4>
 {{ render_tags(experiences.datalake.tags, css_class='ui tiny label')}}
 
 - Kafka log persistence

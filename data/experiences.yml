@@ -27,8 +27,7 @@ datalake:
     - avro
     - etl
     - distributed
-  description: |
-    Building a large scale datastore.
+  description: !include "datalake.md"
 
 flow:
   published: true
