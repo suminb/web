@@ -156,38 +156,52 @@
         - A number of other micro-savings
 -->
 
-### Software Engineer @[Spoqa](https://www.spoqa.com)
+<div class="ui accordion">
+  <div class="title">
+    <i class="dropdown icon"></i>
+    Reveal older entries
+  </div>
+  <div class="content">
+    <p class="transition hidden">
+      <h3>Software Engineer @<a href="https://www.spoqa.com">Spoqa</a></h3>
 
-<div style="margin-top: -0.5em">
-  <i class="calendar alternate icon"></i>Mar 2014 - Jul 2014
-  &nbsp;
-  <i class="map marker alternate icon"></i>Seoul, South Korea
+      <div style="margin-top: -0.5em">
+        <i class="calendar alternate icon"></i>Mar 2014 - Jul 2014
+        &nbsp;
+        <i class="map marker alternate icon"></i>Seoul, South Korea
+      </div>
+
+      <ul>
+        <li>Built a customer-facing Android app</li>
+        <li>Built a backend for commercial loyalty service</li>
+      </ul>
+
+      <!--
+      ### Part-Time Software Engineer @[Metropia, Inc](http://www.metropia.com)
+
+      <div style="margin-top: -0.5em">
+        <i class="calendar alternate icon"></i>Jan 2012 - Dec 2013
+        &nbsp;
+        <i class="map marker alternate icon"></i>Tucson, AZ, USA
+      </div>
+
+      - Designing and building an automated pipeline to generate rasterized map tiles
+        from raw geospatial data (from [OpenStreetMap](https://www.openstreetmap.org))
+        in global-scale.
+      - Building a navigation app (Android)
+      - Designing and implementing RESTful API for the navigation app (Python)
+      -->
+
+      <h3>Research Programmer @University of Arizona</h3>
+
+      Jun 2010 - Jun 2011, Tucson, AZ
+
+      <ul>
+        <li>Developed internal tools to conduct machine learning research</li>
+      </ul>
+    </p>
+  </div>
 </div>
-
-- Building a customer-facing Android app
-- Building a backend for commercial loyalty service
-
-<!--
-### Part-Time Software Engineer @[Metropia, Inc](http://www.metropia.com) 
-
-<div style="margin-top: -0.5em">
-  <i class="calendar alternate icon"></i>Jan 2012 - Dec 2013
-  &nbsp;
-  <i class="map marker alternate icon"></i>Tucson, AZ, USA
-</div>
-
-- Designing and building an automated pipeline to generate rasterized map tiles
-  from raw geospatial data (from [OpenStreetMap](https://www.openstreetmap.org))
-  in global-scale.
-- Building a navigation app (Android)
-- Designing and implementing RESTful API for the navigation app (Python)
--->
-
-### Research Programmer @University of Arizona
-
-Jun 2010 - Jun 2011, Tucson, AZ
-
-- Developed internal tools to conduct machine learning researches
 
 ## Education
 
@@ -300,5 +314,8 @@ time.
     </div>
     {{ footer() }}
   </div>
+  <script>
+    $('.ui.accordion').accordion();
+  </script>
 
 {% endblock %}
