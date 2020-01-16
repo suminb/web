@@ -88,6 +88,6 @@ https://aws.amazon.com/solutions/data-lake-solution/
 Wrap Up
 -------
 
-Following the definition of a data lake, it may sound quite simple to build one. But, just like anything else, it comes with its own unique set of challenges. The sheer scale of the data that a data lake typically faces is likely the source of all the challenges. Exactly-once semantics and evolving schema would not be an issue otherwise. Also, we can never be too careful when it comes to security.
+Following the definition of a data lake, it may sound quite simple to build one. But, just like anything else, it comes with its own unique set of challenges. The sheer scale of the data that a data lake typically faces is likely the source of all the challenges. Exactly-once semantics and evolving schema would not be much of an issue otherwise. Also, we can never be too careful when it comes to security.
 
 After all, the purpose of this article is to provide a brief explanation of the typical challenges of building an enterprise data lake. If you are interested in tackling these kinds of problems, please do not hesitate to [reach out to me](mailto:suminb@gmail.com) with your up-to-date CV.
