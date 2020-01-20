@@ -18,7 +18,12 @@ DATA_FILE = "data/experiences.yml"
 @main_module.route("/")
 def index():
     # FIXME: Could we automate this part somehow? (current_page)
-    return render_template("index.html", **{"current_page": "index"})
+    experiences = ExperienceCollection.load(DATA_FILE)
+    context = {
+        "current_page": "index",
+        "experiences": experiences,
+    }
+    return render_template("index.html", **context)
 
 
 @main_module.route("/coding-expedition.html")

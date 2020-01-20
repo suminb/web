@@ -46,7 +46,11 @@
         <!-- TODO: Put an auto-updated commit graph here -->
         <h3 class="ui header">Current Projects</h3>
         <ul>
-          <li>(Classified)</li>
+          <li>
+            <a href="{{ url_for('main.experience', key='datalake') }}">
+              {{ experiences.datalake.title }}
+            </a>
+          </li>
           <li><a href="https://github.com/suminb/finance">SB Finance Project</a></li>
           <li><a href="https://github.com/suminb/sbcw">SB Coding Workshop</a></li>
         </ul>
