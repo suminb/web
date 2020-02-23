@@ -32,7 +32,7 @@ datalake:
 flow:
   published: true
   parent: null
-  title: "Inter-domain Logistics State Management System (Flow)"
+  title: "Inter-domain Logistics State Management System"
   starts_at: "Dec 2018"
   ends_at: "Jul 2019"
   category: ""

@@ -19,24 +19,23 @@
     <div class="ui text container" style="margin: 2em 0;">
       {%- filter markdown -%}
 
+<style>
+h4 {
+  margin-bottom: 0.25em;
+}
+</style>
+
 ## Summary
 
 - Experienced software engineer with a passion for distributed systems,
-  scalability problems, and dealing with a large amount of data
-- Another area of interest is internal tools development to boost the
-  productivity of colleagues
+  scalability problems, and dealing with a large amount of data.
+- Actively seeks for opportunities to boost the productivity of the team by
+  building internal tools.
 - Keeps communication skills honed by actively engaging in conversations,
   public speeches, and ritually writing daily journals and various social media
-  posts of substantial lengths
+  posts of substantial lengths.
 
-<!--
-- Maintains athletic competence above average, with emphasis on core muscle
-  strength and endurance → no back pain even after an extended period of working
-  in a sitting position (does not happen too often, but inevitable under
-  exceptional circumstances)
--->
-
-## Work Experience
+## Experience
 
 ### Senior Software Engineer @[Coupang](https://www.linkedin.com/company/coupang/)
 
@@ -50,25 +49,27 @@
   <i class="map marker alternate icon"></i><a href="https://goo.gl/maps/iQoVxrCzRTL7buMM9">Seoul, South Korea</a>
 </div>
 
-<h4 style="margin-bottom: 0.25em">
+<h4>
   <a href="{{ url_for('main.experience', key=experiences.datalake.key) }}">
     {{ experiences.datalake.title }}
   </a>
 </h4>
 {{ render_tags(experiences.datalake.tags, css_class='ui tiny label')}}
 
-- Kafka log persistence
-- Kafka schema registry
-- Handling extract, transform, load (ETL) tasks with Spark
+- Led other senior engineers who are partially involved in this project.
+- Wrote Spark jobs for extract, transform, load (ETL) tasks, Airflow jobs for
+  automation.
+- Contributed to [Secor project](https://github.com/pinterest/secor/pulls?utf8=%E2%9C%93&q=is%3Apr+author%3Asuminb)
+  (from Pinterest) to fulfill the needs of this project.
 
-<h4 style="margin-bottom: 0.25em">{{ experiences.flow.title }}</h4>
+<h4>{{ experiences.flow.title }}</h4>
 {{ render_tags(experiences.flow.tags, css_class='ui tiny label')}}
 
-- Handling write-heavy workloads with [Cassandra](http://cassandra.apache.org/)
-- Message ordering guarantee with a distributed queue
-- RESTful API for internal customers (domain teams)
-- Spark jobs for data validation, written in Scala, fully automated with
-  [Airflow](https://airflow.apache.org/)
+- Consolidated duplicated features across multiple internal teams into a common
+  microservice to eliminate data inconsistencies and to promote efficiency.
+- Wrote code to handle write-heavy workloads with [Cassandra](http://cassandra.apache.org).
+- Wrote Spark jobs in Scala for data validation, fully automated with
+  [Airflow](https://airflow.apache.org)
 
 <!--
 - Voluntarily undertook item picking operations, package sorting operations,
@@ -81,21 +82,13 @@
 
 #### Internal Tools & Extracurricular Activities
 
-- `awsauth`: Command line tool written in Golang to issue temporary AWS access
-  keys with AD FS and AWS STS
+- Built a command line tool in Golang to issue temporary AWS access keys with
+  AD FS and AWS STS to reduce wasted time for myself and my colleagues.
   {{ render_tags(experiences.awsauth.tags, css_class='ui tiny label') }}
-- `schema-extractor`: Command line tool to generate an ORC schema from a Java
-  DTO class using
-  [reflection](https://www.geeksforgeeks.org/reflection-in-java/).
-- Leading an unofficially-organized class to teach Python to colleagues
+- Led an unofficially-organized Python class.
   {{ render_tags(experiences.sbcw_coupang.tags, css_class='ui tiny label') }}
 
 <!--
-- Building a microservice to manage order/shipment states
-    - [Cassandra](http://cassandra.apache.org/): to handle a large volume of
-      accumulating data
-    - [Spring Reactive](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html): 
-      asynchronous handling of requests for higher throughput
 - Routing service (currently on hold)
     - Given a list of destinations and a set of constraints, find the optimal
       sequence and paths for delivery
@@ -114,15 +107,8 @@
   <i class="map marker alternate icon"></i><a href="https://goo.gl/maps/NJQdbg6n5rPBAeG28">Seongnam, South Korea</a>
 </div>
 
-<h4 style="margin-bottom: 0.25em">{{ experiences.durango_marketplace.title }}</h4>
-{{ render_tags(experiences.durango_marketplace.tags, css_class='ui tiny label')}}
-
-- In-game marketplace where players exchange goods with money and vice versa
-- Inter-database transactions (Couchbase ↔︎ AWS Aurora)
-- Complex search query support with Elasticsearch
-- Driving most of technical decisions
-
 #### [Ecosystem Simulator][durango_ecosim] & [Pipeline][durango_ecosim_pipeline]
+
 {{ render_tags(experiences.durango_ecosim.tags + experiences.durango_ecosim_pipeline.tags,
   css_class='ui tiny label')
 }}
@@ -136,6 +122,14 @@
 
 [durango_ecosim]: {{ url_for('main.experience', key='durango_ecosim') }}
 [durango_ecosim_pipeline]: {{ url_for('main.experience', key='durango_ecosim_pipeline') }}
+
+<h4>{{ experiences.durango_marketplace.title }}</h4>
+{{ render_tags(experiences.durango_marketplace.tags, css_class='ui tiny label')}}
+
+- In-game marketplace where players exchange goods with money and vice versa
+- Inter-database transactions (Couchbase ↔︎ AWS Aurora)
+- Complex search query support with Elasticsearch
+- Driving most of technical decisions
 
 #### Internal Tools
 
