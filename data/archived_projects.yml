@@ -74,7 +74,7 @@
     - application
     - web
   description: >-
-    is language translator that uses Japanese as an intermediate language. Processes +20,000 translation requests on a
+    A language translator that uses Japanese as an intermediate language. Processes +20,000 translation requests on a
     daily basis (as of Sep 2013).
 - name: Winnowing
   url: https://github.com/suminb/winnowing
@@ -102,7 +102,7 @@
     - transportation
     - big data
   description: >-
-    is an ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to
+    An ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to
     build a scalable system with Amazon EC2 platform, and to build in-house software for data analysis.
 - name: Purpose-built Appliance
   url: https://github.com/suminb/scalable-appliance
@@ -124,7 +124,7 @@
   keywords:
     - application
     - chemistry
-  description: is an iOS app to help students with writing chemistry lab reports.
+  description: An iOS app to help students with writing chemistry lab reports.
 - name: Radioactivity
   url: https://bitbucket.org/suminb/radioactivity
   year: 2012
@@ -173,7 +173,7 @@
     - application
     - web
     - ebook
-  description: is an RSS/Atom feed aggregation service for Amazon Kindle.
+  description: An RSS/Atom feed aggregation service for Amazon Kindle.
 - name: Teach Ourselves
   url: http://roslin.cs.arizona.edu/teachourselves/
   year: 2011
@@ -184,7 +184,7 @@
     - application
     - web
   description: >-
-    is a project to create a society for students in which learning and creativity is rewarded with points that can be
+    A project to create a society for students in which learning and creativity is rewarded with points that can be
     redeemed for goods.
 - name: Bootstrapped Learning
   year: 2010
@@ -196,7 +196,7 @@
     - machine learning
     - interdisciplinary
   description: >-
-    is a DARPA sponsored project to develop an <em>electronic student</em> that can learn from natural human instruction
+    A DARPA sponsored project to develop an <em>electronic student</em> that can learn from natural human instruction
     close to the way humans do.
 - name: gdocsdb
   url: https://bitbucket.org/suminb/gdocsdb
@@ -208,7 +208,7 @@
     - library
     - database
     - open source
-  description: is a Python library to use Google Spreadsheet as a database.
+  description: A Python library to use Google Spreadsheet as a database.
 - name: maps
   url: http://labs.suminb.com/maps
   year: 2010
@@ -219,7 +219,7 @@
     - big data
     - data mining
   description: >-
-    is a project to reconstruct a map in global scale by collecting map tiles from various sources such as Google Maps
+    A project to reconstruct a map in global scale by collecting map tiles from various sources such as Google Maps
     and Open Street Map.
 - name: Violet
   year: 2010
@@ -229,7 +229,7 @@
   keywords:
     - application
     - mobile
-  description: is a children's book for iPad with user-interactable animations.
+  description: A children's book for iPad with user-interactable animations.
 - name: Readown
   url: https://github.com/suminb/readown
   year: 2010
@@ -240,7 +240,7 @@
     - application
     - mac
     - open source
-  description: is a Markdown reader for Mac OS X.
+  description: A Markdown reader for Mac OS X.
 - name: Chemtalk
   url: http://labs.suminb.com/chemtalk
   year: 2010
@@ -275,7 +275,7 @@
     - application
     - mobile
     - game
-  description: is a labyrinth-like puzzle game for iPhone.
+  description: A labyrinth-like puzzle game for iPhone.
 - name: Mandelbrot set
   year: 2008
   type: academic
@@ -284,4 +284,4 @@
     - C
   keywords:
     - application
-  description: is a distributed processing project to draw a mandelbrot set using multiple computers.
+  description: A distributed processing project to draw a mandelbrot set using multiple computers.
