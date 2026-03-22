@@ -113,7 +113,6 @@ a:hover {
 .hero__greeting {
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--text-muted);
   margin: 0 0 0.75rem;
@@ -232,6 +231,21 @@ a:hover {
   margin: 0 0 0.5rem;
   font-size: 1.2rem;
   letter-spacing: -0.02em;
+}
+
+.project-card__heading-link {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.project-card__heading-link:hover {
+  color: var(--accent);
+}
+
+.project-card__heading-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 .project-card p {
@@ -375,17 +389,6 @@ a:hover {
   color: inherit;
 }
 
-/* Block-level <a> + global a:hover underline would span the whole row; keep underline on the title only. */
-a.more-list__row:hover,
-a.more-list__row:focus-visible {
-  text-decoration: none;
-}
-
-a.more-list__row .more-list__desc,
-a.more-list__row .more-list__tags {
-  text-decoration: none;
-}
-
 .more-list__row--solo {
   display: block;
 }
@@ -402,13 +405,6 @@ a.more-list__row .more-list__tags {
 
 .more-list__row--solo .more-list__title {
   max-width: none;
-}
-
-a.more-list__row:hover .more-list__title,
-a.more-list__row:focus-visible .more-list__title {
-  color: var(--accent-dim);
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
 }
 
 .more-list__desc-shell {
@@ -454,6 +450,45 @@ a.more-list__row:focus-visible .more-list__title {
 .more-list__tags .tag {
   font-size: 0.72rem;
   padding: 0.12rem 0.45rem;
+}
+
+.more-list__details {
+  width: 100%;
+}
+
+.more-list__summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.more-list__summary::-webkit-details-marker {
+  display: none;
+}
+
+.more-list__expanded-card {
+  width: 100%;
+  margin-top: 0.65rem;
+  box-sizing: border-box;
+}
+
+.more-list__summary:hover .more-list__title,
+.more-list__summary:focus-visible .more-list__title {
+  color: var(--accent-dim);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.more-list__summary:focus {
+  outline: none;
+}
+
+.more-list__details[open] > .more-list__summary .more-list__title {
+  color: var(--accent-dim);
+}
+
+.more-list__row--summary .more-list__desc,
+.more-list__row--summary .more-list__tags {
+  text-decoration: none;
 }
 
 .article-list {

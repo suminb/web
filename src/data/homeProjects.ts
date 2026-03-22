@@ -22,8 +22,11 @@ export type FeaturedProject = {
 export type MoreProject = {
   title: string;
   href: string;
-  description?: string;
+  cta: string;
   tags: string[];
+  description?: string;
+  year?: FeaturedYear;
+  workplace?: string;
 };
 
 type ProjectRowRaw = {
@@ -128,6 +131,9 @@ function toMoreProject(p: FeaturedProject): MoreProject {
     title: p.title,
     href: p.href,
     tags: p.tags,
+    cta: p.cta,
+    year: p.year,
+    workplace: p.workplace,
   };
   const d = p.description.trim();
   if (d) out.description = d;

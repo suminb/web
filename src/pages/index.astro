@@ -1,16 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import HomeProjectHighlightCard from "../components/HomeProjectHighlightCard.astro";
 import SiteNav from "../components/SiteNav.astro";
 import {
   archiveProjectTags,
   formatArchiveYear,
   sortedArchiveProjects,
 } from "../data/archiveProjects";
-import {
-  featuredYearDatetime,
-  formatFeaturedYear,
-} from "../data/homeProjects";
 import {
   site,
   hero,
@@ -59,51 +56,27 @@ const archive = sortedArchiveProjects();
       <div class="project-grid">
         {
           featuredProjects.map((p) => (
-            <article class="project-card">
-              {p.year != null || p.workplace ? (
-                <div class="project-card__meta project-card__meta--compact">
-                  {p.year != null ? (
-                    <time datetime={featuredYearDatetime(p.year)}>
-                      {formatFeaturedYear(p.year)}
-                    </time>
-                  ) : null}
-                  {p.year != null && p.workplace ? (
-                    <span class="project-card__meta-sep" aria-hidden="true">
-                      ·
-                    </span>
-                  ) : null}
-                  {p.workplace ? (
-                    <span class="project-card__workplace">{p.workplace}</span>
-                  ) : null}
-                </div>
-              ) : null}
-              <h3>{p.title}</h3>
-              {p.description.trim() ? <p>{p.description}</p> : null}
-              <div class="tag-row">
-                {p.tags.map((t) => (
-                  <span class="tag">{t}</span>
-                ))}
-              </div>
-              {p.cta.trim() ? (
-                <a class="project-card__cta" href={p.href}>
-                  {p.cta} →
-                </a>
-              ) : null}
-            </article>
+            <HomeProjectHighlightCard
+              title={p.title}
+              description={p.description}
+              tags={[...p.tags]}
+              href={p.href}
+              cta={p.cta}
+              year={p.year}
+              workplace={p.workplace}
+            />
           ))
         }
       </div>
       <ul class="more-list">
         {
-          moreProjects.map((p) => (
-            <li class="more-list__item">
-              <a
-                class:list={[
-                  "more-list__row",
-                  !p.description && p.tags.length === 0 && "more-list__row--solo",
-                ]}
-                href={p.href}
-              >
+          moreProjects.map((p) => {
+            const rowSolo =
+              !p.description && p.tags.length === 0
+                ? "more-list__row--solo"
+                : false;
+            const oneLine = (
+              <>
                 <span class="more-list__title">{p.title}</span>
                 {p.description ? (
                   <span class="more-list__desc-shell">
@@ -117,9 +90,30 @@ const archive = sortedArchiveProjects();
                     ))}
                   </span>
                 ) : null}
-              </a>
-            </li>
-          ))
+              </>
+            );
+            return (
+              <li class="more-list__item">
+                <details class="more-list__details">
+                  <summary class="more-list__summary">
+                    <div class:list={["more-list__row", "more-list__row--summary", rowSolo]}>
+                      {oneLine}
+                    </div>
+                  </summary>
+                  <HomeProjectHighlightCard
+                    title={p.title}
+                    description={p.description ?? ""}
+                    tags={[...p.tags]}
+                    href={p.href}
+                    cta={p.cta}
+                    year={p.year}
+                    workplace={p.workplace}
+                    cardClass="more-list__expanded-card"
+                  />
+                </details>
+              </li>
+            );
+          })
         }
       </ul>
 

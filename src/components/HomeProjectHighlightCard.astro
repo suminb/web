@@ -1,0 +1,78 @@
+---
+import {
+  featuredYearDatetime,
+  formatFeaturedYear,
+  type FeaturedYear,
+} from "../data/homeProjects";
+
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  href: string;
+  cta: string;
+  year?: FeaturedYear;
+  workplace?: string;
+  cardClass?: string;
+}
+
+const {
+  title,
+  description,
+  tags,
+  href,
+  cta,
+  year,
+  workplace,
+  cardClass,
+} = Astro.props;
+
+/** `experience_slug` in YAML is already resolved to `href`; also allow any non-placeholder href. */
+const hrefTrimmed = href.trim();
+const titleIsLink = hrefTrimmed !== "" && hrefTrimmed !== "#";
+const titleLinkExternal = /^https?:\/\//i.test(hrefTrimmed);
+---
+
+<article class:list={["project-card", cardClass]}>
+  {year != null || workplace ? (
+    <div class="project-card__meta project-card__meta--compact">
+      {year != null ? (
+        <time datetime={featuredYearDatetime(year)}>
+          {formatFeaturedYear(year)}
+        </time>
+      ) : null}
+      {year != null && workplace ? (
+        <span class="project-card__meta-sep" aria-hidden="true">·</span>
+      ) : null}
+      {workplace ? (
+        <span class="project-card__workplace">{workplace}</span>
+      ) : null}
+    </div>
+  ) : null}
+  <h3>
+    {
+      titleIsLink ? (
+        <a
+          class="project-card__heading-link"
+          href={hrefTrimmed}
+          rel={titleLinkExternal ? "noopener noreferrer" : undefined}
+        >
+          {title}
+        </a>
+      ) : (
+        title
+      )
+    }
+  </h3>
+  {description.trim() ? <p>{description}</p> : null}
+  <div class="tag-row">
+    {tags.map((t) => (
+      <span class="tag">{t}</span>
+    ))}
+  </div>
+  {cta.trim() ? (
+    <a class="project-card__cta" href={href}>
+      {cta} →
+    </a>
+  ) : null}
+</article>
