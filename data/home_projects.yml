@@ -8,7 +8,8 @@ projects:
     tags:
       - Data
       - ML
-      - Cloud
+      - Kotlin
+      - Python
     href: "#"
     cta: Details soon
   - title: Hand-written Font Generator
@@ -16,8 +17,7 @@ projects:
     workplace: NAVER
     description: Given a sheet of handwritten paper, generate a font that resembles the handwriting.
     tags:
-      - AI
-      - Font
+      - ML
       - Kotlin
     href: "#"
     cta: ""
