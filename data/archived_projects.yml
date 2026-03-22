@@ -48,6 +48,21 @@
   keywords:
     - reference
   description: Curated a collection of interview questions and solutions from various tech companies, for personal reference and to support fellow engineers preparing for interviews.
+- name: Secor
+  url: https://github.com/pinterest/secor
+  year: 2018
+  type: open source
+  languages:
+    - Java
+  keywords:
+    - kafka
+    - data pipeline
+  description: >-
+    Upstream work on <a href="https://github.com/pinterest/secor">Pinterest Secor</a> (Kafka to cloud storage), including
+    handling map types in message serialization. Pull requests:
+    <a href="https://github.com/pinterest/secor/pull/982">#982</a>,
+    <a href="https://github.com/pinterest/secor/pull/965">#965</a>, and
+    <a href="https://github.com/pinterest/secor/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+author%3Asuminb">other authored PRs</a>.
 - name: Better Translator
   url: http://better-translator.com
   year: 2013
