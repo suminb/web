@@ -1,6 +1,6 @@
-It was the summer of 2014 when I joined [the team](https://what.studio/). The
+It was the summer of 2014 when I joined [the team](https://web.archive.org/web/20211026184618/https://what.studio/). The
 team size was quite small at the time, with less than 30 people or so, and
-[our game](https://durango.nexon.com/) was still in the early stage of
+[our game](https://web.archive.org/web/20191029125803/https://durango.nexon.com/) was still in the early stage of
 development, trying out new things and explore all the possibilities out
 there. It was a lot of fun.
 
