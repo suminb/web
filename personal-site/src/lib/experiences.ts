@@ -1,0 +1,59 @@
+import fs from "node:fs";
+import path from "node:path";
+import process from "node:process";
+import yaml from "js-yaml";
+
+const repoRoot = path.resolve(process.cwd(), "..");
+const dataDir = path.join(repoRoot, "data");
+const experiencesPath = path.join(dataDir, "experiences.yml");
+
+const IncludeType = new yaml.Type("!include", {
+  kind: "scalar",
+  resolve: (data: unknown): data is string => typeof data === "string",
+  construct: (filename: string) =>
+    fs.readFileSync(path.join(dataDir, filename), "utf8"),
+});
+
+const experiencesSchema = yaml.DEFAULT_SCHEMA.extend([IncludeType]);
+
+export type ExperienceRecord = {
+  published: boolean;
+  parent: string | null;
+  title: string;
+  starts_at: string;
+  ends_at: string;
+  category: string;
+  tags: string[];
+  description: string;
+};
+
+let cache: Record<string, ExperienceRecord> | null = null;
+
+function loadAll(): Record<string, ExperienceRecord> {
+  if (!cache) {
+    const text = fs.readFileSync(experiencesPath, "utf8");
+    cache = yaml.load(text, { schema: experiencesSchema }) as Record<
+      string,
+      ExperienceRecord
+    >;
+  }
+  return cache;
+}
+
+/** Published experiences with a non-empty body (markdown from YAML or !include). */
+export function listExperiencePageKeys(): string[] {
+  return Object.entries(loadAll())
+    .filter(
+      ([, v]) =>
+        v.published &&
+        typeof v.description === "string" &&
+        v.description.trim().length > 0,
+    )
+    .map(([k]) => k);
+}
+
+export function getExperienceForPage(key: string): ExperienceRecord | undefined {
+  const exp = loadAll()[key];
+  if (!exp?.published || !exp.description?.trim()) return undefined;
+  return exp;
+}

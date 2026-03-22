@@ -416,3 +416,149 @@ a:hover {
   color: var(--text-muted);
   font-size: 0.9rem;
 }
+
+/* Experience write-ups (markdown → HTML) */
+.experience-main {
+  padding: 1.5rem 0 4rem;
+}
+
+.experience-article {
+  max-width: 48rem;
+}
+
+.experience-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.experience-dates {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.experience-dates__sep {
+  margin: 0 0.35rem;
+  opacity: 0.6;
+}
+
+.experience-cat {
+  margin-bottom: 0.75rem;
+}
+
+.experience-tags {
+  margin-bottom: 2rem;
+}
+
+.experience-body {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.experience-body > *:first-child {
+  margin-top: 0;
+}
+
+.experience-body h2 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.experience-body h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.experience-body p {
+  margin: 0 0 1rem;
+}
+
+.experience-body a {
+  color: var(--accent);
+}
+
+.experience-body ul,
+.experience-body ol {
+  margin: 0 0 1rem;
+  padding-left: 1.35rem;
+}
+
+.experience-body li {
+  margin-bottom: 0.35rem;
+}
+
+.experience-body figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.experience-body figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.experience-body pre {
+  overflow-x: auto;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.experience-body code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+}
+
+.experience-body p code,
+.experience-body li code {
+  padding: 0.12rem 0.35rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.experience-body blockquote {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid rgba(125, 211, 252, 0.35);
+  color: var(--text-muted);
+}
+
+.experience-body hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+.experience-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.92rem;
+}
+
+.experience-body th,
+.experience-body td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.65rem;
+  text-align: left;
+}
+
+.experience-body th {
+  background: var(--bg-elevated);
+  color: var(--text);
+}
