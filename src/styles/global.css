@@ -540,6 +540,31 @@ a:hover {
   }
 }
 
+.talk-item__meta {
+  margin: 0.15rem 0 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.talk-link-row {
+  list-style: none;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+}
+
+.talk-link-row a {
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.talks-home-footer {
+  margin: 1.35rem 0 0;
+  font-size: 0.95rem;
+}
+
 .site-footer {
   margin-top: 3rem;
   padding: 2rem 0 3rem;

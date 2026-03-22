@@ -17,8 +17,16 @@ import {
   articles,
   showRecentWritingSection,
 } from "../data/site";
+import {
+  featuredTalksForHome,
+  talkCardCta,
+  talkPrimaryHref,
+  talkTagsForCard,
+  talkYear,
+} from "../data/talks";
 
 const archive = sortedArchiveProjects();
+const talkHighlights = featuredTalksForHome(3);
 ---
 
 <BaseLayout title={site.title} description={site.description}>
@@ -47,6 +55,31 @@ const archive = sortedArchiveProjects();
         }
       </div>
     </section>
+
+    {
+      talkHighlights.length > 0 ? (
+        <section id="talks" class="wrap section" aria-labelledby="talks-heading">
+          <h2 id="talks-heading" class="section__title">Talks</h2>
+          <p class="section__lede">Selected conference talks and panels.</p>
+          <div class="project-grid">
+            {talkHighlights.map((t) => (
+              <HomeProjectHighlightCard
+                title={t.title}
+                description={t.summary ?? ""}
+                tags={talkTagsForCard(t)}
+                href={talkPrimaryHref(t.links)}
+                cta={talkCardCta(t.links)}
+                year={talkYear(t.date)}
+                workplace={t.event}
+              />
+            ))}
+          </div>
+          <p class="talks-home-footer">
+            <a href="/talks.html">All talks →</a>
+          </p>
+        </section>
+      ) : null
+    }
 
     <section id="projects" class="wrap section" aria-labelledby="projects-heading">
       <h2 id="projects-heading" class="section__title">Projects</h2>

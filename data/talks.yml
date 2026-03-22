@@ -1,0 +1,60 @@
+# Public talks — featured entries (max 3 with featured: true) appear on the home page.
+talks:
+  - title: "[팀네이버 컨퍼런스 DAN 24] HyperCLOVA X, MLOps로 Hyperscale AI 개발의 새로운 장을 열다"
+    date: "2024-11-12"
+    featured: true
+    kind: Presentation
+    event: DAN 24
+    venue: Coex (Seoul, South Korea)
+    summary: >-
+      We share challenges and solutions from building the AI/ML platform behind Naver’s hyperscale AI model, HyperCLOVA X. The talk includes key outcomes, future directions, and MLOps case studies from its development.
+    links:
+      event: https://dan.naver.com/24/sessions/599
+      video: https://tv.naver.com/v/67326721
+      slides: https://dan.naver.com/data/deview/session/attach/HyperCLOVA%20X,%20MLOps%E1%84%85%E1%85%A9%20Hyperscale%20AI%20%E1%84%80%E1%85%A2%E1%84%87%E1%85%A1%E1%86%AF%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A2%E1%84%85%E1%85%A9%E1%84%8B%E1%85%AE%E1%86%AB%20%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B3%E1%86%AF%20%E1%84%8B%E1%85%A7%E1%86%AF%E1%84%83%E1%85%A1.pdf
+  - title: "AWS re:Invent 2017: Automating Mother Nature (GAM305)"
+    date: "2017-11-27"
+    featured: true
+    kind: Presentation
+    venue: Bellagio Hotel (Las Vegas, NV, USA)
+    event: AWS re:Invent 2017
+    summary: How we used AWS to algorithmically generate large-scale game worlds for Durango, leveraging services like ECS and SQS for efficient content creation and massive scalability.
+    links:
+      video: https://www.youtube.com/watch?v=H7kF7r7UBFE&pp=ygUTcmVpbnZlbnQgMjAxNyBuZXhvbg%3D%3D
+  - title: "분당고 드림데이트"
+    date: "2017-05-24"
+    featured: false
+    kind: Presentation
+    event: 분당고 드림데이트
+    venue: 분당고등학교 (Seongnam, South Korea)
+    summary: A reflection on my career journey—including how I began my current work, my ongoing projects, and my aspirations for the future.
+    links:
+      slides: https://drive.google.com/file/d/0B5MRF5NepyqQZTNINlUxRm5WRTA/view?usp=sharing&resourcekey=0-Kh0tD6-2nTHmoNlYZTG2Dw
+  - title: "<야생의 땅: 듀랑고> 지형 관리 완전 자동화"
+    date: "2016-04-26"
+    featured: false
+    kind: Presentation
+    event: NDC 2016
+    venue: Nexon (Seongnam, South Korea)
+    summary: Presented the design and implementation of an automated pipeline for natural resource provisioning, leveraging AWS SQS and ECS to efficiently scale with the large in-game world.
+    links:
+      event: https://ndcreplay.nexon.com/NDC2016/sessions/NDC2016_0062.html
+  - title: "<야생의 땅: 듀랑고>의 식물 생태계를 담당하는 21세기 정원사의 OpenCL 경험담"
+    date: "2015-05-19"
+    featured: true
+    kind: Presentation
+    event: NDC 2015
+    venue: Nexon (Seongnam, South Korea)
+    summary: An overview of building Durango's ecosystem simulator using OpenCL, and how massive parallel processing reduced complex ecosystem simulations from 30 minutes to 12 seconds.
+    links:
+      event: https://ndcreplay.nexon.com/NDC2015/sessions/NDC2015_0063.html
+      slides: https://ndc.vod.nexoncdn.co.kr/NDC2015/slides/NDC2015_0063/index.html
+  - title: "프로그래머가 이사하는 법"
+    date: "2015-08-30"
+    featured: false
+    kind: Presentation
+    event: PyCon Korea 2015
+    venue: Coex (Seoul, South Korea)
+    summary: Explains how to evaluate public transportation accessibility using Python, the Seoul public transportation information system, and Google Maps.
+    links:
+      slides: http://slideshare.net/suminb/ss-52208323
