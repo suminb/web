@@ -22,5 +22,7 @@ git init
 git remote add origin "$TARGET_REPO"
 git add .
 git commit -m "$LAST_COMMIT_MESSAGE"
-git push -f origin master
+# New repos default to `main`; there is no local `master` unless you create it.
+git branch -M main
+git push -f origin main
 popd
