@@ -1,0 +1,24 @@
+---
+import ExperienceDoc from "../../components/ExperienceDoc.astro";
+import {
+  experienceKeyFromSlug,
+  experiencePageProps,
+  experienceStaticPaths,
+} from "../../lib/experiencePageData";
+
+export function getStaticPaths() {
+  return experienceStaticPaths();
+}
+
+const key = experienceKeyFromSlug(Astro.params.slug);
+const { exp, contentHtml } = await experiencePageProps(key);
+---
+
+<ExperienceDoc
+  title={exp.title}
+  startsAt={exp.starts_at}
+  endsAt={exp.ends_at}
+  category={exp.category}
+  tags={exp.tags ?? []}
+  contentHtml={contentHtml}
+/>

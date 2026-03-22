@@ -1,0 +1,20 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import MarkdownArticle from "../components/MarkdownArticle.astro";
+import { marked } from "marked";
+
+marked.use({ gfm: true });
+
+const mdPath = path.join(process.cwd(), "data", "experience_summary.md");
+const md = fs.readFileSync(mdPath, "utf8");
+const parsed = marked.parse(md);
+const contentHtml = typeof parsed === "string" ? parsed : await parsed;
+---
+
+<MarkdownArticle
+  title="Experience"
+  description="Work history, education, talks, and open source — migrated from the legacy Flask site."
+  contentHtml={contentHtml}
+  navCurrent="experience"
+/>

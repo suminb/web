@@ -1,0 +1,39 @@
+---
+import { showRecentWritingSection } from "../data/site";
+
+export type NavKey = "home" | "experience" | "other";
+
+interface Props {
+  /** Highlights the active top-level item when set. */
+  current?: NavKey;
+}
+
+const { current } = Astro.props;
+---
+
+<nav aria-label="Primary">
+  <ul class="nav-links">
+    <li>
+      <a href="/" class:list={{ "nav-links__active": current === "home" }}>Home</a>
+    </li>
+    <li>
+      <a
+        href="/experience.html"
+        class:list={{ "nav-links__active": current === "experience" }}
+      >
+        Experience
+      </a>
+    </li>
+    <li>
+      <a href="/#projects">Projects</a>
+    </li>
+    {showRecentWritingSection ? (
+      <li>
+        <a href="/#writing">Writing</a>
+      </li>
+    ) : null}
+    <li>
+      <a href="/#connect">Connect</a>
+    </li>
+  </ul>
+</nav>

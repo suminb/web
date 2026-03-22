@@ -1,0 +1,141 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteNav from "../components/SiteNav.astro";
+import { site } from "../data/site";
+import { marked } from "marked";
+
+marked.use({ gfm: true });
+
+const mdPath = path.join(process.cwd(), "data", "coding_expedition.md");
+const md = fs.readFileSync(mdPath, "utf8");
+const parsed = marked.parse(md);
+const proseHtml = typeof parsed === "string" ? parsed : await parsed;
+
+const mapsKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
+const mapsScriptSrc = mapsKey
+  ? `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(mapsKey)}&callback=initCodingExpeditionMap`
+  : "";
+
+const pageTitle = `Coding Expedition · ${site.title}`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description="Coding away from home — places on a map and notes on the habit."
+>
+  <header class="wrap site-header">
+    <a class="brand" href="/">{site.title}</a>
+    <SiteNav />
+  </header>
+  <main id="main">
+    {
+      mapsKey ? (
+        <>
+          <div id="coding-expedition-map" class="expedition-map" />
+          <div class="wrap expedition-toolbar">
+            <span class="expedition-toolbar__label">View</span>
+            <button type="button" class="expedition-btn" data-view="world">
+              World
+            </button>
+            <button type="button" class="expedition-btn" data-view="ko">
+              South Korea
+            </button>
+            <button type="button" class="expedition-btn" data-view="us">
+              United States
+            </button>
+          </div>
+        </>
+      ) : (
+        <div class="wrap expedition-key-hint">
+          <p>
+            Set <code>PUBLIC_GOOGLE_MAPS_API_KEY</code> at build time to enable
+            the map. Trip points load from <code>/static/locations.js</code>{" "}
+            (GeoJSON from the legacy spreadsheet export).
+          </p>
+        </div>
+      )
+    }
+    <div class="wrap expedition-copy">
+      <h1 class="experience-title">Coding Expedition</h1>
+      <div class="experience-body expedition-prose" set:html={proseHtml} />
+    </div>
+  </main>
+  <SiteFooter />
+</BaseLayout>
+
+{
+  mapsKey ? (
+    <>
+      <script is:inline>
+        (function () {
+          var markerColors = {
+            Coding: "#f03e3e",
+            Business: "#f03e3e",
+            Personal: "#2f9e44",
+            Unknown: "#343a40",
+          };
+          var views = {
+            world: { zoom: 2, center: { lat: 36.005, lng: 127.3845 } },
+            ko: { zoom: 7, center: { lat: 36.005, lng: 127.3845 } },
+            us: { zoom: 5, center: { lat: 37.0902, lng: -95.7129 } },
+          };
+          window.__codingExpeditionMap = null;
+          window.initCodingExpeditionMap = function () {
+            var el = document.getElementById("coding-expedition-map");
+            if (!el || !window.google) return;
+            var map = new google.maps.Map(el, views.world);
+            window.__codingExpeditionMap = map;
+            fetch("/static/locations.js")
+              .then(function (r) {
+                return r.json();
+              })
+              .then(function (data) {
+                map.data.addGeoJson(data);
+              })
+              .catch(function () {});
+            map.addListener("zoom_changed", function () {
+              setMapStyle(map);
+            });
+            setMapStyle(map);
+            document.querySelectorAll(".expedition-btn[data-view]").forEach(
+              function (btn) {
+                btn.addEventListener("click", function () {
+                  var v = btn.getAttribute("data-view");
+                  if (v && views[v]) {
+                    map.setZoom(views[v].zoom);
+                    map.setCenter(views[v].center);
+                  }
+                });
+              },
+            );
+            function setMapStyle(map) {
+              map.data.setStyle(function (feature) {
+                return {
+                  icon: getCircle(
+                    map.getZoom(),
+                    feature.getProperty("category"),
+                  ),
+                };
+              });
+            }
+            function getCircle(zoom, category) {
+              var c = markerColors[category] || markerColors.Unknown;
+              return {
+                path: google.maps.SymbolPath.CIRCLE,
+                fillColor: c,
+                fillOpacity: 0.4,
+                scale: (zoom + 1) * 1.5,
+                strokeColor: c,
+                strokeWeight: 0.5,
+              };
+            }
+          };
+        })();
+      </script>
+      <script async defer src={mapsScriptSrc} />
+    </>
+  ) : null
+}

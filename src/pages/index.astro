@@ -1,0 +1,189 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import HomeProjectHighlightCard from "../components/HomeProjectHighlightCard.astro";
+import SiteNav from "../components/SiteNav.astro";
+import {
+  archiveProjectTags,
+  formatArchiveYear,
+  sortedArchiveProjects,
+} from "../data/archiveProjects";
+import {
+  site,
+  hero,
+  connect,
+  featuredProjects,
+  moreProjects,
+  articles,
+  showRecentWritingSection,
+} from "../data/site";
+
+const archive = sortedArchiveProjects();
+---
+
+<BaseLayout title={site.title} description={site.description}>
+  <header class="wrap site-header">
+    <a class="brand" href="/">{site.title}</a>
+    <SiteNav current="home" />
+  </header>
+
+  <main id="main">
+    <section class="wrap hero" aria-labelledby="hero-heading">
+      <p class="hero__greeting">{hero.greeting}</p>
+      <h1 id="hero-heading" class="hero__name">{hero.name}</h1>
+      <p class="hero__tagline">{hero.tagline}</p>
+      <p class="hero__intro">{hero.intro}</p>
+    </section>
+
+    <section id="connect" class="wrap section" aria-labelledby="connect-heading">
+      <h2 id="connect-heading" class="section__title">Connect</h2>
+      <div class="connect-grid">
+        {
+          connect.map((item) => (
+            <a class="connect-pill" href={item.href}>
+              {item.label}
+              <small>{item.hint}</small>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="projects" class="wrap section" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="section__title">Projects</h2>
+
+      <h3 class="section__subtitle">Highlights</h3>
+      <div class="project-grid">
+        {
+          featuredProjects.map((p) => (
+            <HomeProjectHighlightCard
+              title={p.title}
+              description={p.description}
+              tags={[...p.tags]}
+              href={p.href}
+              cta={p.cta}
+              year={p.year}
+              workplace={p.workplace}
+            />
+          ))
+        }
+      </div>
+      <ul class="more-list">
+        {
+          moreProjects.map((p) => {
+            const rowSolo =
+              !p.description && p.tags.length === 0
+                ? "more-list__row--solo"
+                : false;
+            const oneLine = (
+              <>
+                <span class="more-list__title">{p.title}</span>
+                {p.description ? (
+                  <span class="more-list__desc-shell">
+                    <span class="more-list__desc">{p.description}</span>
+                  </span>
+                ) : null}
+                {p.tags.length > 0 ? (
+                  <span class="more-list__tags tag-row">
+                    {p.tags.map((t) => (
+                      <span class="tag tag--dim">{t}</span>
+                    ))}
+                  </span>
+                ) : null}
+              </>
+            );
+            return (
+              <li class="more-list__item">
+                <details class="more-list__details">
+                  <summary class="more-list__summary">
+                    <div class:list={["more-list__row", "more-list__row--summary", rowSolo]}>
+                      {oneLine}
+                    </div>
+                  </summary>
+                  <HomeProjectHighlightCard
+                    title={p.title}
+                    description={p.description ?? ""}
+                    tags={[...p.tags]}
+                    href={p.href}
+                    cta={p.cta}
+                    year={p.year}
+                    workplace={p.workplace}
+                    cardClass="more-list__expanded-card"
+                  />
+                </details>
+              </li>
+            );
+          })
+        }
+      </ul>
+
+      <h3 class="section__subtitle section__subtitle--spaced">Archive</h3>
+      <p class="section__lede">Older work and side projects</p>
+      <div class="archive-grid">
+        {
+          archive.map((p) => (
+            <article class="project-card project-card--archive">
+              <div class="project-card__meta">
+                <time
+                  datetime={`${Array.isArray(p.year) ? p.year[1] : p.year}-01-01`}
+                >
+                  {formatArchiveYear(p.year)}
+                </time>
+                <span class="tag tag--type">{p.type}</span>
+              </div>
+              <h3 class="project-card__title">
+                {p.url ? (
+                  <a href={p.url} rel="noopener noreferrer">
+                    {p.name}
+                  </a>
+                ) : (
+                  p.name
+                )}
+              </h3>
+              {p.description ? (
+                <div class="archive-desc" set:html={p.description} />
+              ) : null}
+              <div class="tag-row">
+                {archiveProjectTags(p).map((t) => (
+                  <span class="tag tag--dim">{t}</span>
+                ))}
+              </div>
+              {p.url ? (
+                <a
+                  class="project-card__cta"
+                  href={p.url}
+                  rel="noopener noreferrer"
+                >
+                  Visit →
+                </a>
+              ) : null}
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    {showRecentWritingSection ? (
+      <section id="writing" class="wrap section" aria-labelledby="writing-heading">
+        <h2 id="writing-heading" class="section__title">Recent writing</h2>
+        <ul class="article-list">
+          {
+            articles.map((a) => (
+              <li class="article-item">
+                <time datetime={a.date}>{a.date}</time>
+                <div>
+                  <h3>
+                    <a href={a.href}>{a.title}</a>
+                  </h3>
+                  <p>{a.summary}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    ) : null}
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
