@@ -75,18 +75,6 @@ a:hover {
   border-bottom: 1px solid var(--border);
 }
 
-.brand {
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.brand:hover {
-  color: var(--accent);
-  text-decoration: none;
-}
-
 .nav-links {
   display: flex;
   gap: 1.5rem;
