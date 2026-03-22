@@ -578,6 +578,20 @@ a:hover {
   padding: 1.5rem 0 4rem;
 }
 
+/* Projects index: intro + highlights share one visual block — avoid stacked section padding */
+.projects-page .experience-main {
+  padding-bottom: 0.35rem;
+}
+
+.projects-page .experience-main .section__lede {
+  margin-bottom: 0.5rem;
+}
+
+.projects-page > .section {
+  padding-top: 0.75rem;
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
 .experience-article {
   max-width: 48rem;
 }

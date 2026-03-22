@@ -8,8 +8,9 @@ Content sources (YAML/Markdown under `data/`, read at build time):
 - `data/experiences.yml` plus `data/*.md` — experience entries and long-form write-ups
 - `data/experience_summary.md` — résumé-style **Experience** page (`/experience.html`)
 - `data/coding_expedition.md` — copy for **Coding Expedition** (`/coding-expedition.html`)
-- `data/home_projects.yml` — home page **Projects** highlights and “Previous works” rows
-- `data/archived_projects.yml` — **Archive** grid on the home page
+- `data/home_projects.yml` — **Projects** highlights on the home page and `/projects.html`, plus “Previous works” rows on `/projects.html`
+- `data/archived_projects.yml` — **Archive** grid on `/projects.html`
+- `data/talks.yml` — **Talks** highlights on the home page and full list on `/talks.html`
 
 `public/` is copied into the build as-is (e.g. `public/.nojekyll` so GitHub Pages does not run Jekyll and skip `/_astro/` assets, `public/favicon.svg`, `public/static/`).
 
