@@ -253,12 +253,4 @@ climate modeling, discovering large prime numbers, and generating accurate
 three-dimensional dynamic models of stellar streams in the immediate vicinity
 of the Milky Way galaxy.
 
-### [Radioactivity](https://bitbucket.org/suminb/radioactivity) (Discontinued)
-
-This project had started in March of 2011 in an attempt to help the general
-public to be alerted regarding the spread of radiation and other radioactive
-materials originated from the catastrophic incident in the Fukushima nuclear
-power plant in Japan, by visualizing city-wise radition levels in near real
-time.
-
 [seoul]: https://www.google.com/maps/place/Seoul/@37.5650172,126.8494673,11z
