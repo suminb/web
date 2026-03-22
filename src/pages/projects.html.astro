@@ -58,33 +58,34 @@ const pageTitle = `Projects · ${site.title}`;
       <h1 class="experience-title">Projects</h1>
     </div>
     <section class="wrap section">
-      <ul class="project-list">
+      <div class="project-grid">
         {
           allProjects.map((p) => (
-            <li class="project-list__item">
-              <div class="project-list__row">
-                <span class="project-list__title">
-                  {p.href ? (
-                    <a href={p.href}>{p.title}</a>
-                  ) : (
-                    p.title
-                  )}
-                </span>
-                {p.description ? (
-                  <span class="project-list__desc">{p.description}</span>
-                ) : null}
-                {p.tags.length > 0 ? (
-                  <span class="project-list__tags tag-row">
-                    {p.tags.map((t) => (
-                      <span class="tag tag--dim">{t}</span>
-                    ))}
-                  </span>
-                ) : null}
-              </div>
-            </li>
+            <article class="project-card project-card--archive">
+              {p.year ? (
+                <div class="project-card__meta">
+                  <time>{p.year}</time>
+                </div>
+              ) : null}
+              <h3 class="project-card__title">
+                {p.href ? (
+                  <a href={p.href}>{p.title}</a>
+                ) : (
+                  p.title
+                )}
+              </h3>
+              {p.description ? <p>{p.description}</p> : null}
+              {p.tags.length > 0 ? (
+                <div class="tag-row">
+                  {p.tags.map((t) => (
+                    <span class="tag tag--dim">{t}</span>
+                  ))}
+                </div>
+              ) : null}
+            </article>
           ))
         }
-      </ul>
+      </div>
     </section>
   </main>
   <SiteFooter />
