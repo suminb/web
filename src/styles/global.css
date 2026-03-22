@@ -583,10 +583,7 @@ a.tag.tag--link:hover {
   margin-top: 2rem;
 }
 
-.site-footer__grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+.site-footer__source {
   margin-bottom: 1.5rem;
 }
 
@@ -597,23 +594,6 @@ a.tag.tag--link:hover {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-muted);
-}
-
-.site-footer__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.site-footer__list a {
-  color: var(--text-muted);
-}
-
-.site-footer__list a:hover {
-  color: var(--accent);
 }
 
 .site-footer__text {
