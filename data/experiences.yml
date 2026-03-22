@@ -36,7 +36,7 @@ durango:
   - couchbase
   - distributed
   - game
-  description: !include durango.md
+  description: !include projects/durango.md
 
 durango_ecosim:
   published: true
@@ -51,7 +51,7 @@ durango_ecosim:
   - simulation
   - math
   - game
-  description: !include durango_ecosim.md
+  description: !include projects/durango_ecosim.md
 
 durango_ecosim_pipeline:
   published: true
@@ -65,7 +65,7 @@ durango_ecosim_pipeline:
   - scalability
   - aws
   - game
-  description: !include durango_ecosim_pipeline.md
+  description: !include projects/durango_ecosim_pipeline.md
 
 durango_marketplace:
   published: false
@@ -101,7 +101,7 @@ paper_reading_group:
   tags:
   - research
   - leadership
-  description: !include paper_reading_group.md
+  description: !include projects/paper_reading_group.md
 
 coding_workshop:
   published: false

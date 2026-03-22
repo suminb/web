@@ -1,16 +1,16 @@
+import { experienceDetailPath } from "../lib/experiencePageData";
 import { loadHomeProjects } from "./homeProjects";
 
 /** Edit this file to personalize the site. */
 
 /**
- * If experience pages from the Flask/frozen-flask site live on another host,
- * set the origin (no trailing slash), e.g. "https://example.com".
- * Leave empty when the Astro site and `/experience/*.html` share the same origin.
+ * If experience/project write-ups live on another host, set the origin (no trailing slash).
+ * Leave empty when this site serves `/experience/*.html` and `/projects/*.html`.
  */
 export const experienceBase: string = "";
 
 function experienceUrl(key: string): string {
-  const path = `/experience/${key}.html`;
+  const path = experienceDetailPath(key);
   if (!experienceBase) return path;
   const base = experienceBase.replace(/\/$/, "");
   return `${base}${path}`;

@@ -105,8 +105,8 @@
 - Implementing precautionary measures: data validator, auto-scaling
 - Public speech on this topic: [Automating Mother Nature @AWS re:Invent 2017](https://www.youtube.com/watch?v=H7kF7r7UBFE)
 
-[durango_ecosim]: /experience/durango_ecosim.html
-[durango_ecosim_pipeline]: /experience/durango_ecosim_pipeline.html
+[durango_ecosim]: /projects/durango_ecosim.html
+[durango_ecosim_pipeline]: /projects/durango_ecosim_pipeline.html
 
 #### Internal Tools
 

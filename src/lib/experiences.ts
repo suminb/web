@@ -52,6 +52,31 @@ export function listExperiencePageKeys(): string[] {
     .map(([k]) => k);
 }
 
+const projectsMdDir = path.join(dataDir, "projects");
+
+/** Basenames `slug` for each `data/projects/*.md` (detail pages use `/projects/{slug}.html`). */
+export function listProjectMarkdownSlugs(): string[] {
+  if (!fs.existsSync(projectsMdDir)) return [];
+  return fs
+    .readdirSync(projectsMdDir)
+    .filter((f) => f.endsWith(".md"))
+    .map((f) => path.basename(f, ".md"));
+}
+
+export function isProjectDetailPageKey(key: string): boolean {
+  return listProjectMarkdownSlugs().includes(key);
+}
+
+/** Long-form pages under `/experience/{slug}.html` (not backed by `data/projects/*.md`). */
+export function listExperienceDetailPageKeys(): string[] {
+  return listExperiencePageKeys().filter((k) => !isProjectDetailPageKey(k));
+}
+
+/** Long-form pages under `/projects/{slug}.html` (markdown in `data/projects/`). */
+export function listProjectDetailPageKeys(): string[] {
+  return listExperiencePageKeys().filter((k) => isProjectDetailPageKey(k));
+}
+
 export function getExperienceForPage(key: string): ExperienceRecord | undefined {
   const exp = loadAll()[key];
   if (!exp?.published || !exp.description?.trim()) return undefined;
