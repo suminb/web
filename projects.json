@@ -9,6 +9,15 @@
         "description": "Writing code away from home—cafés, road trips, and a map of places. Longer story and map on this page."
     },
     {
+        "name": "BOINC",
+        "url": "https://boincstats.com/en/stats/-1/user/detail/a077d8a4dee6d1c4836f80c4ebcdb8bb/",
+        "year": [2010, 2026],
+        "type": "volunteer",
+        "languages": [],
+        "keywords": ["distributed computing", "science"],
+        "description": "Contributing compute to <a href=\"https://en.wikipedia.org/wiki/Berkeley_Open_Infrastructure_for_Network_Computing\">BOINC</a>—on the order of 127 GFLOPS on average for climate modeling, prime search, stellar-stream simulations, and similar projects."
+    },
+    {
         "name": "Better Translator",
         "url": "http://better-translator.com",
         "year": 2013,

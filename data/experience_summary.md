@@ -243,14 +243,3 @@ auction starts at KRW 1,000 (approximately USD 1).
 ### [SB Finance](https://github.com/suminb/finance)
 
 Set of code for personal asset management and quantitative investment.
-
-## Volunteer Works
-
-### [BOINC](https://en.wikipedia.org/wiki/Berkeley_Open_Infrastructure_for_Network_Computing)
-
-Providing 127GFLOPs on average to tackle difficult scientific problems such as
-climate modeling, discovering large prime numbers, and generating accurate
-three-dimensional dynamic models of stellar streams in the immediate vicinity
-of the Milky Way galaxy.
-
-[seoul]: https://www.google.com/maps/place/Seoul/@37.5650172,126.8494673,11z
