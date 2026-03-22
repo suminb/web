@@ -1,6 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
+  archiveProjectTags,
+  formatArchiveYear,
+  sortedArchiveProjects,
+} from "../data/archiveProjects";
+import {
   site,
   hero,
   connect,
@@ -8,6 +13,8 @@ import {
   moreProjects,
   articles,
 } from "../data/site";
+
+const archive = sortedArchiveProjects();
 ---
 
 <BaseLayout title={site.title} description={site.description}>
@@ -45,7 +52,9 @@ import {
     </section>
 
     <section id="projects" class="wrap section" aria-labelledby="projects-heading">
-      <h2 id="projects-heading" class="section__title">Featured work</h2>
+      <h2 id="projects-heading" class="section__title">Projects</h2>
+
+      <h3 class="section__subtitle">Highlights</h3>
       <div class="project-grid">
         {
           featuredProjects.map((p) => (
@@ -73,6 +82,51 @@ import {
           ))
         }
       </ul>
+
+      <h3 class="section__subtitle section__subtitle--spaced">Archive</h3>
+      <p class="section__lede">Older work and side projects from the catalog.</p>
+      <div class="archive-grid">
+        {
+          archive.map((p) => (
+            <article class="project-card project-card--archive">
+              <div class="project-card__meta">
+                <time
+                  datetime={`${Array.isArray(p.year) ? p.year[1] : p.year}-01-01`}
+                >
+                  {formatArchiveYear(p.year)}
+                </time>
+                <span class="tag tag--type">{p.type}</span>
+              </div>
+              <h3 class="project-card__title">
+                {p.url ? (
+                  <a href={p.url} rel="noopener noreferrer">
+                    {p.name}
+                  </a>
+                ) : (
+                  p.name
+                )}
+              </h3>
+              {p.description ? (
+                <div class="archive-desc" set:html={p.description} />
+              ) : null}
+              <div class="tag-row">
+                {archiveProjectTags(p).map((t) => (
+                  <span class="tag tag--dim">{t}</span>
+                ))}
+              </div>
+              {p.url ? (
+                <a
+                  class="project-card__cta"
+                  href={p.url}
+                  rel="noopener noreferrer"
+                >
+                  Visit →
+                </a>
+              ) : null}
+            </article>
+          ))
+        }
+      </div>
     </section>
 
     <section id="writing" class="wrap section" aria-labelledby="writing-heading">

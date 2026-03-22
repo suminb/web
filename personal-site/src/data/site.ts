@@ -1,4 +1,19 @@
 /** Edit this file to personalize the site. */
+
+/**
+ * If experience pages from the Flask/frozen-flask site live on another host,
+ * set the origin (no trailing slash), e.g. "https://example.com".
+ * Leave empty when the Astro site and `/experience/*.html` share the same origin.
+ */
+export const experienceBase: string = "";
+
+function experienceUrl(key: string): string {
+  const path = `/experience/${key}.html`;
+  if (!experienceBase) return path;
+  const base = experienceBase.replace(/\/$/, "");
+  return `${base}${path}`;
+}
+
 export const site = {
   title: "Sumin Byeon",
   description:
@@ -30,6 +45,22 @@ export const featuredProjects = [
     cta: "Details soon",
   },
   {
+    title: "Ecosystem Simulator (Durango)",
+    blurb:
+      "Procedural world vegetation driven by soil, climate, and biomass rules—scaling heavy simulation with precalculation and GPU-friendly workloads.",
+    tags: ["C#", "OpenCL", "Simulation", "Game"],
+    href: experienceUrl("durango_ecosim"),
+    cta: "Read write-up",
+  },
+  {
+    title: "Ecosystem pipeline (Durango)",
+    blurb:
+      "Distributed pipeline so the simulator runs in bounded time as the world grows: Dockerized jobs, spatial chunking, and “no audience, no play” cost control.",
+    tags: ["Distributed", "AWS", "Scalability", "Game"],
+    href: experienceUrl("durango_ecosim_pipeline"),
+    cta: "Read write-up",
+  },
+  {
     title: "SB Finance",
     blurb: "Personal finance tooling and experiments in the open.",
     tags: ["Open Source", "Python"],
@@ -39,8 +70,9 @@ export const featuredProjects = [
 ] as const;
 
 export const moreProjects = [
+  { title: "Durango — server & overview", href: experienceUrl("durango") },
   { title: "SB Coding Workshop", href: "https://github.com/suminb/sbcw" },
-  { title: "Durango", href: "http://durango.nexon.com" },
+  { title: "Durango (game)", href: "http://durango.nexon.com" },
   { title: "Interview questions", href: "https://github.com/suminb/interview-questions" },
 ] as const;
 
