@@ -36,7 +36,7 @@ talks:
     kind: Presentation
     event: NDC 2016
     venue: Nexon (Seongnam, South Korea)
-    summary: Presented the design and implementation of an automated pipeline for natural resource provisioning, leveraging AWS SQS and ECS to efficiently scale with the large in-game world.
+    summary: Presented the design and implementation of an automated pipeline for on-demand natural resource provisioning, leveraging AWS SQS and ECS to efficiently scale with the large in-game world.
     links:
       event: https://ndcreplay.nexon.com/NDC2016/sessions/NDC2016_0062.html
   - title: "<야생의 땅: 듀랑고>의 식물 생태계를 담당하는 21세기 정원사의 OpenCL 경험담"
@@ -45,7 +45,7 @@ talks:
     kind: Presentation
     event: NDC 2015
     venue: Nexon (Seongnam, South Korea)
-    summary: An overview of building Durango's ecosystem simulator using OpenCL, and how massive parallel processing reduced complex ecosystem simulations from 30 minutes to 12 seconds.
+    summary: An overview of building Durango's realistic ecosystem simulator using OpenCL, and how massive parallel processing reduced complex ecosystem simulations from 30 minutes to 12 seconds.
     links:
       event: https://ndcreplay.nexon.com/NDC2015/sessions/NDC2015_0063.html
       slides: https://ndc.vod.nexoncdn.co.kr/NDC2015/slides/NDC2015_0063/index.html
