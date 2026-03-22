@@ -33,16 +33,18 @@ def is_valid_coordinate(coordinate):
 
 
 def geocoding(postal_address):
-    google_maps_api_key = os.environ['GOOGLE_MAPS_API_KEY']
-    url = 'https://maps.googleapis.com/maps/api/geocode/json?address={}' \
-          '&key={}'.format(quote_plus(postal_address), google_maps_api_key)
+    google_maps_api_key = os.environ["GOOGLE_MAPS_API_KEY"]
+    url = (
+        "https://maps.googleapis.com/maps/api/geocode/json?address={}"
+        "&key={}".format(quote_plus(postal_address), google_maps_api_key)
+    )
 
     resp = requests.get(url)
     results = json.loads(resp.text)
 
     # TODO: Refactor the following section
-    if results['results']:
-        location = results['results'][0]['geometry']['location']
-        return location['lat'], location['lng']
+    if results["results"]:
+        location = results["results"][0]["geometry"]["location"]
+        return location["lat"], location["lng"]
     else:
         return None

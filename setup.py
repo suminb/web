@@ -8,23 +8,19 @@ import web
 
 def readme():
     try:
-        with open('README.rst') as f:
+        with open("README.rst") as f:
             return f.read()
     except FileNotFoundError:
-        return '(Could not read from README.rst)'
+        return "(Could not read from README.rst)"
 
 
 setup(
-    name='web',
+    name="web",
     version=web.__version__,
-    description='Personal website',
+    description="Personal website",
     long_description=readme(),
-    url='http://github.com/suminb/web',
-    license='GPLv3',
+    url="http://github.com/suminb/web",
+    license="GPLv3",
     packages=find_packages(),
-    entry_points={
-        'console_scripts': [
-            'web = web.__main__:cli'
-        ]
-    },
+    entry_points={"console_scripts": ["web = web.__main__:cli"]},
 )

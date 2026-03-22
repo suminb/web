@@ -2,6 +2,7 @@
 log
 tmp
 provision.sh
+semantic
 
 .cache
 __pycache__
