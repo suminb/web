@@ -239,7 +239,7 @@
     - web
   description: ''
 - name: Notehall
-  url: http://www.notehall.com/
+  url: https://en.wikipedia.org/wiki/Notehall
   year:
     - 2008
     - 2009
