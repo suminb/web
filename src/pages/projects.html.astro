@@ -113,7 +113,7 @@ const pageTitle = `Projects · ${site.title}`;
         var matches = tags.some(function (t) {
           return t.toLowerCase() === activeTag.toLowerCase();
         });
-        if (!matches) el.hidden = true;
+        if (!matches) el.style.display = "none";
       });
     })();
   </script>
