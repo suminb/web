@@ -1,0 +1,147 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteNav from "../components/SiteNav.astro";
+import HomeProjectHighlightCard from "../components/HomeProjectHighlightCard.astro";
+import {
+  archiveProjectTags,
+  formatArchiveYear,
+  sortedArchiveProjects,
+} from "../data/archiveProjects";
+import { site, featuredProjects, moreProjects } from "../data/site";
+
+const archive = sortedArchiveProjects();
+const pageTitle = `Project Showcase · ${site.title}`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description="Featured project highlights, previous work, and archive."
+>
+  <header class="wrap site-header">
+    <SiteNav current="projects" />
+  </header>
+  <main id="main" class="projects-showcase-page">
+    <div class="wrap experience-main">
+      <h1 class="experience-title">Projects</h1>
+      <p class="section__lede">
+        Highlights from recent roles, then previous work and the archive.
+      </p>
+    </div>
+
+    <section class="wrap section" aria-labelledby="highlights-heading">
+      <h2 id="highlights-heading" class="section__subtitle">Highlights</h2>
+      <div class="project-grid">
+        {
+          featuredProjects.map((p) => (
+            <HomeProjectHighlightCard
+              title={p.title}
+              description={p.description}
+              tags={[...p.tags]}
+              href={p.href}
+              cta={p.cta}
+              year={p.year}
+              workplace={p.workplace}
+            />
+          ))
+        }
+      </div>
+
+      <h2 id="previous-works-heading" class="section__subtitle section__subtitle--spaced">Previous Works</h2>
+      <ul class="more-list">
+        {
+          moreProjects.map((p) => {
+            const rowSolo =
+              !p.description && p.tags.length === 0
+                ? "more-list__row--solo"
+                : false;
+            const oneLine = (
+              <>
+                <span class="more-list__title">{p.title}</span>
+                {p.description ? (
+                  <span class="more-list__desc-shell">
+                    <span class="more-list__desc">{p.description}</span>
+                  </span>
+                ) : null}
+                {p.tags.length > 0 ? (
+                  <span class="more-list__tags tag-row">
+                    {p.tags.map((t) => (
+                      <span class="tag tag--dim">{t}</span>
+                    ))}
+                  </span>
+                ) : null}
+              </>
+            );
+            return (
+              <li class="more-list__item">
+                <details class="more-list__details">
+                  <summary class="more-list__summary">
+                    <div class:list={["more-list__row", "more-list__row--summary", rowSolo]}>
+                      {oneLine}
+                    </div>
+                  </summary>
+                  <HomeProjectHighlightCard
+                    title={p.title}
+                    description={p.description ?? ""}
+                    tags={[...p.tags]}
+                    href={p.href}
+                    cta={p.cta}
+                    year={p.year}
+                    workplace={p.workplace}
+                    cardClass="more-list__expanded-card"
+                  />
+                </details>
+              </li>
+            );
+          })
+        }
+      </ul>
+
+      <h2 id="archive-heading" class="section__subtitle section__subtitle--spaced">Archive</h2>
+      <p class="section__lede">Older work and side projects</p>
+      <div class="archive-grid">
+        {
+          archive.map((p) => (
+            <article class="project-card project-card--archive">
+              <div class="project-card__meta">
+                <time
+                  datetime={`${Array.isArray(p.year) ? p.year[1] : p.year}-01-01`}
+                >
+                  {formatArchiveYear(p.year)}
+                </time>
+                <span class="tag tag--type">{p.type}</span>
+              </div>
+              <h3 class="project-card__title">
+                {p.url ? (
+                  <a href={p.url} rel="noopener noreferrer">
+                    {p.name}
+                  </a>
+                ) : (
+                  p.name
+                )}
+              </h3>
+              {p.description ? (
+                <div class="archive-desc" set:html={p.description} />
+              ) : null}
+              <div class="tag-row">
+                {archiveProjectTags(p).map((t) => (
+                  <span class="tag tag--dim">{t}</span>
+                ))}
+              </div>
+              {p.url ? (
+                <a
+                  class="project-card__cta"
+                  href={p.url}
+                  rel="noopener noreferrer"
+                >
+                  Visit →
+                </a>
+              ) : null}
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>
