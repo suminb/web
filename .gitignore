@@ -12,5 +12,9 @@ web/build
 node_modules
 
 *.json
+# Astro static site: track npm/tsconfig manifests
+!personal-site/package.json
+!personal-site/package-lock.json
+!personal-site/tsconfig.json
 *.pyc
 *.swp
