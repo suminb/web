@@ -16,7 +16,7 @@ talks:
     date: "2017-11-27"
     featured: true
     kind: Presentation
-    venue: Bellagio Hotel (Las Vegas, NV, USA)
+    venue: Aria Hotel (Las Vegas, NV, USA)
     event: AWS re:Invent 2017
     summary: How we used AWS to algorithmically generate large-scale game worlds for Durango, leveraging services like ECS and SQS for efficient content creation and massive scalability.
     links:
