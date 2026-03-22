@@ -1,14 +1,29 @@
 import { marked } from "marked";
 import {
   getExperienceForPage,
-  listExperiencePageKeys,
+  listExperienceDetailPageKeys,
+  listProjectDetailPageKeys,
+  isProjectDetailPageKey,
   type ExperienceRecord,
 } from "./experiences";
 
 marked.use({ gfm: true });
 
-export function experienceStaticPaths(): { params: { slug: string } }[] {
-  return listExperiencePageKeys().map((key) => ({ params: { slug: key } }));
+/** Canonical URL for a published experience write-up (project markdown → `/projects/…`). */
+export function experienceDetailPath(key: string): string {
+  return isProjectDetailPageKey(key)
+    ? `/projects/${key}.html`
+    : `/experience/${key}.html`;
+}
+
+export function experienceDetailStaticPaths(): { params: { slug: string } }[] {
+  return listExperienceDetailPageKeys().map((key) => ({
+    params: { slug: key },
+  }));
+}
+
+export function projectDetailStaticPaths(): { params: { slug: string } }[] {
+  return listProjectDetailPageKeys().map((key) => ({ params: { slug: key } }));
 }
 
 export function experienceKeyFromSlug(slug: string | undefined): string {

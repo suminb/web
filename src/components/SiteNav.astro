@@ -1,7 +1,7 @@
 ---
 import { showRecentWritingSection } from "../data/site";
 
-export type NavKey = "home" | "experience" | "other";
+export type NavKey = "home" | "experience" | "talks" | "projects" | "other";
 
 interface Props {
   /** Highlights the active top-level item when set. */
@@ -25,7 +25,20 @@ const { current } = Astro.props;
       </a>
     </li>
     <li>
-      <a href="/#projects">Projects</a>
+      <a
+        href="/talks.html"
+        class:list={{ "nav-links__active": current === "talks" }}
+      >
+        Talks
+      </a>
+    </li>
+    <li>
+      <a
+        href="/projects.html"
+        class:list={{ "nav-links__active": current === "projects" }}
+      >
+        Projects
+      </a>
     </li>
     {showRecentWritingSection ? (
       <li>

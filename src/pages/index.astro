@@ -4,21 +4,22 @@ import SiteFooter from "../components/SiteFooter.astro";
 import HomeProjectHighlightCard from "../components/HomeProjectHighlightCard.astro";
 import SiteNav from "../components/SiteNav.astro";
 import {
-  archiveProjectTags,
-  formatArchiveYear,
-  sortedArchiveProjects,
-} from "../data/archiveProjects";
-import {
   site,
   hero,
   connect,
   featuredProjects,
-  moreProjects,
   articles,
   showRecentWritingSection,
 } from "../data/site";
+import {
+  featuredTalksForHome,
+  talkCardCta,
+  talkPrimaryHref,
+  talkTagsForCard,
+  talkYear,
+} from "../data/talks";
 
-const archive = sortedArchiveProjects();
+const talkHighlights = featuredTalksForHome(3);
 ---
 
 <BaseLayout title={site.title} description={site.description}>
@@ -48,10 +49,34 @@ const archive = sortedArchiveProjects();
       </div>
     </section>
 
+    {
+      talkHighlights.length > 0 ? (
+        <section id="talks" class="wrap section" aria-labelledby="talks-heading">
+          <h2 id="talks-heading" class="section__title">Talks</h2>
+          <p class="section__lede">Selected conference talks and panels.</p>
+          <div class="project-grid">
+            {talkHighlights.map((t) => (
+              <HomeProjectHighlightCard
+                title={t.title}
+                description={t.summary ?? ""}
+                tags={talkTagsForCard(t)}
+                href={talkPrimaryHref(t.links)}
+                cta={talkCardCta(t.links)}
+                year={talkYear(t.date)}
+                workplace={t.event}
+              />
+            ))}
+          </div>
+          <p class="section__footer">
+            <a href="/talks.html">All talks →</a>
+          </p>
+        </section>
+      ) : null
+    }
+
     <section id="projects" class="wrap section" aria-labelledby="projects-heading">
       <h2 id="projects-heading" class="section__title">Projects</h2>
-
-      <h3 class="section__subtitle">Highlights</h3>
+      <p class="section__lede">Selected work from recent roles and products.</p>
       <div class="project-grid">
         {
           featuredProjects.map((p) => (
@@ -67,100 +92,9 @@ const archive = sortedArchiveProjects();
           ))
         }
       </div>
-      <h3 class="section__subtitle section__subtitle--previous-works">Previous Works</h3>
-      <ul class="more-list">
-        {
-          moreProjects.map((p) => {
-            const rowSolo =
-              !p.description && p.tags.length === 0
-                ? "more-list__row--solo"
-                : false;
-            const oneLine = (
-              <>
-                <span class="more-list__title">{p.title}</span>
-                {p.description ? (
-                  <span class="more-list__desc-shell">
-                    <span class="more-list__desc">{p.description}</span>
-                  </span>
-                ) : null}
-                {p.tags.length > 0 ? (
-                  <span class="more-list__tags tag-row">
-                    {p.tags.map((t) => (
-                      <span class="tag tag--dim">{t}</span>
-                    ))}
-                  </span>
-                ) : null}
-              </>
-            );
-            return (
-              <li class="more-list__item">
-                <details class="more-list__details">
-                  <summary class="more-list__summary">
-                    <div class:list={["more-list__row", "more-list__row--summary", rowSolo]}>
-                      {oneLine}
-                    </div>
-                  </summary>
-                  <HomeProjectHighlightCard
-                    title={p.title}
-                    description={p.description ?? ""}
-                    tags={[...p.tags]}
-                    href={p.href}
-                    cta={p.cta}
-                    year={p.year}
-                    workplace={p.workplace}
-                    cardClass="more-list__expanded-card"
-                  />
-                </details>
-              </li>
-            );
-          })
-        }
-      </ul>
-
-      <h3 class="section__subtitle section__subtitle--spaced">Archive</h3>
-      <p class="section__lede">Older work and side projects</p>
-      <div class="archive-grid">
-        {
-          archive.map((p) => (
-            <article class="project-card project-card--archive">
-              <div class="project-card__meta">
-                <time
-                  datetime={`${Array.isArray(p.year) ? p.year[1] : p.year}-01-01`}
-                >
-                  {formatArchiveYear(p.year)}
-                </time>
-                <span class="tag tag--type">{p.type}</span>
-              </div>
-              <h3 class="project-card__title">
-                {p.url ? (
-                  <a href={p.url} rel="noopener noreferrer">
-                    {p.name}
-                  </a>
-                ) : (
-                  p.name
-                )}
-              </h3>
-              {p.description ? (
-                <div class="archive-desc" set:html={p.description} />
-              ) : null}
-              <div class="tag-row">
-                {archiveProjectTags(p).map((t) => (
-                  <span class="tag tag--dim">{t}</span>
-                ))}
-              </div>
-              {p.url ? (
-                <a
-                  class="project-card__cta"
-                  href={p.url}
-                  rel="noopener noreferrer"
-                >
-                  Visit →
-                </a>
-              ) : null}
-            </article>
-          ))
-        }
-      </div>
+      <p class="section__footer">
+        <a href="/projects.html">All projects →</a>
+      </p>
     </section>
 
     {showRecentWritingSection ? (

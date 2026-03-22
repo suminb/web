@@ -126,10 +126,10 @@ detailed information, you may consult these:
 
 ## Related Projects
 
-- [Durango](/experience/durango.html)
+- [Durango](/projects/durango.html)
 - [Ecosystem Simulator][ecosim]
 
 
-[ecosim]: /experience/durango_ecosim.html
+[ecosim]: /projects/durango_ecosim.html
 [sqs]: https://aws.amazon.com/sqs/
 [ecs]: https://aws.amazon.com/ecs/

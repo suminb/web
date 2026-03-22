@@ -17,6 +17,10 @@
 
 ## Work Experience
 
+### Software Engineering Manager @NAVER Cloud
+
+(To be written later...)
+
 ### Senior Software Engineer @[Coupang](https://www.linkedin.com/company/coupang/)
 
 <div style="margin-top: -0.5em">
@@ -101,8 +105,8 @@
 - Implementing precautionary measures: data validator, auto-scaling
 - Public speech on this topic: [Automating Mother Nature @AWS re:Invent 2017](https://www.youtube.com/watch?v=H7kF7r7UBFE)
 
-[durango_ecosim]: /experience/durango_ecosim.html
-[durango_ecosim_pipeline]: /experience/durango_ecosim_pipeline.html
+[durango_ecosim]: /projects/durango_ecosim.html
+[durango_ecosim_pipeline]: /projects/durango_ecosim_pipeline.html
 
 #### Internal Tools
 
@@ -179,30 +183,6 @@ Jun 2010 - Jun 2011, Tucson, AZ
     - Design of Computer Programs
     - Computational Finance
 - Founding and leading an unofficial research paper reading group in Nexon (2015)
-
-## Public Speeches
-
-### AWS re:Invent 2017: [Automating Mother Nature](https://www.youtube.com/watch?v=H7kF7r7UBFE)
-
-Discussed the architecture that we settled on for algorithmic generation of
-game content in a large scale with a number of components provided by Amazon
-Web Services such as distributed messaging queues (SQS), containerized
-application clusters (ECS), and object storages (S3).
-
-### Nexon Developers Conference 2016: [Automated Game Terrain Management for Durango](http://ndcreplay.nexon.com/NDC2016/sessions/NDC2016_0062.html)
-
-Discussed how we built an automated pipeline to supply natural resources. Due
-to the sheer size of the in-game world, the environment simulation is performed
-on-demand, within a limited geographic boundary, in accordance with player
-activities.
-
-### Nexon Developers Conference 2015: [Natural Environment Simulation for Durango](http://ndcreplay.nexon.com/NDC2015/sessions/NDC2015_0063.html)
-
-Discussed how we built an in-game environment simulator with OpenCL to handle a
-massive parallel processing. The primary purpose of the simulator is to provide
-natural resources based on realistic simulations by taking a number of
-geographic features, such as topography, temperature, humidity, soil fertility,
-into consideration.
 
 ## Patents & Research Papers
 

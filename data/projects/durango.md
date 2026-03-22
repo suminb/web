@@ -9,7 +9,7 @@ unified global server.
 I have contributed a number of different parts of the system, but my major
 contributions can be summurized into three projects:
 
-1. [Ecosystem Simulator](/experiences/durango_ecosim.html)
-   and an [automated pipeline](/experience/durango_ecosim_pipeline.html)
+1. [Ecosystem Simulator](/projects/durango_ecosim.html)
+   and an [automated pipeline](/projects/durango_ecosim_pipeline.html)
 2. Terrain distribution systems
 3. Marketplace

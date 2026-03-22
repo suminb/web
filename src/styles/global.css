@@ -540,6 +540,31 @@ a:hover {
   }
 }
 
+.talk-item__meta {
+  margin: 0.15rem 0 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.talk-link-row {
+  list-style: none;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+}
+
+.talk-link-row a {
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.section__footer {
+  margin: 1.35rem 0 0;
+  font-size: 0.95rem;
+}
+
 .site-footer {
   margin-top: 3rem;
   padding: 2rem 0 3rem;
@@ -551,6 +576,20 @@ a:hover {
 /* Experience write-ups (markdown → HTML) */
 .experience-main {
   padding: 1.5rem 0 4rem;
+}
+
+/* Projects index: intro + highlights share one visual block — avoid stacked section padding */
+.projects-page .experience-main {
+  padding-bottom: 0.35rem;
+}
+
+.projects-page .experience-main .section__lede {
+  margin-bottom: 0.5rem;
+}
+
+.projects-page > .section {
+  padding-top: 0.75rem;
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
 }
 
 .experience-article {

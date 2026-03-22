@@ -34,6 +34,7 @@ function watchDataDirFullReload() {
 
 export default defineConfig({
   site: "https://example.com",
+  outDir: "docs",
   compressHTML: true,
   vite: {
     plugins: [watchDataDirFullReload()],

@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteNav from "../components/SiteNav.astro";
+import { site } from "../data/site";
+import {
+  allTalks,
+  formatTalkDate,
+  type TalkLinks,
+} from "../data/talks";
+
+const list = allTalks();
+
+function linkEntries(links?: TalkLinks): { label: string; href: string }[] {
+  if (!links) return [];
+  const out: { label: string; href: string }[] = [];
+  if (links.event) out.push({ label: "Event", href: links.event });
+  if (links.slides) out.push({ label: "Slides", href: links.slides });
+  if (links.video) out.push({ label: "Video", href: links.video });
+  return out;
+}
+
+function metaLine(t: (typeof list)[0]): string {
+  const parts = [t.kind, t.event, t.venue].filter(Boolean);
+  return parts.join(" · ");
+}
+
+const pageTitle = `Talks · ${site.title}`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description="Selected conference talks, keynotes, and panels."
+>
+  <header class="wrap site-header">
+    <SiteNav current="talks" />
+  </header>
+  <main id="main" class="wrap experience-main">
+    <article class="experience-article">
+      <h1 class="experience-title">Talks</h1>
+      <p class="section__lede">
+        Conference talks, keynotes, workshops, and panels. Highlights also appear on the <a href="/">home page</a>.
+      </p>
+      {
+        list.length === 0 ? (
+          <p class="section__lede">Nothing listed yet — add entries to <code>data/talks.yml</code>.</p>
+        ) : (
+          <ul class="article-list talk-list">
+            {list.map((t) => {
+              const links = linkEntries(t.links);
+              const primary = t.links?.event ?? t.links?.video ?? t.links?.slides;
+              return (
+                <li class="article-item talk-item">
+                  <time datetime={t.date}>{formatTalkDate(t.date)}</time>
+                  <div>
+                    <h3>
+                      {primary ? (
+                        <a href={primary} rel="noopener noreferrer">
+                          {t.title}
+                        </a>
+                      ) : (
+                        t.title
+                      )}
+                    </h3>
+                    {metaLine(t) ? <p class="talk-item__meta">{metaLine(t)}</p> : null}
+                    {t.summary ? <p>{t.summary}</p> : null}
+                    {links.length > 0 ? (
+                      <ul class="talk-link-row">
+                        {links.map(({ label, href }) => (
+                          <li>
+                            <a href={href} rel="noopener noreferrer">
+                              {label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        )
+      }
+    </article>
+  </main>
+  <SiteFooter />
+</BaseLayout>

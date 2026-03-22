@@ -2,6 +2,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SiteFooter from "../../../components/SiteFooter.astro";
 import SiteNav from "../../../components/SiteNav.astro";
+import { experienceDetailPath } from "../../../lib/experiencePageData";
 import {
   allPublishedTagSlugs,
   findPublishedByTag,
@@ -32,7 +33,7 @@ const pageTitle = `Tag: ${tag} · ${site.title}`;
         items.map(({ key, record }) => (
           <li class="tag-experience-item">
             <h2>
-              <a href={`/experience/${key}.html`}>{record.title}</a>
+              <a href={experienceDetailPath(key)}>{record.title}</a>
             </h2>
             <p class="experience-dates">
               {record.starts_at}
