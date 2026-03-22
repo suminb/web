@@ -1,5 +1,5 @@
 ---
-export type NavKey = "home" | "expedition" | "experience" | "other";
+export type NavKey = "home" | "experience" | "other";
 
 interface Props {
   /** Highlights the active top-level item when set. */
@@ -13,14 +13,6 @@ const { current } = Astro.props;
   <ul class="nav-links">
     <li>
       <a href="/" class:list={{ "nav-links__active": current === "home" }}>Home</a>
-    </li>
-    <li>
-      <a
-        href="/coding-expedition.html"
-        class:list={{ "nav-links__active": current === "expedition" }}
-      >
-        Coding Expedition
-      </a>
     </li>
     <li>
       <a

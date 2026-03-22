@@ -1,5 +1,14 @@
 [
     {
+        "name": "Coding Expedition",
+        "url": "/coding-expedition.html",
+        "year": [2011, 2020],
+        "type": "personal",
+        "languages": ["JavaScript"],
+        "keywords": ["travel", "maps"],
+        "description": "Writing code away from home—cafés, road trips, and a map of places. Longer story and map on this page."
+    },
+    {
         "name": "Better Translator",
         "url": "http://better-translator.com",
         "year": 2013,

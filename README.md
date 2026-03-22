@@ -7,7 +7,8 @@ Content sources (same as the former Flask/Frozen-Flask setup):
 
 - `data/experiences.yml` and included `data/*.md` — long-form “experience” write-ups
 - `data/experience_summary.md` — résumé-style **Experience** page (migrated from the old Jinja template)
-- `projects.json` — project archive used on the home page
+- `data/coding_expedition.md` — long-form copy for **Coding Expedition** (`/coding-expedition.html`)
+- `projects.json` — project archive used on the home page (includes the Coding Expedition card metadata)
 
 Build Status
 ------------

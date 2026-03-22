@@ -707,13 +707,6 @@ a.tag.tag--link:hover {
   max-width: 48rem;
 }
 
-.expedition-copy__h2 {
-  margin: 2rem 0 0.75rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
 .expedition-key-hint {
   padding: 1.25rem 0;
   max-width: 48rem;
