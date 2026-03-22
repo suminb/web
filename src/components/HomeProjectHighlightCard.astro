@@ -14,6 +14,8 @@ interface Props {
   year?: FeaturedYear;
   workplace?: string;
   cardClass?: string;
+  /** When provided, each tag becomes a link: `{tagPageUrl}?tag={tag}` */
+  tagPageUrl?: string;
 }
 
 const {
@@ -25,6 +27,7 @@ const {
   year,
   workplace,
   cardClass,
+  tagPageUrl,
 } = Astro.props;
 
 /** `experience_slug` in YAML is already resolved to `href`; also allow any non-placeholder href. */
@@ -33,7 +36,7 @@ const titleIsLink = hrefTrimmed !== "" && hrefTrimmed !== "#";
 const titleLinkExternal = /^https?:\/\//i.test(hrefTrimmed);
 ---
 
-<article class:list={["project-card", cardClass]}>
+<article class:list={["project-card", cardClass]} data-tags={JSON.stringify(tags)}>
   {year != null || workplace ? (
     <div class="project-card__meta project-card__meta--compact">
       {year != null ? (
@@ -66,9 +69,13 @@ const titleLinkExternal = /^https?:\/\//i.test(hrefTrimmed);
   </h3>
   {description.trim() ? <p>{description}</p> : null}
   <div class="tag-row">
-    {tags.map((t) => (
-      <span class="tag">{t}</span>
-    ))}
+    {tags.map((t) =>
+      tagPageUrl ? (
+        <a class="tag tag--link" href={`${tagPageUrl}?tag=${encodeURIComponent(t)}`}>{t}</a>
+      ) : (
+        <span class="tag">{t}</span>
+      )
+    )}
   </div>
   {cta.trim() ? (
     <a class="project-card__cta" href={href}>
