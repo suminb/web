@@ -58,10 +58,15 @@ const pageTitle = `Projects · ${site.title}`;
       <h1 class="experience-title">Projects</h1>
     </div>
     <section class="wrap section">
+      <div id="tag-filter-bar" class="tag-filter-bar" hidden>
+        <span class="tag-filter-bar__label">Tag:</span>
+        <span class="tag tag--active" id="tag-filter-label"></span>
+        <a href="/projects.html" class="tag-filter-clear">× clear</a>
+      </div>
       <div class="project-grid">
         {
           allProjects.map((p) => (
-            <article class="project-card project-card--archive">
+            <article class="project-card project-card--archive" data-tags={JSON.stringify(p.tags)}>
               {p.year ? (
                 <div class="project-card__meta">
                   <time>{p.year}</time>
@@ -78,7 +83,7 @@ const pageTitle = `Projects · ${site.title}`;
               {p.tags.length > 0 ? (
                 <div class="tag-row">
                   {p.tags.map((t) => (
-                    <span class="tag tag--dim">{t}</span>
+                    <a class="tag tag--dim tag--link" href={`/projects.html?tag=${encodeURIComponent(t)}`}>{t}</a>
                   ))}
                 </div>
               ) : null}
@@ -89,4 +94,27 @@ const pageTitle = `Projects · ${site.title}`;
     </section>
   </main>
   <SiteFooter />
+  <script is:inline>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var activeTag = params.get("tag");
+      if (!activeTag) return;
+
+      // Show filter banner
+      var bar = document.getElementById("tag-filter-bar");
+      var label = document.getElementById("tag-filter-label");
+      if (bar) bar.hidden = false;
+      if (label) label.textContent = activeTag;
+
+      // Hide items whose tags don't include the active tag
+      document.querySelectorAll("[data-tags]").forEach(function (el) {
+        var tags;
+        try { tags = JSON.parse(el.getAttribute("data-tags")); } catch (e) { tags = []; }
+        var matches = tags.some(function (t) {
+          return t.toLowerCase() === activeTag.toLowerCase();
+        });
+        if (!matches) el.hidden = true;
+      });
+    })();
+  </script>
 </BaseLayout>

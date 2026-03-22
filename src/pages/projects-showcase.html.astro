@@ -30,13 +30,8 @@ const pageTitle = `Project Showcase · ${site.title}`;
     </div>
 
     <section class="wrap section" aria-labelledby="highlights-heading">
-      <div id="tag-filter-bar" class="tag-filter-bar" hidden>
-        <span class="tag-filter-bar__label">Tag:</span>
-        <span class="tag tag--active" id="tag-filter-label"></span>
-        <a href="/projects-showcase.html" class="tag-filter-clear">× clear</a>
-      </div>
-      <h2 id="highlights-heading" class="section__subtitle" data-filter-group="highlights">Highlights</h2>
-      <div class="project-grid" id="highlights-grid" data-filter-group="highlights">
+      <h2 id="highlights-heading" class="section__subtitle">Highlights</h2>
+      <div class="project-grid">
         {
           featuredProjects.map((p) => (
             <HomeProjectHighlightCard
@@ -47,14 +42,14 @@ const pageTitle = `Project Showcase · ${site.title}`;
               cta={p.cta}
               year={p.year}
               workplace={p.workplace}
-              tagPageUrl="/projects-showcase.html"
+              tagPageUrl="/projects.html"
             />
           ))
         }
       </div>
 
-      <h2 id="previous-works-heading" class="section__subtitle section__subtitle--spaced" data-filter-group="previous-works">Previous Works</h2>
-      <ul class="more-list" id="previous-works-list" data-filter-group="previous-works">
+      <h2 id="previous-works-heading" class="section__subtitle section__subtitle--spaced">Previous Works</h2>
+      <ul class="more-list">
         {
           moreProjects.map((p) => {
             const rowSolo =
@@ -72,14 +67,14 @@ const pageTitle = `Project Showcase · ${site.title}`;
                 {p.tags.length > 0 ? (
                   <span class="more-list__tags tag-row">
                     {p.tags.map((t) => (
-                      <a class="tag tag--dim tag--link" href={`/projects-showcase.html?tag=${encodeURIComponent(t)}`}>{t}</a>
+                      <a class="tag tag--dim tag--link" href={`/projects.html?tag=${encodeURIComponent(t)}`}>{t}</a>
                     ))}
                   </span>
                 ) : null}
               </>
             );
             return (
-              <li class="more-list__item" data-tags={JSON.stringify(p.tags)}>
+              <li class="more-list__item">
                 <details class="more-list__details">
                   <summary class="more-list__summary">
                     <div class:list={["more-list__row", "more-list__row--summary", rowSolo]}>
@@ -95,7 +90,7 @@ const pageTitle = `Project Showcase · ${site.title}`;
                     year={p.year}
                     workplace={p.workplace}
                     cardClass="more-list__expanded-card"
-                    tagPageUrl="/projects-showcase.html"
+                    tagPageUrl="/projects.html"
                   />
                 </details>
               </li>
@@ -104,12 +99,12 @@ const pageTitle = `Project Showcase · ${site.title}`;
         }
       </ul>
 
-      <h2 id="archive-heading" class="section__subtitle section__subtitle--spaced" data-filter-group="archive">Archive</h2>
-      <p id="archive-lede" class="section__lede" data-filter-group="archive">Older work and side projects</p>
-      <div class="archive-grid" id="archive-grid" data-filter-group="archive">
+      <h2 id="archive-heading" class="section__subtitle section__subtitle--spaced">Archive</h2>
+      <p class="section__lede">Older work and side projects</p>
+      <div class="archive-grid">
         {
           archive.map((p) => (
-            <article class="project-card project-card--archive" data-tags={JSON.stringify(archiveProjectTags(p))}>
+            <article class="project-card project-card--archive">
               <div class="project-card__meta">
                 <time
                   datetime={`${Array.isArray(p.year) ? p.year[1] : p.year}-01-01`}
@@ -132,7 +127,7 @@ const pageTitle = `Project Showcase · ${site.title}`;
               ) : null}
               <div class="tag-row">
                 {archiveProjectTags(p).map((t) => (
-                  <a class="tag tag--dim tag--link" href={`/projects-showcase.html?tag=${encodeURIComponent(t)}`}>{t}</a>
+                  <a class="tag tag--dim tag--link" href={`/projects.html?tag=${encodeURIComponent(t)}`}>{t}</a>
                 ))}
               </div>
               {p.url ? (
@@ -151,39 +146,4 @@ const pageTitle = `Project Showcase · ${site.title}`;
     </section>
   </main>
   <SiteFooter />
-  <script is:inline>
-    (function () {
-      var params = new URLSearchParams(location.search);
-      var activeTag = params.get("tag");
-      if (!activeTag) return;
-
-      // Show filter banner
-      var bar = document.getElementById("tag-filter-bar");
-      var label = document.getElementById("tag-filter-label");
-      if (bar) bar.hidden = false;
-      if (label) label.textContent = activeTag;
-
-      // Hide items whose tags don't include the active tag
-      document.querySelectorAll("[data-tags]").forEach(function (el) {
-        var tags;
-        try { tags = JSON.parse(el.getAttribute("data-tags")); } catch (e) { tags = []; }
-        var matches = tags.some(function (t) {
-          return t.toLowerCase() === activeTag.toLowerCase();
-        });
-        if (!matches) el.hidden = true;
-      });
-
-      // Hide section headings/content when all items are filtered out
-      ["highlights", "previous-works", "archive"].forEach(function (group) {
-        var els = document.querySelectorAll('[data-filter-group="' + group + '"]');
-        var hasVisible = false;
-        els.forEach(function (el) {
-          if (el.querySelector("[data-tags]:not([hidden])")) hasVisible = true;
-        });
-        if (!hasVisible) {
-          els.forEach(function (el) { el.hidden = true; });
-        }
-      });
-    })();
-  </script>
 </BaseLayout>
