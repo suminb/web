@@ -62,8 +62,8 @@ function loadProjectSlugs(): Set<string> {
       fs.existsSync(projectsMdDir)
         ? fs
             .readdirSync(projectsMdDir)
-            .filter((f) => f.endsWith(".md"))
-            .map((f) => path.basename(f, ".md"))
+            .filter((f: string) => f.endsWith(".md"))
+            .map((f: string) => path.basename(f, ".md"))
         : [];
     projectSlugCache = new Set(slugs);
   }
