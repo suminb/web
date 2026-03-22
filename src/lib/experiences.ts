@@ -54,17 +54,29 @@ export function listExperiencePageKeys(): string[] {
 
 const projectsMdDir = path.join(dataDir, "projects");
 
+let projectSlugCache: Set<string> | null = null;
+
+function loadProjectSlugs(): Set<string> {
+  if (!projectSlugCache) {
+    const slugs =
+      fs.existsSync(projectsMdDir)
+        ? fs
+            .readdirSync(projectsMdDir)
+            .filter((f) => f.endsWith(".md"))
+            .map((f) => path.basename(f, ".md"))
+        : [];
+    projectSlugCache = new Set(slugs);
+  }
+  return projectSlugCache;
+}
+
 /** Basenames `slug` for each `data/projects/*.md` (detail pages use `/projects/{slug}.html`). */
 export function listProjectMarkdownSlugs(): string[] {
-  if (!fs.existsSync(projectsMdDir)) return [];
-  return fs
-    .readdirSync(projectsMdDir)
-    .filter((f) => f.endsWith(".md"))
-    .map((f) => path.basename(f, ".md"));
+  return [...loadProjectSlugs()];
 }
 
 export function isProjectDetailPageKey(key: string): boolean {
-  return listProjectMarkdownSlugs().includes(key);
+  return loadProjectSlugs().has(key);
 }
 
 /** Long-form pages under `/experience/{slug}.html` (not backed by `data/projects/*.md`). */
