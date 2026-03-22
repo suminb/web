@@ -71,9 +71,7 @@ export const featuredProjects = [
 
 export const moreProjects = [
   { title: "Durango — server & overview", href: experienceUrl("durango") },
-  { title: "SB Coding Workshop", href: "https://github.com/suminb/sbcw" },
   { title: "Durango (game)", href: "http://durango.nexon.com" },
-  { title: "Interview questions", href: "https://github.com/suminb/interview-questions" },
 ] as const;
 
 export const articles = [

@@ -18,6 +18,24 @@
         "description": "Contributing compute to <a href=\"https://en.wikipedia.org/wiki/Berkeley_Open_Infrastructure_for_Network_Computing\">BOINC</a>—on the order of 127 GFLOPS on average for climate modeling, prime search, stellar-stream simulations, and similar projects."
     },
     {
+        "name": "SB Coding Workshop",
+        "url": "https://github.com/suminb/sbcw",
+        "year": [2018, 2018],
+        "type": "open source",
+        "languages": ["Python"],
+        "keywords": ["education", "leadership"],
+        "description": "Workshop materials and exercises for teaching Python."
+    },
+    {
+        "name": "Interview questions",
+        "url": "https://github.com/suminb/interview-questions",
+        "year": [2018, 2021],
+        "type": "open source",
+        "languages": ["Python", "Go"],
+        "keywords": ["reference"],
+        "description": "Interview questions from multiple tech companies."
+    },
+    {
         "name": "Better Translator",
         "url": "http://better-translator.com",
         "year": 2013,
