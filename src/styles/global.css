@@ -284,10 +284,30 @@ a:hover {
   margin-bottom: 0.5rem;
 }
 
+/* Tighter year · workplace line on highlight cards */
+.project-card__meta--compact {
+  column-gap: 0.28rem;
+  row-gap: 0.35rem;
+}
+
 .project-card__meta time {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--text-muted);
+}
+
+.project-card__meta-sep {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0.45;
+  user-select: none;
+}
+
+.project-card__workplace {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
 }
 
 .project-card__title {

@@ -8,6 +8,10 @@ import {
   sortedArchiveProjects,
 } from "../data/archiveProjects";
 import {
+  featuredYearDatetime,
+  formatFeaturedYear,
+} from "../data/homeProjects";
+import {
   site,
   hero,
   connect,
@@ -55,6 +59,23 @@ const archive = sortedArchiveProjects();
         {
           featuredProjects.map((p) => (
             <article class="project-card">
+              {p.year != null || p.workplace ? (
+                <div class="project-card__meta project-card__meta--compact">
+                  {p.year != null ? (
+                    <time datetime={featuredYearDatetime(p.year)}>
+                      {formatFeaturedYear(p.year)}
+                    </time>
+                  ) : null}
+                  {p.year != null && p.workplace ? (
+                    <span class="project-card__meta-sep" aria-hidden="true">
+                      ·
+                    </span>
+                  ) : null}
+                  {p.workplace ? (
+                    <span class="project-card__workplace">{p.workplace}</span>
+                  ) : null}
+                </div>
+              ) : null}
               <h3>{p.title}</h3>
               <p>{p.blurb}</p>
               <div class="tag-row">
