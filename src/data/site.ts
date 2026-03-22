@@ -1,3 +1,5 @@
+import { loadFeaturedProjects, loadMoreProjects } from "./homeProjects";
+
 /** Edit this file to personalize the site. */
 
 /**
@@ -13,6 +15,9 @@ function experienceUrl(key: string): string {
   const base = experienceBase.replace(/\/$/, "");
   return `${base}${path}`;
 }
+
+export const featuredProjects = loadFeaturedProjects(experienceUrl);
+export const moreProjects = loadMoreProjects(experienceUrl);
 
 export const site = {
   title: "Sumin Byeon",
@@ -33,45 +38,6 @@ export const connect = [
   { label: "Blog", href: "https://blog.shortbread.io", hint: "Writing" },
   { label: "GitHub", href: "https://github.com/suminb", hint: "Code" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/suminb", hint: "Work" },
-] as const;
-
-export const featuredProjects = [
-  {
-    title: "Data platform",
-    blurb:
-      "Catalogs, pipelines, exchange, and feature infrastructure for large ML orgs.",
-    tags: ["Data", "ML", "Platform"],
-    href: "#",
-    cta: "Details soon",
-  },
-  {
-    title: "Ecosystem Simulator (Durango)",
-    blurb:
-      "Procedural world vegetation driven by soil, climate, and biomass rules—scaling heavy simulation with precalculation and GPU-friendly workloads.",
-    tags: ["C#", "OpenCL", "Simulation", "Game"],
-    href: experienceUrl("durango_ecosim"),
-    cta: "Read write-up",
-  },
-  {
-    title: "Ecosystem pipeline (Durango)",
-    blurb:
-      "Distributed pipeline so the simulator runs in bounded time as the world grows: Dockerized jobs, spatial chunking, and “no audience, no play” cost control.",
-    tags: ["Distributed", "AWS", "Scalability", "Game"],
-    href: experienceUrl("durango_ecosim_pipeline"),
-    cta: "Read write-up",
-  },
-  {
-    title: "SB Finance",
-    blurb: "Personal finance tooling and experiments in the open.",
-    tags: ["Open Source", "Python"],
-    href: "https://github.com/suminb/finance",
-    cta: "View on GitHub",
-  },
-] as const;
-
-export const moreProjects = [
-  { title: "Durango — server & overview", href: experienceUrl("durango") },
-  { title: "Durango (game)", href: "http://durango.nexon.com" },
 ] as const;
 
 export const articles = [

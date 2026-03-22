@@ -1,0 +1,30 @@
+- title: Data platform
+  blurb: Catalogs, pipelines, exchange, and feature infrastructure for large ML orgs.
+  tags:
+    - Data
+    - ML
+    - Platform
+  href: "#"
+  cta: Details soon
+- title: Ecosystem Simulator (Durango)
+  blurb: >-
+    Procedural world vegetation driven by soil, climate, and biomass rules—scaling
+    heavy simulation with precalculation and GPU-friendly workloads.
+  tags:
+    - "C#"
+    - OpenCL
+    - Simulation
+    - Game
+  experience_slug: durango_ecosim
+  cta: Read write-up
+- title: Ecosystem pipeline (Durango)
+  blurb: >-
+    Distributed pipeline so the simulator runs in bounded time as the world grows:
+    Dockerized jobs, spatial chunking, and “no audience, no play” cost control.
+  tags:
+    - Distributed
+    - AWS
+    - Scalability
+    - Game
+  experience_slug: durango_ecosim_pipeline
+  cta: Read write-up

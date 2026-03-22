@@ -72,8 +72,28 @@ const archive = sortedArchiveProjects();
       <ul class="more-list">
         {
           moreProjects.map((p) => (
-            <li>
-              <a href={p.href}>{p.title}</a>
+            <li class="more-list__item">
+              <a
+                class:list={[
+                  "more-list__row",
+                  !p.description && p.tags.length === 0 && "more-list__row--solo",
+                ]}
+                href={p.href}
+              >
+                <span class="more-list__title">{p.title}</span>
+                {p.description ? (
+                  <span class="more-list__desc-shell">
+                    <span class="more-list__desc">{p.description}</span>
+                  </span>
+                ) : null}
+                {p.tags.length > 0 ? (
+                  <span class="more-list__tags tag-row">
+                    {p.tags.map((t) => (
+                      <span class="tag tag--dim">{t}</span>
+                    ))}
+                  </span>
+                ) : null}
+              </a>
             </li>
           ))
         }
