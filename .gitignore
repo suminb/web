@@ -18,6 +18,5 @@ dist
 !package.json
 !package-lock.json
 !tsconfig.json
-!projects.json
 *.pyc
 *.swp

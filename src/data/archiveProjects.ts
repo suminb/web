@@ -1,4 +1,13 @@
-import projectsJson from "../../projects.json";
+import fs from "node:fs";
+import path from "node:path";
+import process from "node:process";
+import yaml from "js-yaml";
+
+const archivedProjectsPath = path.join(
+  process.cwd(),
+  "data",
+  "archived_projects.yml",
+);
 
 export type ArchiveYear = number | [number, number];
 
@@ -11,6 +20,15 @@ export type ArchiveProject = {
   keywords: string[];
   description: string;
 };
+
+function loadArchivedProjects(): ArchiveProject[] {
+  const text = fs.readFileSync(archivedProjectsPath, "utf8");
+  const data = yaml.load(text);
+  if (!Array.isArray(data)) {
+    throw new Error("data/archived_projects.yml must be a YAML list of projects");
+  }
+  return data as ArchiveProject[];
+}
 
 function yearSortKey(year: ArchiveYear): number {
   return Array.isArray(year) ? Math.max(year[0], year[1]) : year;
@@ -37,7 +55,7 @@ export function archiveProjectTags(p: ArchiveProject, max = 8): string[] {
   return out;
 }
 
-export const archiveProjects: ArchiveProject[] = projectsJson as ArchiveProject[];
+export const archiveProjects: ArchiveProject[] = loadArchivedProjects();
 
 export function sortedArchiveProjects(): ArchiveProject[] {
   return [...archiveProjects].sort((a, b) => {
