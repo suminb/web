@@ -10,6 +10,7 @@ web.egg-info
 web/build
 
 node_modules
+docs
 dist
 .astro
 
