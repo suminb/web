@@ -18,6 +18,7 @@ import {
   featuredProjects,
   moreProjects,
   articles,
+  showRecentWritingSection,
 } from "../data/site";
 
 const archive = sortedArchiveProjects();
@@ -77,15 +78,17 @@ const archive = sortedArchiveProjects();
                 </div>
               ) : null}
               <h3>{p.title}</h3>
-              <p>{p.blurb}</p>
+              {p.description.trim() ? <p>{p.description}</p> : null}
               <div class="tag-row">
                 {p.tags.map((t) => (
                   <span class="tag">{t}</span>
                 ))}
               </div>
-              <a class="project-card__cta" href={p.href}>
-                {p.cta} →
-              </a>
+              {p.cta.trim() ? (
+                <a class="project-card__cta" href={p.href}>
+                  {p.cta} →
+                </a>
+              ) : null}
             </article>
           ))
         }
@@ -121,7 +124,7 @@ const archive = sortedArchiveProjects();
       </ul>
 
       <h3 class="section__subtitle section__subtitle--spaced">Archive</h3>
-      <p class="section__lede">Older work and side projects from the catalog.</p>
+      <p class="section__lede">Older work and side projects</p>
       <div class="archive-grid">
         {
           archive.map((p) => (
@@ -166,24 +169,26 @@ const archive = sortedArchiveProjects();
       </div>
     </section>
 
-    <section id="writing" class="wrap section" aria-labelledby="writing-heading">
-      <h2 id="writing-heading" class="section__title">Recent writing</h2>
-      <ul class="article-list">
-        {
-          articles.map((a) => (
-            <li class="article-item">
-              <time datetime={a.date}>{a.date}</time>
-              <div>
-                <h3>
-                  <a href={a.href}>{a.title}</a>
-                </h3>
-                <p>{a.summary}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+    {showRecentWritingSection ? (
+      <section id="writing" class="wrap section" aria-labelledby="writing-heading">
+        <h2 id="writing-heading" class="section__title">Recent writing</h2>
+        <ul class="article-list">
+          {
+            articles.map((a) => (
+              <li class="article-item">
+                <time datetime={a.date}>{a.date}</time>
+                <div>
+                  <h3>
+                    <a href={a.href}>{a.title}</a>
+                  </h3>
+                  <p>{a.summary}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    ) : null}
   </main>
 
   <SiteFooter />

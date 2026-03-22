@@ -1,4 +1,4 @@
-import { loadFeaturedProjects, loadMoreProjects } from "./homeProjects";
+import { loadHomeProjects } from "./homeProjects";
 
 /** Edit this file to personalize the site. */
 
@@ -16,8 +16,8 @@ function experienceUrl(key: string): string {
   return `${base}${path}`;
 }
 
-export const featuredProjects = loadFeaturedProjects(experienceUrl);
-export const moreProjects = loadMoreProjects(experienceUrl);
+export const { featuredProjects, moreProjects } =
+  loadHomeProjects(experienceUrl);
 
 export const site = {
   title: "Sumin Byeon",
@@ -39,6 +39,9 @@ export const connect = [
   { label: "GitHub", href: "https://github.com/suminb", hint: "Code" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/suminb", hint: "Work" },
 ] as const;
+
+/** `false` hides the homepage “Recent writing” section and the Writing nav link. */
+export const showRecentWritingSection = false;
 
 export const articles = [
   {

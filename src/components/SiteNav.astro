@@ -1,4 +1,6 @@
 ---
+import { showRecentWritingSection } from "../data/site";
+
 export type NavKey = "home" | "experience" | "other";
 
 interface Props {
@@ -25,9 +27,11 @@ const { current } = Astro.props;
     <li>
       <a href="/#projects">Projects</a>
     </li>
-    <li>
-      <a href="/#writing">Writing</a>
-    </li>
+    {showRecentWritingSection ? (
+      <li>
+        <a href="/#writing">Writing</a>
+      </li>
+    ) : null}
     <li>
       <a href="/#connect">Connect</a>
     </li>
