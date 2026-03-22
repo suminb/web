@@ -3,22 +3,23 @@
 set -e
 
 TARGET_REPO="git@github.com:suminb/web-pub.git"
-BUILD_DIR="web/build"
+BUILD_DIR="dist"
 LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
 
-echo -n "Would you like to generate locations.js? (yes/no) "
-read generate_locations_js
+echo "Building static site with Astro → ${BUILD_DIR}/"
+npm ci
+npm run build
 
-if [[ $generate_locations_js = "yes" ]]; then
-    web import-gspread "$GSPREAD_KEY" > web/static/locations.js
+if [[ ! -d "$BUILD_DIR" ]]; then
+  echo "Build failed: $BUILD_DIR not found"
+  exit 1
 fi
 
-rm -rf $BUILD_DIR
-python web/__main__.py build
-cp CNAME $BUILD_DIR/
-pushd $BUILD_DIR
+cp CNAME "$BUILD_DIR/" 2>/dev/null || true
+
+pushd "$BUILD_DIR"
 git init
-git remote add origin $TARGET_REPO
+git remote add origin "$TARGET_REPO"
 git add .
 git commit -m "$LAST_COMMIT_MESSAGE"
 git push -f origin master

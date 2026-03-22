@@ -10,11 +10,14 @@ web.egg-info
 web/build
 
 node_modules
+dist
+.astro
 
 *.json
-# Astro static site: track npm/tsconfig manifests
-!personal-site/package.json
-!personal-site/package-lock.json
-!personal-site/tsconfig.json
+# Track root Astro/npm manifests and catalog data
+!package.json
+!package-lock.json
+!tsconfig.json
+!projects.json
 *.pyc
 *.swp

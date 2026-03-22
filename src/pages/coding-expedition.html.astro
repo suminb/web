@@ -1,0 +1,162 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteNav from "../components/SiteNav.astro";
+import { site } from "../data/site";
+
+const mapsKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
+const mapsScriptSrc = mapsKey
+  ? `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(mapsKey)}&callback=initCodingExpeditionMap`
+  : "";
+
+const pageTitle = `Coding Expedition · ${site.title}`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description="Coding away from home — places on a map and notes on the habit."
+>
+  <header class="wrap site-header">
+    <a class="brand" href="/">{site.title}</a>
+    <SiteNav current="expedition" />
+  </header>
+  <main id="main">
+    {
+      mapsKey ? (
+        <>
+          <div id="coding-expedition-map" class="expedition-map" />
+          <div class="wrap expedition-toolbar">
+            <span class="expedition-toolbar__label">View</span>
+            <button type="button" class="expedition-btn" data-view="world">
+              World
+            </button>
+            <button type="button" class="expedition-btn" data-view="ko">
+              South Korea
+            </button>
+            <button type="button" class="expedition-btn" data-view="us">
+              United States
+            </button>
+          </div>
+        </>
+      ) : (
+        <div class="wrap expedition-key-hint">
+          <p>
+            Set <code>PUBLIC_GOOGLE_MAPS_API_KEY</code> at build time to enable
+            the map. Trip points load from <code>/static/locations.js</code>{" "}
+            (GeoJSON from the legacy spreadsheet export).
+          </p>
+        </div>
+      )
+    }
+    <div class="wrap expedition-copy">
+      <h1 class="experience-title">Coding Expedition</h1>
+      <p>
+        <strong>Coding Expedition</strong> is an act of writing code in anywhere
+        but home or office. It generally, but not necessarily, takes place in
+        remote locations far from all the distractions and pollutions of a large
+        city.
+      </p>
+      <p>
+        I like coding and I also like going on a trip. A drawback of having these
+        as a hobby is that both activities require a non-trivial amount of time,
+        which I lack the most. My solution was to combine these two. Whenever I
+        feel like, I open the Google Maps, pick a decent cafe or something
+        comparable, grab my MacBook, and drive to the destination, without
+        thinking too much. The trip may be contained in a single day, or it may
+        last for a couple of days.
+      </p>
+      <p>
+        On a good day, I get a good amount of work done. A couple of features or
+        so in one of my hobby projects. If not, that's not the end of the world.
+        I still get to enjoy some great local food, engage in a conversion with
+        local people. It is a good way to expand my intellectual and cultural
+        horizon because interaction with people outside my circle almost always
+        gives me a new, fresh perspective.
+      </p>
+      <h2 class="expedition-copy__h2">Projects</h2>
+      <p>“So what kind of projects are you working on?”</p>
+      <p>
+        This is a reasonable question to be asked at this point. My answer to that
+        question is, “it’s classified.” No, I’m just kidding. I need to write
+        some code to list up all projects I’m working on and automatically update
+        them. That will be done on one of my future coding expeditions. Stay
+        tuned.
+      </p>
+    </div>
+  </main>
+  <SiteFooter />
+</BaseLayout>
+
+{
+  mapsKey ? (
+    <>
+      <script is:inline>
+        (function () {
+          var markerColors = {
+            Coding: "#f03e3e",
+            Business: "#f03e3e",
+            Personal: "#2f9e44",
+            Unknown: "#343a40",
+          };
+          var views = {
+            world: { zoom: 2, center: { lat: 36.005, lng: 127.3845 } },
+            ko: { zoom: 7, center: { lat: 36.005, lng: 127.3845 } },
+            us: { zoom: 5, center: { lat: 37.0902, lng: -95.7129 } },
+          };
+          window.__codingExpeditionMap = null;
+          window.initCodingExpeditionMap = function () {
+            var el = document.getElementById("coding-expedition-map");
+            if (!el || !window.google) return;
+            var map = new google.maps.Map(el, views.world);
+            window.__codingExpeditionMap = map;
+            fetch("/static/locations.js")
+              .then(function (r) {
+                return r.json();
+              })
+              .then(function (data) {
+                map.data.addGeoJson(data);
+              })
+              .catch(function () {});
+            map.addListener("zoom_changed", function () {
+              setMapStyle(map);
+            });
+            setMapStyle(map);
+            document.querySelectorAll(".expedition-btn[data-view]").forEach(
+              function (btn) {
+                btn.addEventListener("click", function () {
+                  var v = btn.getAttribute("data-view");
+                  if (v && views[v]) {
+                    map.setZoom(views[v].zoom);
+                    map.setCenter(views[v].center);
+                  }
+                });
+              },
+            );
+            function setMapStyle(map) {
+              map.data.setStyle(function (feature) {
+                return {
+                  icon: getCircle(
+                    map.getZoom(),
+                    feature.getProperty("category"),
+                  ),
+                };
+              });
+            }
+            function getCircle(zoom, category) {
+              var c = markerColors[category] || markerColors.Unknown;
+              return {
+                path: google.maps.SymbolPath.CIRCLE,
+                fillColor: c,
+                fillOpacity: 0.4,
+                scale: (zoom + 1) * 1.5,
+                strokeColor: c,
+                strokeWeight: 0.5,
+              };
+            }
+          };
+        })();
+      </script>
+      <script async defer src={mapsScriptSrc} />
+    </>
+  ) : null
+}

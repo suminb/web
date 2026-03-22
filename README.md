@@ -1,7 +1,13 @@
 Introduction
 -------------
 
-This is a personal website for Sumin Byeon.
+This is a personal website for Sumin Byeon, built as a static site with [Astro](https://astro.build/).
+
+Content sources (same as the former Flask/Frozen-Flask setup):
+
+- `data/experiences.yml` and included `data/*.md` — long-form “experience” write-ups
+- `data/experience_summary.md` — résumé-style **Experience** page (migrated from the old Jinja template)
+- `projects.json` — project archive used on the home page
 
 Build Status
 ------------
@@ -12,44 +18,37 @@ Build Status
 Prerequisites
 -------------
 
-- A Google Sheet document and its ID. The ID is expected to be stored in `GSPREAD_KEY` environment variable.
-- A Google API key (refer [this page](https://developers.google.com/maps/documentation/geocoding/get-api-key) for details).
+- Node.js 18+ (for Astro)
+- Optional: `PUBLIC_GOOGLE_MAPS_API_KEY` at build time for the **Coding Expedition** map (`/coding-expedition.html`)
 
-Build
------
+Local development
+------------------
 
-### Install `gulp`
+```bash
+npm install
+npm run dev
+```
 
-    npm install -g gulp
+Production build
+----------------
 
-### Build Semantic UI
+```bash
+npm run build
+```
 
-    npm install semantic-ui --save
-    cd semantics
-    gulp build
+Output is written to `dist/`. Trip markers for the map load from `public/static/locations.js` (GeoJSON). Replace or regenerate that file if you still use a spreadsheet export pipeline.
 
 Deployment
 ----------
 
-Since this is essentially a collection of static web resources (i.e., HTML,
-CSS, JavaScript) , deployment is quite straightfoward. We could use a
-*traditional* web hosting service or AWS S3, but we determined GitHub Pages
-is more than enough for a low-traffic static web site.
+### Publish to GitHub Pages (web-pub)
 
-### Publish to GitHub Pages
+```bash
+./publish.sh
+```
 
-There is a shell script for that.
+The script runs `npm ci`, `npm run build`, copies `CNAME` into `dist/`, and force-pushes `dist/` to the publishing repository.
 
-    ./publish.sh
+### Legacy Python pipeline
 
-
-### Compile a list of geocoordinates from Google Spreadsheet
-
-    web import-gspread $GSPREAD_KEY > web/static/locations.js
-
-NOTE: This is automatically handled by `publish.sh` script, and thus no need to
-be run unless for testing.
-
-`$GSPREAD_KEY` is a Google Docs document ID. The Google service credentials is
-stored in a `.json` file, which is automatically generated upon a Google
-Service Key.  For more details, refer [this page](https://gspread.readthedocs.io/en/latest/oauth2.html).
+The previous Flask app, `web import-gspread`, and `requirements.txt` have been removed. If you need to regenerate `locations.js` from Google Sheets, reintroduce a small script or use the historical commit history.

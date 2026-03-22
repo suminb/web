@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteFooter from "./SiteFooter.astro";
+import SiteNav from "./SiteNav.astro";
+import { site } from "../data/site";
+
+interface Props {
+  title: string;
+  startsAt: string;
+  endsAt: string;
+  category: string;
+  tags: string[];
+  contentHtml: string;
+}
+
+const { title, startsAt, endsAt, category, tags, contentHtml } = Astro.props;
+const pageTitle = `${title} · ${site.title}`;
+---
+
+<BaseLayout title={pageTitle} description={title}>
+  <header class="wrap site-header">
+    <a class="brand" href="/">{site.title}</a>
+    <SiteNav />
+  </header>
+  <main id="main" class="wrap experience-main">
+    <article class="experience-article">
+      <header class="experience-header">
+        <h1 class="experience-title">{title}</h1>
+        <p class="experience-dates">
+          {startsAt}
+          <span class="experience-dates__sep">—</span>
+          {endsAt}
+        </p>
+        {category ? <span class="tag tag--type experience-cat">{category}</span> : null}
+        {
+          tags?.length ? (
+            <div class="tag-row experience-tags">
+              {tags.map((t) => (
+                <a class="tag tag--link" href={`/experiences/tags/${t}.html`}>
+                  {t}
+                </a>
+              ))}
+            </div>
+          ) : null
+        }
+      </header>
+      <div class="experience-body" set:html={contentHtml} />
+    </article>
+  </main>
+  <SiteFooter />
+</BaseLayout>

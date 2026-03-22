@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteFooter from "./SiteFooter.astro";
+import SiteNav, { type NavKey } from "./SiteNav.astro";
+import { site } from "../data/site";
+
+interface Props {
+  title: string;
+  description?: string;
+  contentHtml: string;
+  navCurrent?: NavKey;
+}
+
+const { title, description, contentHtml, navCurrent } = Astro.props;
+const pageTitle = `${title} · ${site.title}`;
+const pageDesc = description ?? title;
+---
+
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <header class="wrap site-header">
+    <a class="brand" href="/">{site.title}</a>
+    <SiteNav current={navCurrent} />
+  </header>
+  <main id="main" class="wrap experience-main">
+    <article class="experience-article">
+      <h1 class="experience-title">{title}</h1>
+      <div class="experience-body" set:html={contentHtml} />
+    </article>
+  </main>
+  <SiteFooter />
+</BaseLayout>

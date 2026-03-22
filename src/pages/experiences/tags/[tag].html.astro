@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteFooter from "../../../components/SiteFooter.astro";
+import SiteNav from "../../../components/SiteNav.astro";
+import {
+  allPublishedTagSlugs,
+  findPublishedByTag,
+  truncatePlain,
+} from "../../../lib/experiences";
+import { site } from "../../../data/site";
+
+export function getStaticPaths() {
+  return allPublishedTagSlugs().map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+const items = findPublishedByTag(tag!);
+const pageTitle = `Tag: ${tag} · ${site.title}`;
+---
+
+<BaseLayout title={pageTitle} description={`Experiences tagged “${tag}”.`}>
+  <header class="wrap site-header">
+    <a class="brand" href="/">{site.title}</a>
+    <SiteNav />
+  </header>
+  <main id="main" class="wrap experience-main">
+    <h1 class="experience-title">Experiences tagged “{tag}”</h1>
+    <p class="section__lede">
+      {items.length} published entr{items.length === 1 ? "y" : "ies"}.
+    </p>
+    <ul class="tag-experience-list">
+      {
+        items.map(({ key, record }) => (
+          <li class="tag-experience-item">
+            <h2>
+              <a href={`/experience/${key}.html`}>{record.title}</a>
+            </h2>
+            <p class="experience-dates">
+              {record.starts_at}
+              <span class="experience-dates__sep">—</span>
+              {record.ends_at}
+            </p>
+            <p class="tag-experience-excerpt">
+              {truncatePlain(record.description, 250)}
+            </p>
+            <div class="tag-row">
+              {(record.tags ?? []).map((t) => (
+                <a class="tag tag--link" href={`/experiences/tags/${t}.html`}>
+                  {t}
+                </a>
+              ))}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+  <SiteFooter />
+</BaseLayout>
