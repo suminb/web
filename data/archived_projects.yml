@@ -5,7 +5,7 @@
     - 2020
   type: personal
   languages:
-    - JavaScript
+    - javascript
   keywords:
     - travel
     - maps
@@ -31,7 +31,7 @@
     - 2018
   type: open source
   languages:
-    - Python
+    - python
   keywords:
     - education
     - leadership
@@ -43,8 +43,8 @@
     - 2021
   type: open source
   languages:
-    - Python
-    - Go
+    - python
+    - go
   keywords:
     - reference
   description: Curated a collection of interview questions and solutions from various tech companies, for personal reference and to support fellow engineers preparing for interviews.
@@ -53,7 +53,7 @@
   year: 2018
   type: open source
   languages:
-    - Java
+    - java
   keywords:
     - kafka
     - data pipeline
@@ -68,8 +68,8 @@
   year: 2013
   type: open source
   languages:
-    - Python
-    - JavaScript
+    - python
+    - javascript
   keywords:
     - application
     - web
@@ -81,7 +81,7 @@
   year: 2013
   type: open source
   languages:
-    - Python
+    - python
   keywords:
     - algorithm
     - document fingerprinting
@@ -96,7 +96,7 @@
     - 2013
   type: proprietary
   languages:
-    - Java
+    - java
   keywords:
     - application
     - transportation
@@ -109,8 +109,8 @@
   year: 2012
   type: academic
   languages:
-    - Python
-    - JavaScript
+    - python
+    - javascript
   keywords:
     - application
     - big data
@@ -119,8 +119,8 @@
   year: 2012
   type: proprietary
   languages:
-    - Objective C
-    - Python
+    - objective c
+    - python
   keywords:
     - application
     - chemistry
@@ -130,8 +130,8 @@
   year: 2012
   type: open source
   languages:
-    - Python
-    - JavaScript
+    - python
+    - javascript
   keywords:
     - application
     - web
@@ -145,8 +145,8 @@
   year: 2011
   type: proprietary
   languages:
-    - Python
-    - JavaScript
+    - python
+    - javascript
   keywords:
     - application
   description: The name of the project is self-explanatory.
@@ -155,8 +155,8 @@
   year: 2011
   type: proprietary
   languages:
-    - Python
-    - JavaScript
+    - python
+    - javascript
   keywords:
     - data visualization
     - data mining
@@ -167,8 +167,8 @@
   year: 2011
   type: proprietary
   languages:
-    - Python
-    - JavaScript
+    - python
+    - javascript
   keywords:
     - application
     - web
@@ -179,7 +179,7 @@
   year: 2011
   type: academic
   languages:
-    - Action Script
+    - action script
   keywords:
     - application
     - web
@@ -190,8 +190,8 @@
   year: 2010
   type: academic
   languages:
-    - Java
-    - C++
+    - java
+    - c++
   keywords:
     - machine learning
     - interdisciplinary
@@ -203,7 +203,7 @@
   year: 2011
   type: open source
   languages:
-    - Python
+    - python
   keywords:
     - library
     - database
@@ -214,7 +214,7 @@
   year: 2010
   type: classified
   languages:
-    - Python
+    - python
   keywords:
     - big data
     - data mining
@@ -225,7 +225,7 @@
   year: 2010
   type: proprietary
   languages:
-    - Objective C
+    - objective c
   keywords:
     - application
     - mobile
@@ -235,7 +235,7 @@
   year: 2010
   type: open source
   languages:
-    - Objective C
+    - objective c
   keywords:
     - application
     - mac
@@ -246,8 +246,8 @@
   year: 2010
   type: proprietary
   languages:
-    - Python
-    - JavaScript
+    - python
+    - javascript
   keywords:
     - application
     - chemistry
@@ -260,8 +260,8 @@
     - 2009
   type: proprietary
   languages:
-    - PHP
-    - JavaScript
+    - php
+    - javascript
   keywords:
     - application
     - web
@@ -270,7 +270,7 @@
   year: 2008
   type: proprietary
   languages:
-    - Objective C
+    - objective c
   keywords:
     - application
     - mobile
@@ -280,8 +280,8 @@
   year: 2008
   type: academic
   languages:
-    - Java
-    - C
+    - java
+    - c
   keywords:
     - application
   description: A distributed processing project to draw a mandelbrot set using multiple computers.

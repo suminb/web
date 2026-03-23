@@ -592,8 +592,9 @@ a:hover {
   padding: 1.5rem 0 4rem;
 }
 
-/* Projects index: intro + highlights share one visual block — avoid stacked section padding */
-.projects-showcase-page .experience-main {
+/* Projects pages: title block + content share one visual block — avoid stacked section padding */
+.projects-showcase-page .experience-main,
+.projects-list-page .experience-main {
   padding-bottom: 0.35rem;
 }
 
@@ -601,7 +602,8 @@ a:hover {
   margin-bottom: 0.5rem;
 }
 
-.projects-showcase-page > .section {
+.projects-showcase-page > .section,
+.projects-list-page > .section {
   padding-top: 0.75rem;
   padding-bottom: clamp(2.5rem, 6vw, 4rem);
 }
@@ -760,6 +762,52 @@ a.tag.tag--link {
 a.tag.tag--link:hover {
   color: var(--accent-dim);
   text-decoration: underline;
+}
+
+a.tag.tag--dim.tag--link {
+  color: var(--text-muted);
+}
+
+a.tag.tag--dim.tag--link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.tag-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(125, 211, 252, 0.25);
+  background: rgba(125, 211, 252, 0.06);
+  font-size: 0.9rem;
+}
+
+.tag-filter-bar__label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.tag--active {
+  background: rgba(125, 211, 252, 0.18);
+  color: var(--accent);
+}
+
+.tag-filter-clear {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.tag-filter-clear:hover {
+  color: var(--accent);
+  text-decoration: none;
 }
 
 .site-footer--bordered {

@@ -42,6 +42,7 @@ const pageTitle = `Project Showcase · ${site.title}`;
               cta={p.cta}
               year={p.year}
               workplace={p.workplace}
+              tagPageUrl="/projects.html"
             />
           ))
         }
@@ -66,7 +67,7 @@ const pageTitle = `Project Showcase · ${site.title}`;
                 {p.tags.length > 0 ? (
                   <span class="more-list__tags tag-row">
                     {p.tags.map((t) => (
-                      <span class="tag tag--dim">{t}</span>
+                      <a class="tag tag--dim tag--link" href={`/projects.html?tag=${encodeURIComponent(t)}`}>{t}</a>
                     ))}
                   </span>
                 ) : null}
@@ -89,6 +90,7 @@ const pageTitle = `Project Showcase · ${site.title}`;
                     year={p.year}
                     workplace={p.workplace}
                     cardClass="more-list__expanded-card"
+                    tagPageUrl="/projects.html"
                   />
                 </details>
               </li>
@@ -125,7 +127,7 @@ const pageTitle = `Project Showcase · ${site.title}`;
               ) : null}
               <div class="tag-row">
                 {archiveProjectTags(p).map((t) => (
-                  <span class="tag tag--dim">{t}</span>
+                  <a class="tag tag--dim tag--link" href={`/projects.html?tag=${encodeURIComponent(t)}`}>{t}</a>
                 ))}
               </div>
               {p.url ? (
