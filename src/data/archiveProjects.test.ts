@@ -1,7 +1,9 @@
 import { describe, it, expect } from "vitest";
 import {
+  archiveProjects,
   formatArchiveYear,
   archiveProjectTags,
+  sortedArchiveProjects,
   type ArchiveProject,
 } from "./archiveProjects";
 
@@ -63,5 +65,43 @@ describe("archiveProjectTags", () => {
       keywords: [],
     };
     expect(archiveProjectTags(p)).toEqual([]);
+  });
+});
+
+/**
+ * Locks chip/tag output for every row in data/archived_projects.yml. After
+ * consolidating languages+keywords into tags, this snapshot should still pass
+ * once tag lists match the old merged order (or you update the snapshot on purpose).
+ */
+describe("archived_projects.yml regression", () => {
+  it("exposes every project with the fields archive pages need", () => {
+    expect(archiveProjects.length).toBeGreaterThan(0);
+    for (const p of archiveProjects) {
+      expect(p.name, `project name`).toMatch(/\S/);
+      expect(p.type, `${p.name} type`).toMatch(/\S/);
+      expect(p.description, `${p.name} description`).toBeDefined();
+      expect(Array.isArray(p.languages), `${p.name} languages`).toBe(true);
+      expect(Array.isArray(p.keywords), `${p.name} keywords`).toBe(true);
+      expect(
+        typeof p.year === "number" || Array.isArray(p.year),
+        `${p.name} year`,
+      ).toBe(true);
+    }
+  });
+
+  it("sortedArchiveProjects is stable (year desc, then name)", () => {
+    const sorted = sortedArchiveProjects();
+    expect(sorted.length).toBe(archiveProjects.length);
+    const names = new Set(sorted.map((p) => p.name));
+    expect(names.size).toBe(archiveProjects.length);
+  });
+
+  it("archiveProjectTags output per project (snapshot)", () => {
+    const byName = Object.fromEntries(
+      [...archiveProjects]
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map((p) => [p.name, archiveProjectTags(p)]),
+    );
+    expect(byName).toMatchSnapshot();
   });
 });

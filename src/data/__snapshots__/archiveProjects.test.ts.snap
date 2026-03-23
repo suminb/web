@@ -1,0 +1,158 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`archived_projects.yml regression > archiveProjectTags output per project (snapshot) 1`] = `
+{
+  "BOINC": [
+    "distributed computing",
+    "science",
+  ],
+  "Base62": [
+    "python",
+    "encoding",
+  ],
+  "Better Translator": [
+    "python",
+    "javascript",
+    "application",
+    "web",
+  ],
+  "Bootstrapped Learning": [
+    "java",
+    "c++",
+    "machine learning",
+    "interdisciplinary",
+  ],
+  "CQube": [
+    "objective c",
+    "application",
+    "mobile",
+    "game",
+  ],
+  "ChemBook": [
+    "objective c",
+    "python",
+    "application",
+    "chemistry",
+  ],
+  "Chemtalk": [
+    "python",
+    "javascript",
+    "application",
+    "chemistry",
+    "web",
+  ],
+  "Coding Expedition": [
+    "javascript",
+    "travel",
+    "maps",
+  ],
+  "Dollar Auction": [
+    "marketplace",
+    "auction",
+    "web",
+    "kotlin",
+    "typescript",
+  ],
+  "Hanja": [
+    "python",
+    "korean",
+    "linguistics",
+  ],
+  "Interview Questions": [
+    "python",
+    "go",
+    "reference",
+  ],
+  "Kindleholic": [
+    "python",
+    "javascript",
+    "application",
+    "web",
+    "ebook",
+  ],
+  "Mandelbrot set": [
+    "java",
+    "c",
+    "application",
+  ],
+  "Notehall": [
+    "php",
+    "javascript",
+    "application",
+    "web",
+  ],
+  "Purpose-built Appliance": [
+    "python",
+    "javascript",
+    "application",
+    "big data",
+  ],
+  "Radioactivity": [
+    "python",
+    "javascript",
+    "application",
+    "web",
+    "data visualization",
+  ],
+  "Readown": [
+    "objective c",
+    "application",
+    "mac",
+    "open source",
+  ],
+  "SB Coding Workshop": [
+    "python",
+    "education",
+    "leadership",
+  ],
+  "Secor": [
+    "java",
+    "kafka",
+    "data pipeline",
+  ],
+  "Slow Drivers": [
+    "python",
+    "javascript",
+    "data visualization",
+    "data mining",
+    "transportation",
+  ],
+  "Smartrek": [
+    "java",
+    "application",
+    "transportation",
+    "big data",
+  ],
+  "Teach Ourselves": [
+    "action script",
+    "application",
+    "web",
+  ],
+  "Violet": [
+    "objective c",
+    "application",
+    "mobile",
+  ],
+  "Winnowing": [
+    "python",
+    "algorithm",
+    "document fingerprinting",
+  ],
+  "gdocsdb": [
+    "python",
+    "library",
+    "database",
+    "open source",
+  ],
+  "maps": [
+    "python",
+    "big data",
+    "data mining",
+  ],
+  "한자-한글 변환기": [
+    "python",
+    "javascript",
+    "application",
+  ],
+}
+`;
