@@ -1,4 +1,4 @@
-# Root list: entries with `featured: true` render as home/showcase highlight cards; others as “Previous works” rows.
+# Root list: `featured: true` → home/showcase highlight cards. Non-featured rows with a `workplace` → showcase “Previous Works”. Other non-featured rows still appear on /projects.html with the full list.
 # `year`: always `[start, end]`; use `null` as end for ongoing (e.g. [2023, null]); use [y, y] for a single calendar year.
 - title: MLX Data Manager
   year: [2023, null]
