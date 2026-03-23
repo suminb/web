@@ -38,11 +38,7 @@ type ProjectRowRaw = {
   workplace?: string;
   href?: string;
   experience_slug?: string;
-};
-
-type HomeProjectsFile = {
-  featured_count?: number;
-  projects?: ProjectRowRaw[];
+  featured?: boolean;
 };
 
 function normalizeEndYear(raw: unknown): number | null {
@@ -112,7 +108,7 @@ function normalizeProjectRow(
   i: number,
   experienceUrl: (key: string) => string,
 ): FeaturedProject {
-  const href = resolveLink(row, experienceUrl, `home_projects.yml projects[${i}]`);
+  const href = resolveLink(row, experienceUrl, `home_projects.yml[${i}]`);
   const out: FeaturedProject = {
     title: row.title,
     description: typeof row.description === "string" ? row.description : "",
@@ -145,32 +141,26 @@ export function loadHomeProjects(experienceUrl: (key: string) => string): {
   moreProjects: MoreProject[];
 } {
   const text = fs.readFileSync(homeProjectsPath, "utf8");
-  const doc = yaml.load(text) as HomeProjectsFile;
-  if (!doc || typeof doc !== "object") {
-    throw new Error("data/home_projects.yml must be a mapping");
-  }
-  const list = doc.projects;
+  const list = yaml.load(text) as unknown;
   if (!Array.isArray(list)) {
-    throw new Error("data/home_projects.yml must include a projects: array");
-  }
-  const defaultFeatured = 3;
-  const rawCount = doc.featured_count;
-  let n: number;
-  if (rawCount === undefined || rawCount === null) {
-    n = Math.min(defaultFeatured, list.length);
-  } else {
-    const parsed = Number(rawCount);
-    n = Number.isFinite(parsed)
-      ? Math.min(Math.max(0, Math.floor(parsed)), list.length)
-      : Math.min(defaultFeatured, list.length);
+    throw new Error("data/home_projects.yml must be a YAML list of projects");
   }
 
   const normalized = list.map((row, i) =>
-    normalizeProjectRow(row, i, experienceUrl),
+    normalizeProjectRow(row as ProjectRowRaw, i, experienceUrl),
   );
 
+  const featuredProjects: FeaturedProject[] = [];
+  const moreRaw: FeaturedProject[] = [];
+  for (let i = 0; i < list.length; i++) {
+    const row = list[i] as ProjectRowRaw;
+    const p = normalized[i]!;
+    if (row.featured === true) featuredProjects.push(p);
+    else moreRaw.push(p);
+  }
+
   return {
-    featuredProjects: normalized.slice(0, n),
-    moreProjects: normalized.slice(n).map(toMoreProject),
+    featuredProjects,
+    moreProjects: moreRaw.map(toMoreProject),
   };
 }
