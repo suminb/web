@@ -208,11 +208,6 @@ humans use.
 
 ## Personal Projects
 
-### [Dollar Auction](http://auctions.shortbread.io/auctions)
-
-An improvised marketplace to sell underused personal belongings where every
-auction starts at KRW 1,000 (approximately USD 1).
-
 ### [SB Finance](https://github.com/suminb/finance)
 
 Set of code for personal asset management and quantitative investment.
