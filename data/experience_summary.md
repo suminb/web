@@ -210,7 +210,6 @@ humans use.
 
 * [Hanja](https://github.com/suminb/hanja): A Python library to [read Chinese characters in Korean sound values](https://ko.wikipedia.org/wiki/%EC%9D%8C%EB%8F%85).
 * [Winnowing](https://github.com/suminb/winnowing): A Python implementation of local algorithms for document fingerprinting.
-* [Base62](https://github.com/suminb/base62): A Python library to encode and decode any arbitrary data in base62 (duosexagesimal; using 0-9, A-Z, and a-z) for URL-safety. I was recently able to convince my colleagues to use this library for work.
 * [And more on my GitHub page](https://github.com/suminb)
 
 ## Personal Projects

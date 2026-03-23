@@ -89,6 +89,20 @@
     A Python implementation of the <a
     href="http://theory.stanford.edu/~aiken/publications/papers/sigmod03.pdf">Winnowing</a> (local algorithms for
     document fingerprinting)
+- name: Base62
+  url: https://github.com/suminb/base62
+  year:
+    - 2013
+    - 2026
+  type: open source
+  languages:
+    - python
+  keywords:
+    - encoding
+    - python
+  description: >-
+    A Python library to encode and decode any arbitrary data in base62 (duosexagesimal; using 0-9, A-Z, and a-z) for
+    URL-safety. I was recently able to convince my colleagues to use this library for work.
 - name: Smartrek
   url: http://www.smartrekmobile.com
   year:
