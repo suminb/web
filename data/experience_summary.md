@@ -206,10 +206,6 @@ humans use.
 * [secor](https://github.com/pinterest/secor/pulls?utf8=%E2%9C%93&q=author%3Asuminb): Kafka log persistence.
 * [gspread](https://github.com/burnash/gspread/pulls?utf8=%E2%9C%93&q=author%3Asuminb): A Python library to access and manipulate Google Spreadsheets.
 
-### My own projects
-
-* [And more on my GitHub page](https://github.com/suminb)
-
 ## Personal Projects
 
 ### [Dollar Auction](http://auctions.shortbread.io/auctions)
