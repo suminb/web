@@ -18,7 +18,8 @@ export type FeaturedProject = {
   title: string;
   description: string;
   tags: string[];
-  href: string;
+  /** Resolved destination; empty or "#" yields a non-clickable title (see card). */
+  url: string;
   cta: string;
   year?: FeaturedYear;
   workplace?: string;
@@ -26,7 +27,7 @@ export type FeaturedProject = {
 
 export type MoreProject = {
   title: string;
-  href: string;
+  url: string;
   cta: string;
   tags: string[];
   description?: string;
@@ -41,7 +42,8 @@ type ProjectRowRaw = {
   cta?: string;
   year?: unknown;
   workplace?: string;
-  href?: string;
+  /** Omitted or YAML `null` → non-clickable when there is no `experience_slug`. */
+  url?: string | null;
   experience_slug?: string;
   featured?: boolean;
 };
@@ -58,13 +60,21 @@ export const formatFeaturedYear = formatProjectYearRange;
 export const featuredYearDatetime = projectYearDatetime;
 
 function resolveLink(
-  raw: { href?: string; experience_slug?: string },
+  raw: { url?: string | null; experience_slug?: string },
   experienceUrl: (key: string) => string,
   context: string,
 ): string {
-  if (raw.experience_slug) return experienceUrl(raw.experience_slug);
-  if (raw.href !== undefined && raw.href !== "") return raw.href;
-  throw new Error(`${context}: set either href or experience_slug`);
+  const slug = raw.experience_slug?.trim();
+  if (slug) return experienceUrl(slug);
+
+  const u = raw.url;
+  if (u === null || u === undefined) return "";
+  if (typeof u !== "string") {
+    throw new Error(`${context}: url must be a string or null`);
+  }
+  const trimmed = u.trim();
+  if (trimmed === "") return "";
+  return trimmed;
 }
 
 function normalizeProjectRow(
@@ -72,12 +82,12 @@ function normalizeProjectRow(
   i: number,
   experienceUrl: (key: string) => string,
 ): FeaturedProject {
-  const href = resolveLink(row, experienceUrl, `home_projects.yml[${i}]`);
+  const url = resolveLink(row, experienceUrl, `home_projects.yml[${i}]`);
   const out: FeaturedProject = {
     title: row.title,
     description: typeof row.description === "string" ? row.description : "",
     tags: row.tags ?? [],
-    href,
+    url,
     cta: typeof row.cta === "string" ? row.cta : "",
   };
   const y = parseFeaturedYear(row.year, i);
@@ -89,7 +99,7 @@ function normalizeProjectRow(
 function toMoreProject(p: FeaturedProject): MoreProject {
   const out: MoreProject = {
     title: p.title,
-    href: p.href,
+    url: p.url,
     tags: p.tags,
     cta: p.cta,
     year: p.year,

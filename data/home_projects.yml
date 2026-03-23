@@ -11,7 +11,6 @@
     - ml
     - kotlin
     - python
-  href: "#"
   cta: Details soon
 - title: Hand-written Font Generator
   year: [2020, 2020]
@@ -22,7 +21,6 @@
   tags:
     - ml
     - kotlin
-  href: "#"
   cta: ""
 - title: Data Lake
   year: [2018, 2018]
@@ -34,7 +32,6 @@
     - kafka
     - s3
   description: Ingested and aggregated operational data—from Kafka into S3 (ORC format)—for analytics, ensuring integrity with deduplication and exactly-once delivery semantics.
-  href: "#"
   cta: ""
 - title: Flow (Inter-domain logistics state management system)
   year: [2018, 2018]
@@ -45,7 +42,6 @@
     - cassandra
     - kafka
   description: Handling write-heavy workloads with Cassandra and message ordering guarantee with a distributed queue.
-  href: "#"
   cta: ""
 - title: Ecosystem Pipeline (Durango)
   year: [2016, 2018]
@@ -88,7 +84,7 @@
 - title: SB Finance
   year: [2014, null]
   type: open source
-  href: https://github.com/suminb/finance
+  url: https://github.com/suminb/finance
   description: Personal finance tooling and experiments in the open.
   tags:
     - open source
