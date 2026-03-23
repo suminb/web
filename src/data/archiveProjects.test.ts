@@ -8,12 +8,16 @@ import {
 } from "./archiveProjects";
 
 describe("formatArchiveYear", () => {
-  it("formats a single year", () => {
-    expect(formatArchiveYear(2020)).toBe("2020");
+  it("formats a single calendar year as [y, y]", () => {
+    expect(formatArchiveYear([2020, 2020])).toBe("2020");
   });
 
   it("formats a year range", () => {
     expect(formatArchiveYear([2018, 2021])).toBe("2018–2021");
+  });
+
+  it("formats ongoing (null end)", () => {
+    expect(formatArchiveYear([2019, null])).toBe("2019–present");
   });
 
   it("collapses a range where start equals end", () => {
@@ -24,7 +28,7 @@ describe("formatArchiveYear", () => {
 describe("archiveProjectTags", () => {
   const project: ArchiveProject = {
     title: "Test",
-    year: 2020,
+    year: [2020, 2020],
     type: "open source",
     tags: ["Python", "JavaScript", "web", "data visualization"],
     description: "",
@@ -70,10 +74,10 @@ describe("archived_projects.yml regression", () => {
       expect(p.type, `${p.title} type`).toMatch(/\S/);
       expect(p.description, `${p.title} description`).toBeDefined();
       expect(Array.isArray(p.tags), `${p.title} tags`).toBe(true);
-      expect(
-        typeof p.year === "number" || Array.isArray(p.year),
-        `${p.title} year`,
-      ).toBe(true);
+      expect(Array.isArray(p.year) && p.year.length === 2, `${p.title} year`).toBe(
+        true,
+      );
+      expect(typeof p.year[0]).toBe("number");
     }
   });
 

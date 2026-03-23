@@ -21,8 +21,8 @@ describe("formatTalkDate", () => {
 });
 
 describe("talkYear", () => {
-  it("extracts the year from an ISO date", () => {
-    expect(talkYear("2023-11-28")).toBe(2023);
+  it("extracts the calendar year as [y, y]", () => {
+    expect(talkYear("2023-11-28")).toEqual([2023, 2023]);
   });
 });
 

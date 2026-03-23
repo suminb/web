@@ -1,4 +1,5 @@
 # Root list: entries with `featured: true` render as home/showcase highlight cards; others as “Previous works” rows.
+# `year`: always `[start, end]`; use `null` as end for ongoing (e.g. [2023, null]); use [y, y] for a single calendar year.
 - title: MLX Data Manager
   year: [2023, null]
   type: work

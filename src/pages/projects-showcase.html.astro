@@ -6,6 +6,7 @@ import HomeProjectHighlightCard from "../components/HomeProjectHighlightCard.ast
 import {
   archiveProjectTags,
   formatArchiveYear,
+  projectYearDatetime,
   sortedArchiveProjects,
 } from "../data/archiveProjects";
 import { site, featuredProjects, moreProjects } from "../data/site";
@@ -106,9 +107,7 @@ const pageTitle = `Project Showcase · ${site.title}`;
           archive.map((p) => (
             <article class="project-card project-card--archive">
               <div class="project-card__meta">
-                <time
-                  datetime={`${Array.isArray(p.year) ? p.year[1] : p.year}-01-01`}
-                >
+                <time datetime={projectYearDatetime(p.year)}>
                   {formatArchiveYear(p.year)}
                 </time>
                 <span class="tag tag--type">{p.type}</span>
