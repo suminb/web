@@ -592,8 +592,9 @@ a:hover {
   padding: 1.5rem 0 4rem;
 }
 
-/* Projects index: intro + highlights share one visual block — avoid stacked section padding */
-.projects-showcase-page .experience-main {
+/* Projects pages: title block + content share one visual block — avoid stacked section padding */
+.projects-showcase-page .experience-main,
+.projects-list-page .experience-main {
   padding-bottom: 0.35rem;
 }
 
@@ -601,7 +602,8 @@ a:hover {
   margin-bottom: 0.5rem;
 }
 
-.projects-showcase-page > .section {
+.projects-showcase-page > .section,
+.projects-list-page > .section {
   padding-top: 0.75rem;
   padding-bottom: clamp(2.5rem, 6vw, 4rem);
 }
