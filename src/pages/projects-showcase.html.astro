@@ -6,9 +6,15 @@ import HomeProjectHighlightCard from "../components/HomeProjectHighlightCard.ast
 import {
   archiveProjectTags,
   formatArchiveYear,
+  projectYearDatetime,
   sortedArchiveProjects,
 } from "../data/archiveProjects";
 import { site, featuredProjects, moreProjects } from "../data/site";
+
+/** Non-featured home rows with a workplace (role/company), shown under “Previous Works”. */
+const previousWorks = moreProjects.filter(
+  (p) => p.workplace != null && p.workplace.trim() !== "",
+);
 
 const archive = sortedArchiveProjects();
 const pageTitle = `Project Showcase · ${site.title}`;
@@ -16,7 +22,7 @@ const pageTitle = `Project Showcase · ${site.title}`;
 
 <BaseLayout
   title={pageTitle}
-  description="Featured project highlights, previous work, and archive."
+  description="Featured project highlights, other workplace projects, and archive."
 >
   <header class="wrap site-header">
     <SiteNav current="projects" />
@@ -25,7 +31,7 @@ const pageTitle = `Project Showcase · ${site.title}`;
     <div class="wrap experience-main">
       <h1 class="experience-title">Projects</h1>
       <p class="section__lede">
-        Highlights from recent roles, then previous work and the archive.
+        Highlights from recent roles, then other workplace projects and the archive.
       </p>
     </div>
 
@@ -38,7 +44,7 @@ const pageTitle = `Project Showcase · ${site.title}`;
               title={p.title}
               description={p.description}
               tags={[...p.tags]}
-              href={p.href}
+              url={p.url}
               cta={p.cta}
               year={p.year}
               workplace={p.workplace}
@@ -48,56 +54,60 @@ const pageTitle = `Project Showcase · ${site.title}`;
         }
       </div>
 
-      <h2 id="previous-works-heading" class="section__subtitle section__subtitle--spaced">Previous Works</h2>
-      <ul class="more-list">
-        {
-          moreProjects.map((p) => {
-            const rowSolo =
-              !p.description && p.tags.length === 0
-                ? "more-list__row--solo"
-                : false;
-            const oneLine = (
-              <>
-                <span class="more-list__title">{p.title}</span>
-                {p.description ? (
-                  <span class="more-list__desc-shell">
-                    <span class="more-list__desc">{p.description}</span>
-                  </span>
-                ) : null}
-                {p.tags.length > 0 ? (
-                  <span class="more-list__tags tag-row">
-                    {p.tags.map((t) => (
-                      <a class="tag tag--dim tag--link" href={`/projects.html?tag=${encodeURIComponent(t)}`}>{t}</a>
-                    ))}
-                  </span>
-                ) : null}
-              </>
-            );
-            return (
-              <li class="more-list__item">
-                <details class="more-list__details">
-                  <summary class="more-list__summary">
-                    <div class:list={["more-list__row", "more-list__row--summary", rowSolo]}>
-                      {oneLine}
-                    </div>
-                  </summary>
-                  <HomeProjectHighlightCard
-                    title={p.title}
-                    description={p.description ?? ""}
-                    tags={[...p.tags]}
-                    href={p.href}
-                    cta={p.cta}
-                    year={p.year}
-                    workplace={p.workplace}
-                    cardClass="more-list__expanded-card"
-                    tagPageUrl="/projects.html"
-                  />
-                </details>
-              </li>
-            );
-          })
-        }
-      </ul>
+      {previousWorks.length > 0 ? (
+        <>
+          <h2 id="previous-works-heading" class="section__subtitle section__subtitle--spaced">Previous Works</h2>
+          <ul class="more-list">
+            {
+              previousWorks.map((p) => {
+                const rowSolo =
+                  !p.description && p.tags.length === 0
+                    ? "more-list__row--solo"
+                    : false;
+                const oneLine = (
+                  <>
+                    <span class="more-list__title">{p.title}</span>
+                    {p.description ? (
+                      <span class="more-list__desc-shell">
+                        <span class="more-list__desc">{p.description}</span>
+                      </span>
+                    ) : null}
+                    {p.tags.length > 0 ? (
+                      <span class="more-list__tags tag-row">
+                        {p.tags.map((t) => (
+                          <a class="tag tag--dim tag--link" href={`/projects.html?tag=${encodeURIComponent(t)}`}>{t}</a>
+                        ))}
+                      </span>
+                    ) : null}
+                  </>
+                );
+                return (
+                  <li class="more-list__item">
+                    <details class="more-list__details">
+                      <summary class="more-list__summary">
+                        <div class:list={["more-list__row", "more-list__row--summary", rowSolo]}>
+                          {oneLine}
+                        </div>
+                      </summary>
+                      <HomeProjectHighlightCard
+                        title={p.title}
+                        description={p.description ?? ""}
+                        tags={[...p.tags]}
+                        url={p.url}
+                        cta={p.cta}
+                        year={p.year}
+                        workplace={p.workplace}
+                        cardClass="more-list__expanded-card"
+                        tagPageUrl="/projects.html"
+                      />
+                    </details>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </>
+      ) : null}
 
       <h2 id="archive-heading" class="section__subtitle section__subtitle--spaced">Archive</h2>
       <p class="section__lede">Older work and side projects</p>
@@ -106,9 +116,7 @@ const pageTitle = `Project Showcase · ${site.title}`;
           archive.map((p) => (
             <article class="project-card project-card--archive">
               <div class="project-card__meta">
-                <time
-                  datetime={`${Array.isArray(p.year) ? p.year[1] : p.year}-01-01`}
-                >
+                <time datetime={projectYearDatetime(p.year)}>
                   {formatArchiveYear(p.year)}
                 </time>
                 <span class="tag tag--type">{p.type}</span>
@@ -116,10 +124,10 @@ const pageTitle = `Project Showcase · ${site.title}`;
               <h3 class="project-card__title">
                 {p.url ? (
                   <a href={p.url} rel="noopener noreferrer">
-                    {p.name}
+                    {p.title}
                   </a>
                 ) : (
-                  p.name
+                  p.title
                 )}
               </h3>
               {p.description ? (

@@ -3,49 +3,129 @@ import path from "node:path";
 import process from "node:process";
 import yaml from "js-yaml";
 
-const archivedProjectsPath = path.join(
-  process.cwd(),
-  "data",
-  "archived_projects.yml",
-);
+const projectsPath = path.join(process.cwd(), "data", "projects.yml");
 
-export type ArchiveYear = number | [number, number];
+/** `[start, end]`; `end === null` means ongoing. Use `[y, y]` for a single calendar year. */
+export type ProjectYearRange = [number, number | null];
 
 export type ArchiveProject = {
-  name: string;
+  title: string;
   url?: string;
-  year: ArchiveYear;
+  year: ProjectYearRange;
   type: string;
-  languages: string[];
-  keywords: string[];
+  tags: string[];
   description: string;
 };
 
-function loadArchivedProjects(): ArchiveProject[] {
-  const text = fs.readFileSync(archivedProjectsPath, "utf8");
+function normalizeEndYear(raw: unknown): number | null {
+  if (raw === null || raw === undefined) return null;
+  if (typeof raw === "string" && raw.toLowerCase() === "none") return null;
+  if (typeof raw === "number" && Number.isFinite(raw)) return raw;
+  throw new Error(
+    `year end must be a finite number, null, or None; got ${String(raw)}`,
+  );
+}
+
+/**
+ * Parse YAML `year`: a finite number becomes `[n, n]`; otherwise `[start, end|null]` with exactly two elements.
+ */
+export function parseProjectYearRange(raw: unknown, context: string): ProjectYearRange {
+  if (typeof raw === "number" && Number.isFinite(raw)) {
+    return [raw, raw];
+  }
+  if (!Array.isArray(raw) || raw.length !== 2) {
+    throw new Error(
+      `${context}: year must be a finite number or a two-element array [start, end|null]`,
+    );
+  }
+  const start = raw[0];
+  if (typeof start !== "number" || !Number.isFinite(start)) {
+    throw new Error(`${context}: year range must start with a finite number`);
+  }
+  return [start, normalizeEndYear(raw[1])];
+}
+
+/** Full YAML list: home/showcase rows and archive rows (`archived: true`). */
+export function loadProjectsYamlList(): unknown[] {
+  const text = fs.readFileSync(projectsPath, "utf8");
   const data = yaml.load(text);
   if (!Array.isArray(data)) {
-    throw new Error("data/archived_projects.yml must be a YAML list of projects");
+    throw new Error("data/projects.yml must be a YAML list of projects");
   }
-  return data as ArchiveProject[];
+  return data;
 }
 
-function yearSortKey(year: ArchiveYear): number {
-  return Array.isArray(year) ? Math.max(year[0], year[1]) : year;
+function isArchivedRow(row: unknown): row is Record<string, unknown> {
+  return (
+    typeof row === "object" &&
+    row !== null &&
+    (row as Record<string, unknown>).archived === true
+  );
 }
 
-export function formatArchiveYear(year: ArchiveYear): string {
-  if (Array.isArray(year)) {
-    return year[0] === year[1] ? String(year[0]) : `${year[0]}–${year[1]}`;
+function loadArchivedProjects(): ArchiveProject[] {
+  const data = loadProjectsYamlList();
+  const archivedRows = data.filter(isArchivedRow);
+  return archivedRows.map((row, i) => {
+    const title = typeof row.title === "string" ? row.title : "";
+    if (row.year === undefined || row.year === null) {
+      throw new Error(
+        `projects.yml archive[${i}] (${title || "?"}): year is required`,
+      );
+    }
+    const urlRaw = row.url;
+    const url =
+      urlRaw === undefined || urlRaw === null
+        ? undefined
+        : String(urlRaw).trim() === ""
+          ? undefined
+          : String(urlRaw);
+    return {
+      title,
+      url,
+      year: parseProjectYearRange(
+        row.year,
+        `projects.yml archive[${i}] (${title || "?"})`,
+      ),
+      type: typeof row.type === "string" ? row.type : String(row.type ?? ""),
+      tags: Array.isArray(row.tags)
+        ? (row.tags as unknown[]).map((t) => String(t))
+        : [],
+      description:
+        typeof row.description === "string" ? row.description : "",
+    };
+  });
+}
+
+function yearSortKey(year: ProjectYearRange): number {
+  const [a, b] = year;
+  if (b === null) {
+    return Math.max(a, new Date().getFullYear());
   }
-  return String(year);
+  return Math.max(a, b);
 }
 
-/** Tags for chips: languages first, then keywords (deduped, capped). */
+export function formatProjectYearRange(year: ProjectYearRange): string {
+  const [a, b] = year;
+  if (b === null) return `${a}–present`;
+  if (a === b) return String(a);
+  return `${a}–${b}`;
+}
+
+export const formatArchiveYear = formatProjectYearRange;
+
+/** ISO date for `<time datetime>`: end year, or start when ongoing. */
+export function projectYearDatetime(year: ProjectYearRange): string {
+  const [a, b] = year;
+  const y = b === null ? a : b;
+  return `${y}-01-01`;
+}
+
+/** Tags for chips: YAML order preserved, deduped case-insensitively, capped. */
 export function archiveProjectTags(p: ArchiveProject, max = 8): string[] {
   const seen = new Set<string>();
   const out: string[] = [];
-  for (const t of [...p.languages, ...p.keywords]) {
+  for (const t of p.tags) {
     const k = t.toLowerCase();
     if (seen.has(k)) continue;
     seen.add(k);
@@ -61,6 +141,6 @@ export function sortedArchiveProjects(): ArchiveProject[] {
   return [...archiveProjects].sort((a, b) => {
     const dy = yearSortKey(b.year) - yearSortKey(a.year);
     if (dy !== 0) return dy;
-    return a.name.localeCompare(b.name);
+    return a.title.localeCompare(b.title);
   });
 }

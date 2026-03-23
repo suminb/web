@@ -9,7 +9,8 @@ interface Props {
   title: string;
   description: string;
   tags: string[];
-  href: string;
+  /** Resolved link target; empty or "#" keeps the title non-clickable. */
+  url: string;
   cta: string;
   year?: FeaturedYear;
   workplace?: string;
@@ -22,7 +23,7 @@ const {
   title,
   description,
   tags,
-  href,
+  url,
   cta,
   year,
   workplace,
@@ -30,10 +31,10 @@ const {
   tagPageUrl,
 } = Astro.props;
 
-/** `experience_slug` in YAML is already resolved to `href`; also allow any non-placeholder href. */
-const hrefTrimmed = href.trim();
-const titleIsLink = hrefTrimmed !== "" && hrefTrimmed !== "#";
-const titleLinkExternal = /^https?:\/\//i.test(hrefTrimmed);
+/** `experience_slug` in YAML is already resolved to `url`; "#" is a deliberate non-link. */
+const urlTrimmed = url.trim();
+const titleIsLink = urlTrimmed !== "" && urlTrimmed !== "#";
+const titleLinkExternal = /^https?:\/\//i.test(urlTrimmed);
 ---
 
 <article class:list={["project-card", cardClass]} data-tags={JSON.stringify(tags)}>
@@ -57,7 +58,7 @@ const titleLinkExternal = /^https?:\/\//i.test(hrefTrimmed);
       titleIsLink ? (
         <a
           class="project-card__heading-link"
-          href={hrefTrimmed}
+          href={urlTrimmed}
           rel={titleLinkExternal ? "noopener noreferrer" : undefined}
         >
           {title}
@@ -77,8 +78,8 @@ const titleLinkExternal = /^https?:\/\//i.test(hrefTrimmed);
       )
     )}
   </div>
-  {cta.trim() ? (
-    <a class="project-card__cta" href={href}>
+  {titleIsLink && cta.trim() ? (
+    <a class="project-card__cta" href={urlTrimmed}>
       {cta} →
     </a>
   ) : null}

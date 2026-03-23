@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import yaml from "js-yaml";
+import type { ProjectYearRange } from "./archiveProjects";
 
 const talksPath = path.join(process.cwd(), "data", "talks.yml");
 
@@ -92,8 +93,10 @@ export function formatTalkDate(isoDate: string): string {
   }).format(dt);
 }
 
-export function talkYear(isoDate: string): number {
-  return Number.parseInt(isoDate.slice(0, 4), 10);
+/** Calendar year of the talk as `[y, y]` for shared card formatting. */
+export function talkYear(isoDate: string): ProjectYearRange {
+  const y = Number.parseInt(isoDate.slice(0, 4), 10);
+  return [y, y];
 }
 
 /** Prefer event page, then video, then slides. */

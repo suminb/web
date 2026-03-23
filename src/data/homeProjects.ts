@@ -1,19 +1,19 @@
-import fs from "node:fs";
-import path from "node:path";
-import process from "node:process";
-import yaml from "js-yaml";
+import {
+  formatProjectYearRange,
+  loadProjectsYamlList,
+  parseProjectYearRange,
+  projectYearDatetime,
+  type ProjectYearRange,
+} from "./archiveProjects";
 
-const dataDir = path.join(process.cwd(), "data");
-const homeProjectsPath = path.join(dataDir, "home_projects.yml");
-
-/** Single year, or [start, end]; `end === null` means ongoing. */
-export type FeaturedYear = number | [number, number | null];
+export type FeaturedYear = ProjectYearRange;
 
 export type FeaturedProject = {
   title: string;
   description: string;
   tags: string[];
-  href: string;
+  /** Resolved destination; empty or "#" yields a non-clickable title (see card). */
+  url: string;
   cta: string;
   year?: FeaturedYear;
   workplace?: string;
@@ -21,7 +21,7 @@ export type FeaturedProject = {
 
 export type MoreProject = {
   title: string;
-  href: string;
+  url: string;
   cta: string;
   tags: string[];
   description?: string;
@@ -36,75 +36,41 @@ type ProjectRowRaw = {
   cta?: string;
   year?: unknown;
   workplace?: string;
-  href?: string;
+  /** Omitted or YAML `null` → non-clickable when there is no `experience_slug`. */
+  url?: string | null;
   experience_slug?: string;
+  featured?: boolean;
+  /** When true, row is only used as an archive entry (see `archiveProjects`). */
+  archived?: boolean;
 };
 
-type HomeProjectsFile = {
-  featured_count?: number;
-  projects?: ProjectRowRaw[];
-};
-
-function normalizeEndYear(raw: unknown): number | null {
-  if (raw === null || raw === undefined) return null;
-  if (typeof raw === "string" && raw.toLowerCase() === "none") return null;
-  if (typeof raw === "number" && Number.isFinite(raw)) return raw;
-  throw new Error(
-    `featured project year end must be a number, null, or None; got ${String(raw)}`,
-  );
-}
-
-function parseFeaturedYear(raw: unknown, entryIndex: number): FeaturedYear | undefined {
+function parseFeaturedYear(
+  raw: unknown,
+  entryIndex: number,
+): FeaturedYear | undefined {
   if (raw === undefined || raw === null) return undefined;
-  if (typeof raw === "number" && Number.isFinite(raw)) return raw;
-  if (Array.isArray(raw)) {
-    if (raw.length < 1 || raw.length > 2) {
-      throw new Error(
-        `home_projects.yml entry ${entryIndex}: year array must be [start] or [start, end]`,
-      );
-    }
-    const start = raw[0];
-    if (typeof start !== "number" || !Number.isFinite(start)) {
-      throw new Error(
-        `home_projects.yml entry ${entryIndex}: year range must start with a number`,
-      );
-    }
-    if (raw.length === 1) return [start, null];
-    return [start, normalizeEndYear(raw[1])];
-  }
-  throw new Error(
-    `home_projects.yml entry ${entryIndex}: year must be a number or [start, end?]`,
-  );
+  return parseProjectYearRange(raw, `projects.yml[${entryIndex}]`);
 }
 
-export function formatFeaturedYear(year: FeaturedYear): string {
-  if (Array.isArray(year)) {
-    const [a, b] = year;
-    if (b == null) return `${a}–present`;
-    if (a === b) return String(a);
-    return `${a}–${b}`;
-  }
-  return String(year);
-}
-
-/** `datetime` for <time> (uses end year, or start if ongoing / single). */
-export function featuredYearDatetime(year: FeaturedYear): string {
-  if (Array.isArray(year)) {
-    const [a, b] = year;
-    const y = b == null ? a : b;
-    return `${y}-01-01`;
-  }
-  return `${year}-01-01`;
-}
+export const formatFeaturedYear = formatProjectYearRange;
+export const featuredYearDatetime = projectYearDatetime;
 
 function resolveLink(
-  raw: { href?: string; experience_slug?: string },
+  raw: { url?: string | null; experience_slug?: string },
   experienceUrl: (key: string) => string,
   context: string,
 ): string {
-  if (raw.experience_slug) return experienceUrl(raw.experience_slug);
-  if (raw.href !== undefined && raw.href !== "") return raw.href;
-  throw new Error(`${context}: set either href or experience_slug`);
+  const slug = raw.experience_slug?.trim();
+  if (slug) return experienceUrl(slug);
+
+  const u = raw.url;
+  if (u === null || u === undefined) return "";
+  if (typeof u !== "string") {
+    throw new Error(`${context}: url must be a string or null`);
+  }
+  const trimmed = u.trim();
+  if (trimmed === "") return "";
+  return trimmed;
 }
 
 function normalizeProjectRow(
@@ -112,12 +78,12 @@ function normalizeProjectRow(
   i: number,
   experienceUrl: (key: string) => string,
 ): FeaturedProject {
-  const href = resolveLink(row, experienceUrl, `home_projects.yml projects[${i}]`);
+  const url = resolveLink(row, experienceUrl, `projects.yml[${i}]`);
   const out: FeaturedProject = {
     title: row.title,
     description: typeof row.description === "string" ? row.description : "",
     tags: row.tags ?? [],
-    href,
+    url,
     cta: typeof row.cta === "string" ? row.cta : "",
   };
   const y = parseFeaturedYear(row.year, i);
@@ -129,7 +95,7 @@ function normalizeProjectRow(
 function toMoreProject(p: FeaturedProject): MoreProject {
   const out: MoreProject = {
     title: p.title,
-    href: p.href,
+    url: p.url,
     tags: p.tags,
     cta: p.cta,
     year: p.year,
@@ -144,33 +110,20 @@ export function loadHomeProjects(experienceUrl: (key: string) => string): {
   featuredProjects: FeaturedProject[];
   moreProjects: MoreProject[];
 } {
-  const text = fs.readFileSync(homeProjectsPath, "utf8");
-  const doc = yaml.load(text) as HomeProjectsFile;
-  if (!doc || typeof doc !== "object") {
-    throw new Error("data/home_projects.yml must be a mapping");
-  }
-  const list = doc.projects;
-  if (!Array.isArray(list)) {
-    throw new Error("data/home_projects.yml must include a projects: array");
-  }
-  const defaultFeatured = 3;
-  const rawCount = doc.featured_count;
-  let n: number;
-  if (rawCount === undefined || rawCount === null) {
-    n = Math.min(defaultFeatured, list.length);
-  } else {
-    const parsed = Number(rawCount);
-    n = Number.isFinite(parsed)
-      ? Math.min(Math.max(0, Math.floor(parsed)), list.length)
-      : Math.min(defaultFeatured, list.length);
-  }
+  const list = loadProjectsYamlList();
 
-  const normalized = list.map((row, i) =>
-    normalizeProjectRow(row, i, experienceUrl),
-  );
+  const featuredProjects: FeaturedProject[] = [];
+  const moreRaw: FeaturedProject[] = [];
+  for (let i = 0; i < list.length; i++) {
+    const row = list[i] as ProjectRowRaw;
+    if (row.archived === true) continue;
+    const p = normalizeProjectRow(row, i, experienceUrl);
+    if (row.featured === true) featuredProjects.push(p);
+    else moreRaw.push(p);
+  }
 
   return {
-    featuredProjects: normalized.slice(0, n),
-    moreProjects: normalized.slice(n).map(toMoreProject),
+    featuredProjects,
+    moreProjects: moreRaw.map(toMoreProject),
   };
 }

@@ -1,0 +1,446 @@
+# Consolidated project catalog (single YAML list).
+# Home/showcase: omit `archived` or `archived: false`. `featured: true` → highlight cards; non-featured with `workplace` → showcase “Previous Works”; other non-featured rows still appear on /projects.html.
+# Archive (showcase grid + tag index): `archived: true` and required `year` (number or [start, end|null]).
+# `year` on home rows: optional; same rules as before when present.
+
+- title: MLX Data Manager
+  year:
+    - 2023
+    - null
+  type: work
+  workplace: NAVER Cloud
+  featured: true
+  description: A data management system designed for machine learning workloads, offering a Hugging Face-compatible interface for ease of adoption, along with data version control and lineage tracking.
+  tags:
+    - data
+    - ml
+    - kotlin
+    - python
+  cta: Details soon
+- title: Hand-written Font Generator
+  year:
+    - 2020
+    - 2020
+  type: work
+  workplace: NAVER
+  featured: true
+  description: Given a sheet of handwritten paper, generate a font that resembles the handwriting.
+  tags:
+    - ml
+    - kotlin
+  cta: ''
+- title: Data Lake
+  year:
+    - 2018
+    - 2018
+  type: work
+  workplace: Coupang
+  featured: true
+  tags:
+    - java
+    - kafka
+    - s3
+  description: Ingested and aggregated operational data—from Kafka into S3 (ORC format)—for analytics, ensuring integrity with deduplication and exactly-once delivery semantics.
+  cta: ''
+- title: Flow (Inter-domain logistics state management system)
+  year:
+    - 2018
+    - 2018
+  type: work
+  workplace: Coupang
+  tags:
+    - java
+    - cassandra
+    - kafka
+  description: Handling write-heavy workloads with Cassandra and message ordering guarantee with a distributed queue.
+  cta: ''
+- title: Ecosystem Pipeline (Durango)
+  year:
+    - 2016
+    - 2018
+  type: work
+  workplace: Nexon
+  description: 'Distributed pipeline so the simulator runs in bounded time as the world grows: Dockerized jobs, spatial chunking, and “no audience, no play” cost control.'
+  tags:
+    - distributed
+    - aws
+    - scalability
+    - game
+  experience_slug: durango_ecosim_pipeline
+  cta: Read write-up
+- title: Ecosystem Simulator (Durango)
+  year:
+    - 2014
+    - 2016
+  type: work
+  workplace: Nexon
+  description: Procedural world vegetation driven by soil, climate, and biomass rules—scaling heavy simulation with precalculation and GPU-friendly workloads.
+  tags:
+    - c#
+    - opencl
+    - simulation
+    - game
+  experience_slug: durango_ecosim
+  cta: Read write-up
+- title: Durango — server & overview
+  type: work
+  workplace: Nexon
+  experience_slug: durango
+  description: Distributed MMORPG server at Nexon—overview of the system and how ecosystem sim, pipeline, and related pieces fit together.
+  tags:
+    - game
+    - python
+    - distributed
+- title: SB Finance
+  year:
+    - 2014
+    - null
+  type: open source
+  url: https://github.com/suminb/finance
+  description: Personal finance tooling and experiments in the open.
+  tags:
+    - open source
+    - python
+    - finance
+- title: Coding Expedition
+  url: /coding-expedition.html
+  year:
+    - 2011
+    - 2020
+  type: personal
+  description: Writing code away from home—cafés, road trips, and a map of places. Longer story and map on this page.
+  tags:
+    - javascript
+    - travel
+    - maps
+  archived: true
+- title: Dollar Auction
+  url: https://auctions.shortbread.io/auctions
+  year:
+    - 2015
+    - 2024
+  type: personal
+  description: An improvised marketplace to sell underused personal belongings where every auction starts at KRW 1,000 (approximately USD 1).
+  tags:
+    - marketplace
+    - auction
+    - web
+    - kotlin
+    - typescript
+  archived: true
+- title: BOINC
+  url: https://boincstats.com/en/stats/-1/user/detail/a077d8a4dee6d1c4836f80c4ebcdb8bb/
+  year:
+    - 2010
+    - 2026
+  type: volunteer
+  description: Contributing compute to <a href="https://en.wikipedia.org/wiki/Berkeley_Open_Infrastructure_for_Network_Computing">BOINC</a>—on the order of 127 GFLOPS on average for climate modeling, prime search, stellar-stream simulations, and similar projects.
+  tags:
+    - distributed computing
+    - science
+  archived: true
+- title: SB Coding Workshop
+  url: https://github.com/suminb/sbcw
+  year:
+    - 2018
+    - 2018
+  type: open source
+  workplace: Coupang
+  description: Workshop materials and exercises for teaching Python.
+  tags:
+    - python
+    - education
+    - leadership
+  archived: true
+- title: Interview Questions
+  url: https://github.com/suminb/interview-questions
+  year:
+    - 2018
+    - 2021
+  type: open source
+  description: Curated a collection of interview questions and solutions from various tech companies, for personal reference and to support fellow engineers preparing for interviews.
+  tags:
+    - python
+    - go
+    - reference
+  archived: true
+- title: Secor
+  url: https://github.com/pinterest/secor
+  year:
+    - 2018
+    - 2018
+  type: open source
+  workplace: Coupang
+  description: 'Upstream work on <a href="https://github.com/pinterest/secor">Pinterest Secor</a> (Kafka to cloud storage), including handling map types in message serialization. Pull requests: <a href="https://github.com/pinterest/secor/pull/982">#982</a>, <a href="https://github.com/pinterest/secor/pull/965">#965</a>, and <a href="https://github.com/pinterest/secor/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+author%3Asuminb">other authored PRs</a>.'
+  tags:
+    - java
+    - kafka
+    - data pipeline
+  archived: true
+- title: Better Translator
+  url: http://better-translator.com
+  year:
+    - 2013
+    - 2013
+  type: open source
+  description: A language translator that uses Japanese as an intermediate language. Processes +20,000 translation requests on a daily basis (as of Sep 2013).
+  tags:
+    - python
+    - javascript
+    - application
+    - web
+  archived: true
+- title: Winnowing
+  url: https://github.com/suminb/winnowing
+  year:
+    - 2013
+    - 2013
+  type: open source
+  description: A Python implementation of the <a href="http://theory.stanford.edu/~aiken/publications/papers/sigmod03.pdf">Winnowing</a> (local algorithms for document fingerprinting)
+  tags:
+    - python
+    - algorithm
+    - document fingerprinting
+  archived: true
+- title: Base62
+  url: https://github.com/suminb/base62
+  year:
+    - 2013
+    - 2026
+  type: open source
+  description: A Python library to encode and decode any arbitrary data in base62 (duosexagesimal; using 0-9, A-Z, and a-z) for URL-safety. I was recently able to convince my colleagues to use this library for work.
+  tags:
+    - python
+    - encoding
+  archived: true
+- title: Hanja
+  url: https://github.com/suminb/hanja
+  year:
+    - 2013
+    - 2024
+  type: open source
+  description: A Python library to <a href="https://ko.wikipedia.org/wiki/%EC%9D%8C%EB%8F%85">read Chinese characters in Korean sound values</a> (음독).
+  tags:
+    - python
+    - korean
+    - linguistics
+  archived: true
+- title: Smartrek
+  url: http://www.smartrekmobile.com
+  year:
+    - 2012
+    - 2013
+  type: proprietary
+  workpace: University of Arizona
+  description: An ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to build a scalable system with Amazon EC2 platform, and to build in-house software for data analysis.
+  tags:
+    - java
+    - application
+    - transportation
+    - big data
+  archived: true
+- title: Purpose-built Appliance
+  url: https://github.com/suminb/scalable-appliance
+  year:
+    - 2012
+    - 2012
+  type: academic
+  description: Pending paper publication to <a href="http://www.plosone.org/">PLOSone</a>
+  tags:
+    - python
+    - javascript
+    - application
+    - big data
+  archived: true
+- title: ChemBook
+  year:
+    - 2012
+    - 2012
+  type: proprietary
+  description: An iOS app to help students with writing chemistry lab reports.
+  tags:
+    - objective c
+    - python
+    - application
+    - chemistry
+  archived: true
+- title: Radioactivity
+  url: https://bitbucket.org/suminb/radioactivity
+  year:
+    - 2012
+    - 2012
+  type: open source
+  description: The project radioactivity had started in March of 2011 in an attempt to help the general public to be alerted regarding the spread of radiation and other radioactive materials originated from the catastrophic incident in the Fukushima nuclear power plant in Japan, by providing visual information of city-wise radition levels.
+  tags:
+    - python
+    - javascript
+    - application
+    - web
+    - data visualization
+  archived: true
+- title: 한자-한글 변환기
+  url: http://hanja.suminb.com
+  year:
+    - 2011
+    - 2011
+  type: proprietary
+  description: The name of the project is self-explanatory.
+  tags:
+    - python
+    - javascript
+    - application
+  archived: true
+- title: Slow Drivers
+  url: http://labs.suminb.com/drivers
+  year:
+    - 2011
+    - 2011
+  type: proprietary
+  description: ''
+  tags:
+    - python
+    - javascript
+    - data visualization
+    - data mining
+    - transportation
+  archived: true
+- title: Kindleholic
+  url: http://kindleholic.net
+  year:
+    - 2011
+    - 2011
+  type: proprietary
+  description: An RSS/Atom feed aggregation service for Amazon Kindle.
+  tags:
+    - python
+    - javascript
+    - application
+    - web
+    - ebook
+  archived: true
+- title: Teach Ourselves
+  url: http://roslin.cs.arizona.edu/teachourselves/
+  year:
+    - 2011
+    - 2011
+  type: academic
+  workpace: University of Arizona
+  description: A project to create a society for students in which learning and creativity is rewarded with points that can be redeemed for goods.
+  tags:
+    - action script
+    - application
+    - web
+  archived: true
+- title: Bootstrapped Learning
+  year:
+    - 2010
+    - 2010
+  type: academic
+  workpace: University of Arizona
+  description: A DARPA sponsored project to develop an <em>electronic student</em> that can learn from natural human instruction close to the way humans do.
+  tags:
+    - java
+    - c++
+    - machine learning
+    - interdisciplinary
+  archived: true
+- title: gdocsdb
+  url: https://bitbucket.org/suminb/gdocsdb
+  year:
+    - 2011
+    - 2011
+  type: open source
+  description: A Python library to use Google Spreadsheet as a database.
+  tags:
+    - python
+    - library
+    - database
+    - open source
+  archived: true
+- title: maps
+  url: http://labs.suminb.com/maps
+  year:
+    - 2010
+    - 2010
+  type: classified
+  description: A project to reconstruct a map in global scale by collecting map tiles from various sources such as Google Maps and Open Street Map.
+  tags:
+    - python
+    - big data
+    - data mining
+  archived: true
+- title: Violet
+  year:
+    - 2010
+    - 2010
+  type: proprietary
+  description: A children's book for iPad with user-interactable animations.
+  tags:
+    - objective c
+    - application
+    - mobile
+  archived: true
+- title: Readown
+  url: https://github.com/suminb/readown
+  year:
+    - 2010
+    - 2010
+  type: open source
+  description: A Markdown reader for Mac OS X.
+  tags:
+    - objective c
+    - application
+    - mac
+    - open source
+  archived: true
+- title: Chemtalk
+  url: http://labs.suminb.com/chemtalk
+  year:
+    - 2010
+    - 2010
+  type: proprietary
+  description: ''
+  tags:
+    - python
+    - javascript
+    - application
+    - chemistry
+    - web
+  archived: true
+- title: Notehall
+  url: https://en.wikipedia.org/wiki/Notehall
+  year:
+    - 2008
+    - 2009
+  type: proprietary
+  workplace: Notehall
+  description: ''
+  tags:
+    - php
+    - javascript
+    - application
+    - web
+  archived: true
+- title: CQube
+  year:
+    - 2008
+    - 2008
+  type: proprietary
+  description: A labyrinth-like puzzle game for iPhone.
+  tags:
+    - objective c
+    - application
+    - mobile
+    - game
+  archived: true
+- title: Mandelbrot set
+  year:
+    - 2008
+    - 2008
+  type: academic
+  description: A distributed processing project to draw a mandelbrot set using multiple computers.
+  tags:
+    - java
+    - c
+    - application
+  archived: true

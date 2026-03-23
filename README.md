@@ -8,8 +8,7 @@ Content sources (YAML/Markdown under `data/`, read at build time):
 - `data/experiences.yml` plus long-form markdown (`data/projects/*.md` → `/projects/{slug}.html`, other published bodies → `/experience/{slug}.html`)
 - `data/experience_summary.md` — résumé-style **Experience** page (`/experience.html`)
 - `data/coding_expedition.md` — copy for **Coding Expedition** (`/coding-expedition.html`)
-- `data/home_projects.yml` — **Projects** highlights on the home page and `/projects.html`, plus “Previous works” rows on `/projects.html`
-- `data/archived_projects.yml` — **Archive** grid on `/projects.html`
+- `data/projects.yml` — single catalog: home/showcase rows (optional `featured`, `workplace`, `cta`, `experience_slug`, `url`) and archive rows (`archived: true`, required `year`) for the **Archive** grid and the combined tag list on `/projects.html`
 - `data/talks.yml` — **Talks** highlights on the home page and full list on `/talks.html`
 
 `public/` is copied into the build as-is (e.g. `public/.nojekyll` so GitHub Pages does not run Jekyll and skip `/_astro/` assets, `public/favicon.svg`, `public/static/`).

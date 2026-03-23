@@ -12,7 +12,7 @@ import {
 
 type ProjectRow = {
   title: string;
-  href?: string;
+  url?: string;
   description?: string;
   tags: string[];
   year?: string;
@@ -22,24 +22,32 @@ function fmtYear(y: FeaturedYear | undefined): string | undefined {
   return y !== undefined ? formatFeaturedYear(y) : undefined;
 }
 
+/** Same as highlight cards: no link when missing, empty, or "#". */
+function rowUrl(raw: string | undefined): string | undefined {
+  if (raw === undefined || raw === "") return undefined;
+  const t = raw.trim();
+  if (t === "" || t === "#") return undefined;
+  return raw;
+}
+
 const allProjects: ProjectRow[] = [
   ...featuredProjects.map((p) => ({
     title: p.title,
-    href: p.href,
+    url: rowUrl(p.url),
     description: p.description || undefined,
     tags: [...p.tags],
     year: fmtYear(p.year),
   })),
   ...moreProjects.map((p) => ({
     title: p.title,
-    href: p.href,
+    url: rowUrl(p.url),
     description: p.description || undefined,
     tags: [...p.tags],
     year: fmtYear(p.year),
   })),
   ...sortedArchiveProjects().map((p) => ({
-    title: p.name,
-    href: p.url || undefined,
+    title: p.title,
+    url: rowUrl(p.url),
     description: undefined,
     tags: archiveProjectTags(p),
     year: formatArchiveYear(p.year),
@@ -73,8 +81,8 @@ const pageTitle = `Projects · ${site.title}`;
                 </div>
               ) : null}
               <h3 class="project-card__title">
-                {p.href ? (
-                  <a href={p.href}>{p.title}</a>
+                {p.url ? (
+                  <a href={p.url}>{p.title}</a>
                 ) : (
                   p.title
                 )}

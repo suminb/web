@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 import { formatFeaturedYear, featuredYearDatetime } from "./homeProjects";
 
 describe("formatFeaturedYear", () => {
-  it("formats a single year", () => {
-    expect(formatFeaturedYear(2023)).toBe("2023");
+  it("formats a single calendar year as [y, y]", () => {
+    expect(formatFeaturedYear([2023, 2023])).toBe("2023");
   });
 
   it("formats a range with end year", () => {
@@ -20,8 +20,8 @@ describe("formatFeaturedYear", () => {
 });
 
 describe("featuredYearDatetime", () => {
-  it("returns ISO date for a single year", () => {
-    expect(featuredYearDatetime(2023)).toBe("2023-01-01");
+  it("returns ISO date for [y, y]", () => {
+    expect(featuredYearDatetime([2023, 2023])).toBe("2023-01-01");
   });
 
   it("uses the end year for a range", () => {
