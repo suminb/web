@@ -1,5 +1,5 @@
 # Consolidated project catalog (single YAML list).
-# Home/showcase: omit `archived` or `archived: false`. `featured: true` → highlight cards; non-featured with `workplace` → showcase “Previous Works”; other non-featured rows still appear on /projects.html.
+# Home/showcase: omit `archived` or `archived: false`. `featured: true` → highlight cards; non-featured with `workplace` → showcase "Previous Works"; other non-featured rows still appear on /projects.html.
 # Archive (showcase grid + tag index): `archived: true` and required `year` (number or [start, end|null]).
 # `year` on home rows: optional; same rules as before when present.
 
@@ -60,7 +60,7 @@
     - 2018
   type: work
   workplace: Nexon
-  description: 'Distributed pipeline so the simulator runs in bounded time as the world grows: Dockerized jobs, spatial chunking, and “no audience, no play” cost control.'
+  description: 'Distributed pipeline so the simulator runs in bounded time as the world grows: Dockerized jobs, spatial chunking, and "no audience, no play" cost control.'
   tags:
     - distributed
     - aws

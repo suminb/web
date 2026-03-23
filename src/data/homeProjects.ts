@@ -5,6 +5,11 @@ import {
   projectYearDatetime,
   type ProjectYearRange,
 } from "./archiveProjects";
+import {
+  listExperiencePageKeys,
+  getExperienceForPage,
+  truncatePlain,
+} from "../lib/experiences";
 
 export type FeaturedYear = ProjectYearRange;
 
@@ -122,8 +127,31 @@ export function loadHomeProjects(experienceUrl: (key: string) => string): {
     else moreRaw.push(p);
   }
 
+  // Collect all experience_slug values already referenced in projects.yml
+  const coveredSlugs = new Set<string>(
+    list.flatMap((row) => (row.experience_slug ? [row.experience_slug] : [])),
+  );
+
+  // Transform published experiences from experiences.yml not yet in projects.yml
+  const transformed: MoreProject[] = listExperiencePageKeys()
+    .filter((key) => !coveredSlugs.has(key))
+    .map((key) => {
+      // getExperienceForPage is safe here: listExperiencePageKeys() only returns
+      // keys that are published with a non-empty description.
+      const record = getExperienceForPage(key)!;
+      const out: MoreProject = {
+        title: record.title,
+        url: experienceUrl(key),
+        tags: record.tags ?? [],
+        cta: "",
+      };
+      const excerpt = truncatePlain(record.description, 250);
+      if (excerpt) out.description = excerpt;
+      return out;
+    });
+
   return {
     featuredProjects,
-    moreProjects: moreRaw.map(toMoreProject),
+    moreProjects: [...moreRaw.map(toMoreProject), ...transformed],
   };
 }
