@@ -36,11 +36,11 @@ type TalkRaw = {
 
 function loadTalksRaw(): TalkRaw[] {
   const text = fs.readFileSync(talksPath, "utf8");
-  const data = yaml.load(text) as { talks?: TalkRaw[] };
-  if (!data || !Array.isArray(data.talks)) {
-    throw new Error("data/talks.yml must contain a `talks` array");
+  const data = yaml.load(text) as Record<string, TalkRaw>;
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    throw new Error("data/talks.yml must be a YAML dictionary of talks");
   }
-  return data.talks;
+  return Object.values(data);
 }
 
 function normalizeTalk(raw: TalkRaw, index: number): Talk {

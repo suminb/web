@@ -45,14 +45,14 @@ export function parseProjectYearRange(raw: unknown, context: string): ProjectYea
   return [start, normalizeEndYear(raw[1])];
 }
 
-/** Full YAML list: home/showcase rows and archive rows (`archived: true`). */
+/** Full YAML dictionary: home/showcase rows and archive rows (`archived: true`). Returns values in declaration order. */
 export function loadProjectsYamlList(): unknown[] {
   const text = fs.readFileSync(projectsPath, "utf8");
   const data = yaml.load(text);
-  if (!Array.isArray(data)) {
-    throw new Error("data/projects.yml must be a YAML list of projects");
+  if (typeof data !== "object" || data === null || Array.isArray(data)) {
+    throw new Error("data/projects.yml must be a YAML dictionary of projects");
   }
-  return data;
+  return Object.values(data as Record<string, unknown>);
 }
 
 function isArchivedRow(row: unknown): row is Record<string, unknown> {

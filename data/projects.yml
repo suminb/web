@@ -1,9 +1,10 @@
-# Consolidated project catalog (single YAML list).
-# Home/showcase: omit `archived` or `archived: false`. `featured: true` → highlight cards; non-featured with `workplace` → showcase “Previous Works”; other non-featured rows still appear on /projects.html.
+# Consolidated project catalog (dictionary keyed by slug).
+# Home/showcase: omit `archived` or `archived: false`. `featured: true` → highlight cards; non-featured with `workplace` → showcase "Previous Works"; other non-featured rows still appear on /projects.html.
 # Archive (showcase grid + tag index): `archived: true` and required `year` (number or [start, end|null]).
 # `year` on home rows: optional; same rules as before when present.
 
-- title: MLX Data Manager
+mlx_data_manager:
+  title: MLX Data Manager
   year:
     - 2023
     - null
@@ -17,7 +18,9 @@
     - kotlin
     - python
   cta: Details soon
-- title: Hand-written Font Generator
+
+handwritten_font_generator:
+  title: Hand-written Font Generator
   year:
     - 2020
     - 2020
@@ -29,7 +32,9 @@
     - ml
     - kotlin
   cta: ''
-- title: Data Lake
+
+data_lake_coupang:
+  title: Data Lake
   year:
     - 2018
     - 2018
@@ -42,7 +47,9 @@
     - s3
   description: Ingested and aggregated operational data—from Kafka into S3 (ORC format)—for analytics, ensuring integrity with deduplication and exactly-once delivery semantics.
   cta: ''
-- title: Flow (Inter-domain logistics state management system)
+
+flow_coupang:
+  title: Flow (Inter-domain logistics state management system)
   year:
     - 2018
     - 2018
@@ -54,13 +61,15 @@
     - kafka
   description: Handling write-heavy workloads with Cassandra and message ordering guarantee with a distributed queue.
   cta: ''
-- title: Ecosystem Pipeline (Durango)
+
+durango_ecosystem_pipeline:
+  title: Ecosystem Pipeline (Durango)
   year:
     - 2016
     - 2018
   type: work
   workplace: Nexon
-  description: 'Distributed pipeline so the simulator runs in bounded time as the world grows: Dockerized jobs, spatial chunking, and “no audience, no play” cost control.'
+  description: 'Distributed pipeline so the simulator runs in bounded time as the world grows: Dockerized jobs, spatial chunking, and "no audience, no play" cost control.'
   tags:
     - distributed
     - aws
@@ -68,7 +77,9 @@
     - game
   experience_slug: durango_ecosim_pipeline
   cta: Read write-up
-- title: Ecosystem Simulator (Durango)
+
+durango_ecosystem_simulator:
+  title: Ecosystem Simulator (Durango)
   year:
     - 2014
     - 2016
@@ -82,7 +93,9 @@
     - game
   experience_slug: durango_ecosim
   cta: Read write-up
-- title: Durango — server & overview
+
+durango_server_overview:
+  title: Durango — server & overview
   type: work
   workplace: Nexon
   experience_slug: durango
@@ -91,7 +104,9 @@
     - game
     - python
     - distributed
-- title: SB Finance
+
+sb_finance:
+  title: SB Finance
   year:
     - 2014
     - null
@@ -102,7 +117,9 @@
     - open source
     - python
     - finance
-- title: Coding Expedition
+
+coding_expedition:
+  title: Coding Expedition
   url: /coding-expedition.html
   year:
     - 2011
@@ -114,7 +131,9 @@
     - travel
     - maps
   archived: true
-- title: Dollar Auction
+
+dollar_auction:
+  title: Dollar Auction
   url: https://auctions.shortbread.io/auctions
   year:
     - 2015
@@ -128,7 +147,9 @@
     - kotlin
     - typescript
   archived: true
-- title: BOINC
+
+boinc:
+  title: BOINC
   url: https://boincstats.com/en/stats/-1/user/detail/a077d8a4dee6d1c4836f80c4ebcdb8bb/
   year:
     - 2010
@@ -139,7 +160,9 @@
     - distributed computing
     - science
   archived: true
-- title: SB Coding Workshop
+
+sb_coding_workshop:
+  title: SB Coding Workshop
   url: https://github.com/suminb/sbcw
   year:
     - 2018
@@ -152,7 +175,9 @@
     - education
     - leadership
   archived: true
-- title: Interview Questions
+
+interview_questions:
+  title: Interview Questions
   url: https://github.com/suminb/interview-questions
   year:
     - 2018
@@ -164,7 +189,9 @@
     - go
     - reference
   archived: true
-- title: Secor
+
+secor:
+  title: Secor
   url: https://github.com/pinterest/secor
   year:
     - 2018
@@ -177,7 +204,9 @@
     - kafka
     - data pipeline
   archived: true
-- title: Better Translator
+
+better_translator:
+  title: Better Translator
   url: http://better-translator.com
   year:
     - 2013
@@ -190,7 +219,9 @@
     - application
     - web
   archived: true
-- title: Winnowing
+
+winnowing:
+  title: Winnowing
   url: https://github.com/suminb/winnowing
   year:
     - 2013
@@ -202,7 +233,9 @@
     - algorithm
     - document fingerprinting
   archived: true
-- title: Base62
+
+base62:
+  title: Base62
   url: https://github.com/suminb/base62
   year:
     - 2013
@@ -213,7 +246,9 @@
     - python
     - encoding
   archived: true
-- title: Hanja
+
+hanja:
+  title: Hanja
   url: https://github.com/suminb/hanja
   year:
     - 2013
@@ -225,7 +260,9 @@
     - korean
     - linguistics
   archived: true
-- title: Smartrek
+
+smartrek:
+  title: Smartrek
   url: http://www.smartrekmobile.com
   year:
     - 2012
@@ -239,7 +276,9 @@
     - transportation
     - big data
   archived: true
-- title: Purpose-built Appliance
+
+purpose_built_appliance:
+  title: Purpose-built Appliance
   url: https://github.com/suminb/scalable-appliance
   year:
     - 2012
@@ -252,7 +291,9 @@
     - application
     - big data
   archived: true
-- title: ChemBook
+
+chembook:
+  title: ChemBook
   year:
     - 2012
     - 2012
@@ -264,7 +305,9 @@
     - application
     - chemistry
   archived: true
-- title: Radioactivity
+
+radioactivity:
+  title: Radioactivity
   url: https://bitbucket.org/suminb/radioactivity
   year:
     - 2012
@@ -278,7 +321,9 @@
     - web
     - data visualization
   archived: true
-- title: 한자-한글 변환기
+
+hanja_hangle_converter:
+  title: 한자-한글 변환기
   url: http://hanja.suminb.com
   year:
     - 2011
@@ -290,7 +335,9 @@
     - javascript
     - application
   archived: true
-- title: Slow Drivers
+
+slow_drivers:
+  title: Slow Drivers
   url: http://labs.suminb.com/drivers
   year:
     - 2011
@@ -304,7 +351,9 @@
     - data mining
     - transportation
   archived: true
-- title: Kindleholic
+
+kindleholic:
+  title: Kindleholic
   url: http://kindleholic.net
   year:
     - 2011
@@ -318,7 +367,9 @@
     - web
     - ebook
   archived: true
-- title: Teach Ourselves
+
+teach_ourselves:
+  title: Teach Ourselves
   url: http://roslin.cs.arizona.edu/teachourselves/
   year:
     - 2011
@@ -331,7 +382,9 @@
     - application
     - web
   archived: true
-- title: Bootstrapped Learning
+
+bootstrapped_learning:
+  title: Bootstrapped Learning
   year:
     - 2010
     - 2010
@@ -344,7 +397,9 @@
     - machine learning
     - interdisciplinary
   archived: true
-- title: gdocsdb
+
+gdocsdb:
+  title: gdocsdb
   url: https://bitbucket.org/suminb/gdocsdb
   year:
     - 2011
@@ -357,7 +412,9 @@
     - database
     - open source
   archived: true
-- title: maps
+
+maps:
+  title: maps
   url: http://labs.suminb.com/maps
   year:
     - 2010
@@ -369,7 +426,9 @@
     - big data
     - data mining
   archived: true
-- title: Violet
+
+violet:
+  title: Violet
   year:
     - 2010
     - 2010
@@ -380,7 +439,9 @@
     - application
     - mobile
   archived: true
-- title: Readown
+
+readown:
+  title: Readown
   url: https://github.com/suminb/readown
   year:
     - 2010
@@ -393,7 +454,9 @@
     - mac
     - open source
   archived: true
-- title: Chemtalk
+
+chemtalk:
+  title: Chemtalk
   url: http://labs.suminb.com/chemtalk
   year:
     - 2010
@@ -407,7 +470,9 @@
     - chemistry
     - web
   archived: true
-- title: Notehall
+
+notehall:
+  title: Notehall
   url: https://en.wikipedia.org/wiki/Notehall
   year:
     - 2008
@@ -421,7 +486,9 @@
     - application
     - web
   archived: true
-- title: CQube
+
+cqube:
+  title: CQube
   year:
     - 2008
     - 2008
@@ -433,7 +500,9 @@
     - mobile
     - game
   archived: true
-- title: Mandelbrot set
+
+mandelbrot_set:
+  title: Mandelbrot set
   year:
     - 2008
     - 2008
