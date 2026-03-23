@@ -1,4 +1,4 @@
-- name: Coding Expedition
+- title: Coding Expedition
   url: /coding-expedition.html
   year:
     - 2011
@@ -9,7 +9,7 @@
     - javascript
     - travel
     - maps
-- name: Dollar Auction
+- title: Dollar Auction
   url: https://auctions.shortbread.io/auctions
   year:
     - 2015
@@ -22,7 +22,7 @@
     - web
     - kotlin
     - typescript
-- name: BOINC
+- title: BOINC
   url: https://boincstats.com/en/stats/-1/user/detail/a077d8a4dee6d1c4836f80c4ebcdb8bb/
   year:
     - 2010
@@ -32,7 +32,7 @@
   tags:
     - distributed computing
     - science
-- name: SB Coding Workshop
+- title: SB Coding Workshop
   url: https://github.com/suminb/sbcw
   year:
     - 2018
@@ -43,7 +43,7 @@
     - python
     - education
     - leadership
-- name: Interview Questions
+- title: Interview Questions
   url: https://github.com/suminb/interview-questions
   year:
     - 2018
@@ -54,7 +54,7 @@
     - python
     - go
     - reference
-- name: Secor
+- title: Secor
   url: https://github.com/pinterest/secor
   year: 2018
   type: open source
@@ -63,7 +63,7 @@
     - java
     - kafka
     - data pipeline
-- name: Better Translator
+- title: Better Translator
   url: http://better-translator.com
   year: 2013
   type: open source
@@ -73,7 +73,7 @@
     - javascript
     - application
     - web
-- name: Winnowing
+- title: Winnowing
   url: https://github.com/suminb/winnowing
   year: 2013
   type: open source
@@ -82,7 +82,7 @@
     - python
     - algorithm
     - document fingerprinting
-- name: Base62
+- title: Base62
   url: https://github.com/suminb/base62
   year:
     - 2013
@@ -92,7 +92,7 @@
   tags:
     - python
     - encoding
-- name: Hanja
+- title: Hanja
   url: https://github.com/suminb/hanja
   year:
     - 2013
@@ -103,7 +103,7 @@
     - python
     - korean
     - linguistics
-- name: Smartrek
+- title: Smartrek
   url: http://www.smartrekmobile.com
   year:
     - 2012
@@ -115,7 +115,7 @@
     - application
     - transportation
     - big data
-- name: Purpose-built Appliance
+- title: Purpose-built Appliance
   url: https://github.com/suminb/scalable-appliance
   year: 2012
   type: academic
@@ -125,7 +125,7 @@
     - javascript
     - application
     - big data
-- name: ChemBook
+- title: ChemBook
   year: 2012
   type: proprietary
   description: An iOS app to help students with writing chemistry lab reports.
@@ -134,7 +134,7 @@
     - python
     - application
     - chemistry
-- name: Radioactivity
+- title: Radioactivity
   url: https://bitbucket.org/suminb/radioactivity
   year: 2012
   type: open source
@@ -145,7 +145,7 @@
     - application
     - web
     - data visualization
-- name: 한자-한글 변환기
+- title: 한자-한글 변환기
   url: http://hanja.suminb.com
   year: 2011
   type: proprietary
@@ -154,7 +154,7 @@
     - python
     - javascript
     - application
-- name: Slow Drivers
+- title: Slow Drivers
   url: http://labs.suminb.com/drivers
   year: 2011
   type: proprietary
@@ -165,7 +165,7 @@
     - data visualization
     - data mining
     - transportation
-- name: Kindleholic
+- title: Kindleholic
   url: http://kindleholic.net
   year: 2011
   type: proprietary
@@ -176,7 +176,7 @@
     - application
     - web
     - ebook
-- name: Teach Ourselves
+- title: Teach Ourselves
   url: http://roslin.cs.arizona.edu/teachourselves/
   year: 2011
   type: academic
@@ -185,7 +185,7 @@
     - action script
     - application
     - web
-- name: Bootstrapped Learning
+- title: Bootstrapped Learning
   year: 2010
   type: academic
   description: A DARPA sponsored project to develop an <em>electronic student</em> that can learn from natural human instruction close to the way humans do.
@@ -194,7 +194,7 @@
     - c++
     - machine learning
     - interdisciplinary
-- name: gdocsdb
+- title: gdocsdb
   url: https://bitbucket.org/suminb/gdocsdb
   year: 2011
   type: open source
@@ -204,7 +204,7 @@
     - library
     - database
     - open source
-- name: maps
+- title: maps
   url: http://labs.suminb.com/maps
   year: 2010
   type: classified
@@ -213,7 +213,7 @@
     - python
     - big data
     - data mining
-- name: Violet
+- title: Violet
   year: 2010
   type: proprietary
   description: A children's book for iPad with user-interactable animations.
@@ -221,7 +221,7 @@
     - objective c
     - application
     - mobile
-- name: Readown
+- title: Readown
   url: https://github.com/suminb/readown
   year: 2010
   type: open source
@@ -231,7 +231,7 @@
     - application
     - mac
     - open source
-- name: Chemtalk
+- title: Chemtalk
   url: http://labs.suminb.com/chemtalk
   year: 2010
   type: proprietary
@@ -242,7 +242,7 @@
     - application
     - chemistry
     - web
-- name: Notehall
+- title: Notehall
   url: https://en.wikipedia.org/wiki/Notehall
   year:
     - 2008
@@ -254,7 +254,7 @@
     - javascript
     - application
     - web
-- name: CQube
+- title: CQube
   year: 2008
   type: proprietary
   description: A labyrinth-like puzzle game for iPhone.
@@ -263,7 +263,7 @@
     - application
     - mobile
     - game
-- name: Mandelbrot set
+- title: Mandelbrot set
   year: 2008
   type: academic
   description: A distributed processing project to draw a mandelbrot set using multiple computers.

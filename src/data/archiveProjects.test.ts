@@ -23,7 +23,7 @@ describe("formatArchiveYear", () => {
 
 describe("archiveProjectTags", () => {
   const project: ArchiveProject = {
-    name: "Test",
+    title: "Test",
     year: 2020,
     type: "open source",
     tags: ["Python", "JavaScript", "web", "data visualization"],
@@ -66,29 +66,29 @@ describe("archived_projects.yml regression", () => {
   it("exposes every project with the fields archive pages need", () => {
     expect(archiveProjects.length).toBeGreaterThan(0);
     for (const p of archiveProjects) {
-      expect(p.name, `project name`).toMatch(/\S/);
-      expect(p.type, `${p.name} type`).toMatch(/\S/);
-      expect(p.description, `${p.name} description`).toBeDefined();
-      expect(Array.isArray(p.tags), `${p.name} tags`).toBe(true);
+      expect(p.title, `project title`).toMatch(/\S/);
+      expect(p.type, `${p.title} type`).toMatch(/\S/);
+      expect(p.description, `${p.title} description`).toBeDefined();
+      expect(Array.isArray(p.tags), `${p.title} tags`).toBe(true);
       expect(
         typeof p.year === "number" || Array.isArray(p.year),
-        `${p.name} year`,
+        `${p.title} year`,
       ).toBe(true);
     }
   });
 
-  it("sortedArchiveProjects is stable (year desc, then name)", () => {
+  it("sortedArchiveProjects is stable (year desc, then title)", () => {
     const sorted = sortedArchiveProjects();
     expect(sorted.length).toBe(archiveProjects.length);
-    const names = new Set(sorted.map((p) => p.name));
-    expect(names.size).toBe(archiveProjects.length);
+    const titles = new Set(sorted.map((p) => p.title));
+    expect(titles.size).toBe(archiveProjects.length);
   });
 
   it("archiveProjectTags output per project (snapshot)", () => {
     const byName = Object.fromEntries(
       [...archiveProjects]
-        .sort((a, b) => a.name.localeCompare(b.name))
-        .map((p) => [p.name, archiveProjectTags(p)]),
+        .sort((a, b) => a.title.localeCompare(b.title))
+        .map((p) => [p.title, archiveProjectTags(p)]),
     );
     expect(byName).toMatchSnapshot();
   });

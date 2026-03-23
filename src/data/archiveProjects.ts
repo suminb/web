@@ -12,7 +12,7 @@ const archivedProjectsPath = path.join(
 export type ArchiveYear = number | [number, number];
 
 export type ArchiveProject = {
-  name: string;
+  title: string;
   url?: string;
   year: ArchiveYear;
   type: string;
@@ -63,6 +63,6 @@ export function sortedArchiveProjects(): ArchiveProject[] {
   return [...archiveProjects].sort((a, b) => {
     const dy = yearSortKey(b.year) - yearSortKey(a.year);
     if (dy !== 0) return dy;
-    return a.name.localeCompare(b.name);
+    return a.title.localeCompare(b.title);
   });
 }

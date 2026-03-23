@@ -116,10 +116,10 @@ const pageTitle = `Project Showcase · ${site.title}`;
               <h3 class="project-card__title">
                 {p.url ? (
                   <a href={p.url} rel="noopener noreferrer">
-                    {p.name}
+                    {p.title}
                   </a>
                 ) : (
-                  p.name
+                  p.title
                 )}
               </h3>
               {p.description ? (

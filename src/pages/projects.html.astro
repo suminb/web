@@ -38,7 +38,7 @@ const allProjects: ProjectRow[] = [
     year: fmtYear(p.year),
   })),
   ...sortedArchiveProjects().map((p) => ({
-    title: p.name,
+    title: p.title,
     href: p.url || undefined,
     description: undefined,
     tags: archiveProjectTags(p),
