@@ -5,6 +5,7 @@ This is a personal website for Sumin Byeon, built as a static site with [Astro](
 
 Content sources (YAML/Markdown under `data/`, read at build time):
 
+- `data/projects.yml` — **Projects** highlights on the home page and `/projects.html`, plus “Previous works” rows; published entries from `data/experiences.yml` not already listed here are automatically appended as additional “more” projects
 - `data/experiences.yml` plus long-form markdown (`data/projects/*.md` → `/projects/{slug}.html`, other published bodies → `/experience/{slug}.html`)
 - `data/experience_summary.md` — résumé-style **Experience** page (`/experience.html`)
 - `data/coding_expedition.md` — copy for **Coding Expedition** (`/coding-expedition.html`)
