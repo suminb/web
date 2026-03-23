@@ -12,12 +12,10 @@ const archivedProjectsPath = path.join(
 /** `[start, end]`; `end === null` means ongoing. Use `[y, y]` for a single calendar year. */
 export type ProjectYearRange = [number, number | null];
 
-export type ArchiveYear = ProjectYearRange;
-
 export type ArchiveProject = {
   title: string;
   url?: string;
-  year: ArchiveYear;
+  year: ProjectYearRange;
   type: string;
   tags: string[];
   description: string;
@@ -64,7 +62,7 @@ function loadArchivedProjects(): ArchiveProject[] {
   })) as ArchiveProject[];
 }
 
-function yearSortKey(year: ArchiveYear): number {
+function yearSortKey(year: ProjectYearRange): number {
   const [a, b] = year;
   if (b === null) {
     return Math.max(a, new Date().getFullYear());
