@@ -4,328 +4,270 @@
     - 2011
     - 2020
   type: personal
-  languages:
+  description: Writing code away from home—cafés, road trips, and a map of places. Longer story and map on this page.
+  tags:
     - javascript
-  keywords:
     - travel
     - maps
-  description: Writing code away from home—cafés, road trips, and a map of places. Longer story and map on this page.
 - name: Dollar Auction
   url: https://auctions.shortbread.io/auctions
   year:
     - 2015
     - 2024
   type: personal
-  languages: []
-  keywords:
+  description: An improvised marketplace to sell underused personal belongings where every auction starts at KRW 1,000 (approximately USD 1).
+  tags:
     - marketplace
     - auction
     - web
     - kotlin
     - typescript
-  description: >-
-    An improvised marketplace to sell underused personal belongings where every auction starts at KRW 1,000
-    (approximately USD 1).
 - name: BOINC
   url: https://boincstats.com/en/stats/-1/user/detail/a077d8a4dee6d1c4836f80c4ebcdb8bb/
   year:
     - 2010
     - 2026
   type: volunteer
-  languages: []
-  keywords:
+  description: Contributing compute to <a href="https://en.wikipedia.org/wiki/Berkeley_Open_Infrastructure_for_Network_Computing">BOINC</a>—on the order of 127 GFLOPS on average for climate modeling, prime search, stellar-stream simulations, and similar projects.
+  tags:
     - distributed computing
     - science
-  description: >-
-    Contributing compute to <a
-    href="https://en.wikipedia.org/wiki/Berkeley_Open_Infrastructure_for_Network_Computing">BOINC</a>—on the order of
-    127 GFLOPS on average for climate modeling, prime search, stellar-stream simulations, and similar projects.
 - name: SB Coding Workshop
   url: https://github.com/suminb/sbcw
   year:
     - 2018
     - 2018
   type: open source
-  languages:
+  description: Workshop materials and exercises for teaching Python.
+  tags:
     - python
-  keywords:
     - education
     - leadership
-  description: Workshop materials and exercises for teaching Python.
 - name: Interview Questions
   url: https://github.com/suminb/interview-questions
   year:
     - 2018
     - 2021
   type: open source
-  languages:
+  description: Curated a collection of interview questions and solutions from various tech companies, for personal reference and to support fellow engineers preparing for interviews.
+  tags:
     - python
     - go
-  keywords:
     - reference
-  description: Curated a collection of interview questions and solutions from various tech companies, for personal reference and to support fellow engineers preparing for interviews.
 - name: Secor
   url: https://github.com/pinterest/secor
   year: 2018
   type: open source
-  languages:
+  description: "Upstream work on <a href=\"https://github.com/pinterest/secor\">Pinterest Secor</a> (Kafka to cloud storage), including handling map types in message serialization. Pull requests: <a href=\"https://github.com/pinterest/secor/pull/982\">#982</a>, <a href=\"https://github.com/pinterest/secor/pull/965\">#965</a>, and <a href=\"https://github.com/pinterest/secor/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+author%3Asuminb\">other authored PRs</a>."
+  tags:
     - java
-  keywords:
     - kafka
     - data pipeline
-  description: >-
-    Upstream work on <a href="https://github.com/pinterest/secor">Pinterest Secor</a> (Kafka to cloud storage), including
-    handling map types in message serialization. Pull requests:
-    <a href="https://github.com/pinterest/secor/pull/982">#982</a>,
-    <a href="https://github.com/pinterest/secor/pull/965">#965</a>, and
-    <a href="https://github.com/pinterest/secor/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+author%3Asuminb">other authored PRs</a>.
 - name: Better Translator
   url: http://better-translator.com
   year: 2013
   type: open source
-  languages:
+  description: A language translator that uses Japanese as an intermediate language. Processes +20,000 translation requests on a daily basis (as of Sep 2013).
+  tags:
     - python
     - javascript
-  keywords:
     - application
     - web
-  description: >-
-    A language translator that uses Japanese as an intermediate language. Processes +20,000 translation requests on a
-    daily basis (as of Sep 2013).
 - name: Winnowing
   url: https://github.com/suminb/winnowing
   year: 2013
   type: open source
-  languages:
+  description: A Python implementation of the <a href="http://theory.stanford.edu/~aiken/publications/papers/sigmod03.pdf">Winnowing</a> (local algorithms for document fingerprinting)
+  tags:
     - python
-  keywords:
     - algorithm
     - document fingerprinting
-  description: >-
-    A Python implementation of the <a
-    href="http://theory.stanford.edu/~aiken/publications/papers/sigmod03.pdf">Winnowing</a> (local algorithms for
-    document fingerprinting)
 - name: Base62
   url: https://github.com/suminb/base62
   year:
     - 2013
     - 2026
   type: open source
-  languages:
+  description: A Python library to encode and decode any arbitrary data in base62 (duosexagesimal; using 0-9, A-Z, and a-z) for URL-safety. I was recently able to convince my colleagues to use this library for work.
+  tags:
     - python
-  keywords:
     - encoding
-    - python
-  description: >-
-    A Python library to encode and decode any arbitrary data in base62 (duosexagesimal; using 0-9, A-Z, and a-z) for
-    URL-safety. I was recently able to convince my colleagues to use this library for work.
 - name: Hanja
   url: https://github.com/suminb/hanja
   year:
     - 2013
     - 2024
   type: open source
-  languages:
+  description: A Python library to <a href="https://ko.wikipedia.org/wiki/%EC%9D%8C%EB%8F%85">read Chinese characters in Korean sound values</a> (음독).
+  tags:
     - python
-  keywords:
     - korean
     - linguistics
-  description: >-
-    A Python library to <a href="https://ko.wikipedia.org/wiki/%EC%9D%8C%EB%8F%85">read Chinese characters in Korean
-    sound values</a> (음독).
 - name: Smartrek
   url: http://www.smartrekmobile.com
   year:
     - 2012
     - 2013
   type: proprietary
-  languages:
+  description: An ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to build a scalable system with Amazon EC2 platform, and to build in-house software for data analysis.
+  tags:
     - java
-  keywords:
     - application
     - transportation
     - big data
-  description: >-
-    An ambitious project to solve urban traffic congestion problems. My primary responsibility in the team is to
-    build a scalable system with Amazon EC2 platform, and to build in-house software for data analysis.
 - name: Purpose-built Appliance
   url: https://github.com/suminb/scalable-appliance
   year: 2012
   type: academic
-  languages:
+  description: Pending paper publication to <a href="http://www.plosone.org/">PLOSone</a>
+  tags:
     - python
     - javascript
-  keywords:
     - application
     - big data
-  description: Pending paper publication to <a href="http://www.plosone.org/">PLOSone</a>
 - name: ChemBook
   year: 2012
   type: proprietary
-  languages:
+  description: An iOS app to help students with writing chemistry lab reports.
+  tags:
     - objective c
     - python
-  keywords:
     - application
     - chemistry
-  description: An iOS app to help students with writing chemistry lab reports.
 - name: Radioactivity
   url: https://bitbucket.org/suminb/radioactivity
   year: 2012
   type: open source
-  languages:
+  description: The project radioactivity had started in March of 2011 in an attempt to help the general public to be alerted regarding the spread of radiation and other radioactive materials originated from the catastrophic incident in the Fukushima nuclear power plant in Japan, by providing visual information of city-wise radition levels.
+  tags:
     - python
     - javascript
-  keywords:
     - application
     - web
     - data visualization
-  description: >-
-    The project radioactivity had started in March of 2011 in an attempt to help the general public to be alerted
-    regarding the spread of radiation and other radioactive materials originated from the catastrophic incident in the
-    Fukushima nuclear power plant in Japan, by providing visual information of city-wise radition levels.
 - name: 한자-한글 변환기
   url: http://hanja.suminb.com
   year: 2011
   type: proprietary
-  languages:
+  description: The name of the project is self-explanatory.
+  tags:
     - python
     - javascript
-  keywords:
     - application
-  description: The name of the project is self-explanatory.
 - name: Slow Drivers
   url: http://labs.suminb.com/drivers
   year: 2011
   type: proprietary
-  languages:
+  description: ""
+  tags:
     - python
     - javascript
-  keywords:
     - data visualization
     - data mining
     - transportation
-  description: ''
 - name: Kindleholic
   url: http://kindleholic.net
   year: 2011
   type: proprietary
-  languages:
+  description: An RSS/Atom feed aggregation service for Amazon Kindle.
+  tags:
     - python
     - javascript
-  keywords:
     - application
     - web
     - ebook
-  description: An RSS/Atom feed aggregation service for Amazon Kindle.
 - name: Teach Ourselves
   url: http://roslin.cs.arizona.edu/teachourselves/
   year: 2011
   type: academic
-  languages:
+  description: A project to create a society for students in which learning and creativity is rewarded with points that can be redeemed for goods.
+  tags:
     - action script
-  keywords:
     - application
     - web
-  description: >-
-    A project to create a society for students in which learning and creativity is rewarded with points that can be
-    redeemed for goods.
 - name: Bootstrapped Learning
   year: 2010
   type: academic
-  languages:
+  description: A DARPA sponsored project to develop an <em>electronic student</em> that can learn from natural human instruction close to the way humans do.
+  tags:
     - java
     - c++
-  keywords:
     - machine learning
     - interdisciplinary
-  description: >-
-    A DARPA sponsored project to develop an <em>electronic student</em> that can learn from natural human instruction
-    close to the way humans do.
 - name: gdocsdb
   url: https://bitbucket.org/suminb/gdocsdb
   year: 2011
   type: open source
-  languages:
+  description: A Python library to use Google Spreadsheet as a database.
+  tags:
     - python
-  keywords:
     - library
     - database
     - open source
-  description: A Python library to use Google Spreadsheet as a database.
 - name: maps
   url: http://labs.suminb.com/maps
   year: 2010
   type: classified
-  languages:
+  description: A project to reconstruct a map in global scale by collecting map tiles from various sources such as Google Maps and Open Street Map.
+  tags:
     - python
-  keywords:
     - big data
     - data mining
-  description: >-
-    A project to reconstruct a map in global scale by collecting map tiles from various sources such as Google Maps
-    and Open Street Map.
 - name: Violet
   year: 2010
   type: proprietary
-  languages:
+  description: A children's book for iPad with user-interactable animations.
+  tags:
     - objective c
-  keywords:
     - application
     - mobile
-  description: A children's book for iPad with user-interactable animations.
 - name: Readown
   url: https://github.com/suminb/readown
   year: 2010
   type: open source
-  languages:
+  description: A Markdown reader for Mac OS X.
+  tags:
     - objective c
-  keywords:
     - application
     - mac
     - open source
-  description: A Markdown reader for Mac OS X.
 - name: Chemtalk
   url: http://labs.suminb.com/chemtalk
   year: 2010
   type: proprietary
-  languages:
+  description: ""
+  tags:
     - python
     - javascript
-  keywords:
     - application
     - chemistry
     - web
-  description: ''
 - name: Notehall
   url: https://en.wikipedia.org/wiki/Notehall
   year:
     - 2008
     - 2009
   type: proprietary
-  languages:
+  description: ""
+  tags:
     - php
     - javascript
-  keywords:
     - application
     - web
-  description: ''
 - name: CQube
   year: 2008
   type: proprietary
-  languages:
+  description: A labyrinth-like puzzle game for iPhone.
+  tags:
     - objective c
-  keywords:
     - application
     - mobile
     - game
-  description: A labyrinth-like puzzle game for iPhone.
 - name: Mandelbrot set
   year: 2008
   type: academic
-  languages:
+  description: A distributed processing project to draw a mandelbrot set using multiple computers.
+  tags:
     - java
     - c
-  keywords:
     - application
-  description: A distributed processing project to draw a mandelbrot set using multiple computers.

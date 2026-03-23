@@ -16,8 +16,7 @@ export type ArchiveProject = {
   url?: string;
   year: ArchiveYear;
   type: string;
-  languages: string[];
-  keywords: string[];
+  tags: string[];
   description: string;
 };
 
@@ -27,7 +26,10 @@ function loadArchivedProjects(): ArchiveProject[] {
   if (!Array.isArray(data)) {
     throw new Error("data/archived_projects.yml must be a YAML list of projects");
   }
-  return data as ArchiveProject[];
+  return (data as ArchiveProject[]).map((row) => ({
+    ...row,
+    tags: Array.isArray(row.tags) ? row.tags : [],
+  }));
 }
 
 function yearSortKey(year: ArchiveYear): number {
@@ -41,11 +43,11 @@ export function formatArchiveYear(year: ArchiveYear): string {
   return String(year);
 }
 
-/** Tags for chips: languages first, then keywords (deduped, capped). */
+/** Tags for chips: YAML order preserved, deduped case-insensitively, capped. */
 export function archiveProjectTags(p: ArchiveProject, max = 8): string[] {
   const seen = new Set<string>();
   const out: string[] = [];
-  for (const t of [...p.languages, ...p.keywords]) {
+  for (const t of p.tags) {
     const k = t.toLowerCase();
     if (seen.has(k)) continue;
     seen.add(k);

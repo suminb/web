@@ -26,12 +26,11 @@ describe("archiveProjectTags", () => {
     name: "Test",
     year: 2020,
     type: "open source",
-    languages: ["Python", "JavaScript"],
-    keywords: ["web", "data visualization"],
+    tags: ["Python", "JavaScript", "web", "data visualization"],
     description: "",
   };
 
-  it("returns languages first, then keywords", () => {
+  it("returns tags in list order", () => {
     expect(archiveProjectTags(project)).toEqual([
       "Python",
       "JavaScript",
@@ -43,8 +42,7 @@ describe("archiveProjectTags", () => {
   it("deduplicates case-insensitively", () => {
     const p: ArchiveProject = {
       ...project,
-      languages: ["Python"],
-      keywords: ["python", "web"],
+      tags: ["Python", "python", "web"],
     };
     expect(archiveProjectTags(p)).toEqual(["Python", "web"]);
   });
@@ -52,27 +50,18 @@ describe("archiveProjectTags", () => {
   it("caps at the specified max", () => {
     const p: ArchiveProject = {
       ...project,
-      languages: ["A", "B", "C"],
-      keywords: ["D", "E", "F"],
+      tags: ["A", "B", "C", "D", "E", "F"],
     };
     expect(archiveProjectTags(p, 4)).toEqual(["A", "B", "C", "D"]);
   });
 
-  it("returns empty array when no languages or keywords", () => {
-    const p: ArchiveProject = {
-      ...project,
-      languages: [],
-      keywords: [],
-    };
+  it("returns empty array when no tags", () => {
+    const p: ArchiveProject = { ...project, tags: [] };
     expect(archiveProjectTags(p)).toEqual([]);
   });
 });
 
-/**
- * Locks chip/tag output for every row in data/archived_projects.yml. After
- * consolidating languages+keywords into tags, this snapshot should still pass
- * once tag lists match the old merged order (or you update the snapshot on purpose).
- */
+/** Locks chip/tag output for every row in data/archived_projects.yml. */
 describe("archived_projects.yml regression", () => {
   it("exposes every project with the fields archive pages need", () => {
     expect(archiveProjects.length).toBeGreaterThan(0);
@@ -80,8 +69,7 @@ describe("archived_projects.yml regression", () => {
       expect(p.name, `project name`).toMatch(/\S/);
       expect(p.type, `${p.name} type`).toMatch(/\S/);
       expect(p.description, `${p.name} description`).toBeDefined();
-      expect(Array.isArray(p.languages), `${p.name} languages`).toBe(true);
-      expect(Array.isArray(p.keywords), `${p.name} keywords`).toBe(true);
+      expect(Array.isArray(p.tags), `${p.name} tags`).toBe(true);
       expect(
         typeof p.year === "number" || Array.isArray(p.year),
         `${p.name} year`,
