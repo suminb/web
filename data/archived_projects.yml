@@ -103,6 +103,20 @@
   description: >-
     A Python library to encode and decode any arbitrary data in base62 (duosexagesimal; using 0-9, A-Z, and a-z) for
     URL-safety. I was recently able to convince my colleagues to use this library for work.
+- name: Hanja
+  url: https://github.com/suminb/hanja
+  year:
+    - 2013
+    - 2024
+  type: open source
+  languages:
+    - python
+  keywords:
+    - korean
+    - linguistics
+  description: >-
+    A Python library to <a href="https://ko.wikipedia.org/wiki/%EC%9D%8C%EB%8F%85">read Chinese characters in Korean
+    sound values</a> (음독).
 - name: Smartrek
   url: http://www.smartrekmobile.com
   year:

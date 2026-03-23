@@ -208,8 +208,6 @@ humans use.
 
 ### My own projects
 
-* [Hanja](https://github.com/suminb/hanja): A Python library to [read Chinese characters in Korean sound values](https://ko.wikipedia.org/wiki/%EC%9D%8C%EB%8F%85).
-* [Winnowing](https://github.com/suminb/winnowing): A Python implementation of local algorithms for document fingerprinting.
 * [And more on my GitHub page](https://github.com/suminb)
 
 ## Personal Projects
