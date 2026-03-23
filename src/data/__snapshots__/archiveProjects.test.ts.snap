@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`archived_projects.yml regression > archiveProjectTags output per project (snapshot) 1`] = `
+exports[`projects.yml (archived) regression > archiveProjectTags output per project (snapshot) 1`] = `
 {
   "BOINC": [
     "distributed computing",

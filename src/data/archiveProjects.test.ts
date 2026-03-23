@@ -65,8 +65,8 @@ describe("archiveProjectTags", () => {
   });
 });
 
-/** Locks chip/tag output for every row in data/archived_projects.yml. */
-describe("archived_projects.yml regression", () => {
+/** Locks chip/tag output for every archived row in data/projects.yml. */
+describe("projects.yml (archived) regression", () => {
   it("exposes every project with the fields archive pages need", () => {
     expect(archiveProjects.length).toBeGreaterThan(0);
     for (const p of archiveProjects) {

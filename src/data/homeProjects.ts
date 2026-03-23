@@ -1,16 +1,10 @@
-import fs from "node:fs";
-import path from "node:path";
-import process from "node:process";
-import yaml from "js-yaml";
 import {
   formatProjectYearRange,
+  loadProjectsYamlList,
   parseProjectYearRange,
   projectYearDatetime,
   type ProjectYearRange,
 } from "./archiveProjects";
-
-const dataDir = path.join(process.cwd(), "data");
-const homeProjectsPath = path.join(dataDir, "home_projects.yml");
 
 export type FeaturedYear = ProjectYearRange;
 
@@ -46,6 +40,8 @@ type ProjectRowRaw = {
   url?: string | null;
   experience_slug?: string;
   featured?: boolean;
+  /** When true, row is only used as an archive entry (see `archiveProjects`). */
+  archived?: boolean;
 };
 
 function parseFeaturedYear(
@@ -53,7 +49,7 @@ function parseFeaturedYear(
   entryIndex: number,
 ): FeaturedYear | undefined {
   if (raw === undefined || raw === null) return undefined;
-  return parseProjectYearRange(raw, `home_projects.yml[${entryIndex}]`);
+  return parseProjectYearRange(raw, `projects.yml[${entryIndex}]`);
 }
 
 export const formatFeaturedYear = formatProjectYearRange;
@@ -82,7 +78,7 @@ function normalizeProjectRow(
   i: number,
   experienceUrl: (key: string) => string,
 ): FeaturedProject {
-  const url = resolveLink(row, experienceUrl, `home_projects.yml[${i}]`);
+  const url = resolveLink(row, experienceUrl, `projects.yml[${i}]`);
   const out: FeaturedProject = {
     title: row.title,
     description: typeof row.description === "string" ? row.description : "",
@@ -114,21 +110,14 @@ export function loadHomeProjects(experienceUrl: (key: string) => string): {
   featuredProjects: FeaturedProject[];
   moreProjects: MoreProject[];
 } {
-  const text = fs.readFileSync(homeProjectsPath, "utf8");
-  const list = yaml.load(text) as unknown;
-  if (!Array.isArray(list)) {
-    throw new Error("data/home_projects.yml must be a YAML list of projects");
-  }
-
-  const normalized = list.map((row, i) =>
-    normalizeProjectRow(row as ProjectRowRaw, i, experienceUrl),
-  );
+  const list = loadProjectsYamlList();
 
   const featuredProjects: FeaturedProject[] = [];
   const moreRaw: FeaturedProject[] = [];
   for (let i = 0; i < list.length; i++) {
     const row = list[i] as ProjectRowRaw;
-    const p = normalized[i]!;
+    if (row.archived === true) continue;
+    const p = normalizeProjectRow(row, i, experienceUrl);
     if (row.featured === true) featuredProjects.push(p);
     else moreRaw.push(p);
   }

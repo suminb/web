@@ -3,11 +3,7 @@ import path from "node:path";
 import process from "node:process";
 import yaml from "js-yaml";
 
-const archivedProjectsPath = path.join(
-  process.cwd(),
-  "data",
-  "archived_projects.yml",
-);
+const projectsPath = path.join(process.cwd(), "data", "projects.yml");
 
 /** `[start, end]`; `end === null` means ongoing. Use `[y, y]` for a single calendar year. */
 export type ProjectYearRange = [number, number | null];
@@ -49,17 +45,56 @@ export function parseProjectYearRange(raw: unknown, context: string): ProjectYea
   return [start, normalizeEndYear(raw[1])];
 }
 
-function loadArchivedProjects(): ArchiveProject[] {
-  const text = fs.readFileSync(archivedProjectsPath, "utf8");
+/** Full YAML list: home/showcase rows and archive rows (`archived: true`). */
+export function loadProjectsYamlList(): unknown[] {
+  const text = fs.readFileSync(projectsPath, "utf8");
   const data = yaml.load(text);
   if (!Array.isArray(data)) {
-    throw new Error("data/archived_projects.yml must be a YAML list of projects");
+    throw new Error("data/projects.yml must be a YAML list of projects");
   }
-  return (data as Record<string, unknown>[]).map((row, i) => ({
-    ...row,
-    year: parseProjectYearRange(row.year, `archived_projects.yml[${i}]`),
-    tags: Array.isArray(row.tags) ? row.tags : [],
-  })) as ArchiveProject[];
+  return data;
+}
+
+function isArchivedRow(row: unknown): row is Record<string, unknown> {
+  return (
+    typeof row === "object" &&
+    row !== null &&
+    (row as Record<string, unknown>).archived === true
+  );
+}
+
+function loadArchivedProjects(): ArchiveProject[] {
+  const data = loadProjectsYamlList();
+  const archivedRows = data.filter(isArchivedRow);
+  return archivedRows.map((row, i) => {
+    const title = typeof row.title === "string" ? row.title : "";
+    if (row.year === undefined || row.year === null) {
+      throw new Error(
+        `projects.yml archive[${i}] (${title || "?"}): year is required`,
+      );
+    }
+    const urlRaw = row.url;
+    const url =
+      urlRaw === undefined || urlRaw === null
+        ? undefined
+        : String(urlRaw).trim() === ""
+          ? undefined
+          : String(urlRaw);
+    return {
+      title,
+      url,
+      year: parseProjectYearRange(
+        row.year,
+        `projects.yml archive[${i}] (${title || "?"})`,
+      ),
+      type: typeof row.type === "string" ? row.type : String(row.type ?? ""),
+      tags: Array.isArray(row.tags)
+        ? (row.tags as unknown[]).map((t) => String(t))
+        : [],
+      description:
+        typeof row.description === "string" ? row.description : "",
+    };
+  });
 }
 
 function yearSortKey(year: ProjectYearRange): number {
