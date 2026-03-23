@@ -3,6 +3,7 @@ featured_count: 3
 projects:
   - title: MLX Data Manager
     year: [2023, null]
+    type: work
     workplace: NAVER Cloud
     description: A data management system designed for machine learning workloads, offering a Hugging Face-compatible interface for ease of adoption, along with data version control and lineage tracking.
     tags:
@@ -14,6 +15,7 @@ projects:
     cta: Details soon
   - title: Hand-written Font Generator
     year: [2020, 2020]
+    type: work
     workplace: NAVER
     description: Given a sheet of handwritten paper, generate a font that resembles the handwriting.
     tags:
@@ -23,6 +25,7 @@ projects:
     cta: ""
   - title: Data Lake
     year: [2018, 2018]
+    type: work
     workplace: Coupang
     tags:
       - java
@@ -33,6 +36,7 @@ projects:
     cta: ""
   - title: Flow (Inter-domain logistics state management system)
     year: [2018, 2018]
+    type: work
     workplace: Coupang
     tags:
       - java
@@ -43,6 +47,7 @@ projects:
     cta: ""
   - title: Ecosystem Pipeline (Durango)
     year: [2016, 2018]
+    type: work
     workplace: Nexon
     description: >-
       Distributed pipeline so the simulator runs in bounded time as the world grows:
@@ -56,6 +61,7 @@ projects:
     cta: Read write-up
   - title: Ecosystem Simulator (Durango)
     year: [2014, 2016]
+    type: work
     workplace: Nexon
     description: >-
       Procedural world vegetation driven by soil, climate, and biomass rules—scaling
@@ -68,6 +74,7 @@ projects:
     experience_slug: durango_ecosim
     cta: Read write-up
   - title: Durango — server & overview
+    type: work
     experience_slug: durango
     description: >-
       Distributed MMORPG server at Nexon—overview of the system and how ecosystem
@@ -78,6 +85,7 @@ projects:
       - distributed
   - title: SB Finance
     year: [2014, null]
+    type: open source
     href: https://github.com/suminb/finance
     description: Personal finance tooling and experiments in the open.
     tags:
