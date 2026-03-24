@@ -6,6 +6,7 @@ import { site } from "../data/site";
 import {
   allTalks,
   formatTalkDate,
+  talkMetaLine,
   type TalkLinks,
 } from "../data/talks";
 
@@ -18,11 +19,6 @@ function linkEntries(links?: TalkLinks): { label: string; href: string }[] {
   if (links.slides) out.push({ label: "Slides", href: links.slides });
   if (links.video) out.push({ label: "Video", href: links.video });
   return out;
-}
-
-function metaLine(t: (typeof list)[0]): string {
-  const parts = [t.kind, t.event, t.venue].filter(Boolean);
-  return parts.join(" · ");
 }
 
 const pageTitle = `Talks · ${site.title}`;
@@ -62,7 +58,7 @@ const pageTitle = `Talks · ${site.title}`;
                         t.title
                       )}
                     </h3>
-                    {metaLine(t) ? <p class="talk-item__meta">{metaLine(t)}</p> : null}
+                    {talkMetaLine(t) ? <p class="talk-item__meta">{talkMetaLine(t)}</p> : null}
                     {t.summary ? <p>{t.summary}</p> : null}
                     {links.length > 0 ? (
                       <ul class="talk-link-row">

@@ -122,6 +122,11 @@ export function talkTags(t: Talk): string[] {
   return tags;
 }
 
+/** One-line metadata string for list rows, e.g. "Keynote · PyCon · Hall A". */
+export function talkMetaLine(t: Talk): string {
+  return talkTags(t).join(" · ");
+}
+
 /** Tags for home cards — event is already shown as workplace; keep kind + venue only. */
 export function talkTagsForCard(t: Talk): string[] {
   const tags: string[] = [];

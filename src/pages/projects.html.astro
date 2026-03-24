@@ -31,14 +31,7 @@ function rowUrl(raw: string | undefined): string | undefined {
 }
 
 const allProjects: ProjectRow[] = [
-  ...featuredProjects.map((p) => ({
-    title: p.title,
-    url: rowUrl(p.url),
-    description: p.description || undefined,
-    tags: [...p.tags],
-    year: fmtYear(p.year),
-  })),
-  ...moreProjects.map((p) => ({
+  ...[...featuredProjects, ...moreProjects].map((p) => ({
     title: p.title,
     url: rowUrl(p.url),
     description: p.description || undefined,

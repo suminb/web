@@ -6,6 +6,7 @@ import {
   talkCardCta,
   talkTags,
   talkTagsForCard,
+  talkMetaLine,
   type Talk,
   type TalkLinks,
 } from "./talks";
@@ -128,5 +129,32 @@ describe("talkTagsForCard", () => {
       event: "SomeConf",
     };
     expect(talkTagsForCard(talk)).toEqual([]);
+  });
+});
+
+describe("talkMetaLine", () => {
+  it("joins kind, event, and venue with ' · '", () => {
+    const talk: Talk = {
+      title: "My Talk",
+      date: "2023-01-01",
+      kind: "Keynote",
+      event: "PyCon",
+      venue: "Hall A",
+    };
+    expect(talkMetaLine(talk)).toBe("Keynote · PyCon · Hall A");
+  });
+
+  it("returns empty string when no optional fields", () => {
+    const talk: Talk = { title: "My Talk", date: "2023-01-01" };
+    expect(talkMetaLine(talk)).toBe("");
+  });
+
+  it("omits missing fields", () => {
+    const talk: Talk = {
+      title: "My Talk",
+      date: "2023-01-01",
+      event: "SomeConf",
+    };
+    expect(talkMetaLine(talk)).toBe("SomeConf");
   });
 });
