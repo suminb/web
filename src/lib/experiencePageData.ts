@@ -1,4 +1,4 @@
-import { marked } from "marked";
+import { parseMarkdown } from "./markdown";
 import {
   getExperienceForPage,
   listExperienceDetailPageKeys,
@@ -6,8 +6,6 @@ import {
   isProjectDetailPageKey,
   type ExperienceRecord,
 } from "./experiences";
-
-marked.use({ gfm: true });
 
 /** Canonical URL for a published experience write-up (project markdown → `/projects/…`). */
 export function experienceDetailPath(key: string): string {
@@ -37,8 +35,6 @@ export async function experiencePageProps(key: string): Promise<{
 }> {
   const exp = getExperienceForPage(key);
   if (!exp) throw new Error(`Unknown or unpublished experience: ${key}`);
-  const parsed = marked.parse(exp.description);
-  const contentHtml =
-    typeof parsed === "string" ? parsed : await Promise.resolve(parsed);
+  const contentHtml = await parseMarkdown(exp.description);
   return { exp, contentHtml };
 }

@@ -5,14 +5,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteNav from "../components/SiteNav.astro";
 import { site } from "../data/site";
-import { marked } from "marked";
-
-marked.use({ gfm: true });
+import { parseMarkdown } from "../lib/markdown";
 
 const mdPath = path.join(process.cwd(), "data", "coding_expedition.md");
 const md = fs.readFileSync(mdPath, "utf8");
-const parsed = marked.parse(md);
-const proseHtml = typeof parsed === "string" ? parsed : await parsed;
+const proseHtml = await parseMarkdown(md);
 
 const mapsKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
 const mapsScriptSrc = mapsKey
