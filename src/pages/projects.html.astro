@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteNav from "../components/SiteNav.astro";
 import { site, featuredProjects, moreProjects } from "../data/site";
-import { formatFeaturedYear, type FeaturedYear } from "../data/homeProjects";
+import { formatFeaturedYear } from "../data/homeProjects";
 import {
   archiveProjectTags,
   formatArchiveYear,
@@ -17,10 +17,6 @@ type ProjectRow = {
   tags: string[];
   year?: string;
 };
-
-function fmtYear(y: FeaturedYear | undefined): string | undefined {
-  return y !== undefined ? formatFeaturedYear(y) : undefined;
-}
 
 /** Same as highlight cards: no link when missing, empty, or "#". */
 function rowUrl(raw: string | undefined): string | undefined {
@@ -36,7 +32,7 @@ const allProjects: ProjectRow[] = [
     url: rowUrl(p.url),
     description: p.description || undefined,
     tags: [...p.tags],
-    year: fmtYear(p.year),
+    year: p.year !== undefined ? formatFeaturedYear(p.year) : undefined,
   })),
   ...sortedArchiveProjects().map((p) => ({
     title: p.title,

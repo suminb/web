@@ -2,7 +2,7 @@
 import {
   featuredYearDatetime,
   formatFeaturedYear,
-  type FeaturedYear,
+  type ProjectYearRange,
 } from "../data/homeProjects";
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
   /** Resolved link target; empty or "#" keeps the title non-clickable. */
   url: string;
   cta: string;
-  year?: FeaturedYear;
+  year?: ProjectYearRange;
   workplace?: string;
   cardClass?: string;
   /** When provided, each tag becomes a link: `{tagPageUrl}?tag={tag}` */

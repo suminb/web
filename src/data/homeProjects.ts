@@ -6,7 +6,7 @@ import {
   type ProjectYearRange,
 } from "./archiveProjects";
 
-export type FeaturedYear = ProjectYearRange;
+export type { ProjectYearRange };
 
 export type FeaturedProject = {
   title: string;
@@ -15,7 +15,7 @@ export type FeaturedProject = {
   /** Resolved destination; empty or "#" yields a non-clickable title (see card). */
   url: string;
   cta: string;
-  year?: FeaturedYear;
+  year?: ProjectYearRange;
   workplace?: string;
 };
 
@@ -25,7 +25,7 @@ export type MoreProject = {
   cta: string;
   tags: string[];
   description?: string;
-  year?: FeaturedYear;
+  year?: ProjectYearRange;
   workplace?: string;
 };
 
@@ -47,7 +47,7 @@ type ProjectRowRaw = {
 function parseFeaturedYear(
   raw: unknown,
   entryIndex: number,
-): FeaturedYear | undefined {
+): ProjectYearRange | undefined {
   if (raw === undefined || raw === null) return undefined;
   return parseProjectYearRange(raw, `projects.yml[${entryIndex}]`);
 }

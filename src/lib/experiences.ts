@@ -119,11 +119,15 @@ export function allPublishedTagSlugs(): string[] {
   return [...seen].sort((a, b) => a.localeCompare(b));
 }
 
+const HTML_TAG_RE = /<[^>]*>/g;
+const MARKDOWN_CHAR_RE = /[#*_`[\]]/g;
+const WHITESPACE_RE = /\s+/g;
+
 export function truncatePlain(text: string, maxLen: number): string {
   const plain = text
-    .replace(/<[^>]*>/g, " ")
-    .replace(/[#*_`[\]]/g, " ")
-    .replace(/\s+/g, " ")
+    .replace(HTML_TAG_RE, " ")
+    .replace(MARKDOWN_CHAR_RE, " ")
+    .replace(WHITESPACE_RE, " ")
     .trim();
   if (plain.length <= maxLen) return plain;
   return `${plain.slice(0, maxLen)}…`;
