@@ -24,3 +24,61 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload site for deploy
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: docs/
+          # Required: v4 excludes dotfiles by default; without `.nojekyll`, Pages may run Jekyll and break `/_astro/`.
+          include-hidden-files: true
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download site build
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: docs
+
+      - name: Publish to GitHub Pages branch (docs)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          BUILD_DIR="docs"
+          PAGES_BRANCH="docs"
+          PAGES_ROOT_IN_BRANCH="docs"
+
+          cp CNAME "$BUILD_DIR/" 2>/dev/null || true
+          rm -rf "$BUILD_DIR/.git"
+
+          STAGE="$(mktemp -d)"
+          cleanup() { rm -rf "$STAGE"; }
+          trap cleanup EXIT
+
+          mkdir -p "$STAGE/$PAGES_ROOT_IN_BRANCH"
+          ( cd "$BUILD_DIR" && tar cf - . ) | ( cd "$STAGE/$PAGES_ROOT_IN_BRANCH" && tar xf - )
+
+          git log -1 --format=%B > /tmp/publish-commit-msg.txt
+
+          pushd "$STAGE" >/dev/null
+          git init
+          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git add .
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -F /tmp/publish-commit-msg.txt
+          git branch -M "$PAGES_BRANCH"
+          git push -f origin "$PAGES_BRANCH"
+          popd >/dev/null
