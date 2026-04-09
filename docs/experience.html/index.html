@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="description" content="Work history, education, talks, and open source — migrated from the legacy Flask site."><title>Experience · Sumin Byeon</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/_slug_html.MwJkXAB4.css"></head> <body> <a class="skip-link" href="#main">Skip to content</a>  <header class="wrap site-header"> <nav aria-label="Primary"> <ul class="nav-links"> <li> <a href="/">Home</a> </li> <li> <a href="/experience.html" class="nav-links__active">
+Experience
+</a> </li> <li> <a href="/talks.html">
+Talks
+</a> </li> <li> <a href="/projects-showcase.html">
+Projects
+</a> </li>  <li> <a href="/#connect">Connect</a> </li> </ul> </nav> </header> <main id="main" class="wrap experience-main"> <article class="experience-article"> <h1 class="experience-title">Experience</h1> <div class="experience-body"><h2>Summary</h2>
+<ul>
+<li>Experienced software engineer with a passion for distributed systems,
+scalability problems, and dealing with a large amount of data</li>
+<li>Another area of interest is internal tools development to boost the
+productivity of colleagues</li>
+<li>Keeps communication skills honed by actively engaging in conversations,
+public speeches, and ritually writing daily journals and various social media
+posts of substantial lengths</li>
+</ul>
+<!--
+- Maintains athletic competence above average, with emphasis on core muscle
+  strength and endurance → no back pain even after an extended period of working
+  in a sitting position (does not happen too often, but inevitable under
+  exceptional circumstances)
+-->
+
+<h2>Work Experience</h2>
+<h3>Software Engineering Manager @NAVER Cloud</h3>
+<p>(To be written later...)</p>
+<h3>Senior Software Engineer @<a href="https://www.linkedin.com/company/coupang/">Coupang</a></h3>
+<div style="margin-top: -0.5em">
+  <i class="info circle icon"></i>
+  Korean version of Amazon.com; largest e-commerce, logistics company
+</div>
+<div>
+  <i class="calendar alternate icon"></i>Jul 2018 - Present
+  &nbsp;
+  <i class="map marker alternate icon"></i><a href="https://goo.gl/maps/iQoVxrCzRTL7buMM9">Seoul, South Korea</a>
+</div>
+
+<h4>Data Engineering</h4>
+<ul>
+<li>Kafka log persistence</li>
+<li>Kafka schema registry</li>
+<li>Handling extract, transform, load (ETL) tasks with Spark</li>
+</ul>
+<h4>Inter-domain logistics state management system (Flow)</h4>
+<ul>
+<li>Handling write-heavy workloads with <a href="http://cassandra.apache.org/">Cassandra</a></li>
+<li>Message ordering guarantee with a distributed queue</li>
+<li>RESTful API for internal customers (domain teams)</li>
+<li>Spark jobs for data validation, written in Scala, fully automated with
+<a href="https://airflow.apache.org/">Airflow</a></li>
+</ul>
+<!--
+- Voluntarily undertook item picking operations, package sorting operations,
+  and actual delivery operations (driving our delivery trucks to make deliveries
+  to the customers) to gain comprehensive understanding of end-to-end logistics
+  operations
+- Leading technical decisions and code management aspects (for the data
+  validation part)
+-->
+
+<h4>Internal Tools &amp; Extracurricular Activities</h4>
+<ul>
+<li><code>awsauth</code>: Command line tool written in Golang to issue temporary AWS access
+keys with AD FS and AWS STS</li>
+<li><code>schema-extractor</code>: Command line tool to generate an ORC schema from a Java
+DTO class using
+<a href="https://www.geeksforgeeks.org/reflection-in-java/">reflection</a>.</li>
+<li>Leading an unofficially-organized class to teach Python to colleagues</li>
+</ul>
+<!--
+- Building a microservice to manage order/shipment states
+    - [Cassandra](http://cassandra.apache.org/): to handle a large volume of
+      accumulating data
+    - [Spring Reactive](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html): 
+      asynchronous handling of requests for higher throughput
+- Routing service (currently on hold)
+    - Given a list of destinations and a set of constraints, find the optimal
+      sequence and paths for delivery
+    - Solves constrained optimization problems
+-->
+
+<h3>Software Engineer @<a href="http://company.nexon.com">Nexon</a></h3>
+<div style="margin-top: -0.5em">
+  <i class="info circle icon"></i>
+  Largest gaming company in South Korea, servicing +100 titles in +190 nations world-wide
+</div>
+<div>
+  <i class="calendar alternate icon"></i>Jul 2014 - Jul 2018
+  &nbsp;
+  <i class="map marker alternate icon"></i><a href="https://goo.gl/maps/NJQdbg6n5rPBAeG28">Seongnam, South Korea</a>
+</div>
+
+<h4>Marketplace</h4>
+<ul>
+<li>In-game marketplace where players exchange goods with money and vice versa</li>
+<li>Inter-database transactions (Couchbase ↔︎ AWS Aurora)</li>
+<li>Complex search query support with Elasticsearch</li>
+<li>Driving most of technical decisions</li>
+</ul>
+<h4><a href="/projects/durango_ecosim.html">Ecosystem Simulator</a> &amp; <a href="/projects/durango_ecosim_pipeline.html">Pipeline</a></h4>
+<ul>
+<li>In-game natural environment that resembles that of the real world</li>
+<li>Number crunching with OpenCL and C# math library</li>
+<li>ECS, ECR, data pipeline</li>
+<li>Cost saving (est. $300,000/year) with architectural revisions</li>
+<li>Implementing precautionary measures: data validator, auto-scaling</li>
+<li>Public speech on this topic: <a href="https://www.youtube.com/watch?v=H7kF7r7UBFE">Automating Mother Nature @AWS re:Invent 2017</a></li>
+</ul>
+<h4>Internal Tools</h4>
+<ul>
+<li>Wheelhouse: Automated Python package pre-build system for internal PyPI repository</li>
+<li>Game world packaging and distribution tools for internal customers (game designers, non-tech users)</li>
+</ul>
+<!--
+- Building a distributed MMORPG server system ([Durango](https://durango.nexon.com/En))
+    - Marketplace
+        - Handling inter-document, inter-database transactions
+        - Performance improvement with AWS Aurora and Elasticsearch
+    - Natural environment simulation
+        - Designing and building a highly scalable, fault-tolerant software architecture with AWS
+        - Automating complicated workflows
+        - Building in-house tools for distribution of in-game terrains
+    - Cost reduction by optimizing our infrastructure
+        - Saved (undisclosed amount)/year by employing multi-regional object storage
+        - A number of other micro-savings
+-->
+
+<h3>Software Engineer @<a href="https://www.spoqa.com">Spoqa</a></h3>
+<div style="margin-top: -0.5em">
+  <i class="calendar alternate icon"></i>Mar 2014 - Jul 2014
+  &nbsp;
+  <i class="map marker alternate icon"></i>Seoul, South Korea
+</div>
+
+<ul>
+<li>Building a customer-facing Android app</li>
+<li>Building a backend for commercial loyalty service</li>
+</ul>
+<!--
+### Part-Time Software Engineer @[Metropia, Inc](http://www.metropia.com) 
+
+<div style="margin-top: -0.5em">
+  <i class="calendar alternate icon"></i>Jan 2012 - Dec 2013
+  &nbsp;
+  <i class="map marker alternate icon"></i>Tucson, AZ, USA
+</div>
+
+- Designing and building an automated pipeline to generate rasterized map tiles
+  from raw geospatial data (from [OpenStreetMap](https://www.openstreetmap.org))
+  in global-scale.
+- Building a navigation app (Android)
+- Designing and implementing RESTful API for the navigation app (Python)
+-->
+
+<h3>Research Programmer @University of Arizona</h3>
+<p>Jun 2010 - Jun 2011, Tucson, AZ</p>
+<ul>
+<li>Developed internal tools to conduct machine learning researches</li>
+</ul>
+<h2>Education</h2>
+<h3>MS in Computer Science @University of Arizona</h3>
+<div style="margin-top: -0.5em">
+  <i class="calendar alternate icon"></i>Aug 2011 - Dec 2013
+  &nbsp;
+  <i class="map marker alternate icon"></i>Tucson, AZ, USA
+</div>
+
+<h3>BS in Computer Science, Mathematics @University of Arizona</h3>
+<div style="margin-top: -0.5em">
+    <i class="calendar alternate icon"></i>Jan 2006 - Dec 2010
+    &nbsp;
+    <i class="map marker alternate icon"></i>Tucson, AZ, USA
+  </div>
+
+<h3>Postgraduate Education</h3>
+<ul>
+<li>Occasionally, but persistently taking classes from <a href="https://www.coursera.org">Coursera</a>, <a href="https://www.udacity.com">Udacity</a><ul>
+<li>Machine Learning</li>
+<li>Design of Computer Programs</li>
+<li>Computational Finance</li>
+</ul>
+</li>
+<li>Founding and leading an unofficial research paper reading group in Nexon (2015)</li>
+</ul>
+<h2>Patents &amp; Research Papers</h2>
+<h3><a href="https://doi.org/10.8080/1020160025511">Patent #1020160025511: A system for simulating a game environment</a> (Mar 2016)</h3>
+<p>Nexon decided to file a patent with the work referred above as <em>natural
+environment simulation</em>. I was listed as a co-author along with the game
+designer who pioneered the concept.</p>
+<h3><a href="https://www.researchgate.net/publication/221250935_Human_Natural_Instruction_of_a_Simulated_Electronic_Student">Human Natural Instruction of a Simulated Electronic Student</a> (Jan 2011)</h3>
+<p>Discusses how <em>human-instructable computing</em> can be achieved. That is, how an
+<em>electronic student</em> can be taught using the same natural instruction methods
+humans use.</p>
+<h2>Open Source Activities</h2>
+<h3>Contributions to others</h3>
+<ul>
+<li><a href="https://github.com/pydata/pandas-datareader/pulls?utf8=%E2%9C%93&q=author%3Asuminb">pandas-datareader</a>: Extract data from a wide range of Internet sources into a pandas <code>DataFrame</code>.</li>
+<li><a href="https://github.com/pinterest/secor/pulls?utf8=%E2%9C%93&q=author%3Asuminb">secor</a>: Kafka log persistence.</li>
+<li><a href="https://github.com/burnash/gspread/pulls?utf8=%E2%9C%93&q=author%3Asuminb">gspread</a>: A Python library to access and manipulate Google Spreadsheets.</li>
+</ul>
+<h2>Personal Projects</h2>
+<h3><a href="https://github.com/suminb/finance">SB Finance</a></h3>
+<p>Set of code for personal asset management and quantitative investment.</p>
+</div> </article> </main> <footer class="wrap site-footer site-footer--bordered"> <div class="site-footer__source"> <h3 class="site-footer__heading">Source</h3> <p class="site-footer__text">
+The source code for this site is on  <a href="https://github.com/suminb/web">GitHub</a>.
+</p> </div> <p class="site-footer__credit">Sumin Byeon</p> </footer>  </body></html>

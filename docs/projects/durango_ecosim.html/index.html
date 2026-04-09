@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="description" content="Ecosystem Simulator"><title>Ecosystem Simulator · Sumin Byeon</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/_slug_html.MwJkXAB4.css"></head> <body> <a class="skip-link" href="#main">Skip to content</a>  <header class="wrap site-header"> <nav aria-label="Primary"> <ul class="nav-links"> <li> <a href="/">Home</a> </li> <li> <a href="/experience.html">
+Experience
+</a> </li> <li> <a href="/talks.html">
+Talks
+</a> </li> <li> <a href="/projects-showcase.html">
+Projects
+</a> </li>  <li> <a href="/#connect">Connect</a> </li> </ul> </nav> </header> <main id="main" class="wrap experience-main"> <article class="experience-article"> <header class="experience-header"> <h1 class="experience-title">Ecosystem Simulator</h1> <p class="experience-dates"> Sep 2014 <span class="experience-dates__sep">—</span> Sep 2016 (approx.) </p> <span class="tag tag--type experience-cat">Problem Solving</span> <div class="tag-row experience-tags"> <a class="tag tag--link" href="/experiences/tags/csharp.html"> csharp </a><a class="tag tag--link" href="/experiences/tags/opencl.html"> opencl </a><a class="tag tag--link" href="/experiences/tags/simulation.html"> simulation </a><a class="tag tag--link" href="/experiences/tags/math.html"> math </a><a class="tag tag--link" href="/experiences/tags/game.html"> game </a> </div> </header> <div class="experience-body"><p>It was the summer of 2014 when I joined <a href="https://web.archive.org/web/20211026184618/https://what.studio/">the team</a>. The
+team size was quite small at the time, with less than 30 people or so, and
+<a href="https://web.archive.org/web/20191029125803/https://durango.nexon.com/">our game</a> was still in the early stage of
+development, trying out new things and explore all the possibilities out
+there. It was a lot of fun.</p>
+<p>One day, my boss came along saying &quot;hey, we want to make a realistic in-game
+ecosystem, would you like to take charge of that?&quot; So what do you mean by a
+<em>realistic ecosystem</em>? We have a spectacular in-game view of wild lands, but
+what we wanted was far beyond just looking good. In essence, we wanted to make
+an in-game ecosystem that resembles the real world.</p>
+<p>It would be impractical to plant vegetation and other natural resources
+manually or randomly. Manual planting would hardly work due to the sheer size
+of the in-game world. Random planting, on the other hand, would certainly
+violate manu rules to which the real ecosystem conforms. For example, we
+wouldn&#39;t want to plant banana trees in a snow land or the middle of the ocean.</p>
+<p>To make our dream come true, we decided to develop a very sophisticated
+algorithm to determine the location and the type of plants. The algorithm
+considers the type of soil, the temperature, the humidity, and other
+surrounding conditions.</p>
+<figure>
+  <img src="/static/images/ecosim.png" style="max-width:70%"/>
+</figure>
+
+<p>The biggest challenge was the sheer volume of computations it takes to
+construct a solution. We had tried several ways to make these computations fast
+and they can be summarized as follows.</p>
+<h2>First Approach: Matrix Multiplication For Biomass Precalculation</h2>
+<p>One of the important criteria is something we internally called <em>biomass</em>,
+which essentially refers to the weight or the predominance of each biological
+entity. In general, bigger species such as <a href="https://en.wikipedia.org/wiki/Adansonia">baobab trees</a> have higher
+biomass whereas smaller species have lower biomass. Each species has different
+requirements for surrounding biomass; some prefer higher biomasses nearby,
+others prefer lower biomass in the vicinity.</p>
+<p>What we need to take into consideration is the sum of all biomasses within the
+nearby region when given a particular coordinate, not the biomass of a single
+coordinate. Calculating the sum of biomasses within a certain region yields a
+time complexity of <em>O(n<sup>2</sup>)</em> where <em>n</em> is the radius of the region.
+Given that we have a square-shaped world (conceptually, in terms of coordinate
+systems) of a width of <em>m</em>, the total time complexity to calculate the sum of
+biomasses for all possible locations is <em>O(m<sup>2</sup>n<sup>2</sup>)</em> and this
+can be enormous.</p>
+<p>So we started looking into faster methods to calculate the biomasses and came up
+with a simple yet very effective algorithm, using matrix multiplications, to
+pre-calculate the sum of biomasses for all coordinates. The resulting matrix is
+something we call a <em>biomass map</em>, which is essentially a lookup table; for each
+coordinate, the biomass map stores the sum of the biomasses in the vicinity.</p>
+<figure>
+  <img src="/static/images/biomass_map_precalculation.png" style="max-width:100%"/>
+  <figcaption>Fig.1 - Pre-calculation of biomass maps</figcaption>
+</figure>
+
+<p>The naive algorithm for matrix multiplication yields <em>O(m<sup>3</sup>)</em>, which
+has virtually no advantage over our original method. However, there is a faster
+algorithm for matrix multiplication that yields <em>O(m<sup>2.807</sup>)</em>.<a href="https://en.wikipedia.org/wiki/Strassen_algorithm">^1</a> This
+gives us practical headstart by saving a large number of multiplication
+operations. Moreover, there is an additional advantage in an engineering
+perspective: sequential memory access is faster than random access.<a href="https://superuser.com/questions/782197/in-l1-l2-cache-and-dram-is-sequential-access-faster-than-random-access">^2</a></p>
+<figure>
+  <img src="/static/images/biomass_map_time_complexities.png" style="max-width:70%"/>
+  <figcaption>Fig.2 - Matrix multiplication is faster unless the world is huge</figcaption>
+</figure>
+
+<p>As a result, we were able to achieve a marginal, but measurable[^3] improvement
+over our original method. However, this still takes about 30 minutes for a world
+of 2048x2048, which certainly is a great inconvenience for rapid development. So
+we decided to look into other options.</p>
+<h2>Second Apprach: OpenCL</h2>
+<p>One of irresistible solutions to handle computationally intensive tasks is
+<a href="https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units">GPGPU</a>. That is exactly what those <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit">GPU</a>s are made for: crunching
+numbers. There are two major choices when it comes to GPGPU: <a href="https://www.khronos.org/opencl/">OpenCL</a>
+and <a href="https://www.geforce.com/hardware/technology/cuda">CUDA</a>. Although CUDA could achieve a higher performance<sup>[citation
+needed]</sup>, we opted for OpenCL because of its portability and vendor
+agnostic aspect.</p>
+<p>Long story short, we wrote an OpenCL kernel for biomass maps pre-calculation. As
+a result, we were able to reduce the 30-minute runtime down to one minute and
+fifteen seconds, which is a 96% improvement.</p>
+<p>Nevertheless, the GPGPU solution offers remarkable performance gains, it comes
+at a price. Most of all, it was a great engineering challenge; it was difficult
+to debug, difficult to profile, and difficult to do anything with it. That&#39;s
+probably because we had no prior GPGPU experience whatsoever. Another concern
+was maintenance and recruiting. Software engineers with GPGPU experience were
+rare commodities in the job market (at least in 2014, in South Korea).</p>
+<p>For this reason, we decided to discard the GPGPU option and move onto a
+different one, which will be explained in the next section.</p>
+<h2>Third Approach: Compressed Sparse Row</h2>
+<p>One characteristic of our game world we could exploit was that it is mostly
+empty. In many cases, half of the world is deep ocean; players may enter
+shallow water areas but they are not allowed to swim into the deep ocean, and
+thus there are no biological entities nor natural resources in the deep ocean.
+Furthermore, not all land spaces are fully occupied.</p>
+<p>This suggests that we might be able to represent our matrices in a <a href="https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format)">compressed
+sparse row (CSR)</a> format. Then the time complexity will no longer be
+relevant to the size of the world, but rather the number of biological entities
+and natural resources in the world.</p>
+<p>Fortunately, the <a href="https://www.mathdotnet.com/">math library</a> we use provides
+compressed spare row representations of matrices and vectors. After switching to
+CSR, we were able to complete the biomass maps computation in just eighteen
+seconds, which is slightly slower than the GPGPU solution but certainly
+acceptable.</p>
+<h2>Conclusion</h2>
+<p>Ecosystem simulation is inherently computationally intensive. We have explored 
+several different strategies to minimize the computing time. GPGPU offers
+lucrative benefits when it comes to large-scale number crunching operations,
+however, given our circumstances, it was difficult to employ GPGPU for
+production due to practical constraints. We decided to settle with the
+compressed sparse row (CSR) representation of matrices as it provides
+comparable performance to that of GPGPU without having engineering and
+administrative burdens.</p>
+<h2>Public Speech On This Topic</h2>
+<p>More information (in Korean) can be found in the following public speech deck
+from Nexon Developers Conference (NDC) 2015:</p>
+<p><a href="http://ndcreplay.nexon.com/NDC2015/sessions/NDC2015_0063.html">http://ndcreplay.nexon.com/NDC2015/sessions/NDC2015_0063.html</a></p>
+<p>[^3]: Unfortunately, I was not able to find the exact numbers because I&#39;m no longer with the company at the time of writing of this article.</p>
+</div> </article> </main> <footer class="wrap site-footer site-footer--bordered"> <div class="site-footer__source"> <h3 class="site-footer__heading">Source</h3> <p class="site-footer__text">
+The source code for this site is on  <a href="https://github.com/suminb/web">GitHub</a>.
+</p> </div> <p class="site-footer__credit">Sumin Byeon</p> </footer>  </body></html>
