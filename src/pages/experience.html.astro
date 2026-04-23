@@ -2,14 +2,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import MarkdownArticle from "../components/MarkdownArticle.astro";
-import { marked } from "marked";
-
-marked.use({ gfm: true });
+import { parseMarkdown } from "../lib/markdown";
 
 const mdPath = path.join(process.cwd(), "data", "experience_summary.md");
 const md = fs.readFileSync(mdPath, "utf8");
-const parsed = marked.parse(md);
-const contentHtml = typeof parsed === "string" ? parsed : await parsed;
+const contentHtml = await parseMarkdown(md);
 ---
 
 <MarkdownArticle
