@@ -1,0 +1,83 @@
+naver_cloud:
+  name: NAVER Cloud
+  url: https://ncloud.com/
+  logo: https://ncloud.com/favicon.ico
+  description: NAVER Cloud is a cloud platform provider.
+  date: ["2023-01-01", null]
+  job_title: Software Engineer Manager
+  tags:
+    - cloud
+    - platform
+    - infrastructure
+    - data
+    - ai
+    - ml
+naver2:
+  name: NAVER
+  url: https://naver.com/
+  logo: https://naver.com/favicon.ico
+  description: NAVER is a South Korean internet company.
+  date: ["2021-11-01", "2022-12-31"]
+  job_title: Software Engineer Manager
+  tags:
+    - platform
+    - infrastructure
+    - data
+    - ai
+    - ml
+naver:
+  name: NAVER
+  url: https://naver.com/
+  logo: https://naver.com/favicon.ico
+  description: NAVER is a South Korean internet company.
+  date: ["2020-07-06", "2022-10-31"]
+  job_title: Senior Software Engineer
+  tags:
+    - platform
+    - infrastructure
+    - data
+    - ai
+    - ml
+coupang:
+  name: Coupang
+  url: https://coupang.com/
+  logo: https://coupang.com/favicon.ico
+  description: Coupang is a South Korean e-commerce company.
+  date: ["2018-07-??", "2020-04-??"]
+  job_title: Senior Software Engineer
+  tags:
+    - ecommerce
+    - logistics
+    - data
+nexon:
+  name: NEXON
+  url: https://nexon.com/
+  logo: https://nexon.com/favicon.ico
+  description: Nexon is a South Korean game company.
+  date: ["2014-07-??", "2018-07-??"]
+  job_title: Software Engineer
+  tags:
+    - game
+    - mmorpg
+spoqa:
+  name: Spoqa
+  url: https://spoqa.co.kr
+  logo: https://spoqa.co.kr/favicon.ico
+  description: Spoqa is a South Korean web development company.
+  date: ["2014-03-02", "2014-07-??"]
+  job_title: Software Engineer
+  tags:
+    - web
+    - commerce
+university_of_arizona:
+  name: University of Arizona
+  url: https://arizona.edu
+  logo: https://arizona.edu/favicon.ico
+  description: University of Arizona is a public research university in Tucson, Arizona.
+  date: ["2010-05-??", "2011-05-??"]
+  job_title: Research Programmer
+  tags:
+    - university
+    - education
+    - research
+    - ml
