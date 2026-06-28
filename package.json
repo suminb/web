@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "astro": "^5.5.0",
-    "js-yaml": "^4.1.1",
+    "js-yaml": "^4.3.0",
     "marked": "^17.0.5"
   },
   "devDependencies": {
