@@ -10,13 +10,13 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "astro": "^7.0.3",
+    "astro": "^7.4.2",
     "js-yaml": "^4.1.1",
     "marked": "^17.0.5"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^25.5.0",
-    "vitest": "^4.1.0"
+    "vitest": "^4.1.12"
   }
 }
